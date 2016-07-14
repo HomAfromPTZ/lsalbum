@@ -1,0 +1,30 @@
+include common/_mixins
+doctype html
+html(lang="ru")
+	include common/_head
+	body
+		include common/_sprites
+		include common/_preloader
+		include common/_popup
+		include common/_gmapApi
+
+		<!--[if lt IE 9]>
+		<p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите его</a></p>
+		<![endif]-->
+
+		h1 LS album
+
+		//- Tests start
+		.jquery-test-container
+
+		#map-test-container(style="width: 600px;height:400px")
+
+		.test-pusher(style="height: 800px") Scroll Down Please
+
+		.animated-test-container(style="display: block; height: 100px; font-size: 20px") I am animated
+
+		a.preload-link(href="/") Link with overlay fade on click
+
+		//- Tests end
+
+		include common/_footer-scripts

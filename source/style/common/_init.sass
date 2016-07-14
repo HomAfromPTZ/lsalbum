@@ -1,0 +1,78 @@
+// =================================
+// Chris Coyier border-box reset
+// =================================
+html
+	box-sizing: border-box
+
+*, *:before, *:after
+	box-sizing: inherit
+
+
+
+
+
+// =================================
+// Page init
+// =================================
+html,
+body
+	height: 100%
+	min-width: 320px
+	position: relative
+	font-size: 100%
+	font-family: "Pantonbold", sans-serif
+	transition: all $transition-time
+
+
+// Show scrollbar on every page
+html
+	overflow-x: hidden
+	overflow-y: scroll
+
+#sprites-container
+	display: none
+
+
+
+
+
+// =================================
+// Typography
+// =================================
+h1, h2, h3, h4, h5, h6
+	/**/
+
+h1, h2
+	/**/
+	+media(m)
+		/**/
+	+media(xs)
+		/**/
+
+h3
+	/**/
+	+media(m)
+		/**/
+	+media(xs)
+		/**/
+
+h4, h5, h6
+	/**/
+	+media(m)
+		/**/
+	+media(xs)
+		/**/
+
+
+
+// =================================
+// Elements
+// =================================
+img
+	max-width: 100%
+
+button
+	border: none
+	outline: none
+	background: none
+	cursor: pointer
