@@ -6,5 +6,7 @@ module.exports = function() {
 		.pipe($.gp.concatCss('vendor.css'))
 		.pipe($.gp.csso())
 		.pipe($.gulp.dest($.config.root + '/assets/css'))
+		.pipe($.gulp.dest($.config.root_node + '/assets/css'))
+		.pipe($.gulp.dest($.config.root_php + '/assets/css'))
 	})
 };

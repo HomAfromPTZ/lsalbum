@@ -4,6 +4,7 @@ global.$ = {
 	package: require('./package.json'),
 	config: require('./gulp/config'),
 	path: {
+		fonts: require('./gulp/paths/fonts.js'),
 		task: require('./gulp/paths/tasks.js'),
 		template: require('./gulp/paths/template.js'),
 		vendorJs: require('./gulp/paths/vendor_js_paths.js'),
@@ -35,9 +36,10 @@ $.gulp.task('default', $.gulp.series(
 		'js_process',
 		'sass',
 		'jade',
-		'copy_php',
+		'copy_mailphp',
 		'copy_fonts',
-		'copy_image'
+		'copy_image',
+		'copy_templates'
 		),
 	$.gulp.parallel(
 		'watch',

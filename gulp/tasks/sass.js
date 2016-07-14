@@ -11,6 +11,8 @@ module.exports = function() {
 		.pipe($.gp.csso())
 		.pipe($.gp.sourcemaps.write())
 		.pipe($.gulp.dest($.config.root + '/assets/css'))
+		.pipe($.gulp.dest($.config.root_node + '/assets/css'))
+		.pipe($.gulp.dest($.config.root_php + '/assets/css'))
 		.pipe($.browserSync.stream());
 	})
 };

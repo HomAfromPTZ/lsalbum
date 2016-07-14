@@ -10,6 +10,7 @@ module.exports = function() {
 					message:  error.message
 				}
 			 }))
-			.pipe($.gulp.dest($.config.root));
+			.pipe($.gulp.dest($.config.root))
+			.pipe($.gulp.dest($.config.root_php + '/templates'));
 	});
 };

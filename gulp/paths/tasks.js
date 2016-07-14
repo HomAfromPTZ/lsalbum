@@ -10,9 +10,10 @@ module.exports = [
 	'./gulp/tasks/js_process.js',
 	'./gulp/tasks/sprites_png.js',
 	'./gulp/tasks/sprites_svg.js',
-	'./gulp/tasks/copy_php.js',
+	'./gulp/tasks/copy_mailphp.js',
 	'./gulp/tasks/copy_fonts.js',
 	'./gulp/tasks/copy_image.js',
+	'./gulp/tasks/copy_templates.js',
 	'./gulp/tasks/serve.js',
 	'./gulp/tasks/watch.js'
 ];

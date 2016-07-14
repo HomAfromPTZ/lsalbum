@@ -13,7 +13,9 @@ module.exports = function() {
 			.pipe($.gp.sourcemaps.init())
 			.pipe($.gp.uglify())
 			.pipe($.gp.sourcemaps.write())
-			.pipe($.gulp.dest($.config.root + '/assets/js'));
+			.pipe($.gulp.dest($.config.root + '/assets/js'))
+			.pipe($.gulp.dest($.config.root_node + '/assets/js'))
+			.pipe($.gulp.dest($.config.root_php + '/assets/js'));
 		});
 
 		return $.merge(bundled);
