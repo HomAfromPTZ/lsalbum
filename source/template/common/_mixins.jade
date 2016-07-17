@@ -29,7 +29,7 @@ mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 		.album-item-holder
 			.album-photo
 				a.open-img-popup
-					.album-photo-mask
+					.album-mask
 						i(class="fa fa-search-plus")
 					img(src="assets/img/#{user_photo}", alt="")
 			.album-desc
@@ -46,12 +46,21 @@ mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 						.photo-info__item
 							i(class="fa fa-heart") 
 							span.like-count= likes
-			.album-category= category
+			.album-category
+				span.category-name= category
 
 mixin albumSingle(category, album_photo)
 	.album-item
 		.album-item-holder
-			a(href="#")
-			.album-photo
+			a(href="#" class="my-album")
 				img(src="assets/img/#{album_photo}", alt="")
-			.album-category= category
+				.album-mask
+					.mask-content
+						div.mask-content__desc Фотографии природы леса, енотов и оленей...
+						div.mask-content__count
+							span 18
+							| Фотографий
+			.album-category
+				a.edit-post
+					i(class="fa fa-pencil")
+				span.category-name= category

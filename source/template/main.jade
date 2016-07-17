@@ -46,12 +46,21 @@ html(lang="ru")
 							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
 						.show-more
 							button.show-more-btn Показать еще		
-					.my-photos-album
-						h2.album-title Мои альбомы
+				.my-photos
+					.fix-width
+						.title-holder
+							h2.album-title Мои альбомы
+							.add-album-btn
+								button(class="btn add-album")
+									i(class="fa fa-plus")
+									span Добавить
 						.album-container
 							+albumSingle("Путешествие", "no_photo.jpg")
-
-
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
 
 			include common/_footer
 		include common/_footer-scripts
