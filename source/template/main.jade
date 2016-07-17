@@ -1,0 +1,57 @@
+include common/_mixins
+doctype html
+html(lang="ru")
+	include common/_head
+	body
+		include common/_sprites
+		include common/_preloader
+		include common/_popup
+		include common/_gmapApi
+		.page
+			header.main-page
+				.header-holder
+					.fix-width
+						.user-info-holder
+							.user-avatar
+								+avatar
+							.user-info
+								h2.user-info__name Антон Черепов
+								.user-info__desc Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.
+								+socialsBlock
+						.header-buttons
+							.header-buttons__item
+								button.btn(class="btn__edit")
+									i(class="fa fa-pencil")
+									span Редактировать
+							.header-buttons__item
+								button.btn(class="btn__logut") 
+									i(class="fa fa-power-off")
+									span Выйти
+			.search-holder
+				.fix-width
+					form.search-form
+						.search-form-holder
+							button(type="submit" class="search-form__btn fa fa-search")
+							input(type="text" class="search-form__input" placeholder="Исследовать мир")
+			.content
+				.fix-width
+					.new-photos-album
+						h2.album-title Новое в мире
+						.album-container
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+						.show-more
+							button.show-more-btn Показать еще		
+					.my-photos-album
+						h2.album-title Мои альбомы
+						.album-container
+							+albumSingle("Путешествие", "no_photo.jpg")
+
+
+
+			include common/_footer
+		include common/_footer-scripts

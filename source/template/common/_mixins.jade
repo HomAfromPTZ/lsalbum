@@ -9,3 +9,49 @@ mixin lorem(n)
 
 	- var words = tpl.split(/\s+/,words_num)
 	span=words.join(" ")
+
+
+//-avatar
+mixin avatar
+	.user-avatar__img
+		img(src="assets/img/default_avatar.jpg")
+
+
+mixin socialsBlock()
+	ul.social-links
+		- var socialLinks = { "vk" : "https://vk.com/", "facebook" : "https://www.facebook.com/", "twitter" : "https://twitter.com/?lang=en", "google" : "https://plus.google.com/up/follow", "mail" : "mailto:mail@gmail.com"}
+		each link_url, link_name in socialLinks
+			li.social__item
+				a(href=link_url, id= "" class="social__link" + " fa fa-"+link_name)
+
+mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
+	.album-item
+		.album-item-holder
+			.album-photo
+				a.open-img-popup
+					.album-photo-mask
+						i(class="fa fa-search-plus")
+					img(src="assets/img/#{user_photo}", alt="")
+			.album-desc
+				.album-desc__user
+					.photo-user-img
+						img(src="assets/img/#{user_avatar}", alt="")
+						.photo-user-img__mask
+				.album-desc__info
+					.photo-desc-title= title
+					.photo-info
+						.photo-info__item
+							i(class="fa fa-commenting") 
+							span.comment-count= comments
+						.photo-info__item
+							i(class="fa fa-heart") 
+							span.like-count= likes
+			.album-category= category
+
+mixin albumSingle(category, album_photo)
+	.album-item
+		.album-item-holder
+			a(href="#")
+			.album-photo
+				img(src="assets/img/#{album_photo}", alt="")
+			.album-category= category

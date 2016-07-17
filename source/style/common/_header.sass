@@ -1,0 +1,99 @@
+/*HEADER*/
+header
+	display: table-row
+	width: 100%
+	&.main-page
+		background: url(../img/bg/main-header.jpg) 50% 0 no-repeat
+		background-size: cover
+
+.header-holder
+	padding: 53px 0 60px
+/*USER AVATAR*/
+.user-avatar
+	@extend %tableAlign
+	width: 180px
+
+	&__img
+		border-radius: 50%
+		border: 3px solid $white
+		width: 120px
+		height: 120px
+		overflow: hidden
+		margin: 0 auto
+
+/*USER INFO*/
+.user-info-holder
+	display: table
+
+.user-info
+	@extend %tableAlign
+	color: $white
+	width: 400px
+	padding: 0 0 0 20px
+
+.user-info__name
+	font: 21px/23px "Panton_bold"
+	margin: 0 0 10px
+
+.user-info__desc
+	color: rgba(255,255,255, .8)
+	font-family: "Proximanova_light"
+	line-height: 24px
+	padding: 0 0 20px
+
+/*SOCIAL*/
+.social-links
+	margin: 0
+	padding: 0
+	list-style: none
+
+.social__item
+	display: inline-block
+	vertical-align: top
+
+.social__link
+	text-decoration: none
+	background: #fff
+	width: 20px
+	height: 20px
+	display: block
+
+/*HRADER BUTTONS*/
+.header-buttons
+	position: absolute
+	right: 40px
+	top: 20px
+
+	&__item
+		display: block
+		overflow: hidden
+		padding: 0 0 6px
+
+	.btn
+		background: $white
+		width: 42px
+		height: 42px
+		float: right
+		border-radius: 42px
+		box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22)
+		transition: width linear .5s
+		.fa 
+			color: #a0a09f
+			font-size: 22px
+			display: inline-block
+			vertical-align: middle
+		span 
+			display: none
+			font: 14px/16px 'Panton_bold'
+			color: $white
+			vertical-align: middle
+
+		&:hover
+			background: #28bbf0
+			width: auto
+			padding: 0 13px
+			span
+				display: inline-block
+				margin: 0 0 0 10px
+			.fa 
+				color: $white
