@@ -19,10 +19,12 @@ mixin avatar
 
 mixin socialsBlock()
 	ul.social-links
-		- var socialLinks = { "vk" : "https://vk.com/", "facebook" : "https://www.facebook.com/", "twitter" : "https://twitter.com/?lang=en", "google" : "https://plus.google.com/up/follow", "mail" : "mailto:mail@gmail.com"}
+		- var socialLinks = { "vk" : "https://vk.com/", "fb" : "https://www.facebook.com/", "twitter" : "https://twitter.com/?lang=en", "google" : "https://plus.google.com/up/follow", "email" : "mailto:mail@gmail.com"}
 		each link_url, link_name in socialLinks
 			li.social__item
-				a(href=link_url, id= "" class="social__link" + " fa fa-"+link_name)
+				a(href=link_url, id= "" class="social__link" )
+					svg.svg-social
+						use(xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_" + link_name)
 
 mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 	.album-item
@@ -36,18 +38,24 @@ mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 				.album-desc__user
 					.photo-user-img
 						img(src="assets/img/#{user_avatar}", alt="")
-						.photo-user-img__mask
+						a.photo-user-img__mask(href="")
+							svg.svg-more
+								use(xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more")
 				.album-desc__info
 					.photo-desc-title= title
 					.photo-info
-						.photo-info__item
+						button.photo-info__item
 							i(class="fa fa-commenting") 
 							span.comment-count= comments
-						.photo-info__item
+						button.photo-info__item
 							i(class="fa fa-heart") 
 							span.like-count= likes
 			.album-category
-				span.category-name= category
+				a.category-name(href="#")
+					svg.svg-category
+						use(xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album")
+					span= category
+
 
 mixin albumSingle(category, album_photo)
 	.album-item
@@ -60,6 +68,26 @@ mixin albumSingle(category, album_photo)
 						div.mask-content__count
 							span 18
 							| Фотографий
+			.album-category
+				a.edit-post
+					i(class="fa fa-pencil")
+				span.category-name= category
+
+mixin singlePhoto(title, category, comments, likes, user_photo, user_avatar)
+	.album-item(class="single-photo")
+		.album-item-holder
+			.album-photo
+				a.open-img-popup
+					.album-mask
+						i(class="fa fa-search-plus")
+					img(src="assets/img/#{user_photo}", alt="")
+				.photo-info
+					button.photo-info__item
+						i(class="fa fa-commenting") 
+						span.comment-count= comments
+					button.photo-info__item
+						i(class="fa fa-heart") 
+						span.like-count= likes
 			.album-category
 				a.edit-post
 					i(class="fa fa-pencil")
