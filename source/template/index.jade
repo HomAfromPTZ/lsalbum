@@ -6,25 +6,128 @@ html(lang="ru")
 		include common/_sprites
 		include common/_preloader
 		include common/_popup
-		include common/_gmapApi
+		//- include common/_gmapApi
 
 		<!--[if lt IE 9]>
 		<p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите его</a></p>
 		<![endif]-->
 
-		h1 LS album
 
+		.welcome__wrapper
+
+			.flip-container
+				.flip-card
+					.flip-card__front-side
+
+						.welcome__intro.welcome__intro_login.active
+							h1.welcome__h1 Добро пожаловать
+							div.welcome__text Перед вами сервис, который поможет вам организовать свои фотографии в&nbsp;альбомы и&nbsp;поделиться ими со&nbsp;всем миром!
+
+						.welcome__card.welcome__card_login
+							form.form.form_welcome(method="post")
+
+								.form__input-group
+									span.input-group__icon
+										i.fa.fa-user(aria-hidden='true')
+									input.input-group__input(id="", name="login" type="text",placeholder="Электронная почта")
+
+								.form__input-group.form__input-group_last
+									span.input-group__icon
+										i.fa.fa-lock(aria-hidden='true')
+									input.input-group__input(id="", name="password" type="password",placeholder="Пароль")
+
+								.form__text
+									a.form__link(href="#") Забыли пароль?
+
+								.form__text
+									.form__error E-mail или пароль не верен
+
+								.form__text.form__text_button
+										input.form__button(type="submit" id="" value="Войти")
+
+								.form__text.form__text_center
+									span.form__span Нет аккаунта? 
+									a.form__link(href="#") Зарегистрироваться
+
+					.flip-card__back-side
+
+						.welcome__intro.welcome__intro_registration
+							h1.welcome__h1 Регистрация
+
+						.welcome__card.welcome__card_registration
+							form.form.form_welcome(method="post")
+
+								.form__input-group
+									span.input-group__icon
+										i.fa.fa-user(aria-hidden='true')
+									input.input-group__input(id="", name="" type="email", placeholder="Имя")
+
+								.form__input-group
+									span.input-group__icon
+										i.fa.fa-envelope(aria-hidden='true')
+									input.input-group__input(id="", name="" type="email", placeholder="Электронная почта")
+
+								.form__input-group.form__input-group_last
+									span.input-group__icon
+										i.fa.fa-lock(aria-hidden='true')
+									input.input-group__input(id="", name="" type="password",placeholder="Пароль")
+
+								.form__text
+									.form__span Ваши данные остаются строго конфиденциальны
+
+								.form__text
+									.form__error Пользователь с указанной электронной почтой уже есть на сайте
+
+								.form__text.form__text_button
+										input(type="submit" id="" value="Создать аккаунт").form__button
+
+								.form__text.form__text_center
+									span.form__span Уже зарегистрированы? 
+									a.form__link(href="#") Войти
+
+
+			.welcome__intro.welcome__intro_recovery
+				h1.welcome__h1 Восстановление пароля
+
+			.welcome__card.welcome__card_recovery
+
+				form.form.form_welcome.form_recovery(method="post")
+					.form__text
+						.form__span.form__span_bold Забыли пароль?
+
+					.form__text
+						.form__span Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля
+
+					.form__input-group.form__input-group_last
+						span.input-group__icon
+							i.fa.fa-envelope(aria-hidden='true')
+						input.input-group__input(id="", name="" type="email", placeholder="Электронная почта")
+
+					.form__text
+						.form__error Пользователя с указанной электронной почтой не существует
+
+					.form__text.form__text_button
+							input(type="submit" id="" value="Восстановить пароль").form__button
+
+					.form__text.form__text_center
+						span.form__span Вспомнили пароль? 
+						a.form__link(href="#") Войти
+
+
+			.welcome__footer
+				.welcome__footer-text
+					| 2016 Создано командой профессионалов на продвинутом курсе по веб-разработке от LoftSchool
+
+		//- h1 LS album
 		//- Tests start
-		.jquery-test-container
-
-		#map-test-container(style="width: 600px;height:400px")
-
-		.test-pusher(style="height: 800px") Scroll Down Please
-
-		.animated-test-container(style="display: block; height: 100px; font-size: 20px") I am animated
-
-		a.preload-link(href="/") Link with overlay fade on click
-
+		//- .jquery-test-container
+		//- #map-test-container(style="width: 600px;height:400px")
+		//- .test-pusher(style="height: 800px") Scroll Down Please
+		//- .animated-test-container(style="display: block; height: 100px; font-size: 20px") I am animated
+		//- a.preload-link(href="/") Link with overlay fade on click
 		//- Tests end
+		
+
+
 
 		include common/_footer-scripts
