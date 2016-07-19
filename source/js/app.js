@@ -7,7 +7,8 @@
 		popup = require("./modules/popup.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
-		tinyMceL10n = require("./modules/tinymce_l10n.js");
+		tinyMceL10n = require("./modules/tinymce_l10n.js"),
+		headerForm = require("./modules/header-form.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -134,6 +135,39 @@
 
 	if ($(".js-edit-user-btn").length > 0) {
 		$(".js-edit-user-btn").on("click", showEditUserModal);
+	}
+
+
+	// ==============================
+	// Edit User Header
+	// ==============================
+	function showEditUserHeader() {
+		headerForm.init("#edit-user-header", ".js-close-header");
+		headerForm.showHeaderForm();
+	}
+
+	if ($(".js-edit-user-header-btn").length > 0) {
+		$(".js-edit-user-header-btn").on("click", showEditUserHeader);
+	}
+
+
+	// ==============================
+	// Show Social Items Forms
+	// ==============================
+	function showSocialForm(e) {
+		e.preventDefault();
+		$(this).closest('.social__item').find('.form__group').show();
+	}
+	function hideSocialForm(e) {
+		e.preventDefault();
+		$(this).closest('.form__group').hide();
+	}
+
+	if ($(".js-open-social-form").length > 0) {
+		$(".js-open-social-form").on("click", showSocialForm);
+	}
+	if ($(".js-close-form").length > 0) {
+		$(".js-close-form").on("click", hideSocialForm);
 	}
 
 

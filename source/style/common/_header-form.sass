@@ -1,0 +1,137 @@
+.hform
+	display: table
+	position: fixed
+	visibility: hidden
+	opacity: 0
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+	z-index: 10
+	background-color: rgba($black, .4)
+	&__container
+		display: table-cell
+		vertical-align: middle
+		position: relative
+	&__content
+		position: relative
+		width: 280px
+		max-width: 80%
+		margin: 0 auto
+		padding: 20px
+		border-radius: 5px
+		text-align: left
+		background-color: $white
+		background-repeat: no-repeat
+		background-position: center bottom
+	&__close
+		position: absolute
+		width: 40px
+		height: 40px
+		border-radius: 50%
+		right: -15px
+		top: -15px
+		background-color: $black
+		border: 2px solid $white
+		.fa
+			font-size: rem(20)
+			color: $white
+	&__text
+		font-family: "Pantonbold", sans-serif
+		margin: 0
+	&.show
+		animation: hform-show $transition-time_medium
+		animation-fill-mode: forwards
+		+media(xs)
+			animation: none
+			visibility: visible
+			opacity: 1
+		.hform__content
+			animation: hform-content-show $transition-time_medium
+			animation-fill-mode: forwards
+			+media(xs)
+				animation: none
+				visibility: visible
+	&.hide
+		animation: hform-hide $transition-time_medium
+		+media(xs)
+			animation: none
+			visibility: hidden
+			opacity: 0
+		.hform__content
+			animation: hform-content-hide $transition-time_medium
+			animation-fill-mode: forwards
+			+media(xs)
+				animation: none
+
+	.header-holder
+		background-color: rgba($black, 0.4)
+	.hform__footer
+		background-color: $white
+		text-align: right
+	.user-cover 
+		position: absolute
+		right: 100px
+		top: 30px
+
+	.user-photo__img 
+		border-radius: 50%
+		border: 3px solid #fff
+		width: 120px
+		height: 120px
+		overflow: hidden
+		margin: 0 auto
+		position: relative
+		text-align: center
+		color: $white
+		.image-preview
+			position: absolute
+		.fa
+			margin-top: 20px
+			position: relative
+			display: block
+			font-size: 40px
+	.link
+		position: relative
+		color: $white
+	.form__input_file
+		display: none
+
+	.social__item
+		position: relative
+		.form__group
+			position: absolute
+			display: none
+
+
+// =================================
+// Animations
+// =================================
+@keyframes hform-show
+	0%
+		visibility: visible
+	100%
+		visibility: visible
+		opacity: 1
+
+@keyframes hform-hide
+	0%
+		visibility: visible
+		opacity: 1
+	100%
+		visibility: visible
+		opacity: 0
+
+
+// @keyframes hform-content-show
+// 	0%
+// 		transform: perspective(600px) translate3d(0,0,150px) rotateX(-70deg)
+// 	100%
+// 		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
+
+
+// @keyframes hform-content-hide
+// 	0%
+// 		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
+// 	100%
+// 		transform: perspective(600px) translate3d(0,50px,50px) rotateX(20deg)
