@@ -1,0 +1,212 @@
+.hm-modal
+	display: table
+	position: fixed
+	visibility: hidden
+	opacity: 0
+	top: 0
+	left: 0
+	height: 100%
+	width: 100%
+	z-index: 10
+	background-color: rgba($black, .9)
+
+	&__container
+		display: table-cell
+		vertical-align: middle
+		position: relative
+	&__content
+		position: relative
+		width: 680px
+		padding: 0
+		max-width: 80%
+		margin: 0 auto
+		border-radius: 5px
+		text-align: left
+		background-color: $white
+		background-repeat: no-repeat
+		background-position: center bottom
+	&__text
+		font-family: "Pantonbold", sans-serif
+		margin: 0
+	&.show
+		animation: modal-show $transition-time_medium
+		animation-fill-mode: forwards
+		+media(xs)
+			animation: none
+			visibility: visible
+			opacity: 1
+		.hm-modal__content
+			animation: modal-content-show $transition-time_medium
+			animation-fill-mode: forwards
+			+media(xs)
+				animation: none
+				visibility: visible
+	&.hide
+		animation: modal-hide $transition-time_medium
+		+media(xs)
+			animation: none
+			visibility: hidden
+			opacity: 0
+		.hm-modal__content
+			animation: modal-content-hide $transition-time_medium
+			animation-fill-mode: forwards
+			+media(xs)
+				animation: none
+
+	&__close
+		position: absolute
+		width: 40px
+		height: 40px
+		border-radius: 50%
+		right: 15px
+		top: 15px
+		background-color: transparent
+		border: none
+		.fa:before
+			font-size: rem(28)
+			color: #a0a09f
+			transition: color .3s
+
+	&__close:hover
+		.fa:before
+			color: #5e5e5e
+
+	&__header
+		background-color: #f1f1f1
+		padding: rem(20)
+		@include clearfix
+		border-radius: 4px 4px 0 0
+	&__title
+		color: #323232
+		font-family: 'Panton_bold'
+		font-size: rem(21)
+		float: left
+		margin-top: 4px
+	&__close
+		float: right
+		margin: 0
+		padding: 0
+		.fa
+			font-size: rem(28)
+			color: #a0a09f
+
+	&__text
+		padding: rem(42) rem(20) rem(16)
+
+	&__footer
+		background-color: #f1f1f1
+		@include clearfix
+		padding: rem(20)
+		border-radius: 0 0 4px 4px
+		.btn_danger
+			float: right
+
+	.form__group
+		margin-bottom: 1.2rem
+		@include clearfix
+
+	.group__label
+		width: 18%
+		float: left
+		padding: 0.7rem rem(20)
+		vertical-align: top
+		font-family: 'Proximanova_semibold'
+		margin-left: 2%
+
+	textarea.group__input
+		height: 7.5rem
+		max-width: 80%
+
+	.group__input
+		width: 80%
+		float: left
+		border: 1px solid #d8d6d6
+		border-radius: 1.2rem
+		padding: .6rem 1rem
+		transition: border-color 0.3s
+
+		&:link,
+		&:visited,
+		&:hover,
+		&:active,
+		&:focus
+			outline: none
+
+		&:focus
+			border-color: $border_blue
+	
+	.form__group_upload
+		font-size: 0
+		.image-preview-holder
+			display: inline-block
+			width: 18%
+			margin-right: 2%
+			vertical-align: middle
+			text-align: right
+		.image-preview
+			border-radius: 50%
+			overflow: hidden
+			background-color: #f1f1f1
+			width: 50px
+			height: 50px
+			float: right
+			position: relative
+
+			.image-preview__pic
+				position: absolute
+				top: 0
+				left: 50%
+				transform: translateX(-50%)
+				max-width: none
+				width: auto
+				height: 100%
+
+
+
+		.file-label
+			display: inline-block
+			font-family: 'Panton_bold'
+			margin-right: 1.2rem
+			font-size: rem(14)
+			vertical-align: middle
+
+			.form__input_file
+				display: none
+		.form__notice
+			font-family: 'Proximanova_light-italic'
+			display: inline-block
+			max-width: 12rem
+			font-size: rem(14)
+			vertical-align: middle
+
+// =================================
+// Animations
+// =================================
+@keyframes modal-show
+	0%
+		visibility: visible
+	100%
+		visibility: visible
+		opacity: 1
+
+@keyframes modal-hide
+	0%
+		visibility: visible
+		opacity: 1
+	100%
+		visibility: visible
+		opacity: 0
+
+
+@keyframes modal-content-show
+	0%
+		transform: perspective(600px) translate3d(0,0,150px) rotateX(-70deg)
+	100%
+		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
+
+
+@keyframes modal-content-hide
+	0%
+		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
+	100%
+		transform: perspective(600px) translate3d(0,50px,50px) rotateX(20deg)

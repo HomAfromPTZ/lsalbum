@@ -23,9 +23,8 @@
 	// ==============================
 	// Popup example
 	// ==============================
-	popup.init("#hm-popup", ".hm-popup__text", ".hm-popup__close");
+	// popup.init("#hm-popup", ".hm-popup__text", ".hm-popup__close");
 	// popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet, 2000);
-	popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet);
 
 	// ==============================
 	// Google map init example
@@ -68,7 +67,7 @@
 	// Add Album Popup
 	// ==============================
 	function showAddAlbumModal() {
-		popup.init("#add-album-popup", ".hm-popup__text", ".hm-popup__close");
+		popup.init("#add-album-modal", ".hm-modal__text", ".hm-modal__close");
 		popup.showPopup();
 	}
 
