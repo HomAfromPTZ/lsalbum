@@ -1,0 +1,59 @@
+#edit-user-modal.hm-modal
+	.hm-modal__container
+		.hm-modal__content
+
+			.hm-modal__header
+				.hm-modal__title Редактировать профиль
+				button.hm-modal__close.js-close-popup
+					span.fa.fa-close
+
+
+			form.form(method="post")
+				.hm-modal__text
+
+					.form__group
+						label.group__label Имя
+						input.group__input(id="", name="" type="text")
+
+					.form__group
+						label.group__label О себе
+						textarea.group__input(name="", cols="30", rows="5")
+
+					.form__group.form__group_upload
+						.image-preview-holder
+							.image-preview
+								img.image-preview__pic(src="/assets/img/default_avatar.jpg", alt="")
+						label.file-label.btn.btn_transparent Загрузить фотографию
+							input.form__input.form__input_file(type="file", name="")
+						.form__notice (файл должен быть размером не&nbsp;более 512&nbsp;КБ)
+
+					.form__group.form__group_upload
+						.image-preview-holder
+							.image-preview
+								img.image-preview__pic(src="/assets/img/no_photo.jpg", alt="")
+						label.file-label.btn.btn_transparent Загрузить фон
+							input.form__input.form__input_file(type="file", name="")
+						.form__notice (файл должен быть размером не&nbsp;более 1024&nbsp;КБ)
+
+					.form__group
+						label.group__label Вконтакте
+						input.group__input(id="", name="" type="text")
+
+					.form__group
+						label.group__label Facebook
+						input.group__input(id="", name="" type="text")
+
+					.form__group
+						label.group__label Email
+						input.group__input(id="", name="" type="text")
+
+					.form__group
+						label.group__label Twitter
+						input.group__input(id="", name="" type="text")
+
+
+				.hm-modal__footer
+					button.btn.btn_ok(type="submit") Сохранить
+					button.btn.btn_link.js-close-popup Отменить
+
+

@@ -9,6 +9,7 @@ html(lang="ru")
 		include common/_add-album-modal
 		include common/_add-photos-modal
 		include common/_edit-photo-modal
+		include common/_edit-user-modal
 		include common/_gmapApi
 		.page
 			header.main-page
@@ -23,11 +24,11 @@ html(lang="ru")
 								+socialsBlock
 						.header-buttons
 							.header-buttons__item
-								button.btn.btn_animated(class="btn__edit")
+								button.btn.btn_animated.btn__edit.js-edit-user-btn
 									i(class="fa fa-pencil")
 									span Редактировать
 							.header-buttons__item
-								button.btn.btn_animated(class="btn__logut") 
+								a(href="index.html").btn.btn_animated.btn__logut 
 									i(class="fa fa-power-off")
 									span Выйти
 			.search-holder

@@ -101,6 +101,18 @@
 		$('.js-edit-photo-btn').on('click', showEditPhotoModal);
 	}
 
+	// ==============================
+	// Edit User Modal
+	// ==============================
+	function showEditUserModal() {
+		popup.init("#edit-user-modal", ".hm-modal__text", ".js-close-popup");
+		popup.showPopup();
+	}
+
+	if ($('.js-edit-user-btn').length > 0) {
+		$('.js-edit-user-btn').on('click', showEditUserModal);
+	}
+
 
 
 	tinyMceL10n();

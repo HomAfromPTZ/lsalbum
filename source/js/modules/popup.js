@@ -7,9 +7,6 @@ function init(container, text, close){
 	popup = $(container);
 	content = popup.find(text);
 	close = popup.find(close);
-	console.log(popup);
-	console.log(content);
-	console.log(close);
 	
 	close.on("click", closePopup);
 };
