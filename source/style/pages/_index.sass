@@ -10,35 +10,41 @@
 	display: table-row
 	height: 100%
 	width: 100%
+
+
 /*buttons*/
 .btn.btn_animated
 	background: $white
 	width: 42px
 	height: 42px
 	float: right
+	padding: 0 22px
 	border-radius: 42px
 	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22)
 	transition: width .5s
 	overflow: hidden
-	padding: 0 13px
 	white-space: nowrap
+	position: relative
+	box-sizing: border-box
 	.fa 
 		color: #a0a09f
 		font-size: 22px
-		display: inline-block
-		vertical-align: middle
+		position: absolute
+		top: 50%
+		left: 13px
+		transform: translateY(-50%)
 	span 
-		font: 14px/16px 'Panton_bold'
+		font: 14px/42px 'Panton_bold'
 		color: $white
 		vertical-align: middle
 		display: none
+		padding: 0 0 0 20px
 
 	&:hover
 		background: #28bbf0
 		width: 100%
 		
 		span
-			margin: 0 0 0 10px
 			display: inline-block
 		.fa 
 			color: $white
@@ -96,6 +102,8 @@
 /*my albums*/
 .new-photos-album
 	padding: 0 0 62px
+	position: relative
+
 .album-title
 	font: 42px/44px 'Panton_bold'
 	margin: 0
@@ -104,6 +112,7 @@
 .album-container
 	margin: 0 -1%
 	@extend %clearfix
+	clear: both
 
 .album-item
 	width: 31.33%
@@ -117,6 +126,10 @@
 
 .album-photo 
 	padding: 0 0 13px
+	position: relative
+
+	img
+		vertical-align: top
 
 .album-mask
 	position: absolute
@@ -179,6 +192,14 @@
 		left: 0
 		right: 0
 		border-radius: 50px
+	.svg-more
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 17px
+		height: 4px
+		fill: $white
+		transform: translate(-50%, -50%)
 
 	&:hover &__mask
 		opacity: 1
@@ -199,8 +220,9 @@
 	&__item
 		display: inline-block
 		vertical-align: top
-		margin: 0 14px 0 0
+		margin: 0 6px 0 0
 		cursor: pointer
+		padding: 0
 		.fa 
 			color: #d6d6d6
 			font-size: 20px
@@ -215,6 +237,16 @@
 
 .category-name
 	font: 16px/18px "Proximanova_semibold"
+	text-decoration: none
+	color: $light_black
+
+	.svg-category
+		width: 20px
+		height: 18px
+		fill: #c5c5c5
+		display: inline-block
+		vertical-align: middle
+		margin: 0 5px 0 0
 
 .edit-post
 	float: left
@@ -228,7 +260,7 @@
 /*my album*/
 .my-photos
 	background: #f6f6f6
-	padding: 51px 0 0 
+	padding: 51px 0 41px
 	
 	.title-holder
 		@extend %clearfix
@@ -237,8 +269,8 @@
 		padding-right: 50px
 		float: left
 
-	.add-album-btn
-		float: right
+.add-album-btn
+	float: right
 
 	.album-item
 		width: 23%
@@ -278,6 +310,4 @@
 
 		span
 			font-family: "Panton_bold"
-	
 
-	
