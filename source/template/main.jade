@@ -7,6 +7,8 @@ html(lang="ru")
 		include common/_preloader
 		include common/_popup
 		include common/_add-album-modal
+		include common/_add-photos-modal
+		include common/_edit-photo-modal
 		include common/_gmapApi
 		.page
 			header.main-page
@@ -46,7 +48,7 @@ html(lang="ru")
 							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
 							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
 						.show-more
-							button.show-more-btn Показать еще		
+							button.btn.btn_transparent Показать еще		
 				.my-photos
 					.fix-width
 						.title-holder

@@ -64,7 +64,7 @@
 
 
 	// ==============================
-	// Add Album Popup
+	// Add Album Modal
 	// ==============================
 	function showAddAlbumModal() {
 		popup.init("#add-album-modal", ".hm-modal__text", ".hm-modal__close");
@@ -72,8 +72,33 @@
 	}
 
 	if ($('.js-add-album-btn').length > 0) {
-		var addAlbumBtn = $('.js-add-album-btn');
-		addAlbumBtn.on('click', showAddAlbumModal);
+		$('.js-add-album-btn').on('click', showAddAlbumModal);
+	}
+
+
+	// ==============================
+	// Add Photos Modal
+	// ==============================
+	function showAddPhotosModal() {
+		popup.init("#add-photos-modal", ".hm-modal__text", ".hm-modal__close");
+		popup.showPopup();
+	}
+
+	if ($('.js-add-photos-btn').length > 0) {
+		$('.js-add-photos-btn').on('click', showAddPhotosModal);
+	}
+
+
+	// ==============================
+	// Edit Photo Modal
+	// ==============================
+	function showEditPhotoModal() {
+		popup.init("#edit-photo-modal", ".hm-modal__text", ".hm-modal__close");
+		popup.showPopup();
+	}
+
+	if ($('.js-edit-photo-btn').length > 0) {
+		$('.js-edit-photo-btn').on('click', showEditPhotoModal);
 	}
 
 

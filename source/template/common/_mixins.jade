@@ -60,7 +60,7 @@ mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 mixin albumSingle(category, album_photo)
 	.album-item
 		.album-item-holder
-			a(href="#" class="my-album")
+			a(href="album.html" class="my-album")
 				img(src="assets/img/#{album_photo}", alt="")
 				.album-mask
 					.mask-content
@@ -69,7 +69,7 @@ mixin albumSingle(category, album_photo)
 							span 18
 							| Фотографий
 			.album-category
-				a.edit-post
+				a.edit-post.js-add-album-btn
 					i(class="fa fa-pencil")
 				span.category-name= category
 
@@ -89,6 +89,6 @@ mixin singlePhoto(title, category, comments, likes, user_photo, user_avatar)
 						i(class="fa fa-heart") 
 						span.like-count= likes
 			.album-category
-				a.edit-post
+				a.edit-post.js-edit-photo-btn
 					i(class="fa fa-pencil")
 				span.category-name= category

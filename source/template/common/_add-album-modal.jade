@@ -8,7 +8,7 @@
 					span.fa.fa-close
 
 
-			form.form.form_add-album(method="post")
+			form.form(method="post")
 				.hm-modal__text
 
 					.form__group
@@ -23,14 +23,13 @@
 						.image-preview-holder
 							.image-preview
 								img.image-preview__pic(src="/assets/img/no_photo.jpg", alt="")
-								//- .fa.fa-file-image-o
-						label.file-label.btn.btn__transparent Загрузить обложку
+						label.file-label.btn.btn_transparent Загрузить обложку
 							input.form__input.form__input_file(type="file", name="")
 						.form__notice (файл должен быть размером не&nbsp;более 1024&nbsp;КБ)
 
 				.hm-modal__footer
 					button.btn.btn_ok Сохранить
-					button.btn.btn__link Отменить
+					button.btn.btn_link Отменить
 					button.btn.btn_danger
 						span.fa.fa-trash
 						span Удалить

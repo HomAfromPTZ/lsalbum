@@ -6,6 +6,9 @@ html(lang="ru")
 		include common/_sprites
 		include common/_preloader
 		include common/_popup
+		include common/_add-album-modal
+		include common/_add-photos-modal
+		include common/_edit-photo-modal
 		include common/_gmapApi
 		.page
 			header.main-page
@@ -21,7 +24,7 @@ html(lang="ru")
 							div.my-album-desc Фотографии природы леса, енотов и оленей. Как прекрасно сойти на дальней станции и пройтись по полю босиком. И чтобы никто не беспокоил бродить влюбленным в тишину. Запах мёда, лесных оленей и енотов будоражит нутро.
 						.header-buttons
 							.header-buttons__item
-								a.btn(href="#")
+								a.btn(href="main.html")
 									i(class="fa fa-home")
 									span На главную
 							.header-buttons__item
@@ -43,7 +46,7 @@ html(lang="ru")
 				.fix-width
 					.new-photos-album
 						.add-album-btn
-								button(class="btn add-album")
+								button(class="btn add-album js-add-photos-btn")
 									i(class="fa fa-plus")
 									span Добавить
 						.album-container

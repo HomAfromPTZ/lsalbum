@@ -1,0 +1,29 @@
+#edit-photo-modal.hm-modal
+	.hm-modal__container
+		.hm-modal__content
+
+			.hm-modal__header
+				.hm-modal__title Редактировать фотографию
+				button.hm-modal__close
+					span.fa.fa-close
+
+
+			form.form(method="post")
+				.hm-modal__text
+
+					.form__group
+						label.group__label Название
+						input.group__input(id="", name="" type="text")
+
+					.form__group
+						label.group__label Описание
+						textarea.group__input(name="", cols="30", rows="10")
+
+				.hm-modal__footer
+					button.btn.btn_ok Сохранить
+					button.btn.btn_link Отменить
+					button.btn.btn_danger
+						span.fa.fa-trash
+						span Удалить
+
+
