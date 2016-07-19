@@ -9,8 +9,8 @@
 
 
 			form.form(method="post")
-				.hm-modal__text
 
+				.hm-modal__text.photo-editing
 					.form__group
 						label.group__label Название
 						input.group__input(id="", name="" type="text")
@@ -19,10 +19,15 @@
 						label.group__label Описание
 						textarea.group__input(name="", cols="30", rows="10")
 
+				.hm-modal__text.photo-removing
+					.hm-modal__p Вы хотите удалить это фото?
+					button.btn.btn_danger Удалить
+					button.btn.btn_link.js-hide-photo-removing Отменить
+
 				.hm-modal__footer
 					button.btn.btn_ok Сохранить
 					button.btn.btn_link Отменить
-					button.btn.btn_danger
+					button.btn.btn_danger.js-show-photo-removing
 						span.fa.fa-trash
 						span Удалить
 

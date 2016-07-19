@@ -71,8 +71,8 @@
 		popup.showPopup();
 	}
 
-	if ($('.js-add-album-btn').length > 0) {
-		$('.js-add-album-btn').on('click', showAddAlbumModal);
+	if ($(".js-add-album-btn").length > 0) {
+		$(".js-add-album-btn").on("click", showAddAlbumModal);
 	}
 
 
@@ -84,8 +84,8 @@
 		popup.showPopup();
 	}
 
-	if ($('.js-add-photos-btn').length > 0) {
-		$('.js-add-photos-btn').on('click', showAddPhotosModal);
+	if ($(".js-add-photos-btn").length > 0) {
+		$(".js-add-photos-btn").on("click", showAddPhotosModal);
 	}
 
 
@@ -97,8 +97,31 @@
 		popup.showPopup();
 	}
 
-	if ($('.js-edit-photo-btn').length > 0) {
-		$('.js-edit-photo-btn').on('click', showEditPhotoModal);
+	if ($(".js-edit-photo-btn").length > 0) {
+		$(".js-edit-photo-btn").on("click", showEditPhotoModal);
+	}
+
+	// ==============================
+	// Edit User Modal - Delete Photo
+	// ==============================
+	function showPhotoRemovingBlock(e) {
+		e.preventDefault();
+		$(".photo-editing").slideUp(300);
+		$(".photo-removing").slideDown(300);
+	}
+
+	function hidePhotoRemovingBlock(e) {
+		e.preventDefault();
+		$(".photo-removing").slideUp(300);
+		$(".photo-editing").slideDown(300);
+	}
+
+	if ($(".js-show-photo-removing").length > 0) {
+		$(".js-show-photo-removing").on("click", showPhotoRemovingBlock);
+	}
+
+	if ($(".js-hide-photo-removing").length > 0) {
+		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
 	}
 
 	// ==============================
@@ -109,9 +132,11 @@
 		popup.showPopup();
 	}
 
-	if ($('.js-edit-user-btn').length > 0) {
-		$('.js-edit-user-btn').on('click', showEditUserModal);
+	if ($(".js-edit-user-btn").length > 0) {
+		$(".js-edit-user-btn").on("click", showEditUserModal);
 	}
+
+
 
 
 
