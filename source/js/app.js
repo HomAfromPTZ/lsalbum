@@ -62,7 +62,24 @@
 		toolbar2: "alignleft aligncenter alignright"
 	});
 
+
+	// ==============================
+	// Add Album Popup
+	// ==============================
+	function showAddAlbumModal() {
+		popup.init("#add-album-popup", ".hm-popup__text", ".hm-popup__close");
+		popup.showPopup();
+	}
+
+	if ($('.js-add-album-btn').length > 0) {
+		var addAlbumBtn = $('.js-add-album-btn');
+		addAlbumBtn.on('click', showAddAlbumModal);
+	}
+
+
+
 	tinyMceL10n();
 
 	preloader();
+
 })(jQuery);
