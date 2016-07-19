@@ -24,7 +24,8 @@
 	// Popup example
 	// ==============================
 	popup.init("#hm-popup", ".hm-popup__text", ".hm-popup__close");
-	popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet, 2000);
+	// popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet, 2000);
+	popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet);
 
 	// ==============================
 	// Google map init example
@@ -62,7 +63,25 @@
 		toolbar2: "alignleft aligncenter alignright"
 	});
 
+
+	// ==============================
+	// Add Album Popup
+	// ==============================
+	function showAddAlbumModal() {
+		console.log('show');
+		popup.init("#add-album-popup", ".hm-popup__text", ".hm-popup__close");
+		popup.showPopup();
+	}
+
+	if ($('.js-add-album-btn').length > 0) {
+		var addAlbumBtn = $('.js-add-album-btn');
+		addAlbumBtn.on('click', showAddAlbumModal);
+	}
+
+
+
 	tinyMceL10n();
 
 	preloader();
+
 })(jQuery);

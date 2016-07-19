@@ -8,6 +8,10 @@ function init(container, text, close){
 	content = popup.find(text);
 	close = popup.find(close);
 
+	console.log(popup);
+	console.log(content);
+	console.log(close);
+
 	close.on("click", closePopup);
 };
 
@@ -20,7 +24,9 @@ function closePopup(){
 
 
 function showPopup (text, time){
-	content.html(text);
+	if (text) {
+		content.html(text);
+	}
 	popup.removeClass("hide").addClass("show");
 
 	if(time){

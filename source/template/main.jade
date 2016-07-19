@@ -6,6 +6,7 @@ html(lang="ru")
 		include common/_sprites
 		include common/_preloader
 		include common/_popup
+		include common/_popup-add-album
 		include common/_gmapApi
 		.page
 			header.main-page
@@ -51,7 +52,7 @@ html(lang="ru")
 						.title-holder
 							h2.album-title Мои альбомы
 							.add-album-btn
-								button(class="btn add-album")
+								button(class="btn add-album js-add-album-btn")
 									i(class="fa fa-plus")
 									span Добавить
 						.album-container
