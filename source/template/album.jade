@@ -9,6 +9,7 @@ html(lang="ru")
 		include common/_add-album-modal
 		include common/_add-photos-modal
 		include common/_edit-photo-modal
+		include common/_edit-album-header
 		include common/_gmapApi
 		.page
 			header.main-page
@@ -28,7 +29,7 @@ html(lang="ru")
 									i(class="fa fa-home")
 									span На главную
 							.header-buttons__item
-								button.btn(class="btn__edit")
+								button.btn.btn__edit.js-edit-album-header-btn
 									i(class="fa fa-pencil")
 									span Редактировать
 			.gray-bg

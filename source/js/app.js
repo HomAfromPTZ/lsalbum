@@ -151,6 +151,7 @@
 	}
 
 
+
 	// ==============================
 	// Show Social Items Forms
 	// ==============================
@@ -171,6 +172,17 @@
 	}
 
 
+	// ==============================
+	// Edit Album Header
+	// ==============================
+	function showEditAlbumHeader() {
+		headerForm.init("#edit-album-header", ".js-close-header");
+		headerForm.showHeaderForm();
+	}
+
+	if ($(".js-edit-album-header-btn").length > 0) {
+		$(".js-edit-album-header-btn").on("click", showEditAlbumHeader);
+	}
 
 
 

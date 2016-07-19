@@ -1,0 +1,29 @@
+//- hf = hform
+#edit-album-header.hform.hide
+
+
+	.header-holder
+		.fix-width
+			
+			.user-info-holder
+				.user-avatar
+					.user-avatar__img
+						img(src='assets/img/default_avatar.jpg')
+				.user-info
+					h2.user-info__name Антон Черепов
+
+			.header-content
+				.my-album-title 
+						input.group__input(id="", name="" type="text")
+				.my-album-desc
+							textarea.group__input(name="", cols="30", rows="5")
+
+			.user-cover
+				.user-photo__img 
+					span.fa.fa-camera
+					label.link Изменить фон
+						input.form__input.form__input_file(type="file", name="")
+
+		.hform__footer
+			button.btn.btn_ok Сохранить
+			button.btn.btn_link.js-close-header Отменить
