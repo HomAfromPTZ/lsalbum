@@ -5,10 +5,11 @@
 		helpers = require("./modules/helpers.js"),
 		// forms = require("./modules/forms.js"),
 		popup = require("./modules/popup.js"),
+		modal = require("./modules/modal.js"),
+		headerForm = require("./modules/header-form.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
-		tinyMceL10n = require("./modules/tinymce_l10n.js"),
-		headerForm = require("./modules/header-form.js");
+		tinyMceL10n = require("./modules/tinymce_l10n.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -67,40 +68,42 @@
 	// ==============================
 	// Add Album Modal
 	// ==============================
-	function showAddAlbumModal() {
-		popup.init("#add-album-modal", ".hm-modal__text", ".hm-modal__close");
-		popup.showPopup();
-	}
 
 	if ($(".js-add-album-btn").length > 0) {
-		$(".js-add-album-btn").on("click", showAddAlbumModal);
+		modal.init("#add-album-modal", ".hm-modal__close");
+		$(".js-add-album-btn").on("click", modal.showModal);
 	}
 
 
 	// ==============================
 	// Add Photos Modal
 	// ==============================
-	function showAddPhotosModal() {
-		popup.init("#add-photos-modal", ".hm-modal__text", ".hm-modal__close");
-		popup.showPopup();
-	}
 
 	if ($(".js-add-photos-btn").length > 0) {
-		$(".js-add-photos-btn").on("click", showAddPhotosModal);
+		modal.init("#add-photos-modal", ".hm-modal__close");
+		$(".js-add-photos-btn").on("click", modal.showModal);
 	}
 
 
 	// ==============================
 	// Edit Photo Modal
 	// ==============================
-	function showEditPhotoModal() {
-		popup.init("#edit-photo-modal", ".hm-modal__text", ".hm-modal__close");
-		popup.showPopup();
-	}
 
 	if ($(".js-edit-photo-btn").length > 0) {
-		$(".js-edit-photo-btn").on("click", showEditPhotoModal);
+		modal.init("#edit-photo-modal", ".hm-modal__close");
+		$(".js-edit-photo-btn").on("click", modal.showModal);
 	}
+
+
+	// ==============================
+	// Edit User Modal
+	// ==============================
+
+	if ($(".js-edit-user-btn").length > 0) {
+		modal.init("#edit-user-modal", ".hm-modal__close");
+		$(".js-edit-user-btn").on("click", modal.showModal);
+	}
+	
 
 	// ==============================
 	// Edit User Modal - Delete Photo
@@ -125,17 +128,7 @@
 		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
 	}
 
-	// ==============================
-	// Edit User Modal
-	// ==============================
-	function showEditUserModal() {
-		popup.init("#edit-user-modal", ".hm-modal__text", ".js-close-popup");
-		popup.showPopup();
-	}
 
-	if ($(".js-edit-user-btn").length > 0) {
-		$(".js-edit-user-btn").on("click", showEditUserModal);
-	}
 
 
 	// ==============================
