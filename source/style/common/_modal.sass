@@ -76,7 +76,7 @@
 	&__header
 		background-color: #f1f1f1
 		padding: rem(20)
-		@include clearfix
+		@extend %clearfix
 		border-radius: 4px 4px 0 0
 	&__title
 		color: #323232
@@ -97,7 +97,7 @@
 
 	&__footer
 		background-color: #f1f1f1
-		@include clearfix
+		@extend %clearfix
 		padding: rem(20)
 		border-radius: 0 0 4px 4px
 		.btn_danger
@@ -105,7 +105,7 @@
 
 	.form__group
 		margin-bottom: 1.2rem
-		@include clearfix
+		@extend %clearfix
 
 	.group__label
 		width: 18%
@@ -124,21 +124,7 @@
 	.group__input
 		width: 80%
 		float: left
-		border: 1px solid #d8d6d6
-		border-radius: 1.2rem
-		padding: .6rem 1rem
-		transition: border-color 0.3s
-
-		&:link,
-		&:visited,
-		&:hover,
-		&:active,
-		&:focus
-			outline: none
-
-		&:focus
-			border-color: $border_blue
-	
+		
 	.form__group_upload
 		font-size: 0
 		.image-preview-holder

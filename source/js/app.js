@@ -103,7 +103,6 @@
 		modal.init("#edit-user-modal", ".hm-modal__close");
 		$(".js-edit-user-btn").on("click", modal.showModal);
 	}
-	
 
 	// ==============================
 	// Edit User Modal - Delete Photo
@@ -134,15 +133,11 @@
 	// ==============================
 	// Edit User Header
 	// ==============================
-	function showEditUserHeader() {
-		headerForm.init("#edit-user-header", ".js-close-header");
-		headerForm.showHeaderForm();
-	}
 
 	if ($(".js-edit-user-header-btn").length > 0) {
-		$(".js-edit-user-header-btn").on("click", showEditUserHeader);
+		headerForm.init("#edit-user-header", ".js-close-header", ".js-header-content");
+		$(".js-edit-user-header-btn").on("click", headerForm.showHeaderForm);
 	}
-
 
 
 	// ==============================
@@ -169,7 +164,7 @@
 	// Edit Album Header
 	// ==============================
 	function showEditAlbumHeader() {
-		headerForm.init("#edit-album-header", ".js-close-header");
+		headerForm.init("#edit-album-header", ".js-close-header", ".js-header-content");
 		headerForm.showHeaderForm();
 	}
 

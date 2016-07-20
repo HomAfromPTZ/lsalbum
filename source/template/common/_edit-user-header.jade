@@ -3,32 +3,36 @@
 
 	.header-holder
 		.fix-width
+
+			.user-cover
+				.user-photo__change-text
+					label.link 
+						span.fa.fa-camera 
+						| Изменить фон
+						input.form__input.form__input_file(type="file", name="")
+
 			.user-info-holder
 
 				.user-avatar
 					.user-photo__img
 
-						.image-preview
-							img.image-preview__pic(src="/assets/img/default_avatar.jpg", alt="")
+						.user-photo__pic-holder
+							img.user-photo__pic(src="/assets/img/default_avatar.jpg", alt="")
 
-						span.fa.fa-camera
-						label.link Изменить фото
-							input.form__input.form__input_file(type="file", name="")
-
-
-				.user-cover
-					.user-photo__img 
-						span.fa.fa-camera
-						label.link Изменить фон
-							input.form__input.form__input_file(type="file", name="")
+						.user-photo__change-text
+							label.link
+								span.fa.fa-camera
+								| Изменить фото
+								input.form__input.form__input_file(type="file", name="")
 
 
 				.user-info
-					input.group__input(id="", name="" type="text")
+					.form__group
+						input.group__input(id="", name="" type="text")
 
 
-					.user-info__desc
-						textarea.group__input(name="", cols="30", rows="5")
+					.form__group
+						textarea.group__input.group__input_user-textarea(name="", cols="30", rows="5")
 
 					ul.social-links
 						li.social__item
@@ -39,7 +43,7 @@
 
 							.form__group
 								input.group__input(id="", name="" type="text")
-								button.btn.btn_ok Сохранить
+								button.btn.btn_transparent Сохранить
 								button.btn.btn_link.js-close-form Отменить
 
 
@@ -50,7 +54,7 @@
 
 							.form__group
 								input.group__input(id="", name="" type="text")
-								button.btn.btn_ok Сохранить
+								button.btn.btn_transparent Сохранить
 								button.btn.btn_link.js-close-form Отменить
 
 						li.social__item
@@ -60,7 +64,7 @@
 										
 							.form__group
 								input.group__input(id="", name="" type="text")
-								button.btn.btn_ok Сохранить
+								button.btn.btn_transparent Сохранить
 								button.btn.btn_link.js-close-form Отменить
 
 						li.social__item
@@ -70,7 +74,7 @@
 										
 							.form__group
 								input.group__input(id="", name="" type="text")
-								button.btn.btn_ok Сохранить
+								button.btn.btn_transparent Сохранить
 								button.btn.btn_link.js-close-form Отменить
 
 						li.social__item
@@ -80,7 +84,7 @@
 										
 							.form__group
 								input.group__input(id="", name="" type="text")
-								button.btn.btn_ok Сохранить
+								button.btn.btn_transparent Сохранить
 								button.btn.btn_link.js-close-form Отменить
 
 

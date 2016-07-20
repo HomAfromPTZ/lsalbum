@@ -1,20 +1,26 @@
+// hform = header form
+// hcontent = header content
 var hform,
-	close;
+	close,
+	hcontent;
 
-function init(container, close){
+function init(container, close, header) {
 	hform = $(container);
+	hcontent = $(header);
+
+	console.log(hcontent);
 	close = hform.find(close);
-	console.log(hform);
-	console.log(close);
 	close.on("click", closeHeaderForm);
 };
 
 function closeHeaderForm(){
 	hform.addClass("hide").removeClass("show");
+	hcontent.removeClass("hide").addClass("show");
 };
 
-function showHeaderForm (time){
+function showHeaderForm (){
 	hform.removeClass("hide").addClass("show");
+	hcontent.addClass("hide").removeClass("show");
 };
 
 module.exports = {

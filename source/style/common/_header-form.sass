@@ -1,6 +1,6 @@
 .hform
 	display: table
-	position: fixed
+	position: absolute
 	visibility: hidden
 	opacity: 0
 	top: 0
@@ -8,37 +8,7 @@
 	height: 100%
 	width: 100%
 	z-index: 10
-	background-color: rgba($black, .4)
-	&__container
-		display: table-cell
-		vertical-align: middle
-		position: relative
-	&__content
-		position: relative
-		width: 280px
-		max-width: 80%
-		margin: 0 auto
-		padding: 20px
-		border-radius: 5px
-		text-align: left
-		background-color: $white
-		background-repeat: no-repeat
-		background-position: center bottom
-	&__close
-		position: absolute
-		width: 40px
-		height: 40px
-		border-radius: 50%
-		right: -15px
-		top: -15px
-		background-color: $black
-		border: 2px solid $white
-		.fa
-			font-size: rem(20)
-			color: $white
-	&__text
-		font-family: "Pantonbold", sans-serif
-		margin: 0
+	background-color: rgba($white, .9)
 	&.show
 		animation: hform-show $transition-time_medium
 		animation-fill-mode: forwards
@@ -46,83 +16,167 @@
 			animation: none
 			visibility: visible
 			opacity: 1
-		.hform__content
-			animation: hform-content-show $transition-time_medium
-			animation-fill-mode: forwards
-			+media(xs)
-				animation: none
-				visibility: visible
 	&.hide
 		animation: hform-hide $transition-time_medium
 		+media(xs)
 			animation: none
 			visibility: hidden
 			opacity: 0
-		.hform__content
-			animation: hform-content-hide $transition-time_medium
-			animation-fill-mode: forwards
-			+media(xs)
-				animation: none
 
 
 
 
 	.header-holder
-		background-color: rgba($black, 0.4)
+		background: url(../img/bg/main-header.jpg) 50% 0 no-repeat
+		background-size: cover
+		padding: rem(35) 0 rem(60)
+		position: relative
+
+		&:before
+			position: absolute
+			display: block
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			content: ''
+			background-color: rgba($black, 0.4)
+
 	.hform__footer
-		background-color: $white
 		text-align: right
+		padding: rem(9)
+		.btn_ok
+			float: right
+			margin-right: 31px
+			font-size: 14px
+
 	.user-cover 
 		position: absolute
-		right: 100px
-		top: 30px
-		
+		right: 39px
+		top: 71px
+
+	.user-avatar
+		vertical-align: top
 	.user-photo__img 
 		border-radius: 50%
 		border: 3px solid #fff
 		width: 120px
 		height: 120px
 		overflow: hidden
-		margin: 0 auto
+		margin: 21px auto 0
 		position: relative
 		text-align: center
 		color: $white
-		.image-preview
+	.user-photo__pic-holder
+		.user-photo__pic
 			position: absolute
+			display: block
+		&:after
+			position: absolute
+			display: block
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			content: ''
+			background-color: rgba($black, 0.4)
+
+
+
+	.user-photo__change-text
+		text-align: center
 		.fa
 			margin-top: 20px
 			position: relative
 			display: block
-			font-size: 40px
-	.link
-		position: relative
-		color: $white
-	.form__input_file
-		display: none
+			font-size: 38px
+			padding-bottom: 5px
+			color: inherit
+			transition: color .3s
+		.link
+			position: relative
+			color: inherit
+			transition: color .3s
+			color: $white
+			transition: color .3s
+			&:hover
+				color: rgba($white, 0.8)
+		.form__input_file
+			display: none
+
+	.form__group
+		margin-bottom: .6em
+	.group__input
+		min-width: rem(480)
+		padding-top: .7em
+		padding-bottom: .7em
+		&_user-textarea
+			display: block
+			max-height: rem(64)
 
 	.social__item
 		position: relative
 		.form__group
 			position: absolute
 			display: none
+			background: #fff
+			padding: 11px
+			left: 0
+			transform: translateX(-47.5%)
+			width: 280px
+			top: 30px
+			border-radius: 3px
+			box-shadow: 0 1px 4px rgba(0,0,0,.15)
+			&:before
+				position: absolute
+				display: block
+				bottom: 100%
+				left: 50%
+				margin-left: -2px
+				width: 0
+				height: 0
+				content: ''
+				border: 4px solid $white
+				border-left-color: transparent
+				border-top-color: transparent
+				border-right-color: transparent
 
+
+			.group__input
+				min-width: 0
+				width: 100%
+				margin-bottom: 11px
+
+
+
+.js-header-content
+	transition: opacity 0.7s
+	&.hide
+		// opacity: 0
+	&.show
+		opacity: 1
 
 // =================================
 // Animations
 // =================================
 @keyframes hform-show
 	0%
-		visibility: visible
+		// top: -100%
+		visibility: hidden
+		opacity: 0
 	100%
+		// top: 0
 		visibility: visible
 		opacity: 1
 
 @keyframes hform-hide
 	0%
+		// top: 0
 		visibility: visible
 		opacity: 1
 	100%
-		visibility: visible
+		// top: -100%
+		visibility: hidden
 		opacity: 0
 
 

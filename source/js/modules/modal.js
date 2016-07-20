@@ -5,14 +5,11 @@ function init(container, close){
 	modal = $(container);
 	close = modal.find(close);
 	close.on("click", closeModal);
-	closeModal();
-	console.log('init');
 };
 
 
 function closeModal(){
 	modal.addClass("hide").removeClass("show");
-	console.log('close');
 };
 
 
