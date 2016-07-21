@@ -1,0 +1,46 @@
+include common/_mixins
+doctype html
+html(lang="ru")
+	include common/_head
+	body.user-page
+		include common/_sprites
+		include common/_preloader
+		include common/_popup
+		include common/_gmapApi
+		.page
+			header.main-page
+				.header-holder
+					.fix-width
+						.user-info-holder
+							.user-avatar
+								+avatar
+							.user-info
+								h2.user-info__name Антон Черепов
+								.user-info__desc Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.
+								+socialsBlock
+						.header-buttons
+							.header-buttons__item
+								a.btn.btn_animated(href="main.html")
+									i(class="fa fa-home")
+									span На главную
+			.search-holder
+				.fix-width
+					form.search-form
+						.search-form-holder
+							button(type="submit" class="search-form__btn fa fa-search")
+							input(type="text" class="search-form__input" placeholder="Исследовать мир")
+			.content
+				.my-photos
+					.fix-width
+						.title-holder
+							h2.album-title Альбомы
+						.album-container
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "no_photo.jpg")
+
+			include common/_footer
+		include common/_footer-scripts

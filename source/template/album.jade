@@ -1,0 +1,63 @@
+include common/_mixins
+doctype html
+html(lang="ru")
+	include common/_head
+	body.my-album-page
+		include common/_sprites
+		include common/_preloader
+		include common/_popup
+		include common/_add-album-modal
+		include common/_add-photos-modal
+		include common/_edit-photo-modal
+		include common/_edit-album-header
+		include common/_gmapApi
+		.page
+			header.main-page
+				.header-holder
+					.fix-width
+						.user-info-holder
+							.user-avatar
+								+avatar
+							.user-info
+								h2.user-info__name Антон Черепов
+						.header-content
+							h3.my-album-title Лесные прогулки
+							div.my-album-desc Фотографии природы леса, енотов и оленей. Как прекрасно сойти на дальней станции и пройтись по полю босиком. И чтобы никто не беспокоил бродить влюбленным в тишину. Запах мёда, лесных оленей и енотов будоражит нутро.
+						.header-buttons
+							.header-buttons__item
+								a.btn.btn_animated(href="main.html")
+									i(class="fa fa-home")
+									span На главную
+							.header-buttons__item
+								button.btn.btn_animated.js-edit-album-header
+									i(class="fa fa-pencil")
+									span Редактировать
+			.gray-bg
+				ul.album-general-info
+					li
+						span.photo-count 18 
+						| Фотографий
+					li
+						span.like-count 18 
+						| Лайков
+					li
+						span.comments-count 18 
+						| Комментариев
+			.content
+				.fix-width
+					.new-photos-album
+						.add-album-btn.js-add-photos
+								button(class="btn btn_animated")
+									i(class="fa fa-plus")
+									span Добавить
+						.album-container
+							+singlePhoto("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+singlePhoto("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+singlePhoto("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+singlePhoto("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+singlePhoto("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+							+singlePhoto("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg")
+								
+
+			include common/_footer
+		include common/_footer-scripts

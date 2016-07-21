@@ -1,0 +1,128 @@
+/*HEADER*/
+header
+	display: table-row
+	width: 100%
+	&.main-page
+		background: url(../img/bg/main-header.jpg) 50% 0 no-repeat
+		background-size: cover
+
+.header-holder
+	padding: 53px 0 60px
+/*USER AVATAR*/
+.user-avatar
+	@extend %tableAlign
+	width: 180px
+
+	&__img
+		border-radius: 50%
+		border: 3px solid $white
+		width: 120px
+		height: 120px
+		overflow: hidden
+		margin: 0 auto
+
+/*USER INFO*/
+.user-info-holder
+	display: table
+	position: relative
+
+.user-info
+	@extend %tableAlign
+	color: $white
+	width: 400px
+	padding: 0 0 0 20px
+
+.user-info__name
+	font: 21px/23px "Panton_bold"
+	margin: 0 0 10px
+
+.user-info__desc
+	color: rgba(255,255,255, .8)
+	font-family: "Proximanova_light"
+	line-height: 24px
+	padding: 0 0 26px
+
+/*SOCIAL*/
+.social-links
+	margin: 0
+	padding: 0
+	list-style: none
+
+.social__item
+	display: inline-block
+	vertical-align: top
+	margin-right: 0.35rem
+
+.social__link
+	text-decoration: none
+	width: 20px
+	height: 20px
+	display: block
+	opacity: .8
+
+	&:hover .svg-social
+		opacity: 1
+.svg-social
+	width: 20px
+	height: 20px
+	fill: $white
+	opacity: .8
+/*HRADER BUTTONS*/
+.header-buttons
+	position: absolute
+	right: 40px
+	top: 20px
+
+	&__item
+		float: right
+		clear: both
+		padding: 0 0 6px
+		width: 42px
+		transition: width .5s
+		&:hover
+			width: 100%
+			transition: width .5s
+
+	
+/*SEARCH PAGE*/
+.search-page
+	.header-holder
+		padding: 20px 0
+
+	header
+		background: none
+	
+	.user-avatar
+		width: 100px
+
+	.user-avatar__img
+		width: 50px
+		height: 50px
+
+	.user-info__name
+		margin: 0
+		font-size: 16px
+		color: $light_black
+
+/*ALBUM PAGE*/
+.my-album-page
+
+	.header-holder
+		padding: 20px 0 66px
+
+	.user-avatar
+		width: 80px
+
+	.user-avatar__img
+		width: 56px
+		height: 56px
+
+	.user-info__name
+		margin: 0
+		font-size: 16px
+
+	.header-content
+		text-align: center
+		color: $white
+		width: 65%
+		margin: 0 auto

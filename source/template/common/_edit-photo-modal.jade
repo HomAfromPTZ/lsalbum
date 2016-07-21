@@ -1,0 +1,34 @@
+#edit-photo-modal.hm-modal
+	.hm-modal__container
+		.hm-modal__content
+
+			.hm-modal__header
+				.hm-modal__title Редактировать фотографию
+				button.hm-modal__close.js-close-modal
+					span.fa.fa-close
+
+
+			form.form(method="post")
+
+				.hm-modal__text.photo-editing
+					.input-group
+						label.label_left Название
+						input.input_rounded(id="", name="" type="text")
+
+					.input-group
+						label.label_left Описание
+						textarea.input_rounded(name="", cols="30", rows="10")
+
+				.hm-modal__text.photo-removing
+					.hm-modal__p Вы хотите удалить это фото?
+					button.btn.btn_danger Удалить
+					button.btn.btn_link.js-hide-photo-removing Отменить
+
+				.hm-modal__footer
+					button.btn.btn_ok Сохранить
+					button.btn.btn_link.js-close-modal Отменить
+					button.btn.btn_danger.js-show-photo-removing
+						span.fa.fa-trash
+						span Удалить
+
+

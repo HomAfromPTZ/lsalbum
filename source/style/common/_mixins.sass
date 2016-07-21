@@ -13,17 +13,37 @@
  *
  * How to use:
  * .my_class
- *		+media(size)
- *			attr: value
+ *    +media(size)
+ *      attr: value
  */
 =media($screen)
-	$screen_sizes: (l: 1200px, m: 992px, s: 768px, xs: 480px, xxs: 320px, DO: 769px)
-	@if $screen == DO
-		@media only screen and (min-width : #{map-get($screen_sizes, $screen)})
-			@content
-	@else
-		@media only screen and (max-width : #{map-get($screen_sizes, $screen)})
-			@content
+  $screen_sizes: (l: 1200px, m: 992px, s: 768px, xs: 480px, xxs: 320px, DO: 769px)
+  @if $screen == DO
+    @media only screen and (min-width : #{map-get($screen_sizes, $screen)})
+      @content
+  @else
+    @media only screen and (max-width : #{map-get($screen_sizes, $screen)})
+      @content
+
+
+
+// Placeholder color mixin
+/** 
+ * How to use:
+ * @extend clearfix
+ */
+
+@mixin placeholder($color) 
+  &::-webkit-input-placeholder 
+    color: $color
+  &:-moz-placeholder 
+    color: $color
+  &::-moz-placeholder 
+    color: $color
+  &:-ms-input-placeholder 
+    color: $color
+
+
 
 
 // =================================
