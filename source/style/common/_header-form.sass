@@ -27,10 +27,17 @@
 
 
 	.header-holder
-		background: url(../img/bg/main-header.jpg) 50% 0 no-repeat
 		background-size: cover
-		padding: rem(35) 0 rem(60)
+		background-position:  50% 0
+		background-repeat: no-repeat
 		position: relative
+
+		&.header-holder_edit-user
+			background-image: url(../img/bg/main-header.jpg)
+			padding: rem(35) 0 rem(60)
+		&.header-holder_edit-album
+			background-image: url(../img/bg/main-header.jpg)
+			padding: rem(20) 0 rem(36)
 
 		&:before
 			position: absolute
@@ -50,14 +57,14 @@
 			margin-right: 31px
 			font-size: 14px
 
-	.user-cover 
+	.change-photo_cover
 		position: absolute
 		right: 39px
 		top: 71px
 
 	.user-avatar
 		vertical-align: top
-	.user-photo__img 
+	.change-photo_user 
 		border-radius: 50%
 		border: 3px solid #fff
 		width: 120px
@@ -67,8 +74,8 @@
 		position: relative
 		text-align: center
 		color: $white
-	.user-photo__pic-holder
-		.user-photo__pic
+	.change-photo_user__img
+		.change-photo_user__pic
 			position: absolute
 			display: block
 		&:after
@@ -83,7 +90,7 @@
 
 
 
-	.user-photo__change-text
+	.change-photo__text
 		text-align: center
 		.fa
 			margin-top: 20px
@@ -147,14 +154,15 @@
 				width: 100%
 				margin-bottom: 11px
 
-
-
-.js-header-content
-	transition: opacity 0.7s
-	&.hide
-		// opacity: 0
-	&.show
-		opacity: 1
+	.user-info-holder_edit-album
+		position: absolute
+	.header-content_edit-album
+		padding: rem(42) 0 0
+		position: relative
+	.input_header-album
+		width: 100%
+	textarea.input_header-album
+		max-height: rem(88)
 
 // =================================
 // Animations

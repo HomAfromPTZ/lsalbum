@@ -135,7 +135,7 @@
 	// ==============================
 
 	if ($(".js-edit-user-header-btn").length > 0) {
-		headerForm.init("#edit-user-header", ".js-close-header", ".js-header-content");
+		headerForm.init("#edit-user-header", ".js-close-header");
 		$(".js-edit-user-header-btn").on("click", headerForm.showHeaderForm);
 	}
 
@@ -164,7 +164,7 @@
 	// Edit Album Header
 	// ==============================
 	function showEditAlbumHeader() {
-		headerForm.init("#edit-album-header", ".js-close-header", ".js-header-content");
+		headerForm.init("#edit-album-header", ".js-close-header");
 		headerForm.showHeaderForm();
 	}
 

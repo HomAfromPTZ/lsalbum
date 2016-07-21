@@ -1,11 +1,11 @@
 //- hf = hform
 #edit-user-header.hform.hide
 
-	.header-holder
+	.header-holder.header-holder_edit-user
 		.fix-width
 
-			.user-cover
-				.user-photo__change-text
+			.change-photo.change-photo_cover
+				.change-photo__text
 					label.link 
 						span.fa.fa-camera 
 						| Изменить фон
@@ -14,12 +14,12 @@
 			.user-info-holder
 
 				.user-avatar
-					.user-photo__img
+					.change-photo.change-photo_user
 
-						.user-photo__pic-holder
-							img.user-photo__pic(src="/assets/img/default_avatar.jpg", alt="")
+						.change-photo_user__img
+							img.change-photo_user__pic(src="/assets/img/default_avatar.jpg", alt="")
 
-						.user-photo__change-text
+						.change-photo__text
 							label.link
 								span.fa.fa-camera
 								| Изменить фото
