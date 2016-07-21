@@ -6,7 +6,6 @@
 		// forms = require("./modules/forms.js"),
 		popup = require("./modules/popup.js"),
 		modal = require("./modules/modal.js"),
-		headerForm = require("./modules/header-form.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
 		tinyMceL10n = require("./modules/tinymce_l10n.js");
@@ -69,31 +68,47 @@
 	// Init Album Modal
 	// ==============================
 	if ($(".js-add-album").length > 0) {
-		var addPhotosModal = modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
+		modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init Photos Modal
 	// ==============================
 	if ($(".js-add-photos").length > 0) {
-		var addPhotosModal = modal.init("#add-photos-modal", ".js-add-photos", ".js-close-modal");
+		modal.init("#add-photos-modal", ".js-add-photos", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init Photo Modal
 	// ==============================
 	if ($(".js-edit-photo").length > 0) {
-		var addPhotosModal = modal.init("#edit-photo-modal", ".js-edit-photo", ".js-close-modal");
+		modal.init("#edit-photo-modal", ".js-edit-photo", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init User Modal
 	// ==============================
 	if ($(".js-edit-user").length > 0) {
-		var addPhotosModal = modal.init("#edit-user-modal", ".js-edit-user", ".js-close-modal");
+		modal.init("#edit-user-modal", ".js-edit-user", ".js-close-modal");
 	}
 
 
+	// ==============================
+	// Init User Header Modal
+	// ==============================
+
+	if ($(".js-edit-user-header").length > 0) {
+		modal.init("#edit-user-header", ".js-edit-user-header", ".js-close-header");
+	}
+
+	
+	// ==============================
+	// Init Album Header Modal
+	// ==============================
+
+	if ($(".js-edit-album-header").length > 0) {
+		modal.init("#edit-album-header", ".js-edit-album-header", ".js-close-header");
+	}
 
 
 	// ==============================
@@ -122,15 +137,6 @@
 
 
 
-	// ==============================
-	// Edit User Header
-	// ==============================
-
-	if ($(".js-edit-user-header-btn").length > 0) {
-		headerForm.init("#edit-user-header", ".js-close-header");
-		$(".js-edit-user-header-btn").on("click", headerForm.showHeaderForm);
-	}
-
 
 	// ==============================
 	// Show Social Items Forms
@@ -152,17 +158,6 @@
 	}
 
 
-	// ==============================
-	// Edit Album Header
-	// ==============================
-	function showEditAlbumHeader() {
-		headerForm.init("#edit-album-header", ".js-close-header");
-		headerForm.showHeaderForm();
-	}
-
-	if ($(".js-edit-album-header-btn").length > 0) {
-		$(".js-edit-album-header-btn").on("click", showEditAlbumHeader);
-	}
 
 
 
