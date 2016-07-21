@@ -140,11 +140,11 @@
 	// ==============================
 	function showSocialForm(e) {
 		e.preventDefault();
-		$(this).closest('.social__item').find('.form__group').show();
+		$(this).closest('.social__item').find('.social__form').show();
 	}
 	function hideSocialForm(e) {
 		e.preventDefault();
-		$(this).closest('.form__group').hide();
+		$(this).closest('.social__form').hide();
 	}
 
 	if ($(".js-open-social-form").length > 0) {
