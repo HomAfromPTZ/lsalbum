@@ -66,43 +66,35 @@
 
 
 	// ==============================
-	// Add Album Modal
+	// Init Album Modal
 	// ==============================
+	if ($(".js-add-album").length > 0) {
+		var addPhotosModal = modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
+	}
 
-	if ($(".js-add-album-btn").length > 0) {
-		modal.init("#add-album-modal", ".hm-modal__close");
-		$(".js-add-album-btn").on("click", modal.showModal);
+	// ==============================
+	// Init Photos Modal
+	// ==============================
+	if ($(".js-add-photos").length > 0) {
+		var addPhotosModal = modal.init("#add-photos-modal", ".js-add-photos", ".js-close-modal");
+	}
+
+	// ==============================
+	// Init Photo Modal
+	// ==============================
+	if ($(".js-edit-photo").length > 0) {
+		var addPhotosModal = modal.init("#edit-photo-modal", ".js-edit-photo", ".js-close-modal");
+	}
+
+	// ==============================
+	// Init User Modal
+	// ==============================
+	if ($(".js-edit-user").length > 0) {
+		var addPhotosModal = modal.init("#edit-user-modal", ".js-edit-user", ".js-close-modal");
 	}
 
 
-	// ==============================
-	// Add Photos Modal
-	// ==============================
 
-	if ($(".js-add-photos-btn").length > 0) {
-		modal.init("#add-photos-modal", ".hm-modal__close");
-		$(".js-add-photos-btn").on("click", modal.showModal);
-	}
-
-
-	// ==============================
-	// Edit Photo Modal
-	// ==============================
-
-	if ($(".js-edit-photo-btn").length > 0) {
-		modal.init("#edit-photo-modal", ".hm-modal__close");
-		$(".js-edit-photo-btn").on("click", modal.showModal);
-	}
-
-
-	// ==============================
-	// Edit User Modal
-	// ==============================
-
-	if ($(".js-edit-user-btn").length > 0) {
-		modal.init("#edit-user-modal", ".hm-modal__close");
-		$(".js-edit-user-btn").on("click", modal.showModal);
-	}
 
 	// ==============================
 	// Edit User Modal - Delete Photo

@@ -1,25 +1,20 @@
-var modal,
-	close;
+function init(container, openBtn, closeBtn){
+	var modal = $(container);
+	var open = $(openBtn);
+	var close = modal.find(closeBtn);
 
-function init(container, close){
-	modal = $(container);
-	close = modal.find(close);
-	close.on("click", closeModal);
+	open.on("click", function (e){
+		e.preventDefault();
+		modal.removeClass("hide").addClass("show");
+	});
+
+	close.on("click", function (e){
+		e.preventDefault();
+		modal.addClass("hide").removeClass("show");
+	});
 };
-
-
-function closeModal(){
-	modal.addClass("hide").removeClass("show");
-};
-
-
-function showModal (){
-	modal.removeClass("hide").addClass("show");
-};
-
 
 module.exports = {
-	init : init,
-	showModal : showModal
+	init : init
 };
 
