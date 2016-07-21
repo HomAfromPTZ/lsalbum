@@ -74,8 +74,55 @@ header
 	top: 20px
 
 	&__item
-		display: block
-		overflow: hidden
+		float: right
+		clear: both
 		padding: 0 0 6px
+		width: 42px
+		transition: width .5s
+		&:hover
+			width: 100%
+			transition: width .5s
 
 	
+/*SEARCH PAGE*/
+.search-page
+	.header-holder
+		padding: 20px 0
+
+	header
+		background: none
+	
+	.user-avatar
+		width: 100px
+
+	.user-avatar__img
+		width: 50px
+		height: 50px
+
+	.user-info__name
+		margin: 0
+		font-size: 16px
+		color: $light_black
+
+/*ALBUM PAGE*/
+.my-album-page
+
+	.header-holder
+		padding: 20px 0 66px
+
+	.user-avatar
+		width: 80px
+
+	.user-avatar__img
+		width: 56px
+		height: 56px
+
+	.user-info__name
+		margin: 0
+		font-size: 16px
+
+	.header-content
+		text-align: center
+		color: $white
+		width: 65%
+		margin: 0 auto

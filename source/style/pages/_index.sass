@@ -29,6 +29,7 @@
 	transition: width .5s
 	overflow: hidden
 	box-sizing: border-box
+	text-decoration: none
 	.fa 
 		color: #a0a09f
 		font-size: 22px
@@ -40,15 +41,14 @@
 		font: 14px/42px 'Panton_bold'
 		color: $white
 		vertical-align: middle
-		display: none
+		display: block
 		padding: 0 0 0 20px
 
 	&:hover
 		background: #28bbf0
 		width: 100%
+		transition: width .5s
 		
-		span
-			display: inline-block
 		.fa 
 			color: $white
 
@@ -180,6 +180,9 @@
 	img
 		vertical-align: top
 
+	&:hover .album-mask
+		opacity: 1
+
 .album-mask
 	position: absolute
 	top: 0
@@ -189,6 +192,7 @@
 	height: 100%
 	background: rgba(#000, .8)
 	z-index: 1
+	border-radius: 2px 2px 0 0
 	cursor: pointer
 	opacity: 0
 	transition: opacity .5s;
@@ -200,18 +204,17 @@
 	img 
 		height: 100%
 		width: 100%
-
-	&:hover .album-mask
-		opacity: 1
+	.fa
+		position: absolute
+		top: 50%
+		left: 50%
+		font-size: 20px
+		transform: translate(-50%, -50%)
+		color: $white
+		font-size: 38px
+	
 		
-		.fa
-			position: absolute
-			top: 50%
-			left: 50%
-			font-size: 20px
-			transform: translate(-50%, -50%)
-			color: $white
-			font-size: 38px
+		
 
 .album-desc
 	padding: 0 20px 28px
