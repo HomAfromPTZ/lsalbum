@@ -30,7 +30,7 @@ mixin albumItem(title, category, comments, likes, user_photo, user_avatar)
 	.album-item
 		.album-item-holder
 			.album-photo
-				a.open-img-popup(href="#")
+				a.open-img-popup.js-open-slider(href="#")
 					.album-mask
 						i(class="fa fa-search-plus")
 					img(src="assets/img/#{user_photo}", alt="")
@@ -77,7 +77,7 @@ mixin singlePhoto(title, category, comments, likes, user_photo, user_avatar)
 	.album-item(class="single-photo")
 		.album-item-holder
 			.album-photo
-				a.open-img-popup(href="#")
+				a.open-img-popup.js-open-slider(href="#")
 					.album-mask
 						i(class="fa fa-search-plus")
 					img(src="assets/img/#{user_photo}", alt="")
@@ -92,3 +92,10 @@ mixin singlePhoto(title, category, comments, likes, user_photo, user_avatar)
 				a.edit-post.js-edit-photo(href="#")
 					i(class="fa fa-pencil")
 				span.category-name= category
+
+mixin avatarSmall(imgUrl, imgAlt, userUrl)
+	.photo-user-img
+		img(src='#{imgUrl}', alt='#{imgAlt}')
+		a.photo-user-img__mask(href='#{userUrl}')
+			svg.svg-more
+				use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-more')

@@ -132,6 +132,12 @@
 	}
 
 
+	// ==============================
+	// Init Edit Album Modal (in Header)
+	// ==============================
+	if ($(".js-open-slider").length > 0) {
+		modal.init("#slider", ".js-open-slider", ".js-close-slider");
+	}
 
 
 
