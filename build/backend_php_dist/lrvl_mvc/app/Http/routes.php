@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('/home', 'HomeController@index');
+
+// Album controller test
 Route::get('/album', 'AlbumController@index');
 Route::get('/album/create', 'AlbumController@create');
 Route::post('/album/save', 'AlbumController@save');
 
-Route::get('/home', 'HomeController@index');
+// TODO: proper User, Photo and Album controller
+// Route::post('/users/saveData', 'UserController@saveData');
+// Route::post('/photo/save/{album_id}', 'PhotoController@save');
