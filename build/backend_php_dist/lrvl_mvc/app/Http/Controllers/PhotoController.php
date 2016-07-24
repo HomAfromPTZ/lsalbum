@@ -10,10 +10,10 @@ use App\Http\Requests;
 
 class PhotoController extends Controller
 {
-    public function save(Request $request, $album){
+    public function save(Request $request, $album_id){
         $user = Auth::user()
 
-        $albumdat = Album::find($album);
+        $albumdata = Album::find($album_id);
         if ($user->id != $albumdata->user_id) {
             return ['error' => 'auth error'];
         }
@@ -25,8 +25,8 @@ class PhotoController extends Controller
         $result = ['status' => 'success'];
         $photo = new Photo();
         $photo->user_id = $user->id;
-        $photo->name = "Без названия";
-        $photo->album_id = $album;
+        $photo->title = "Без названия";
+        $photo->album_id = $album_id;
         $photo->save();
 
         try {
@@ -48,7 +48,7 @@ class PhotoController extends Controller
             $photo->save();
         } catch (Exception $e) {
             $photo->delete();
-            return ['status'] => 'error'];
+            return ['status' => 'error'];
         }
 
         $result['photo_id'] = $photo->id;
@@ -59,5 +59,63 @@ class PhotoController extends Controller
         $result['num'] = $request->input('num');
 
         return $result;
+    }
+
+
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $photo = Photo::find($id);
+
+            $user = Auth::user();
+            if($user->id != $photo->user_id){
+                return ['error' => 'Auth error'];
+            }
+            $photo->title = $request->input('name');
+            $photo->description = $request->input('description');
+            $photo->save();
+            return [
+                'id' => $id,
+                'title' => $photo->name,
+                'status' => 'Изменения сохранены'
+            ];
+        } catch (Exception $e) {
+            return [
+                'status' => 'error'
+            ];
+        }
+    }
+
+
+
+    public function delete($id){
+        $album = Album::where('background', $id)->first();
+
+        if (empty($album)) {
+            $photo = Photo::findOrFail($id);
+            $user = Auth::user();
+
+            if($user->id != $photo->user_id){
+                return [
+                    'errors' => true,
+                    'result' => 'Auth error'
+                ];
+            }
+
+            $result = preg_split('|\?.*|', $photo->img)[0];
+            File::delete(public_path().$result);
+            $photo->delete();
+
+            return [
+                'errors' => false,
+                'data' => $photo
+            ];
+        } else {
+            return [
+                'result' => 'Эта фотография является обложкой. Сначала измените её.',
+                'errors' => true
+            ];
+        }
     }
 }

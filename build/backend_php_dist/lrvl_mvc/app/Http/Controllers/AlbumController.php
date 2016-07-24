@@ -25,23 +25,106 @@ class AlbumController extends Controller
     public function save(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'photo' => 'required|image'
+            'cover' => 'required|image'
         ]);
+
         try {
             DB::transaction(function () use ($request) {
                 $album = new Album();
                 $album->title = $request->title;
-                $album->user_id = 1;
-                $file = $request->file('cover');
+                $album->description = $request->description;
+                $album->user_id = Auth::user()->id;
                 $album->save();
+
+                $photoController = new PhotoController();
+                $photo = $photoController->save($request, $album->id);
+
+                $album->background = $photo['photo_id'];
+                $album->save();
+                $album = $album->toArray();
+                $album['photo'] = $photo['photo'];
+                return json_encode([
+                    'result' => 'Альбом создан',
+                    'data' => $album
+                ]);
+
+                // $file = $request->file('cover');
                 // dd($file);
-                $filename = $album->id.'.'.$file->getClientOriginalExtension();
-                $file->move('photos', $filename);
-                $album->cover = '/photos/'.$filename;
-                $album->save();
+                // $filename = $album->id.'.'.$file->getClientOriginalExtension();
+                // $file->move('photos', $filename);
+                // $album->cover = '/photos/'.$filename;
+                // $album->save();
             });
         } catch (Exception $e) {
             dd($e->getMessage());
+        }
+    }
+
+
+
+    public function update($id, Request $request){
+        $user = Auth::user();
+        $album = Album::find($id);
+        if ($user->id != $album->user_id) {
+            return ['error' => 'Auth error'];
+        }
+        $album->title = $request->title;
+        $album->description = $request->description;
+        $album->save();
+
+        return json_encode([
+            'result' => 'Альбом '.$album->name.' обновлен',
+            'data' => $album
+        ]);
+    }
+
+
+
+    public function setBackground($id, Request $request){
+        $user = Auth::user();
+        $album = Album::find($id);
+        if ($user->id != $album->user_id) {
+            return ['error' => 'Auth error'];
+        }
+        if ($request->hasFile('cover')) {
+            $photoController = new PhotoController();
+            $photo = $photoController->save($request, $album->id);
+            $album->background_id = $photo['photo_id'];
+        }
+
+        $album->name = $request->name;
+        $album->descritption = $request->description;
+        $album->save();
+
+        return [
+            'result' => 'Альбом '.$album->name.' обновлен',
+            'data' => $album
+        ];
+    }
+
+
+
+    public function delete($id){
+        $album = Album::with('photo')->findOrFail($id);
+
+        $user = Auth::user();
+        if ($user->id != $album->user_id) {
+            return ['error' => 'Auth error'];
+        }
+
+        try {
+            if(!empty($album->photo)){
+                $picture = $album->photo->img;
+                $result = preg_split('|\?.*|', $picture)[0];
+                File::delete(public_path().$result);
+                Photo::delete($album->photo->id);
+            }
+
+            $album->delete();
+
+            return $album;
+        } catch (Exception $e) {
+            return ['result' => 'Ошибка: '. $e->getMessage()];
         }
     }
 }
