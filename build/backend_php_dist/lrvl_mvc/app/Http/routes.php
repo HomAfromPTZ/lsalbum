@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('/album', 'AlbumController@index');
+Route::get('/album/create', 'AlbumController@create');
+Route::post('/album/save', 'AlbumController@save');
+
 Route::get('/home', 'HomeController@index');

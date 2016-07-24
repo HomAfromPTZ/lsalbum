@@ -8,10 +8,14 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Привет {{$user->name}}! Ты вошел!
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('title')
+    Альбом пользователя {{$user->name}}
 @endsection
