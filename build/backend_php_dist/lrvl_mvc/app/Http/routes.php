@@ -17,13 +17,43 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
 
-// Album controller test
+// Albums
 Route::get('/album', 'AlbumController@index');
 Route::get('/album/create', 'AlbumController@create');
 Route::post('/album/save', 'AlbumController@save');
 
-// TODO: proper User, Photo and Album controller
-// Route::post('/users/saveData', 'UserController@saveData');
-// Route::post('/photo/save/{album_id}', 'PhotoController@save');
+// TODO: proper Pages, User, Photo and Album controller
+Route::group(['middleware' => 'auth'], function() {
+	// Pages
+	Route::get('/home', 'HomeController@home');
+	Route::get('/user/{id}', 'PageController@user');
+	Route::get('/search', 'PageController@search');
+	Route::get('/album/{id}', 'PageController@album');
+
+	// User
+	Route::post('/user/savedata', 'UserController@saveData');
+
+	// Album
+	Route::post('/album/save', 'AlbumController@save');
+	Route::post('/album/update/{id}', 'AlbumController@update');
+	Route::get('/album/delete/{album_id}', 'AlbumController@delete');
+	Route::post('/album/setBg/{album_id}', 'AlbumController@setBackground');
+
+	// Photo
+	Route::post('/photo/save/{album_id}', 'PhotoController@save');
+	Route::post('/photo/update/{photo_id}', 'PhotoController@update');
+	Route::get('/photo/delete/{photo_id}', 'PhotoController@delete');
+
+	// Comments
+	Route::post('/newComment/{photo_id', 'CommentController@save');
+
+	// Likes
+	Route::get('/like/{photo_id}', 'LikeController@like');
+	Route::get('/unlike/{photo_id}', 'LikeController@unlike');
+
+	// Photo storage actions
+	Route::get('/storage/getPhotos/{page}', 'StorageController@getLatestPhotos');
+	Route::get('/storage/getPhotosCollection/{number}', 'StorageController@getLatestPhotosCollection');
+	Route::get('/storage/getAlbumPhotos/{album_id}', 'StorageController@getAlbumPhotos');
+});
