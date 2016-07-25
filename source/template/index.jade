@@ -37,7 +37,7 @@ html(lang="ru")
 									input.group_welcome__input(id="", name="password" type="password", placeholder="Пароль")
 
 								.form_welcome__text
-									a.form_welcome__link(href="#") Забыли пароль?
+									a.form_welcome__link#show-recovery(href="#") Забыли пароль?
 
 								.form_welcome__text
 									.error-notification E-mail или пароль не верен
@@ -47,7 +47,7 @@ html(lang="ru")
 
 								.form_welcome__text.form_welcome__text_center
 									span.form_welcome__span Нет аккаунта? 
-									a.form_welcome__link(href="#") Зарегистрироваться
+									a.form_welcome__link#flip-card(href="#") Зарегистрироваться
 
 					.flip-card__back-side
 
@@ -83,35 +83,35 @@ html(lang="ru")
 
 								.form_welcome__text.form_welcome__text_center
 									span.form_welcome__span Уже зарегистрированы? 
-									a.form_welcome__link(href="main.html") Войти
+									a.form_welcome__link#unflip-card(href="main.html") Войти
 
+			.welcome__recovery
+				.welcome__intro
+					h1.welcome__h1 Восстановление пароля
 
-			.welcome__intro.welcome__intro_recovery
-				h1.welcome__h1 Восстановление пароля
+				.welcome__card
 
-			.welcome__card.welcome__card_recovery
+					form.form.form_welcome.form_recovery(method="post")
+						.form_welcome__text
+							.form_welcome__span.form_welcome__span_bold Забыли пароль?
 
-				form.form.form_welcome.form_recovery(method="post")
-					.form_welcome__text
-						.form_welcome__span.form_welcome__span_bold Забыли пароль?
+						.form_welcome__text
+							.form_welcome__span Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля
 
-					.form_welcome__text
-						.form_welcome__span Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля
+						.input-group_welcome.input-group_last
+							span.group_welcome__icon
+								i.fa.fa-envelope(aria-hidden='true')
+							input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
 
-					.input-group_welcome.input-group_last
-						span.group_welcome__icon
-							i.fa.fa-envelope(aria-hidden='true')
-						input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
+						.form_welcome__text
+							.error-notification Пользователя с указанной электронной почтой не существует
 
-					.form_welcome__text
-						.error-notification Пользователя с указанной электронной почтой не существует
+						.form_welcome__text.form_welcome__text_button
+								input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Восстановить пароль")
 
-					.form_welcome__text.form_welcome__text_button
-							input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Восстановить пароль")
-
-					.form_welcome__text.form_welcome__text_center
-						span.form_welcome__span Вспомнили пароль? 
-						a.form_welcome__link(href="main.html") Войти
+						.form_welcome__text.form_welcome__text_center
+							span.form_welcome__span Вспомнили пароль? 
+							a.form_welcome__link#hide-recovery(href="main.html") Войти
 
 
 			.welcome__footer
