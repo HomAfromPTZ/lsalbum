@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 use App\Album;
 use App\Http\Requests;
 
@@ -25,7 +26,7 @@ class AlbumController extends Controller
 
     public function save(Request $request){
         $this->validate($request, [
-            'name' => 'required',
+            'title' => 'required',
             'cover' => 'required|image'
         ]);
 
@@ -37,10 +38,10 @@ class AlbumController extends Controller
                 $album->user_id = Auth::user()->id;
                 $album->save();
 
-                $photoController = new PhotoController();
-                $photo = $photoController->save($request, $album->id);
+                $photoActions = new PhotoController();
+                $photo = $photoActions->save($request, $album->id);
 
-                $album->background = $photo['photo_id'];
+                $album->cover_id = $photo['photo_id'];
                 $album->save();
                 $album = $album->toArray();
                 $album['photo'] = $photo['photo'];

@@ -11,7 +11,7 @@ use App\Http\Requests;
 class PhotoController extends Controller
 {
     public function save(Request $request, $album_id){
-        $user = Auth::user()
+        $user = Auth::user();
 
         $albumdata = Album::find($album_id);
         if ($user->id != $albumdata->user_id) {

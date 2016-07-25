@@ -15,7 +15,12 @@ class AlterUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar',255)->after('password');
             $table->string('background',255)->after('avatar');
-            $table->longtext('description')->after('background');
+            $table->text('description')->after('background');
+            $table->string('vk', 255)->after('description');
+            $table->string('facebook', 255)->after('vk');
+            $table->string('twitter', 255)->after('facebook');
+            $table->string('instagram', 255)->after('twitter');
+            $table->string('google', 255)->after('instagram');
             $table->boolean('activated')->default(0);
         });
     }

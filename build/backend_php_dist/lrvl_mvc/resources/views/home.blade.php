@@ -8,14 +8,12 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    Привет {{$user->name}}! Ты вошел!
+                    @if(count($photos) == 0)
+                        Нет фото =(
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-
-@section('title')
-    Альбом пользователя {{$user->name}}
 @endsection

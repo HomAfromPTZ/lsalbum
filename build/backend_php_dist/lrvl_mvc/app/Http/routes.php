@@ -21,12 +21,11 @@ Route::auth();
 // Albums
 Route::get('/album', 'AlbumController@index');
 Route::get('/album/create', 'AlbumController@create');
-Route::post('/album/save', 'AlbumController@save');
 
 // TODO: proper Pages, User, Photo and Album controller
 Route::group(['middleware' => 'auth'], function() {
 	// Pages
-	Route::get('/home', 'HomeController@home');
+	Route::get('/home', 'PageController@home');
 	Route::get('/user/{id}', 'PageController@user');
 	Route::get('/search', 'PageController@search');
 	Route::get('/album/{id}', 'PageController@album');

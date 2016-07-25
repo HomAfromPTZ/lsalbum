@@ -15,8 +15,8 @@ class CreateAlbumsTable extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',255);
-            $table->longtext('description');
-            $table->string('cover',255);
+            $table->text('description');
+            $table->integer('cover_id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
