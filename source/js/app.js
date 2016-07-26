@@ -132,6 +132,12 @@
 	}
 
 
+	// ==============================
+	// Init Edit Album Modal (in Header)
+	// ==============================
+	if ($(".js-open-slider").length > 0) {
+		modal.init("#slider", ".js-open-slider", ".js-close-slider");
+	}
 
 
 
@@ -155,6 +161,33 @@
 	if ($(".js-close-form").length > 0) {
 		$(".js-close-form").on("click", hideSocialForm);
 	}
+
+
+	// ==============================
+	// Login card flip
+	// ==============================
+	$("#flip-card").click(function() {
+		$("body").addClass("card_flipped");
+	});
+
+	$("#unflip-card").click(function(e) {
+		e.preventDefault();
+		$("body").removeClass("card_flipped");
+	});
+
+
+	// ==============================
+	// Login show Recovery password Card
+	// ==============================
+	$("#show-recovery").click(function(e) {
+		e.preventDefault();
+		$("body").addClass("show_recovery");
+	});
+
+	$("#hide-recovery").click(function(e) {
+		e.preventDefault();
+		$("body").removeClass("show_recovery");
+	});
 
 
 
