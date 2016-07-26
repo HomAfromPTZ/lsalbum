@@ -23,7 +23,8 @@ class AlbumController extends Controller
     }
 
     public function create(){
-        return view('album.create');
+        $data['latest_album'] = Album::latest()->first();
+        return view('album.create', $data);
     }
 
     public function save(Request $request){
@@ -33,7 +34,7 @@ class AlbumController extends Controller
         ]);
 
         try {
-            DB::transaction(function () use ($request) {
+            return DB::transaction(function () use ($request) {
                 $album = new Album();
                 $album->title = $request->title;
                 $album->description = $request->description;

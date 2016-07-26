@@ -19,7 +19,9 @@ class PhotoController extends Controller
 
 
     public function create(){
-        return view('photo.create');
+        $data['latest_album'] = Album::latest()->first();
+        $data['latest_photo'] = Photo::latest()->first();
+        return view('photo.create', $data);
     }
 
 
@@ -40,9 +42,6 @@ class PhotoController extends Controller
         $photo = new Photo();
         $photo->user_id = $user->id;
         $photo->title = "Без названия";
-
-        $photo->title = $request->title;
-        $photo->description = $request->description;
 
         $photo->album_id = $album_id;
         $photo->save();
