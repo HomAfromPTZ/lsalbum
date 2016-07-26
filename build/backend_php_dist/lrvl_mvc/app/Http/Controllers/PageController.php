@@ -32,10 +32,14 @@ class PageController extends Controller
             ->with('user')
             ->with('comments')
             ->with('likes')
-            ->with('album')->get();
+            ->with('album')
+            ->get();
         // dd($data['photos']);
-        $data['myalbums'] = Album::latest()->where('user_id', $user->id);
+        $data['albums'] = Album::latest()
+            ->where('user_id', $user->id)
+            ->get();
         $data['url'] = $request->path();
+        $data['rawData'] = $data;
         return view('home', $data);
     }
 
@@ -45,7 +49,7 @@ class PageController extends Controller
         $user = User::findOrFail($id);
         $data['user'] = $user;
         $data['url'] = $request->path();
-        $data['myalbums'] = Album::latest()->where('user_id', $user->id);
+        $data['albums'] = Album::latest()->where('user_id', $user->id);
         $data['auth_id'] = $data['authUser']->id;
         return view('user', $data);
     }

@@ -20,7 +20,9 @@ Route::auth();
 
 // Albums
 Route::get('/album', 'AlbumController@index');
+Route::get('/photo', 'PhotoController@index');
 Route::get('/album/create', 'AlbumController@create');
+Route::get('/photo/create', 'PhotoController@create');
 
 // TODO: proper Pages, User, Photo and Album controller
 Route::group(['middleware' => 'auth'], function() {
@@ -35,9 +37,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 	// Album
 	Route::post('/album/save', 'AlbumController@save');
-	Route::post('/album/update/{id}', 'AlbumController@update');
+	Route::post('/album/update/{album_id}', 'AlbumController@update');
 	Route::get('/album/delete/{album_id}', 'AlbumController@delete');
-	Route::post('/album/setBg/{album_id}', 'AlbumController@setBackground');
+	// Route::post('/album/setBackground/{album_id}', 'AlbumController@setBackground');
 
 	// Photo
 	Route::post('/photo/save/{album_id}', 'PhotoController@save');

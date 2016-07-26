@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use File;
+use App\Photo;
 use App\Album;
 use App\Http\Requests;
 
@@ -37,25 +39,19 @@ class AlbumController extends Controller
                 $album->description = $request->description;
                 $album->user_id = Auth::user()->id;
                 $album->save();
-
+                // dd($album);
                 $photoActions = new PhotoController();
                 $photo = $photoActions->save($request, $album->id);
 
                 $album->cover_id = $photo['photo_id'];
                 $album->save();
                 $album = $album->toArray();
-                $album['photo'] = $photo['photo'];
+                $album['cover'] = $photo['photo'];
+                $album['thumbnail'] = $photo['thumbnail'];
                 return json_encode([
                     'result' => 'Альбом создан',
                     'data' => $album
                 ]);
-
-                // $file = $request->file('cover');
-                // dd($file);
-                // $filename = $album->id.'.'.$file->getClientOriginalExtension();
-                // $file->move('photos', $filename);
-                // $album->cover = '/photos/'.$filename;
-                // $album->save();
             });
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -67,9 +63,17 @@ class AlbumController extends Controller
     public function update($id, Request $request){
         $user = Auth::user();
         $album = Album::find($id);
+
         if ($user->id != $album->user_id) {
-            return ['error' => 'Auth error'];
+            return ['error' => 'Ошибка авторизации'];
         }
+
+        if ($request->hasFile('cover')) {
+            $photoActions = new PhotoController();
+            $photo = $photoActions->save($request, $album->id);
+            $album->cover_id = $photo['photo_id'];
+        }
+
         $album->title = $request->title;
         $album->description = $request->description;
         $album->save();
@@ -82,44 +86,49 @@ class AlbumController extends Controller
 
 
 
-    public function setBackground($id, Request $request){
-        $user = Auth::user();
-        $album = Album::find($id);
-        if ($user->id != $album->user_id) {
-            return ['error' => 'Auth error'];
-        }
-        if ($request->hasFile('cover')) {
-            $photoController = new PhotoController();
-            $photo = $photoController->save($request, $album->id);
-            $album->background_id = $photo['photo_id'];
-        }
+    // public function setBackground(Request $request, $id){
+    //     $user = Auth::user();
+    //     $album = Album::find($id);
 
-        $album->name = $request->name;
-        $album->descritption = $request->description;
-        $album->save();
+    //     if ($user->id != $album->user_id) {
+    //         return ['error' => 'Ошибка авторизации'];
+    //     }
 
-        return [
-            'result' => 'Альбом '.$album->name.' обновлен',
-            'data' => $album
-        ];
-    }
+    //     if ($request->hasFile('cover')) {
+    //         $photoActions = new PhotoController();
+    //         $photo = $photoActions->save($request, $album->id);
+    //         $album->cover_id = $photo['photo_id'];
+    //     }
+
+    //     $album->title = $request->title;
+    //     $album->description = $request->description;
+    //     $album->save();
+
+    //     return [
+    //         'result' => 'Альбом '.$album->name.' обновлен',
+    //         'data' => $album
+    //     ];
+    // }
 
 
 
     public function delete($id){
-        $album = Album::with('photo')->findOrFail($id);
+        $album = Album::with('photos')->findOrFail($id);
 
         $user = Auth::user();
+
         if ($user->id != $album->user_id) {
-            return ['error' => 'Auth error'];
+            return ['error' => 'Ошибка авторизации'];
         }
 
         try {
-            if(!empty($album->photo)){
-                $picture = $album->photo->img;
-                $result = preg_split('|\?.*|', $picture)[0];
-                File::delete(public_path().$result);
-                Photo::delete($album->photo->id);
+            if(!empty($album->photos)){
+                foreach ($album->photos as $photo) {
+                    $picture = $photo->img_url;
+                    $result = preg_split('|\?.*|', $picture)[0];
+                    File::delete(public_path().$result);
+                    Photo::destroy($photo->id);
+                }
             }
 
             $album->delete();

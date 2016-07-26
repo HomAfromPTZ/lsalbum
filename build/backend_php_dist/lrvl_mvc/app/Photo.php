@@ -9,11 +9,11 @@ class Photo extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     public function user(){
-        return $this->belongsTo('App\User')->select(['id', 'name', 'avatar']);
+        return $this->belongsTo('App\User', 'user_id')->select(['id', 'name', 'avatar']);
     }
 
     public function album(){
-        return $this->belongsTo('App\User')->select(['id', 'title']);
+        return $this->belongsTo('App\Album', 'album_id')->select(['id', 'title']);
     }
 
     public function comments(){
@@ -23,4 +23,5 @@ class Photo extends Model
     public function likes(){
         return $this->hasMany('App\Like', 'photo_id', 'id')->with('user');
     }
+
 }
