@@ -19,8 +19,8 @@ Route::auth();
 
 
 // Albums
-Route::get('/album', 'AlbumController@index');
-Route::get('/photo', 'PhotoController@index');
+// Route::get('/album', 'AlbumController@index');
+// Route::get('/photo', 'PhotoController@index');
 Route::get('/album/create', 'AlbumController@create');
 Route::get('/photo/create', 'PhotoController@create');
 

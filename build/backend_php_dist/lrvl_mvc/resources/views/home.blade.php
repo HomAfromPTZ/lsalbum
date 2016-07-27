@@ -1,6 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+    <h2>Данные пользователя:</h2>
+    =====================================
+    <br/>Обновить данные залогиненного пользователя:
+    <form action="/user/savedata" method="post" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <br/><input type="text" name="name" placeholder="Имя" value="{{$user['name']}}">
+        <br/><input type="text" name="description" placeholder="Описание" value="{{$user['description']}}">
+        <br/><input type="text" name="vk" placeholder="vkontakte" value="{{$user['vk']}}">
+        <br/><input type="text" name="facebook" placeholder="facebook" value="{{$user['facebook']}}">
+        <br/><input type="text" name="twitter" placeholder="twitter" value="{{$user['twitter']}}">
+        <br/><input type="text" name="google" placeholder="google+" value="{{$user['google']}}">
+        <br/><input type="text" name="instagram" placeholder="instagram" value="{{$user['instagram']}}">
+        <br/>Аватар: <input type="file" name="avatar">
+        <br/>Фон: <input type="file" name="background">
+        <br/><input type="submit" value="Сохранить">
+    </form>
+    <hr/>
+    <h3>Текущие данные:</h3>
+    <ul>
+        <li><a href="/user/{{$user['id']}}">Ссылка на профиль</a></li>
+        <li>Имя: {{$user['name']}}</li>
+        <li>Описание: {{$user['description']}}</li>
+        <li>Email: {{$user['email']}}</li>
+        <li>Vk: {{$user['vk']}}</li>
+        <li>Facebook: {{$user['facebook']}}</li>
+        <li>Twitter: {{$user['twitter']}}</li>
+        <li>Google: {{$user['google']}}</li>
+        <li>Instagram: {{$user['instagram']}}</li>
+        <li>Avatar: {{$user['avatar']}}</li>
+        <li>Background: {{$user['background']}}</li>
+    </ul>
+    <hr/>
+    <h2>Альбомы и фотографии</h2>
     <a href="{{url('album/create')}}">Создать\Обновить\Удалить альбом &gt;&gt;</a> <br/>
     <a href="{{url('photo/create')}}">Создать\Обновить\Удалить фотографию &gt;&gt;</a><br/><br/>
 
@@ -8,11 +41,12 @@
         Нет фото =(
     @else
 
-        <h2>Мои альбомы:</h2>
+        <h3>Мои альбомы:</h3>
         @forelse ($albums as $album)
             <div>
             =======================================
             <ul>
+                <li><a href="/album/{{$album['id']}}">Ссылка на альбом</a></li>
                 <li>Id: {{$album['id']}}</li>
                 <li>Title: {{$album['title']}}</li>
                 <li>Description: {{$album['description']}}</li>
@@ -28,7 +62,7 @@
             {{-- empty expr --}}
         @endforelse
 
-        <h2>Фотографии:</h2>
+        <h3>Последние фотографии пользователей:</h3>
         @forelse ($photos as $photo)
             <div>
             =======================================

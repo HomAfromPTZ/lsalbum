@@ -8,10 +8,6 @@ class Photo extends Model
 {
     protected $hidden = ['created_at', 'updated_at'];
 
-    protected $fillable = [
-        'user_id', 'photo_id',
-    ];
-
     public function user(){
         return $this->belongsTo('App\User', 'user_id')->select(['id', 'name', 'avatar']);
     }

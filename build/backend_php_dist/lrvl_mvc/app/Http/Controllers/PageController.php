@@ -34,7 +34,6 @@ class PageController extends Controller
             ->with('like')
             ->with('album')
             ->get();
-        // dd($data['photos']);
         $data['albums'] = Album::latest()
             ->where('user_id', $user->id)
             ->with('cover')
@@ -45,18 +44,21 @@ class PageController extends Controller
 
 
 
-    public function user($id, Request $request){
+    public function user(Request $request, $id){
         $user = User::findOrFail($id);
         $data['user'] = $user;
         $data['url'] = $request->path();
-        $data['albums'] = Album::latest()->where('user_id', $user->id);
-        $data['auth_id'] = $data['authUser']->id;
+        $data['albums'] = Album::latest()
+            ->where('user_id', $user->id)
+            ->take(6)
+            ->get();
+        $data['auth_id'] = $data['user']->id;
         return view('user', $data);
     }
 
 
 
-    public function album($id, Request $request){
+    public function album(Request $request, $id){
         $album = Album::find($id);
 
         $photos = Photo::where('album_id', $id)
@@ -74,7 +76,12 @@ class PageController extends Controller
         $user = User::find($onePhoto->user_id);
 
         $data['url'] = $request->path();
-        $data['likes'] = $likes;
+        $data['user'] = $user;
+        $data['album'] = $album;
+        $data['photos'] = $photos;
+        $data['photos_num'] = $photos->count();
+        $data['likes_num'] = $likes;
+        $data['comments_num'] = $comments;
         return view('album', $data);
     }
 }

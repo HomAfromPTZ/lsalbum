@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use File;
 use App\Http\Requests;
 
 class UserController extends Controller
@@ -34,10 +35,12 @@ class UserController extends Controller
             $user->description = $request->description;
             $user->vk = $request->vk;
             $user->facebook = $request->facebook;
-            $user->googleplus = $request->googleplus;
+            $user->google = $request->google;
             $user->twitter = $request->twitter;
+            $user->instagram = $request->instagram;
 
-            $user->save()
+            $user->save();
+            return $result;
         } catch (Exception $e) {
             $result = ['status'=>'error', 'message'=>'Ошибка сохранения данных'];
             return $result;

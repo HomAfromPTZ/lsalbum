@@ -18,8 +18,8 @@ class CreatePhotosTable extends Migration
             $table->text('description');
             $table->string('img_url',255);
             $table->string('thumb_url',255);
-            $table->integer('likes');
-            $table->integer('comments');
+            $table->integer('likes')->default(0);
+            $table->integer('comments')->default(0);
             $table->integer('album_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('album_id')->references('id')->on('albums');

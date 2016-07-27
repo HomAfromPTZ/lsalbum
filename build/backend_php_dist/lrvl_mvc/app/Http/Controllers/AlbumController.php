@@ -42,7 +42,7 @@ class AlbumController extends Controller
                 $album->description = $request->description;
                 $album->user_id = Auth::user()->id;
                 $album->save();
-                // dd($album);
+
                 $photoActions = new PhotoController();
                 $photo = $photoActions->save($request, $album->id);
 
@@ -51,10 +51,10 @@ class AlbumController extends Controller
                 $album = $album->toArray();
                 $album['cover'] = $photo['photo'];
                 $album['thumbnail'] = $photo['thumbnail'];
-                return json_encode([
+                return [
                     'result' => 'Альбом создан',
                     'data' => $album
-                ]);
+                ];
             });
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -81,10 +81,10 @@ class AlbumController extends Controller
         $album->description = $request->description;
         $album->save();
 
-        return json_encode([
+        return [
             'result' => 'Альбом '.$album->name.' обновлен',
             'data' => $album
-        ]);
+        ];
     }
 
 
@@ -105,14 +105,6 @@ class AlbumController extends Controller
 
                     File::delete(public_path($main_pic));
                     File::delete(public_path($thumb_pic));
-
-                    // foreach ($photo->comment as $comment) {
-                    //     $comment->delete();
-                    // }
-
-                    // foreach ($photo->like as $like) {
-                    //     dd($like->delete());
-                    // }
 
                     Photo::destroy($photo->id);
                 }
