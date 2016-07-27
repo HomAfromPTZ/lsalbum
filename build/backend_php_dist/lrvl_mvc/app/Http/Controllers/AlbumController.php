@@ -125,9 +125,12 @@ class AlbumController extends Controller
         try {
             if(!empty($album->photos)){
                 foreach ($album->photos as $photo) {
-                    $picture = $photo->img_url;
-                    $result = preg_split('|\?.*|', $picture)[0];
-                    File::delete(public_path().$result);
+                    $main_pic = preg_split('|\?.*|', $photo->img_url)[0];
+                    $thumb_pic = preg_split('|\?.*|', $photo->thumb_url)[0];
+
+                    File::delete(public_path($main_pic));
+                    File::delete(public_path($thumb_pic));
+
                     Photo::destroy($photo->id);
                 }
             }

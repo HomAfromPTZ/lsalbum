@@ -63,8 +63,6 @@ class PhotoController extends Controller
             $thumbnail = '/'.$thumbnail.'?'.time();
 
             $photo->img_url = $filename;
-
-            // TODO: Alter photos table!
             $photo->thumb_url = $thumbnail;
 
             $photo->save();
@@ -125,8 +123,12 @@ class PhotoController extends Controller
                 ];
             }
 
-            $result = preg_split('|\?.*|', $photo->img)[0];
-            File::delete(public_path().$result);
+            $main_pic = preg_split('|\?.*|', $photo->img_url)[0];
+            $thumb_pic = preg_split('|\?.*|', $photo->thumb_url)[0];
+
+            File::delete(public_path($main_pic));
+            File::delete(public_path($thumb_pic));
+
             $photo->delete();
 
             return [

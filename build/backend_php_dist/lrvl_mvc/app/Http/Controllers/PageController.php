@@ -30,16 +30,16 @@ class PageController extends Controller
         $data['photos'] = Photo::latest()
             ->take(6)
             ->with('user')
-            ->with('comments')
-            ->with('likes')
+            ->with('comment')
+            ->with('like')
             ->with('album')
             ->get();
         // dd($data['photos']);
         $data['albums'] = Album::latest()
             ->where('user_id', $user->id)
+            ->with('cover')
             ->get();
         $data['url'] = $request->path();
-        $data['rawData'] = $data;
         return view('home', $data);
     }
 

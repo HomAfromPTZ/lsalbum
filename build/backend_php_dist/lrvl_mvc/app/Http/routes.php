@@ -39,7 +39,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/album/save', 'AlbumController@save');
 	Route::post('/album/update/{album_id}', 'AlbumController@update');
 	Route::get('/album/delete/{album_id}', 'AlbumController@delete');
-	// Route::post('/album/setBackground/{album_id}', 'AlbumController@setBackground');
 
 	// Photo
 	Route::post('/photo/save/{album_id}', 'PhotoController@save');
@@ -47,7 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/photo/delete/{photo_id}', 'PhotoController@delete');
 
 	// Comments
-	Route::post('/newComment/{photo_id', 'CommentController@save');
+	Route::post('/comment/{photo_id}', 'CommentController@save');
 
 	// Likes
 	Route::get('/like/{photo_id}', 'LikeController@like');

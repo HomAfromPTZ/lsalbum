@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Comment;
+use App\Photo;
 use App\Http\Requests;
 
 class CommentController extends Controller
@@ -17,6 +18,8 @@ class CommentController extends Controller
         $comment->user_id = $user_id;
         $comment->photo_id = $photo_id;
         $comment->save();
+
+        Photo::find($photo_id)->increment('likes');
 
         return [
             'avatar' => $user->avatar,

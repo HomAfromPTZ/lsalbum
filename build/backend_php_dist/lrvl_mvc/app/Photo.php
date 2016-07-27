@@ -16,12 +16,17 @@ class Photo extends Model
         return $this->belongsTo('App\Album', 'album_id')->select(['id', 'title']);
     }
 
-    public function comments(){
-        return $this->hasMany('App\Comment', 'photo_id', 'id')->with('user');
+    public function comment(){
+        return $this
+            ->hasMany('App\Comment', 'photo_id', 'id')
+            ->with('user')
+            ->select('photo_id', 'content');
     }
 
-    public function likes(){
-        return $this->hasMany('App\Like', 'photo_id', 'id')->with('user');
+    public function like(){
+        return $this
+            ->hasMany('App\Like', 'photo_id', 'id')
+            ->select('id', 'photo_id', 'user_id');
     }
 
 }

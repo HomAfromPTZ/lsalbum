@@ -15,9 +15,14 @@ class Album extends Model
     }
 
     public function photos(){
-        // return $this->hasMany('App\Photo')->select(['id', 'title', 'comments', 'likes','img_url']);
         return $this
             ->hasMany('App\Photo', 'album_id')
-            ->select('id', 'album_id', 'title', 'comments', 'likes','img_url');
+            ->select('id', 'album_id', 'title', 'comments', 'likes','img_url', 'thumb_url');
+    }
+
+    public function cover(){
+        return $this
+            ->hasOne('App\Photo', 'id', 'cover_id')
+            ->select('id', 'img_url', 'thumb_url');
     }
 }
