@@ -8,6 +8,8 @@ use DB;
 use File;
 use App\Photo;
 use App\Album;
+use App\Like;
+use App\Comment;
 use App\Http\Requests;
 
 class AlbumController extends Controller
@@ -86,33 +88,6 @@ class AlbumController extends Controller
     }
 
 
-
-    // public function setBackground(Request $request, $id){
-    //     $user = Auth::user();
-    //     $album = Album::find($id);
-
-    //     if ($user->id != $album->user_id) {
-    //         return ['error' => 'Ошибка авторизации'];
-    //     }
-
-    //     if ($request->hasFile('cover')) {
-    //         $photoActions = new PhotoController();
-    //         $photo = $photoActions->save($request, $album->id);
-    //         $album->cover_id = $photo['photo_id'];
-    //     }
-
-    //     $album->title = $request->title;
-    //     $album->description = $request->description;
-    //     $album->save();
-
-    //     return [
-    //         'result' => 'Альбом '.$album->name.' обновлен',
-    //         'data' => $album
-    //     ];
-    // }
-
-
-
     public function delete($id){
         $album = Album::with('photos')->findOrFail($id);
 
@@ -130,6 +105,14 @@ class AlbumController extends Controller
 
                     File::delete(public_path($main_pic));
                     File::delete(public_path($thumb_pic));
+
+                    // foreach ($photo->comment as $comment) {
+                    //     $comment->delete();
+                    // }
+
+                    // foreach ($photo->like as $like) {
+                    //     dd($like->delete());
+                    // }
 
                     Photo::destroy($photo->id);
                 }

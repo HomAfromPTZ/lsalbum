@@ -8,6 +8,10 @@ class Photo extends Model
 {
     protected $hidden = ['created_at', 'updated_at'];
 
+    protected $fillable = [
+        'user_id', 'photo_id',
+    ];
+
     public function user(){
         return $this->belongsTo('App\User', 'user_id')->select(['id', 'name', 'avatar']);
     }
@@ -29,4 +33,19 @@ class Photo extends Model
             ->select('id', 'photo_id', 'user_id');
     }
 
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     Photo::deleting(function($photo)
+    //     {   
+    //         foreach ($photo->comment as $comment) {
+    //             $comment->delete();
+    //         }
+
+    //         foreach ($photo->like as $like) {
+    //             $like->delete();
+    //         }
+    //     });
+    // }
 }

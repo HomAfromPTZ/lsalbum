@@ -27,4 +27,18 @@ class CommentController extends Controller
             'content' => $request->content
         ];
     }
+
+
+    public function delete(Request $request, $id){
+        $comment = Comment::findOrFail($id);
+        $user = Auth::user();
+
+        if ($user->id != $comment->user_id) {
+            return ['error' => 'Ошибка авторизации'];
+        }
+
+        Photo::find($photo_id)->decrement('likes');
+
+        return $comment->delete();
+    }
 }
