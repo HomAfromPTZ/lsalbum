@@ -6,6 +6,7 @@
 		// forms = require("./modules/forms.js"),
 		popup = require("./modules/popup.js"),
 		modal = require("./modules/modal.js"),
+		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
 		tinyMceL10n = require("./modules/tinymce_l10n.js");
@@ -136,7 +137,7 @@
 	// Init Edit Album Modal (in Header)
 	// ==============================
 	if ($(".js-open-slider").length > 0) {
-		modal.init("#slider", ".js-open-slider", ".js-close-slider");
+		slider.init("#slider", ".js-open-slider", ".js-close-slider");
 	}
 
 
