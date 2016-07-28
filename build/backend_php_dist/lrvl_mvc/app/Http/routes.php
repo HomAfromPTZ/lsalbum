@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/unlike/{photo_id}', 'LikeController@unlike');
 
 	// Photo storage actions
-	Route::get('/storage/getPhotos/{page}', 'StorageController@getLatestPhotos');
+	Route::get('/storage/getPhotos/{pagenum}', 'StorageController@getLatestPhotos');
 	Route::get('/storage/getPhotosCollection/{number}', 'StorageController@getLatestPhotosCollection');
 	Route::get('/storage/getAlbumPhotos/{album_id}', 'StorageController@getAlbumPhotos');
 });

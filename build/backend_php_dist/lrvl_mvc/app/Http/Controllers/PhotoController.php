@@ -74,9 +74,7 @@ class PhotoController extends Controller
         $result['photo_id'] = $photo->id;
         $result['photo'] = $filename;
         $result['thumbnail'] = $thumbnail;
-
-        // TODO: Houston, we have a problem
-        // $result['num'] = $request->input('num');
+        $result['num'] = $request->num;
 
         return $result;
     }

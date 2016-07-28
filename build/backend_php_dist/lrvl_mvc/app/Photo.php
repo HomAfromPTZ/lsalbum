@@ -28,20 +28,4 @@ class Photo extends Model
             ->hasMany('App\Like', 'photo_id', 'id')
             ->select('id', 'photo_id', 'user_id');
     }
-
-    // public static function boot()
-    // {
-    //     parent::boot();
-
-    //     Photo::deleting(function($photo)
-    //     {   
-    //         foreach ($photo->comment as $comment) {
-    //             $comment->delete();
-    //         }
-
-    //         foreach ($photo->like as $like) {
-    //             $like->delete();
-    //         }
-    //     });
-    // }
 }

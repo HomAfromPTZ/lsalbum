@@ -39,6 +39,7 @@ class PageController extends Controller
             ->with('cover')
             ->get();
         $data['url'] = $request->path();
+
         return view('home', $data);
     }
 
@@ -53,6 +54,7 @@ class PageController extends Controller
             ->take(6)
             ->get();
         $data['auth_id'] = $data['user']->id;
+
         return view('user', $data);
     }
 
@@ -82,6 +84,27 @@ class PageController extends Controller
         $data['photos_num'] = $photos->count();
         $data['likes_num'] = $likes;
         $data['comments_num'] = $comments;
+
         return view('album', $data);
+    }
+
+
+    public function search(Request $request){
+        $s = $request->searchtext;
+
+        $photos = Photo::where('description', 'LIKE', '%'.$searchtext)
+            ->latest()
+            ->get();
+
+        if($photos->count() < 1){
+            return [
+                'status' => 'error',
+                'message' => 'Совпадений не найдено'
+            ];
+        }
+
+        $data['photos'] = $photos;
+
+        return view('search', $data);
     }
 }
