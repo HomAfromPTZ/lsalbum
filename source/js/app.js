@@ -137,8 +137,9 @@
 	// Init Edit Album Modal (in Header)
 	// ==============================
 	if ($(".js-open-slider").length > 0) {
-		slider.init("#slider", ".js-open-slider", ".js-close-slider");
+		slider.init("#slider", ".js-open-slider", ".js-close-slider", ".js-slider-next", ".js-slider-prev");
 	}
+
 
 
 
