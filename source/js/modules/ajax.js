@@ -39,6 +39,39 @@ console.log(msg);
             $(e.target).removeClass('show').addClass('hide');
           });
     });
+// console.log('ajax');
+
+    // form welcome
+    // $('#form_welcome').on('submit', function (e) {
+    //   e.preventDefault();
+    //   var formData = new FormData($(e.target)[0]);
+    //
+    //   // console.log(formData);
+    //
+    //   $.ajax({
+    //         method: "POST",
+    //         url: "/auth/login",
+    //         data: formData,
+    //         processData: false,
+    //         contentType: false,
+    //         error: function(data){
+    //           console.log('error');
+    //           // var errors = data.responseJSON;
+    //           // console.log(data);
+    //          },
+    //       success: function(data){
+    //           console.log('success');
+    //           // console.log(data);
+    //          }
+    //
+    //       });
+    //       // .done(function (msg) {
+    //       //   console.log(msg);
+    //       // })
+    //       // .fail(function(msg) {
+    //       //   alert( "error" );
+    //       // });
+    // });
   }
   
   return {

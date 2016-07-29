@@ -24,7 +24,7 @@
                     <div class="welcome__text">Перед вами сервис, который поможет вам организовать свои фотографии в&nbsp;альбомы и&nbsp;поделиться ими со&nbsp;всем миром!</div>
                 </div>
                 <div class="welcome__card welcome__card_login">
-                    <form class="form form_welcome" role="form" method="POST" action="{{ url('/login') }}">
+                    <form id="form_welcome" class="form form_welcome" role="form" method="POST" action="{{ url('/login') }}">
                       {{ csrf_field() }}
                         <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
                             <input type="text" name="email" class="group_welcome__input" placeholder="Электронная почта" value="{{ old('email') }}">
@@ -34,8 +34,9 @@
                         </div>
                         <div class="form_welcome__text"><a id="show-recovery" href="{{ url('/password/reset') }}" class="form_welcome__link">Забыли пароль?</a></div>
                         <div class="form_welcome__text">
+                          @if ($errors->has('email'))
                             <div class="error-notification">E-mail или пароль не верен</div>
-                            <div class="error-notification">{{$errors->first('password')}}</div>
+                          @endif
                         </div>
                         <div class="form_welcome__text form_welcome__text_button">
                             <input type="submit" value="Войти" class="form_welcome__button btn btn_ok">
@@ -63,11 +64,22 @@
                         <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
                             <input id="" name="password" type="password" placeholder="Пароль" class="group_welcome__input">
                         </div>
+                        <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
+                            <input id="" name="password_confirmation" type="password" placeholder="Еще раз пароль" class="group_welcome__input">
+                        </div>
                         <div class="form_welcome__text">
                             <div class="form_welcome__span">Ваши данные остаются строго конфиденциальны</div>
                         </div>
                         <div class="form_welcome__text">
-                            <div class="error-notification">Пользователь с указанной электронной почтой уже есть на сайте</div>
+                          @if ($errors->has('name'))
+                            <div class="error-notification">Введите имя</div>
+                          @elseif ($errors->has('email'))
+                            <div class="error-notification">Введите e-mail</div>
+                          @elseif ($errors->has('password'))
+                            <div class="error-notification">Введите пароль</div>
+                          @elseif ($errors->has('password_confirmation'))
+                            <div class="error-notification">Неверный повторно введеный пароль</div>
+                          @endif
                         </div>
                         <div class="form_welcome__text form_welcome__text_button">
                             <input type="submit" id="" value="Создать аккаунт" class="form_welcome__button btn btn_ok">
@@ -97,7 +109,9 @@
                     <input id="" name="" type="email" placeholder="Электронная почта" class="group_welcome__input">
                 </div>
                 <div class="form_welcome__text">
+                  @if ($errors->has('email'))
                     <div class="error-notification">Пользователя с указанной электронной почтой не существует</div>
+                  @endif
                 </div>
                 <div class="form_welcome__text form_welcome__text_button">
                     <input type="submit" id="" value="Восстановить пароль" class="form_welcome__button btn btn_ok">

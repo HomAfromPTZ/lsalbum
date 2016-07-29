@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function index(){
         if(Auth::guest()){
-            return view('index');
+            return view('auth.login');
         } else {
             return redirect('/home');
         }
