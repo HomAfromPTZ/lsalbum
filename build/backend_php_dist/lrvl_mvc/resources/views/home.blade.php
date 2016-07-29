@@ -18,9 +18,9 @@
   @include('_common.slider')
 
 
-
 <div class="page">
-    <header class="main-page" style="background-image: url({{$user['background']}});">
+
+    <header class="main-page" style="background-image: url({{$user->background}});">
         <div class="header-holder">
             <div class="fix-width">
                 <div class="user-info-holder">

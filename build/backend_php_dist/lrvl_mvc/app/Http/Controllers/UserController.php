@@ -18,6 +18,7 @@ class UserController extends Controller
                 $extension = File::extension($request->file('avatar')->getClientOriginalName());
                 $avatar = $request->file('avatar')->move('uploads/avatars/',$user->id.".".$extension);
                 $filename = '/'.$avatar->__toString().'?'.time();
+                $filename = str_replace('\\', '/', $filename);
                 $user->avatar = $filename;
                 $result['avatar'] = $filename;
             }
@@ -26,6 +27,7 @@ class UserController extends Controller
                 $extension = File::extension($request->file('background')->getClientOriginalName());
                 $background = $request->file('background')->move('uploads/backgrounds/',$user->id.".".$extension);
                 $filename = '/'.$background->__toString().'?'.time();
+                $filename = str_replace('\\', '/', $filename);
                 $user->background = $filename;
                 $result['background'] = $filename;
             }
