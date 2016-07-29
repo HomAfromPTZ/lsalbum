@@ -9,7 +9,8 @@
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
-		tinyMceL10n = require("./modules/tinymce_l10n.js");
+		setAjaxResponce = require("./modules/ajax.js");
+		// tinyMceL10n = require("./modules/tinymce_l10n.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -49,20 +50,18 @@
 	// Example
 	$(".animated-test-container").animated("slideInRight");
 
-
-
-
+	
 	// ==============================
 	// Tiny MCE example
 	// ==============================
-	tinymce.init({
-		selector: ".tinymce-field",
-		plugins: "link, image",
-		min_height: 200,
-		menubar: false,
-		toolbar1: "undo redo | bold italic | link image",
-		toolbar2: "alignleft aligncenter alignright"
-	});
+	// tinymce.init({
+	// 	selector: ".tinymce-field",
+	// 	plugins: "link, image",
+	// 	min_height: 200,
+	// 	menubar: false,
+	// 	toolbar1: "undo redo | bold italic | link image",
+	// 	toolbar2: "alignleft aligncenter alignright"
+	// });
 
 
 	// ==============================
@@ -195,8 +194,10 @@
 
 
 
-	tinyMceL10n();
+	// tinyMceL10n();
 
 	preloader();
+
+	setAjaxResponce.init();
 
 })(jQuery);

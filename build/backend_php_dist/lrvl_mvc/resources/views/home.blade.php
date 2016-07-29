@@ -1,138 +1,336 @@
 @extends('layouts.app')
 
+@section('title', 'MAIN page')
+
+@section('head')
+  @include('_common.head')
+@endsection
+
 @section('content')
-    <h2>Данные пользователя:</h2>
-    =====================================
-    <br/>Обновить данные залогиненного пользователя:
-    <form action="/user/savedata" method="post" enctype="multipart/form-data">
-        {{csrf_field()}}
-        <br/><input type="text" name="name" placeholder="Имя" value="{{$user['name']}}">
-        <br/><input type="text" name="description" placeholder="Описание" value="{{$user['description']}}">
-        <br/><input type="text" name="vk" placeholder="vkontakte" value="{{$user['vk']}}">
-        <br/><input type="text" name="facebook" placeholder="facebook" value="{{$user['facebook']}}">
-        <br/><input type="text" name="twitter" placeholder="twitter" value="{{$user['twitter']}}">
-        <br/><input type="text" name="google" placeholder="google+" value="{{$user['google']}}">
-        <br/><input type="text" name="instagram" placeholder="instagram" value="{{$user['instagram']}}">
-        <br/>Аватар: <input type="file" name="avatar">
-        <br/>Фон: <input type="file" name="background">
-        <br/><input type="submit" value="Сохранить">
-    </form>
-    <hr/>
-    <h3>Текущие данные:</h3>
-    <ul>
-        <li><a href="/user/{{$user['id']}}">Ссылка на профиль</a></li>
-        <li>Имя: {{$user['name']}}</li>
-        <li>Описание: {{$user['description']}}</li>
-        <li>Email: {{$user['email']}}</li>
-        <li>Vk: {{$user['vk']}}</li>
-        <li>Facebook: {{$user['facebook']}}</li>
-        <li>Twitter: {{$user['twitter']}}</li>
-        <li>Google: {{$user['google']}}</li>
-        <li>Instagram: {{$user['instagram']}}</li>
-        <li>Avatar: {{$user['avatar']}}</li>
-        <li>Background: {{$user['background']}}</li>
-    </ul>
-    <hr/>
-    <h2>Альбомы и фотографии</h2>
-    <a href="{{url('album/create')}}">Создать\Обновить\Удалить альбом &gt;&gt;</a> <br/>
-    <a href="{{url('photo/create')}}">Создать\Обновить\Удалить фотографию &gt;&gt;</a><br/><br/>
+  @include('_common.sprites')
+  @include('_common.preloader')
+  @include('_common.popup')
+  @include('_common.add-albums-modal')
+  @include('_common.add-photos-modal')
+  @include('_common.edit-photo-modal')
+  @include('_common.edit-user-modal')
+  @include('_common.edit-user-header')
+  @include('_common.slider')
 
-    @if(count($photos) == 0)
-        Нет фото =(
-    @else
 
-        <h3>Мои альбомы:</h3>
-        @forelse ($albums as $album)
-            <div>
-            =======================================
-            <ul>
-                <li><a href="/album/{{$album['id']}}">Ссылка на альбом</a></li>
-                <li>Id: {{$album['id']}}</li>
-                <li>Title: {{$album['title']}}</li>
-                <li>Description: {{$album['description']}}</li>
-                <li>Cover_id: {{$album['cover_id']}}</li>
-                <li>User_id: {{$album['user_id']}}</li>
-                <li>Cover:<br/>
-                <img width="100" src="{{$album->cover->img_url}}"/>
-                </li>
-            </ul>
-            =======================================
+
+<div class="page">
+    <header class="main-page" style="background-image: url({{$user['background']}});">
+        <div class="header-holder">
+            <div class="fix-width">
+                <div class="user-info-holder">
+                    <div class="user-avatar">
+                        <div class="user-avatar__img">
+                          <img id="user-avatar" src="{{$user['avatar']}}"/>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <h2 class="user-info__name">{{$user['name']}}</h2>
+                        <div class="user-info__desc">{{$user['description']}}</div>
+                        <ul class="social-links">
+                            <li class="social__item"><a href="{{$user['vk']}}" id="social__link_vk" class="social__link">
+                                    <svg class="svg-social">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
+                                    </svg></a></li>
+                            <li class="social__item"><a href="{{$user['facebook']}}" id="social__link_fb" class="social__link">
+                                    <svg class="svg-social">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
+                                    </svg></a></li>
+                            <li class="social__item"><a href="{{$user['twitter']}}" id="social__link_tw" class="social__link">
+                                    <svg class="svg-social">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
+                                    </svg></a></li>
+                            <li class="social__item"><a href="{{$user['google']}}" id="social__link_gg" class="social__link">
+                                    <svg class="svg-social">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
+                                    </svg></a></li>
+                            <li class="social__item"><a href="mailto:{{$user['email']}}" id="social__link_email" class="social__link">
+                                    <svg class="svg-social">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
+                                    </svg></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-buttons">
+                    <div class="header-buttons__item">
+                        <button class="btn btn_animated js-edit-user-header"><i class="fa fa-pencil"></i><span>Редактировать</span>
+                        </button>
+                    </div>
+                    <div class="header-buttons__item"><a href="index.html" class="btn btn_animated btn__logut"> <i class="fa fa-power-off"></i><span>Выйти</span></a></div>
+                </div>
             </div>
-        @empty
-            {{-- empty expr --}}
-        @endforelse
-
-        <h3>Последние фотографии пользователей:</h3>
-        @forelse ($photos as $photo)
-            <div>
-            =======================================
-            <ul>
-                <li>Фото id: {{$photo['id']}}</li>
-                <li>Title: {{$photo['title']}}</li>
-                <li>Description: {{$photo['description']}}</li>
-                <li>Img:<br/>
-                <img width="100" src="{{$photo['img_url']}}"/></li>
-                <li>Thumb:<br/>
-                <img width="100" src="{{$photo['thumb_url']}}"/></li>
-                <li>Album: {{$photo['album_id']}}</li>
-            </ul>
-            <div>
-                Комментарий и лайк:
-                <br/><br/>
-                <button class="like-button" data-liked="{{$photo->like->where('user_id', $auth_id)->count()}}" data-photoid="{{$photo['id']}}">Поставить лайк: <span>{{($photo->like->count())}}</span></button>
-                <br/><br/>
-                <form action="/comment/{{$photo['id']}}" method="post" enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <input type="text" name="content" placeholder="Текст комментария">
-                    <input type="submit" value="Сохранить">
-                </form>
-                <ul>
-                @forelse ($photo->comment as $comment)
-                    <li>{{$comment->content}}</li>
-                @empty
-                    <li>Комментариев нет</li>
-                @endforelse
-                </ul>
+        </div>
+    </header>
+    <div class="search-holder">
+        <div class="fix-width">
+            <form class="search-form">
+                <div class="search-form-holder">
+                    <button type="submit" class="search-form__btn fa fa-search"></button>
+                    <input type="text" placeholder="Исследовать мир" class="search-form__input">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <div class="fix-width">
+            <div class="new-photos-album">
+                <h2 class="album-title">Новое в мире</h2>
+                <div class="album-container">
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder">
+                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                            <div class="album-desc">
+                                <div class="album-desc__user">
+                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                            <svg class="svg-more">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+                                            </svg></a></div>
+                                </div>
+                                <div class="album-desc__info">
+                                    <div class="photo-desc-title">Путешествие</div>
+                                    <div class="photo-info">
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="album-category"><a href="album.html" class="category-name">
+                                    <svg class="svg-category">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
+                                    </svg><span>Прогулки по воде</span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="show-more">
+                    <button class="btn btn_transparent">Показать еще</button>
+                </div>
             </div>
-            =======================================
+        </div>
+        <div class="my-photos">
+            <div class="fix-width">
+                <div class="title-holder">
+                    <h2 class="album-title">Мои альбомы</h2>
+                    <div class="add-album-btn">
+                        <button class="btn btn_animated js-add-album"><i class="fa fa-plus"></i><span>Добавить</span></button>
+                    </div>
+                </div>
+                <div class="album-container">
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                    <div class="album-item">
+                        <div class="album-item-holder"><a href="album.html" class="my-album"><img src="assets/img/no_photo.jpg" alt=""/>
+                                <div class="album-mask">
+                                    <div class="mask-content">
+                                        <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
+                                        <div class="mask-content__count"><span>18</span>Фотографий</div>
+                                    </div>
+                                </div></a>
+                            <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        @empty
-            {{-- empty expr --}}
-        @endforelse
-    @endif
+        </div>
+    </div>
+    <footer>
+        <div class="fix-width">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
+                </div>
+                <div class="footer-column center"><img src="assets/img/footer-logo.png"></div>
+                <div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
+            </div>
+        </div>
+    </footer>
+</div>
 
-<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(".like-button").click(function(e){
-        var like_button = $(this),
-            photo_id = like_button.data("photoid"),
-            is_liked = like_button.data("liked"),
-            likes_num = parseInt(like_button.find('span').html());
+  {{-- Javascripts --}}
 
-        if(!is_liked){
-            $.ajax({
-                url: "/like/" + photo_id,
-                type: "GET",
-                dataType: "json"
-            }).done(function(resp){
-                like_button.find('span').html(++likes_num);
-                like_button.data('liked', 1);
-            }).fail(function(resp){
-                alert("Ошибка сервера");
-            });
-        } else {
-            $.ajax({
-                url: "/unlike/" + photo_id,
-                type: "GET",
-                dataType: "json"
-            }).done(function(resp){
-                like_button.find('span').html(--likes_num);
-                like_button.data('liked', 0);
-            }).fail(function(resp){
-                alert("Ошибка сервера");
-            });
-        }
-    });
-</script>
+  @include('_common._js')
 
 @endsection
