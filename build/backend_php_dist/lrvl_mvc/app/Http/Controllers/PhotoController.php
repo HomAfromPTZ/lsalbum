@@ -62,8 +62,8 @@ class PhotoController extends Controller
             $filename = '/'.$file->getPathname().'?'.time();
             $thumbnail = '/'.$thumbnail.'?'.time();
 
-            $photo->img_url = $filename;
-            $photo->thumb_url = $thumbnail;
+            $photo->img_url = str_replace('\\', '/', $filename);
+            $photo->thumb_url = str_replace('\\', '/', $thumbnail);
 
             $photo->save();
         } catch (Exception $e) {
