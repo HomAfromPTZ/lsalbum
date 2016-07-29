@@ -19,7 +19,7 @@
 			<li>Photo thumb: <br/><img width="200" src="{{$photo['thumb_url']}}"/></li>
 			<li>Photo img: {{$photo['img_url']}}</li>
 			<li>Title: {{$photo['title']}}</li>
-			<li>Description: {{$photo['description']}}</li>
+			<li>Description: {!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $photo->description)!!}</li>
 			<li>Likes: {{$photo['likes']}}</li>
 			<li>Comments: {{$photo['comments']}}</li>
 		</ul>
