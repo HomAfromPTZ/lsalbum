@@ -3,7 +3,7 @@
 @section('title', 'Вход на сайт' )
 
 @section('head')
-    @include('_common.head')
+  @include('_common.head')
 @endsection
 
 @section('content')
@@ -11,7 +11,6 @@
 @include('_common.preloader')
 @include('_common.popup')
 
-@section('content')
 <!--[if lt IE 9]>
 <p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите его</a></p>
 <![endif]-->
