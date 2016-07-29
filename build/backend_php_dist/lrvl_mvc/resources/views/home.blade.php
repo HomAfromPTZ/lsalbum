@@ -82,156 +82,42 @@
             <div class="new-photos-album">
                 <h2 class="album-title">Новое в мире</h2>
                 <div class="album-container">
+
+                @forelse ($photos as $photo)
                     <div class="album-item">
                         <div class="album-item-holder">
                             <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
+                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div>
+                                    <img src="{{$photo['thumb_url'] or "assets/img/no_photo.jpg"}} alt=""/>
+                                    </a></div>
                             <div class="album-desc">
                                 <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
+                                    <div class="photo-user-img">
+                                    <img src="{{$photo->user->avatar or "assets/img/default_avatar.jpg"}} alt=""/>
+                                    <a href="user/{{$photo->user->id}}" class="photo-user-img__mask">
                                             <svg class="svg-more">
                                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
                                             </svg></a></div>
                                 </div>
                                 <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
+                                    <div class="photo-desc-title">{{$photo['title']}}</div>
                                     <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">{{($photo->comments)}}</span></button>
+                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">{{($photo->likes)}}</span></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="album-category"><a href="album.html" class="category-name">
                                     <svg class="svg-category">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
+                                    </svg><span>{{$photo->album->title}}</span></a></div>
                         </div>
                     </div>
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
-                            <div class="album-desc">
-                                <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-                                            <svg class="svg-more">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                            </svg></a></div>
-                                </div>
-                                <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие</div>
-                                    <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="album-category"><a href="album.html" class="category-name">
-                                    <svg class="svg-category">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
-                            <div class="album-desc">
-                                <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-                                            <svg class="svg-more">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                            </svg></a></div>
-                                </div>
-                                <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
-                                    <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="album-category"><a href="album.html" class="category-name">
-                                    <svg class="svg-category">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
-                            <div class="album-desc">
-                                <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-                                            <svg class="svg-more">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                            </svg></a></div>
-                                </div>
-                                <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие</div>
-                                    <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="album-category"><a href="album.html" class="category-name">
-                                    <svg class="svg-category">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
-                            <div class="album-desc">
-                                <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-                                            <svg class="svg-more">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                            </svg></a></div>
-                                </div>
-                                <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие на лодке по озеру</div>
-                                    <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="album-category"><a href="album.html" class="category-name">
-                                    <svg class="svg-category">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                            <div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
-                                    <div class="album-mask"><i class="fa fa-search-plus"></i></div><img src="assets/img/no_photo.jpg" alt=""/></a></div>
-                            <div class="album-desc">
-                                <div class="album-desc__user">
-                                    <div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-                                            <svg class="svg-more">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                            </svg></a></div>
-                                </div>
-                                <div class="album-desc__info">
-                                    <div class="photo-desc-title">Путешествие</div>
-                                    <div class="photo-info">
-                                        <button class="photo-info__item"><i class="fa fa-commenting"> </i><span class="comment-count">10</span></button>
-                                        <button class="photo-info__item"><i class="fa fa-heart"> </i><span class="like-count">10</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="album-category"><a href="album.html" class="category-name">
-                                    <svg class="svg-category">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                                    </svg><span>Прогулки по воде</span></a></div>
-                        </div>
-                    </div>
+                @empty
+                    Фотографий нет
+                @endforelse
+                    
+
                 </div>
                 <div class="show-more">
                     <button class="btn btn_transparent">Показать еще</button>
