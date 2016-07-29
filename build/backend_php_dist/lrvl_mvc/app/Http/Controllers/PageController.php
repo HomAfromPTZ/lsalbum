@@ -21,6 +21,25 @@ class PageController extends Controller
         }
     }
 
+    public function debug(Request $request){
+        $user = Auth::user();
+        $data['user'] = $user;
+        $data['auth_id'] = $user->id;
+        $data['photos'] = Photo::latest()
+            ->take(6)
+            ->with('user')
+            ->with('comment')
+            ->with('like')
+            ->with('album')
+            ->get();
+        $data['albums'] = Album::latest()
+            ->where('user_id', $user->id)
+            ->with('cover')
+            ->get();
+        $data['url'] = $request->path();
+
+        return view('_backup_home', $data);
+    }
 
 
     public function home(Request $request){
