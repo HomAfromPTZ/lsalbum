@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'MAIN page')
+@section('title', 'Главная - '.$user['name'] )
 
 @section('head')
   @include('_common.head')

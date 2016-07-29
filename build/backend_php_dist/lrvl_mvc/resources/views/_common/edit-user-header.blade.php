@@ -1,21 +1,21 @@
 <form id="edit-user-header" class="hform hide">
   {{csrf_field()}}
-  <div class="header-holder header-holder_edit-user">
+  <div class="header-holder header-holder_edit-user" id="bg-edit-user" style="background-image: url({{$user->background}});">
     <div class="fix-width">
       <div class="change-photo change-photo_cover">
         <div class="change-photo__text">
           <label class="link"> <span class="fa fa-camera"> </span>Изменить фон
-            <input type="file" name="background" class="form__input form__input_file">
+            <input type="file" name="background" id="input_background" class="form__input form__input_file">
           </label>
         </div>
       </div>
       <div class="user-info-holder">
         <div class="user-avatar">
           <div class="change-photo change-photo_user">
-            <div class="change-photo_user__img"><img src="/assets/img/default_avatar.jpg" alt="" class="change-photo_user__pic"></div>
+            <div class="change-photo_user__img"><img src="{{$user['avatar']}}" alt="" id="preview_avatar" class="change-photo_user__pic"></div>
             <div class="change-photo__text">
               <label class="link"><span class="fa fa-camera"></span>Изменить фото
-                <input type="file" name="avatar" class="form__input form__input_file">
+                <input type="file" name="avatar" id="input_avatar" class="form__input form__input_file">
               </label>
             </div>
           </div>

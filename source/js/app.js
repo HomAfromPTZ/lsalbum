@@ -9,7 +9,8 @@
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
 		map = require("./modules/gmap.js"),
-		setAjaxResponce = require("./modules/ajax.js");
+		setAjaxResponce = require("./modules/ajax.js"),
+		imagePreview = require("./modules/image_preview.js");
 		// tinyMceL10n = require("./modules/tinymce_l10n.js");
 
 	// ==============================
@@ -199,5 +200,6 @@
 	preloader();
 
 	setAjaxResponce.init();
+	imagePreview.init();
 
 })(jQuery);
