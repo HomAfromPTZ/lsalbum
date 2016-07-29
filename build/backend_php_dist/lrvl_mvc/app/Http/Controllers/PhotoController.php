@@ -17,7 +17,7 @@ class PhotoController extends Controller
         return $photos;
     }
 
-
+    // DEBUG PHOTO CREATION (remove on prod)
     public function create(){
         $data['latest_album'] = Album::latest()->first();
         $data['latest_photo'] = Photo::latest()->first();

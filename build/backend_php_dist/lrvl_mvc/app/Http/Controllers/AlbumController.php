@@ -24,6 +24,7 @@ class AlbumController extends Controller
         return $albums;
     }
 
+    // DEBUG ALBUM CREATION (remove on prod)
     public function create(){
         $data['latest_album'] = Album::latest()->first();
         return view('album.create', $data);
