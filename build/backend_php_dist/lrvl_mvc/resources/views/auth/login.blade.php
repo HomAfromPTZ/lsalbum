@@ -64,9 +64,6 @@
                         <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
                             <input id="" name="password" type="password" placeholder="Пароль" class="group_welcome__input">
                         </div>
-                        <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input id="" name="password_confirmation" type="password" placeholder="Еще раз пароль" class="group_welcome__input">
-                        </div>
                         <div class="form_welcome__text">
                             <div class="form_welcome__span">Ваши данные остаются строго конфиденциальны</div>
                         </div>

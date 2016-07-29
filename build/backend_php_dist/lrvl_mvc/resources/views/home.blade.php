@@ -20,7 +20,7 @@
 
 <div class="page">
 
-    <header class="main-page" style="background-image: url({{ $user->avatar or "неопределено" }});">
+    <header class="main-page" style="background-image: url({{ ($user->avatar !== '') ? $user->avatar : 'assets/img/bg/main-header.jpg' }});">
         <div class="header-holder">
             <div class="fix-width">
                 <div class="user-info-holder">
