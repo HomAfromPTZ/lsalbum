@@ -19,7 +19,6 @@ Route::auth();
 // Albums
 // Route::get('/album', 'AlbumController@index');
 // Route::get('/photo', 'PhotoController@index');
-Route::get('/debug', 'PageController@debug');
 Route::get('/album/create', 'AlbumController@create');
 Route::get('/photo/create', 'PhotoController@create');
 
@@ -27,6 +26,7 @@ Route::get('/photo/create', 'PhotoController@create');
 // TODO: proper Pages, User, Photo and Album controller
 Route::group(['middleware' => 'auth'], function() {
 	// Pages
+	Route::get('/debug', 'PageController@debug');
 	Route::get('/home', 'PageController@home');
 	Route::get('/user/{id}', 'PageController@user');
 	Route::get('/search', 'PageController@search');

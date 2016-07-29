@@ -72,7 +72,9 @@
             <ul>
                 <li>Фото id: {{$photo['id']}}</li>
                 <li>Title: {{$photo['title']}}</li>
-                <li>Description: {{$photo['description']}}</li>
+                <li>Description:
+                {!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $photo->description)!!}
+                </li>
                 <li>Img:<br/>
                 <img width="100" src="{{$photo['img_url']}}"/></li>
                 <li>Thumb:<br/>
@@ -103,6 +105,7 @@
             {{-- empty expr --}}
         @endforelse
     @endif
+
 
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <script type="text/javascript">
