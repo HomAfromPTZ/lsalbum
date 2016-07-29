@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function index(){
         if(Auth::guest()){
-            return view('index');
+            return view('auth.login');
         } else {
             return redirect('/home');
         }
@@ -91,10 +91,16 @@ class PageController extends Controller
 
     public function search(Request $request){
         $s = $request->searchtext;
-
-        $photos = Photo::where('description', 'LIKE', '%'.$searchtext)
-            ->latest()
-            ->get();
+        if(preg_match("/^#\w{3,}$/", $s)){
+            $photos = Photo::where('description', 'REGEXP', '[[:<:]]'.$s.'[[:>:]]')
+                ->latest()
+                ->get();
+        } else {
+            $photos = Photo::where('description', 'LIKE', '%'.$s.'%')
+                ->orWhere('title', 'LIKE', '%'.$s.'%')
+                ->latest()
+                ->get();
+        }
 
         if($photos->count() < 1){
             return [
