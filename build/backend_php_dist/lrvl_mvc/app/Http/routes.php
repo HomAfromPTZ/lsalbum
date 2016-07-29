@@ -16,17 +16,13 @@ Route::get('/', 'PageController@index');
 Route::auth();
 
 
-// Albums
-// Route::get('/album', 'AlbumController@index');
-// Route::get('/photo', 'PhotoController@index');
+// DEBUG ALBUMS (remove on prod)
 Route::get('/album/create', 'AlbumController@create');
 Route::get('/photo/create', 'PhotoController@create');
 
-
-// TODO: proper Pages, User, Photo and Album controller
 Route::group(['middleware' => 'auth'], function() {
 	// Pages
-	Route::get('/debug', 'PageController@debug');
+	Route::get('/debug', 'PageController@debug'); // TODO: Remove on prod
 	Route::get('/home', 'PageController@home');
 	Route::get('/user/{id}', 'PageController@user');
 	Route::get('/search', 'PageController@search');
