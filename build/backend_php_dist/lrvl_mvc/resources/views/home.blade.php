@@ -20,14 +20,15 @@
 
 <div class="page">
 
-    <header class="main-page" style="background-image: url({{$user->background}});">
+    <header class="main-page" style="background-image: url({{ ($user->avatar !== '') ? $user->avatar : 'assets/img/bg/main-header.jpg' }});">
         <div class="header-holder">
             <div class="fix-width">
                 <div class="user-info-holder">
                     <div class="user-avatar">
                         <div class="user-avatar__img">
-                          <img id="user-avatar" src="{{$user['avatar']}}"/>
+                          <img id="user-avatar" src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}"/>
                         </div>
+
                     </div>
                     <div class="user-info">
                         <h2 class="user-info__name">{{$user['name']}}</h2>
