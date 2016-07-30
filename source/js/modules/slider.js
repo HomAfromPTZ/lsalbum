@@ -2,7 +2,9 @@ helpers = require("./helpers.js");
 
 var scrollbar_width = helpers.getScrollbarWidth(),
 	slider,
-	current;
+	current,
+	resizeTimeout,
+	resizeDelta = 100;
 
 function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 	slider = $(container);
@@ -42,6 +44,16 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 	});
 
 };
+
+function ajustImgHeight(){
+	// Height animation
+	var sliderPhoto = slider.find('.slider__photo'),
+		slideHeight = slider.find('.slider__img').height();
+
+	sliderPhoto.animate({
+		'height': slideHeight
+	}, 300);
+}
 
 function showNext(){
 	var nextSlide = current.next('.album-item');
@@ -87,15 +99,13 @@ function showSlide(_item){
 	slider.find('.slider__author-name').html(img_user_name);
 	slider.find('.slider__author-photo img').attr('src', img_user_avatar);
 
-
-	// Height animation
-	var sliderPhoto = slider.find('.slider__photo'),
-		slideHeight = slider.find('.slider__img').height();
-
-	sliderPhoto.animate({
-		'height': slideHeight
-	}, 300);
+	ajustImgHeight();
 }
+
+$(window).resize(function(){
+	clearTimeout(resizeTimeout);
+	resizeTimeout = setTimeout(ajustImgHeight, resizeDelta);
+});
 
 module.exports = {
 	init : init,
