@@ -81,6 +81,7 @@
 
 .slider__meta
 	padding: 18px 22px
+	position: relative
 	@extend %clearfix
 
 .slider__author-photo
@@ -93,6 +94,10 @@
 	vertical-align: middle
 	font-family: 'Panton_bold'
 	font-size: 16px
+	+media(xs)
+		display: block
+		clear: both
+		margin-top: 10px
 
 
 
@@ -100,6 +105,10 @@
 	float: right
 	vertical-align: middle
 	margin-top: 4px
+	+media(xs)
+		position: absolute
+		top: 18px
+		right: 22px
 
 .likes
 	display: block
@@ -159,13 +168,21 @@
 	float: left
 	width: 16%
 	@extend %clearfix
+	+media(xs)
+		float: none
+		margin-bottom: 10px
 
 	.photo-user-img
 		float: right
+		+media(xs)
+			float: none
 
 .comments__item-info
 	float: right
 	width: 81%
+	+media(xs)
+		float: none
+		width: 100%
 
 	.user__name
 		display: inline-block
@@ -182,14 +199,11 @@
 	font-family: 'Proximanova_light'
 	width: 100%
 	max-width: 100%
-	min-height: 100px
-	resize: none
-	min-height: 38px
-	max-height: 64px
 	margin-bottom: 10px
 	background-color: $white
 	&[contenteditable=true]:empty:not(:focus)::before
 		content: attr(data-placeholder)
+
 
 .comments__btn
 
