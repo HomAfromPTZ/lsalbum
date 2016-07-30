@@ -177,10 +177,10 @@
 		</div>
 		<div id="slider" class="slider">
 			<div class="slider__overlay">
-				<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
-				<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
-				<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 				<div class="slider__holder">
+					<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
+					<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
+					<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 					<div class="slider__photo"><img src="assets/img/slide-1.jpg" alt="" class="slider__img"></div>
 					<div class="slider__meta">
 						<div class="slider__author-photo">
@@ -208,7 +208,7 @@
 							<div class="comments__item-info">
 								<div class="user__name">Антон Черепов</div>
 								<form class="comments__form">
-									<textarea name="" placeholder="Добавить комментарий" class="input_rounded comments__textarea"></textarea>
+									<div name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"></div>
 									<button class="btn btn_transparent comments__btn">Добавить</button>
 								</form>
 							</div>

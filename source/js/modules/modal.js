@@ -7,7 +7,7 @@ function init(container, openBtn, closeBtn){
 	open.on("click", function (e){
 		e.preventDefault();
 		modal.removeClass("hide").addClass("show");
-		body.addClass('has-overflow-hidden');
+		body.addClass("has-overflow-hidden");
 	});
 
 	close.on("click", function (e){
