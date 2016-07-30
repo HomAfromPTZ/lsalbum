@@ -148,13 +148,13 @@
 	// ==============================
 	function showSocialForm(e) {
 		e.preventDefault();
-		var socialItem =  $(this).closest('.social__item');
-		socialItem.siblings().find('.social__form').hide();
-		socialItem.find('.social__form').show();
+		var socialItem =  $(this).closest(".social__item");
+		socialItem.siblings().find(".social__form").hide();
+		socialItem.find(".social__form").show();
 	}
 	function hideSocialForm(e) {
 		e.preventDefault();
-		$(this).closest('.social__form').hide();
+		$(this).closest(".social__form").hide();
 	}
 
 	if ($(".js-open-social-form").length > 0) {
