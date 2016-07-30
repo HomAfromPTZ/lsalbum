@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
+
+// DEFAULT LARAVEL HOME CONTROLLER (remove on prod)
 class HomeController extends Controller
 {
     /**

@@ -330,30 +330,7 @@
 								</form>
 							</div>
 						</div>
-						<div class="comments__item">
-							<div class="comments__item-photo">
-								<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-										<svg class="svg-more">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-										</svg></a></div>
-							</div>
-							<div class="comments__item-info">
-								<div class="user__name">Виталий Виноградов</div>
-								<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
-							</div>
-						</div>
-						<div class="comments__item">
-							<div class="comments__item-photo">
-								<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-										<svg class="svg-more">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-										</svg></a></div>
-							</div>
-							<div class="comments__item-info">
-								<div class="user__name">Татьяна Литвинова</div>
-								<div class="comments__item-text">Эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением.</div>
-							</div>
-						</div>
+						<div class="comments__holder"></div>
 					</div>
 				</div>
 			</div>
@@ -399,7 +376,7 @@
 					<div class="new-photos-album">
 						<h2 class="search-results-title">По запросу «Природа» найдено 6 результатов</h2>
 						<div class="album-container">
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -423,9 +400,35 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -449,9 +452,35 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -475,9 +504,35 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -501,9 +556,35 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -527,9 +608,35 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" class="album-item">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
 								<div class="album-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -553,6 +660,32 @@
 											<svg class="svg-category">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 											</svg><span>Прогулки по воде</span></a></div>
+									<div class="is-hidden comments_hidden">
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Виталий Виноградов"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Виталий Виноградов</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+										<div class="comments__item">
+											<div class="comments__item-photo">
+												<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt="Татьяна Литвинова"/><a href="user.html" class="photo-user-img__mask">
+														<svg class="svg-more">
+															<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
+														</svg></a></div>
+											</div>
+											<div class="comments__item-info">
+												<div class="user__name">Татьяна Литвинова</div>
+												<div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -572,9 +705,7 @@
 			</footer>
 		</div><!--[if lt IE 9]>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
-		<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 		<script src="/assets/js/vendor.js"></script>
 		<script src="/assets/js/app.js"></script>
-		<script src="/assets/js/separate_example.js"></script>
 	</body>
 </html>

@@ -12,106 +12,107 @@ html(lang="ru")
 		<p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите его</a></p>
 		<![endif]-->
 
+		+parallax
 
 		.welcome__wrapper
+			.welcome__flip-wrapper
+				.flip-container
+					.flip-card
+						.flip-card__front-side
 
-			.flip-container
-				.flip-card
-					.flip-card__front-side
+							.welcome__intro.welcome__intro_login.active
+								h1.welcome__h1 Добро пожаловать
+								div.welcome__text Перед вами сервис, который поможет вам организовать свои фотографии в&nbsp;альбомы и&nbsp;поделиться ими со&nbsp;всем миром!
 
-						.welcome__intro.welcome__intro_login.active
-							h1.welcome__h1 Добро пожаловать
-							div.welcome__text Перед вами сервис, который поможет вам организовать свои фотографии в&nbsp;альбомы и&nbsp;поделиться ими со&nbsp;всем миром!
+							.welcome__card.welcome__card_login
+								form.form.form_welcome(method="post")
 
-						.welcome__card.welcome__card_login
-							form.form.form_welcome(method="post")
+									.input-group_welcome
+										span.group_welcome__icon
+											i.fa.fa-user(aria-hidden='true')
+										input.group_welcome__input(id="", name="login" type="text", placeholder="Электронная почта")
 
-								.input-group_welcome
-									span.group_welcome__icon
-										i.fa.fa-user(aria-hidden='true')
-									input.group_welcome__input(id="", name="login" type="text", placeholder="Электронная почта")
+									.input-group_welcome.input-group_last
+										span.group_welcome__icon
+											i.fa.fa-lock(aria-hidden='true')
+										input.group_welcome__input(id="", name="password" type="password", placeholder="Пароль")
 
-								.input-group_welcome.input-group_last
-									span.group_welcome__icon
-										i.fa.fa-lock(aria-hidden='true')
-									input.group_welcome__input(id="", name="password" type="password", placeholder="Пароль")
+									.form_welcome__text
+										a.form_welcome__link#show-recovery(href="#") Забыли пароль?
 
-								.form_welcome__text
-									a.form_welcome__link#show-recovery(href="#") Забыли пароль?
+									.form_welcome__text
+										.error-notification E-mail или пароль не верен
 
-								.form_welcome__text
-									.error-notification E-mail или пароль не верен
+									.form_welcome__text.form_welcome__text_button
+											input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Войти")
 
-								.form_welcome__text.form_welcome__text_button
-										input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Войти")
+									.form_welcome__text.form_welcome__text_center
+										span.form_welcome__span Нет аккаунта? 
+										a.form_welcome__link#flip-card(href="#") Зарегистрироваться
 
-								.form_welcome__text.form_welcome__text_center
-									span.form_welcome__span Нет аккаунта? 
-									a.form_welcome__link#flip-card(href="#") Зарегистрироваться
+						.flip-card__back-side
 
-					.flip-card__back-side
+							.welcome__intro.welcome__intro_registration
+								h1.welcome__h1 Регистрация
 
-						.welcome__intro.welcome__intro_registration
-							h1.welcome__h1 Регистрация
+							.welcome__card.welcome__card_registration
+								form.form.form_welcome(method="post")
 
-						.welcome__card.welcome__card_registration
-							form.form.form_welcome(method="post")
+									.input-group_welcome
+										span.group_welcome__icon
+											i.fa.fa-user(aria-hidden='true')
+										input.group_welcome__input(id="", name="" type="email", placeholder="Имя")
 
-								.input-group_welcome
-									span.group_welcome__icon
-										i.fa.fa-user(aria-hidden='true')
-									input.group_welcome__input(id="", name="" type="email", placeholder="Имя")
+									.input-group_welcome
+										span.group_welcome__icon
+											i.fa.fa-envelope(aria-hidden='true')
+										input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
 
-								.input-group_welcome
-									span.group_welcome__icon
-										i.fa.fa-envelope(aria-hidden='true')
-									input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
+									.input-group_welcome.input-group_last
+										span.group_welcome__icon
+											i.fa.fa-lock(aria-hidden='true')
+										input.group_welcome__input(id="", name="" type="password",placeholder="Пароль")
 
-								.input-group_welcome.input-group_last
-									span.group_welcome__icon
-										i.fa.fa-lock(aria-hidden='true')
-									input.group_welcome__input(id="", name="" type="password",placeholder="Пароль")
+									.form_welcome__text
+										.form_welcome__span Ваши данные остаются строго конфиденциальны
 
-								.form_welcome__text
-									.form_welcome__span Ваши данные остаются строго конфиденциальны
+									.form_welcome__text
+										.error-notification Пользователь с указанной электронной почтой уже есть на сайте
 
-								.form_welcome__text
-									.error-notification Пользователь с указанной электронной почтой уже есть на сайте
+									.form_welcome__text.form_welcome__text_button
+											input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Создать аккаунт")
 
-								.form_welcome__text.form_welcome__text_button
-										input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Создать аккаунт")
+									.form_welcome__text.form_welcome__text_center
+										span.form_welcome__span Уже зарегистрированы? 
+										a.form_welcome__link#unflip-card(href="main.html") Войти
 
-								.form_welcome__text.form_welcome__text_center
-									span.form_welcome__span Уже зарегистрированы? 
-									a.form_welcome__link#unflip-card(href="main.html") Войти
+						.flip-card__recovery
+							.welcome__intro
+								h1.welcome__h1 Восстановление пароля
 
-			.welcome__recovery
-				.welcome__intro
-					h1.welcome__h1 Восстановление пароля
+							.welcome__card
 
-				.welcome__card
+								form.form.form_welcome.form_recovery(method="post")
+									.form_welcome__text
+										.form_welcome__span.form_welcome__span_bold Забыли пароль?
 
-					form.form.form_welcome.form_recovery(method="post")
-						.form_welcome__text
-							.form_welcome__span.form_welcome__span_bold Забыли пароль?
+									.form_welcome__text
+										.form_welcome__span Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля
 
-						.form_welcome__text
-							.form_welcome__span Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля
+									.input-group_welcome.input-group_last
+										span.group_welcome__icon
+											i.fa.fa-envelope(aria-hidden='true')
+										input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
 
-						.input-group_welcome.input-group_last
-							span.group_welcome__icon
-								i.fa.fa-envelope(aria-hidden='true')
-							input.group_welcome__input(id="", name="" type="email", placeholder="Электронная почта")
+									.form_welcome__text
+										.error-notification Пользователя с указанной электронной почтой не существует
 
-						.form_welcome__text
-							.error-notification Пользователя с указанной электронной почтой не существует
+									.form_welcome__text.form_welcome__text_button
+											input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Восстановить пароль")
 
-						.form_welcome__text.form_welcome__text_button
-								input.form_welcome__button.btn.btn_ok(type="submit" id="" value="Восстановить пароль")
-
-						.form_welcome__text.form_welcome__text_center
-							span.form_welcome__span Вспомнили пароль? 
-							a.form_welcome__link#hide-recovery(href="main.html") Войти
+									.form_welcome__text.form_welcome__text_center
+										span.form_welcome__span Вспомнили пароль? 
+										a.form_welcome__link#hide-recovery(href="main.html") Войти
 
 
 			.welcome__footer
