@@ -170,6 +170,20 @@
 		$("body").removeClass("show_recovery");
 	});
 
+	// ==============================
+	// Dropzone (Add photos)
+	// ==============================
+
+	if ($("div#dropzone").length) {
+
+		var maxFileSizeMb = 2;
+
+		$("div#dropzone").dropzone({
+		 url: "/" ,
+		 maxFilesize: maxFileSizeMb
+		});
+	}
+
 
 	preloader();
 
