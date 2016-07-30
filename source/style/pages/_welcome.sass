@@ -143,6 +143,8 @@
 	border-bottom: 1px solid #e1e1e1
 	width: 100%
 	text-align: left
+	position: relative
+
 	@extend %clearfix
 	height: rem(41)
 
@@ -154,7 +156,9 @@
 
 .group_welcome__icon
 	display: block
-	float: left
+	position: absolute
+	left: 0
+	top: 0
 	width: 15.5%
 	height: 100%
 	padding-left: 0.6rem
@@ -174,12 +178,13 @@
 .group_welcome__input
 	display: block
 	float: left
-	width: 84.5%
+	width: 100%
 	border: none
 	outline: none
 	color: #323232
 	height: 100%
 	padding-right: rem(16)
+	padding-left: 2.7rem
 
 	&:focus
 		color: #323232
