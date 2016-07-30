@@ -54,45 +54,50 @@
 	margin: 0 auto
 	perspective: 1000px
 	&__front-side,
-	&__back-side
+	&__back-side,
+	&__recovery
 		overflow: hidden
 		backface-visibility: hidden
 		transform-origin: center center
-		transition: all $transition-time_medium
+		transition: all $transition-time_slow
+		will-change: transform
 
 	&__front-side
 		position: relative
 		z-index: 2
+		transform: translate3d(0,0,0)
 
-	&__back-side
+	&__back-side,
+	&__recovery
 		position: absolute
 		z-index: 1
 		top: 0
 		width: 100%
-		transform: rotateX(-180deg)
-
-	&__recovery
-		position: absolute
-		top: 0
-		width: 100%
-		opacity: 0
 		visibility: hidden
-		transition: all 1s
+		opacity: 0
+		transform: translate3d(0,0,-500px)
+
 
 .card_flipped
 	.flip-card
 		&__front-side
-			transform: rotateX(180deg)
+			transform: translate3d(0,0,500px)
+			opacity: 0
+			visibility: hidden
 		&__back-side
-			transform: rotateY(0)
+			transform: translate3d(0,0,0)
+			opacity: 1
+			visibility: visible
 
 .show_recovery
 	.flip-card
 		&__front-side,
 		&__back-side
+			transform: translate3d(0,0,500px)
 			opacity: 0
 			visibility: hidden
 		&__recovery
+			transform: translate3d(0,0,0)
 			opacity: 1
 			visibility: visible
 
