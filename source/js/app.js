@@ -33,14 +33,24 @@
 		});
 	}
 
+
+	// ==============================
+	// Footer scroll button
+	// ==============================
+	$("#go-up").click(function(){
+		$("html, body").stop().animate({
+			scrollTop: 0
+		}, 700, "swing");
+	});
+
+
 	// ==============================
 	// Animations example
 	// ==============================
 	animations.fadePageOn("a.preload-link", "#preloader", 300);
 
 	$.fn.animated = animations.animateCss;
-	// Example
-	$(".animated-test-container").animated("slideInRight");
+	$(".album-item").animated("fadeIn");
 
 
 
