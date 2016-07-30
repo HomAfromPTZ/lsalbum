@@ -9,6 +9,7 @@ var setAjaxResponces = (function() {
     // Редактирование данных пользователя
     $('#edit-user-header').on('submit', function (e) {
       e.preventDefault();
+
       var formData = new FormData($(e.target)[0]);
 
       $.ajax({
@@ -20,7 +21,6 @@ var setAjaxResponces = (function() {
           })
           .done(function (msg) {
 // console.log(msg);
-
             if(msg.status == 'success') {
               if(msg.background !== undefined) {
                 $('.main-page').css({

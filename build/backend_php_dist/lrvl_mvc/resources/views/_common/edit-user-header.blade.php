@@ -27,58 +27,37 @@
           <div class="input-group">
             <textarea name="description" cols="30" rows="5" class="input_rounded input_rounded_user-textarea">{{$user['description']}}</textarea>
           </div>
+
+          <!--  Массив для генерации соц иконок-->
+          <?php
+            $arr_socials = array(
+                array('blade'=>'vk', 'svg'=>'vk', 'href'=>'https://vk.com/'),
+                array('blade'=>'facebook', 'svg'=>'fb', 'href'=>'https://www.facebook.com/'),
+                array('blade'=>'twitter', 'svg'=>'twitter', 'href'=>'https://www.twitter.com/'),
+                array('blade'=>'google', 'svg'=>'google', 'href'=>'https://plus.google.com/up/follow'),
+                array('blade'=>'email', 'svg'=>'email', 'href'=>'mailto:mail@gmail.com')
+            );
+          ?>
+
           <ul class="social-links">
-            <li class="social__item"><a href="https://vk.com/" id="" class="social__link js-open-social-form">
-                <svg class="svg-social">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
-                </svg></a>
-              <div class="social__form">
-                <input id="" name="vk" type="text" class="input_rounded" value="{{$user['vk']}}">
-                <button class="btn btn_transparent">Сохранить</button>
-                <button class="btn btn_link js-close-form">Отменить</button>
-              </div>
-            </li>
-            <li class="social__item"><a href="https://www.facebook.com/" id="" class="social__link js-open-social-form">
-                <svg class="svg-social">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
-                </svg></a>
-              <div class="social__form">
-                <input id="" name="facebook" type="text" class="input_rounded" value="{{$user['facebook']}}">
-                <button class="btn btn_transparent">Сохранить</button>
-                <button class="btn btn_link js-close-form">Отменить</button>
-              </div>
-            </li>
-            <li class="social__item"><a href="https://twitter.com/?lang=en" id="" class="social__link js-open-social-form">
-                <svg class="svg-social">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
-                </svg></a>
-              <div class="social__form">
-                <input id="" name="twitter" type="text" class="input_rounded" value="{{$user['twitter']}}">
-                <button class="btn btn_transparent">Сохранить</button>
-                <button class="btn btn_link js-close-form">Отменить</button>
-              </div>
-            </li>
-            <li class="social__item"><a href="https://plus.google.com/up/follow" id="" class="social__link js-open-social-form">
-                <svg class="svg-social">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
-                </svg></a>
-              <div class="social__form">
-                <input id="" name="google" type="text" class="input_rounded" value="{{$user['google']}}">
-                <button class="btn btn_transparent">Сохранить</button>
-                <button class="btn btn_link js-close-form">Отменить</button>
-              </div>
-            </li>
-            <li class="social__item"><a href="mailto:mail@gmail.com" id="" class="social__link js-open-social-form">
-                <svg class="svg-social">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
-                </svg></a>
-              <div class="social__form">
-                <input id="" name="email" type="text" class="input_rounded" value="{{$user['email']}}">
-                <button type="button" class="btn btn_transparent">Сохранить</button>
-                <button type="button" class="btn btn_link js-close-form">Отменить</button>
-              </div>
-            </li>
+
+            @foreach($arr_socials as $social)
+              <li class="social__item">
+                <button class="social__link js-open-social-form">
+                  <svg class="svg-social">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_{{ $social['svg'] }}"></use>
+                  </svg>
+                </button>
+                <div class="social__form">
+                  <input id="" name="{{ $social['blade'] }}" type="text" class="input_rounded" value="{{ $user[ $social['blade'] ] }}" data-backup="{{ $user[ $social['blade'] ] }}">
+                  <button type="button" class="btn btn_transparent js-close-form">Сохранить</button>
+                  <button type="button" class="btn btn_link js-undo-input">Отменить</button>
+                </div>
+              </li>
+            @endforeach
+
           </ul>
+
         </div>
       </div>
     </div>

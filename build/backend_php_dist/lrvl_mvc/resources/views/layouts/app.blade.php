@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-@yield('head')
-<body>
+  @yield('head')
   @yield('content')
-</body>
 </html>

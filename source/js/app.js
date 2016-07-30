@@ -2,9 +2,9 @@
 	"use strict";
 
 	var preloader = require("./modules/preloader.js"),
-		helpers = require("./modules/helpers.js"),
+		// helpers = require("./modules/helpers.js"),
 		// forms = require("./modules/forms.js"),
-		popup = require("./modules/popup.js"),
+		// popup = require("./modules/popup.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
@@ -16,12 +16,12 @@
 	// ==============================
 	// Adaptive breakpoints
 	// ==============================
-	var scrollbar_width = helpers.getScrollbarWidth(),
-		screen_sizes = {
-			mobile : 480 - scrollbar_width,
-			tablet : 768 - scrollbar_width,
-			limit : 2000 - scrollbar_width
-		};
+	// var scrollbar_width = helpers.getScrollbarWidth(),
+	// 	screen_sizes = {
+	// 		mobile : 480 - scrollbar_width,
+	// 		tablet : 768 - scrollbar_width,
+	// 		limit : 2000 - scrollbar_width
+	// 	};
 
 
 	// ==============================
@@ -146,15 +146,46 @@
 	// ==============================
 	// Show Social Items Forms
 	// ==============================
+
+	// Отображение формы
 	function showSocialForm(e) {
 		e.preventDefault();
-		var socialItem =  $(this).closest('.social__item');
-		socialItem.siblings().find('.social__form').hide();
-		socialItem.find('.social__form').show();
+		var socialItem =  $(this).closest(".social__item");
+		socialItem.siblings().find(".social__form").hide();
+		socialItem.find(".social__form").show()
+				.find('input').focus();
 	}
+
+	// Сокрытие формы
 	function hideSocialForm(e) {
 		e.preventDefault();
-		$(this).closest('.social__form').hide();
+		$(this).closest(".social__form").hide();
+	}
+
+	// Отмена изменений поля
+	function undoInput() {
+		var $input = $(this).siblings("input");
+		$input.val($input.data("backup"));
+		$input.closest(".social__form").hide();
+	}
+
+	// Реакция на нажатие клавиш на полях формы
+	if($(".social__form").length > 0) {
+		$(".social__form").find('input').on('keydown', function (e) {
+
+			// Если на поле нажата Enter - сохраняем
+			if (e.which == '13') {
+				e.preventDefault();
+				$(this).closest(".social__form").hide();
+
+				// Если на поле нажата Esc - отменяем изменение
+			} else if(e.which == '27') {
+				e.preventDefault();
+				var $input = $(this);
+				$input.val($input.data("backup"));
+				$input.closest(".social__form").hide();
+			}
+		})
 	}
 
 	if ($(".js-open-social-form").length > 0) {
@@ -162,6 +193,9 @@
 	}
 	if ($(".js-close-form").length > 0) {
 		$(".js-close-form").on("click", hideSocialForm);
+	}
+	if ($(".js-undo-input").length > 0) {
+		$(".js-undo-input").on("click", undoInput);
 	}
 
 

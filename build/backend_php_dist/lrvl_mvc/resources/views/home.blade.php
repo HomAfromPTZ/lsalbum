@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+<body>
   @include('_common.sprites')
   @include('_common.preloader')
   @include('_common.popup')
@@ -34,23 +35,23 @@
                         <h2 class="user-info__name">{{$user['name']}}</h2>
                         <div class="user-info__desc">{{$user['description']}}</div>
                         <ul class="social-links">
-                            <li class="social__item"><a href="{{$user['vk']}}" id="social__link_vk" class="social__link">
+                            <li class="social__item"><a href="{{ $user->vk }}" id="social__link_vk" class="social__link">
                                     <svg class="svg-social">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['facebook']}}" id="social__link_fb" class="social__link">
+                            <li class="social__item"><a href="{{ $user->facebook }}" id="social__link_fb" class="social__link">
                                     <svg class="svg-social">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['twitter']}}" id="social__link_tw" class="social__link">
+                            <li class="social__item"><a href="{{ $user->twitter }}" id="social__link_tw" class="social__link">
                                     <svg class="svg-social">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['google']}}" id="social__link_gg" class="social__link">
+                            <li class="social__item"><a href="{{ $user->google }}" id="social__link_gg" class="social__link">
                                     <svg class="svg-social">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="mailto:{{$user['email']}}" id="social__link_email" class="social__link">
+                            <li class="social__item"><a href="mailto:{{ $user->email }}" id="social__link_email" class="social__link">
                                     <svg class="svg-social">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
                                     </svg></a></li>
@@ -86,7 +87,7 @@
 
                     @forelse ($photos as $photo)
 
-                      <div class="album-item">
+                      <div class="album-item" data-title="{{ $photo->title }}" data-desc="{{ $photo->description }}" data-likes="{{ $photo->likes }}" data-comments="{{ $photo->comments }}" data-thumb="{{ $photo->thumb_url }}" data-user_avatar="{{ $photo->user->avatar }}" data-user_name="{{ $photo->user->name }}" >
                         <div class="album-item-holder">
                           <div class="album-photo">
                             <a href="{{$photo['img_url']}}" class="open-img-popup js-open-slider">
@@ -96,7 +97,7 @@
                           </div>
                           <div class="album-desc">
                             <div class="album-desc__user">
-                              <div class="photo-user-img"><img src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}" alt=""/>
+                              <div class="photo-user-img"><img src="{{ ($photo->user->avatar !== '') ? $photo->user->avatar : 'assets/img/default_avatar.jpg' }}" alt=""/>
                                 <a href="/user/{{$photo->user_id}}" class="photo-user-img__mask">
                                   <svg class="svg-more">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
@@ -119,7 +120,7 @@
                           <div class="album-category"><a href="album.html" class="category-name">
                               <svg class="svg-category">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                              </svg><span>{{$photo['album_id']}} Прогулки по воде</span></a></div>
+                              </svg><span>{{ $photo->album->title }}</span></a></div>
                         </div>
                       </div>
 
@@ -130,26 +131,26 @@
                     @endforelse
 
                 </div>
-              
+
               @if(count($photos) > 6)
                 <div class="show-more">
                     <button class="btn btn_transparent">Показать еще</button>
                 </div>
               @endif
-              
+
             </div>
         </div>
-      
+
         <div class="my-photos">
             <div class="fix-width">
-              
+
                 <div class="title-holder">
                     <h2 class="album-title">Мои альбомы</h2>
                     <div class="add-album-btn">
                         <button class="btn btn_animated js-add-album"><i class="fa fa-plus"></i><span>Добавить</span></button>
                     </div>
                 </div>
-              
+
                 <div class="album-container">
 
                   @forelse ($albums as $album)
@@ -161,11 +162,13 @@
 
                           <div class="album-mask">
                             <div class="mask-content">
-                              <div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-                              <div class="mask-content__count"><span>18</span>Фотографий</div>
+                              <div class="mask-content__desc">{{$album['description']}}</div>
+                              <div class="mask-content__count"><span>{{ $album->photos->count() }}</span> Фотографий</div>
                             </div>
                           </div></a>
-                        <div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+                        <div class="album-category">
+                          <a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a>
+                          <span class="category-name">{{$album['title']}}</span></div>
                       </div>
                     </div>
 
@@ -194,4 +197,5 @@
 
   @include('_common._js')
 
+</body>
 @endsection

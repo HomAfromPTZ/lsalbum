@@ -12,9 +12,9 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 
 	open.on("click", function (e){
 		e.preventDefault();
-
 		current = $(this).closest('.album-item');
-		showSlide(current);
+
+    showSlide(current);
 
 		slider.removeClass("hide").addClass("show");
 		body.addClass('has-overflow-hidden');
@@ -36,7 +36,7 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 		showPrev();
 	});
 
-};
+}
 
 
 
@@ -58,15 +58,19 @@ function showPrev(){
 
 
 function showSlide(_item){
-
+  
 		var img_thumb = _item.data('thumb');
 		var img_title = _item.data('title');
+		var img_desc = _item.data('desc');
 		var img_likes = _item.data('likes');
 		var img_user_avatar = _item.data('user_avatar');
+		var img_user_name = _item.data('user_name');
 
 		slider.find('.slider__img').attr('src', img_thumb);
 		slider.find('.slider__title').html(img_title);
+		slider.find('.slider__text').html(img_desc);
 		slider.find('.likes__count').html(img_likes);
+		slider.find('.slider__author-name').text(img_user_name);
 		slider.find('.slider__author-photo img').attr('src', img_user_avatar);
 
 
