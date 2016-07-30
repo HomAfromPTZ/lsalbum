@@ -137,3 +137,13 @@ mixin commentItem(user_avatar, user_url, user_name, comment_text)
 		.comments__item-info
 			.user__name #{user_name}
 			.comments__item-text #{comment_text}
+
+
+//- Parallax bg for login page
+mixin parallax(type)
+	- var p_type = type || "axis"
+	.parallax-wrapper
+		ul#scene(class=p_type)
+			- for (var n = 0; n < 6; n++)
+				li.layer(data-depth=(0.2*n))
+					div(class = "layer-bg layer-bg_" + n)
