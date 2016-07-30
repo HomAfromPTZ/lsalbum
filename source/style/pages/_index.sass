@@ -23,14 +23,14 @@
 
 .btn_animated
 	background: $white
-	width: 42px
 	float: right
 	padding: 0 22px
 	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22)
-	transition: width .5s
+	width: 42px
 	overflow: hidden
 	box-sizing: border-box
 	text-decoration: none
+	transition: width $transition-time
 	.fa 
 		color: #a0a09f
 		font-size: 22px
@@ -38,19 +38,18 @@
 		top: 50%
 		left: 13px
 		transform: translateY(-50%)
-	span 
+	span
 		font: 14px/42px 'Panton_bold'
 		color: $white
 		vertical-align: middle
-		display: block
-		padding: 0 0 0 20px
+		display: inline-block
+		padding-left: 20px
+		overflow: hidden
 
 	&:hover
 		background: #28bbf0
 		width: 100%
-		transition: width .5s
-		
-		.fa 
+		.fa
 			color: $white
 
 .btn_ok
@@ -168,6 +167,10 @@
 	width: 31.33%
 	margin: 0 1% 20px
 	float: left
+	+media(m)
+		width: 48%
+	+media(s)
+		width: 98%
 
 .album-item-holder
 	border-radius: 2px
@@ -189,6 +192,7 @@
 	height: 255px
 	width: 100%
 	background-size: cover
+	background-position: center center
 
 .album-mask
 	position: absolute
@@ -219,9 +223,7 @@
 		transform: translate(-50%, -50%)
 		color: $white
 		font-size: 38px
-	
-		
-		
+
 
 .album-desc
 	padding: 0 20px 28px
@@ -232,6 +234,7 @@
 .album-desc__user
 	float: left
 	width: 50px
+	max-width: 25%
 
 .photo-user-img 
 	width: 50px
@@ -266,7 +269,7 @@
 .album-desc__info
 	padding: 0 0 0 6%
 	float: left
-	width: 85%
+	width: 75%
 
 .photo-desc-title
 	font: 16px/18px 'Proximanova_light'
