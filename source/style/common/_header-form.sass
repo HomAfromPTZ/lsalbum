@@ -8,7 +8,8 @@
 	height: 100%
 	width: 100%
 	z-index: 10
-	background-color: rgba($white, .9)
+	background-color: rgba($white, .6)
+	transform-origin: center top
 	&.show
 		animation: hform-show $transition-time_medium
 		animation-fill-mode: forwards
@@ -28,18 +29,20 @@
 
 	.header-holder
 		background-size: cover
-		background-position:  50% 0
+		background-position: 50% 0
 		background-repeat: no-repeat
 		position: relative
 
-		&.header-holder_edit-user
+		&_edit-user
 			background-image: url(../img/bg/main-header.jpg)
-			padding: rem(35) 0 rem(60)
-		&.header-holder_edit-album
+			padding: 53px 0 60px
+			+media(s)
+				padding: 20px 0 40px
+		&_edit-album
 			background-image: url(../img/bg/main-header.jpg)
-			padding: rem(20) 0 rem(36)
+			padding: 20px 0 36px
 
-		&:before
+		&::before
 			position: absolute
 			display: block
 			top: 0
@@ -52,28 +55,37 @@
 	.hform__footer
 		text-align: right
 		padding: rem(9)
+		background: $white
+		box-shadow: 0 1px 100px 50px rgba($black, .7)
+		+media(xs)
+			text-align: center
 		.btn_ok
 			float: right
 			margin-right: 31px
 			font-size: 14px
 
 	.change-photo_cover
-		position: absolute
-		right: 39px
-		top: 71px
+		float: left
+		width: 20%
+		+media(s)
+			float: none
+			margin: 30px auto 40px
+			width: 30%
 
-	.user-avatar
-		vertical-align: top
-	.change-photo_user 
+	.change-photo_user
 		border-radius: 50%
-		border: 3px solid #fff
+		border: 3px solid $white
 		width: 120px
 		height: 120px
 		overflow: hidden
-		margin: 21px auto 0
+		margin: 0 auto
 		position: relative
 		text-align: center
 		color: $white
+		+media(s)
+			width: 100px
+			height: 100px
+
 	.change-photo_user__img
 		.change-photo_user__pic
 			position: absolute
@@ -98,9 +110,12 @@
 			margin-top: 20px
 			position: relative
 			display: block
-			font-size: 38px
+			font-size: rem(38)
 			padding-bottom: 5px
 			color: inherit
+			+media(s)
+				margin-top: 15px
+				font-size: rem(30)
 		.link
 			position: relative
 			color: inherit
@@ -112,12 +127,13 @@
 	.input-group
 		margin-bottom: .6em
 	.input_rounded
-		min-width: rem(480)
-		padding-top: .7em
-		padding-bottom: .7em
+		width: 100%
+		padding: 5px
+		font-size: rem(21)
+		line-height: 1
 		&_user-textarea
 			display: block
-			max-height: rem(64)
+			height: 40px
 
 	.social__item
 		position: relative
@@ -167,21 +183,21 @@
 // =================================
 @keyframes hform-show
 	0%
-		// top: -100%
+		transform: perspective(1000px) rotateX(45deg) translate3d(0,0,500px)
 		visibility: hidden
 		opacity: 0
 	100%
-		// top: 0
+		transform: perspective(1000px) rotateX(0deg) translate3d(0,0,0)
 		visibility: visible
 		opacity: 1
 
 @keyframes hform-hide
 	0%
-		// top: 0
+		transform: perspective(1000px) rotateX(0deg) translate3d(0,0,0)
 		visibility: visible
 		opacity: 1
 	100%
-		// top: -100%
+		transform: perspective(1000px) rotateX(45deg) translate3d(0,0,500px)
 		visibility: hidden
 		opacity: 0
 
