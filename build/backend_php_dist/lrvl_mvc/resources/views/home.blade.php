@@ -84,15 +84,14 @@
                 <h2 class="album-title">Новое в мире</h2>
                 <div class="album-container">
 
-
                     @forelse ($photos as $photo)
 
                       <div class="album-item" data-title="{{ $photo->title }}" data-desc="{{ $photo->description }}" data-likes="{{ $photo->likes }}" data-comments="{{ $photo->comments }}" data-thumb="{{ $photo->thumb_url }}" data-user_avatar="{{ $photo->user->avatar }}" data-user_name="{{ $photo->user->name }}" >
                         <div class="album-item-holder">
                           <div class="album-photo">
-                            <a href="{{$photo['img_url']}}" class="open-img-popup js-open-slider">
+                            <a href="{{$photo->img_url}}" class="open-img-popup js-open-slider">
                               <div class="album-mask"><i class="fa fa-search-plus"></i></div>
-                              <img src="{{$photo['thumb_url']}}" alt=""/>
+                              <div class="album-photo__thumb" style="background-image: url('{{$photo->thumb_url}}')"></div>
                             </a>
                           </div>
                           <div class="album-desc">
@@ -129,6 +128,7 @@
                       <h2>no photos yet</h2>
 
                     @endforelse
+
 
                 </div>
 

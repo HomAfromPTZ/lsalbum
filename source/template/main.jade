@@ -12,7 +12,6 @@ html(lang="ru")
 		include common/_edit-user-modal
 		include common/_edit-user-header
 		include common/_slider
-		include common/_gmapApi
 		.page
 			header.main-page
 				.header-holder
@@ -45,12 +44,12 @@ html(lang="ru")
 					.new-photos-album
 						h2.album-title Новое в мире
 						.album-container
-							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "slide-1.jpg", "default_avatar.jpg")
-							+albumItem("Путешествие", "Прогулки по воде", "9", "9", "bg/welcome-bg.jpg", "default_avatar.jpg")
-							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "8", "8", "no_photo.jpg", "default_avatar.jpg")
-							+albumItem("Путешествие", "Прогулки по воде", "7", "7", "no_photo.jpg", "default_avatar.jpg")
-							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "6", "6", "no_photo.jpg", "default_avatar.jpg")
-							+albumItem("Путешествие", "Прогулки по воде", "5", "5", "no_photo.jpg", "default_avatar.jpg")
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "slide-1.jpg", "default_avatar.jpg", "Виталий Винорадов", "Мы отправились в #поездку")
+							+albumItem("Путешествие", "Прогулки по воде", "9", "9", "bg/welcome-bg.jpg", "default_avatar.jpg", "Анна Богданова", "Мы отправились в #путешествие")
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "8", "8", "no_photo.jpg", "default_avatar.jpg", "Виталий Винорадов", "Мы отправились в #поездку")
+							+albumItem("Путешествие", "Прогулки по воде", "7", "7", "no_photo.jpg", "default_avatar.jpg", "Анна Богданова", "Мы отправились в #путешествие")
+							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "6", "6", "no_photo.jpg", "default_avatar.jpg", "Виталий Винорадов", "Мы отправились в #поездку")
+							+albumItem("Путешествие", "Прогулки по воде", "5", "5", "no_photo.jpg", "default_avatar.jpg", "Анна Богданова", "Мы отправились в #путешествие")
 						.show-more
 							button.btn.btn_transparent Показать еще
 				.my-photos

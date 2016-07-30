@@ -3,15 +3,11 @@
 
 	var preloader = require("./modules/preloader.js"),
 		// helpers = require("./modules/helpers.js"),
-		// forms = require("./modules/forms.js"),
-		// popup = require("./modules/popup.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
-		map = require("./modules/gmap.js"),
 		setAjaxResponce = require("./modules/ajax.js"),
 		imagePreview = require("./modules/image_preview.js");
-		// tinyMceL10n = require("./modules/tinymce_l10n.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -23,23 +19,18 @@
 	// 		limit : 2000 - scrollbar_width
 	// 	};
 
+	// ==============================
+	// Parallax
+	// ==============================
 
-	// ==============================
-	// Popup example
-	// ==============================
-	// popup.init("#hm-popup", ".hm-popup__text", ".hm-popup__close");
-	// popup.showPopup("Screen breakpoints:<br/>Mobile: " + screen_sizes.mobile + "<br/>Tablet: " + screen_sizes.tablet, 2000);
-
-	// ==============================
-	// Google map init example
-	// ==============================
-	if($("#map-test-container").length){
-		var container_id = "map-test-container",
-			center_lat = 59.8939942,
-			center_lng = 30.4368229,
-			zoom = 17;
-
-		google.maps.event.addDomListener(window, "load", map.init(container_id, center_lat, center_lng, zoom));
+	// Main page mouse parallax
+	if($("#scene.axis").length){
+		$("#scene.axis").parallax({
+			scalarX: 3,
+			scalarY: 3,
+			frictionX: 0.5,
+			frictionY: 0.5
+		});
 	}
 
 	// ==============================
@@ -51,45 +42,33 @@
 	// Example
 	$(".animated-test-container").animated("slideInRight");
 
-	
-	// ==============================
-	// Tiny MCE example
-	// ==============================
-	// tinymce.init({
-	// 	selector: ".tinymce-field",
-	// 	plugins: "link, image",
-	// 	min_height: 200,
-	// 	menubar: false,
-	// 	toolbar1: "undo redo | bold italic | link image",
-	// 	toolbar2: "alignleft aligncenter alignright"
-	// });
 
 
 	// ==============================
 	// Init Add Album Modal
 	// ==============================
-	if ($(".js-add-album").length > 0) {
+	if ($(".js-add-album").length) {
 		modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init Add Photos Modal
 	// ==============================
-	if ($(".js-add-photos").length > 0) {
+	if ($(".js-add-photos").length) {
 		modal.init("#add-photos-modal", ".js-add-photos", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init Edit Photo Modal
 	// ==============================
-	if ($(".js-edit-photo").length > 0) {
+	if ($(".js-edit-photo").length) {
 		modal.init("#edit-photo-modal", ".js-edit-photo", ".js-close-modal");
 	}
 
 	// ==============================
 	// Init Edit User Modal
 	// ==============================
-	if ($(".js-edit-user").length > 0) {
+	if ($(".js-edit-user").length) {
 		modal.init("#edit-user-modal", ".js-edit-user", ".js-close-modal");
 	}
 
@@ -97,14 +76,14 @@
 	// ==============================
 	// Init Edit User Modal (in Header)
 	// ==============================
-	if ($(".js-edit-user-header").length > 0) {
+	if ($(".js-edit-user-header").length) {
 		modal.init("#edit-user-header", ".js-edit-user-header", ".js-close-header");
 	}
 
 	// ==============================
 	// Init Edit Album Modal (in Header)
 	// ==============================
-	if ($(".js-edit-album-header").length > 0) {
+	if ($(".js-edit-album-header").length) {
 		modal.init("#edit-album-header", ".js-edit-album-header", ".js-close-header");
 	}
 
@@ -225,11 +204,6 @@
 		$("body").removeClass("show_recovery");
 	});
 
-
-
-
-
-	// tinyMceL10n();
 
 	preloader();
 
