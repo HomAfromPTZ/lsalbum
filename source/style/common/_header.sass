@@ -1,8 +1,10 @@
-/*HEADER*/
-header
+//===============================================
+//	HEADER
+//===============================================
+.header
 	display: table-row
 	width: 100%
-	&.main-page
+	&_main
 		background-image: url(../img/bg/main-header.jpg)
 		background-repeat: no-repeat
 		background-size: cover
@@ -64,49 +66,79 @@ header
 		line-height: 1
 		padding: 0 0 26px
 
+.user-info-holder,
 .user-avatar,
-.user-info,
-.user-info-holder
+.user-info
 	+media(s)
 		display: block
 		text-align: center
 		width: 100%
 		padding: 0
 
-/*SOCIAL*/
+
+
+//===============================================
+//	SOCIAL LINKS
+//===============================================
 .social-links
 	margin: 0
 	padding: 0
 	list-style: none
 
-.social__item
-	display: inline-block
-	vertical-align: top
-	margin-right: 6px
-	&:last-child
-		margin-right: 0
-	+media(s)
-		margin-top: 10px
-		margin-right: 10px
+	&__item
+		display: inline-block
+		vertical-align: top
+		margin-right: 6px
+		position: relative
+		&:last-child
+			margin-right: 0
+		+media(s)
+			margin-top: 10px
+			margin-right: 10px
 
-.social__link
-	text-decoration: none
-	display: block
-	opacity: .8
+	&__link
+		text-decoration: none
+		display: block
+		opacity: .8
 
-	&:hover .svg-social
-		opacity: 1
+		&:hover .svg-social
+			opacity: 1
 
-.svg-social
-	width: 20px
-	height: 20px
-	fill: $white
-	opacity: .8
-	+media(s)
-		width: 30px
-		height: 30px
+	&__svg
+		width: 20px
+		height: 20px
+		fill: $white
+		opacity: .8
+		+media(s)
+			width: 30px
+			height: 30px
 
-/*HEADER BUTTONS*/
+	&__form
+		position: absolute
+		display: none
+		background: $white
+		padding: 11px
+		top: 30px
+		left: 0
+		transform: translateX(-47.5%)
+		width: 280px
+		border-radius: 3px
+		box-shadow: 0 1px 4px rgba($black, .15)
+		&:before
+			content: ''
+			position: absolute
+			display: block
+			bottom: 100%
+			left: 50%
+			margin-left: -2px
+			border: 4px solid transparent
+			border-bottom-color: $white
+
+
+
+//===============================================
+//	HEADER BUTTONS
+//===============================================
 .header-buttons
 	position: absolute
 	right: 40px
@@ -126,29 +158,43 @@ header
 
 
 
-/*SEARCH PAGE*/
+//===============================================
+//	SEARCH PAGE
+//===============================================
 .search-page
-	.header-holder
-		padding: 20px 0
-
-	header
+	.header
 		background: none
-	
-	.user-avatar
-		width: 100px
+		&-holder
+			padding: 20px 0
 
-	.user-avatar__img
-		width: 50px
-		height: 50px
+	.user-info-holder
+		display: flex
+		align-items: center
+		+media(s)
+			display: none
+		.user-avatar
+			width: 50px
+			margin: 0 10px
+			&__img
+				width: 50px
+				height: 50px
 
-	.user-info__name
-		margin: 0
-		font-size: 16px
-		color: $light_black
+		.user-info
+			width: auto
+			padding-left: 0
+			margin-top: 0
+			&__name
+				margin: 0
+				font-size: 16px
+				color: $light_black
+				text-align: left
 
-/*ALBUM PAGE*/
+
+
+//===============================================
+//	ALBUM PAGE
+//===============================================
 .my-album-page
-
 	.header-holder
 		padding: 20px 0 66px
 

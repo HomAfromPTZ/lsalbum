@@ -21,45 +21,45 @@
 	height: rem(42)
 	line-height: rem(42)
 
-.btn_animated
-	background: $white
-	float: right
-	padding: 0 22px
-	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22)
-	width: 42px
-	overflow: hidden
-	box-sizing: border-box
-	text-decoration: none
-	transition: width $transition-time, background $transition-time
-
-	.fa 
-		color: #a0a09f
-		font-size: 22px
-		position: absolute
-		top: 50%
-		left: 13px
-		transform: translateY(-50%)
-	span
-		font: 14px/42px 'Panton_bold'
-		color: $white
-		vertical-align: middle
-		display: inline-block
-		padding-left: 20px
+	&_animated
+		background: $white
+		float: right
+		padding: 0 22px
+		box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.22)
+		width: 42px
 		overflow: hidden
-		+media(s)
-			display: none
+		box-sizing: border-box
+		text-decoration: none
+		transition: width $transition-time, background $transition-time
 
-	&:hover
-		background: #28bbf0
-		width: 100%
 		.fa
+			color: #a0a09f
+			font-size: 22px
+			position: absolute
+			top: 50%
+			left: 13px
+			transform: translateY(-50%)
+		span
+			font: 14px/42px 'Panton_bold'
 			color: $white
+			vertical-align: middle
+			display: inline-block
+			padding-left: 20px
+			overflow: hidden
+			+media(s)
+				display: none
+
+		&:hover
+			background: $maincolor
+			width: 100%
+			.fa
+				color: $white
 
 .btn_ok
-	background-color: #28bbf0
+	background-color: $maincolor
 	font-family: 'Proximanova_semibold'
 	border: none
-	color: #fff
+	color: $white
 	transition: background 0.3s
 	padding: 0 14px
 	&:hover
@@ -69,7 +69,7 @@
 	background-color: #ee4634
 	font-family: 'Proximanova_semibold'
 	border: none
-	color: #fff
+	color: $white
 	transition: background 0.3s
 	padding: 0 14px
 	&:hover
@@ -83,24 +83,24 @@
 			display: none
 
 .btn_transparent
-	color: #20b6ed
-	border: 1px solid #20b6ed
+	color: $maincolor
+	border: 1px solid $maincolor
 	background-color: transparent
 	transition: all 0.3s
 	line-height: 1
 	padding: 0 15px
 	line-height: rem(42)
 	&:hover
-		color: #fff
+		color: $white
 		border: 1px solid #20b6ed
 		background-color: #20b6ed
 .btn_link
-	color: #28bbf0
+	color: $maincolor
 	padding: 0 14px
 	&:hover
 		color: #24b0e3
 .link
-	color: #28bbf0
+	color: $maincolor
 	cursor: pointer
 	&:hover
 		color: #24b0e3

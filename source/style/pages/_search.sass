@@ -1,5 +1,4 @@
 .search-page
-	
 	.search-holder
 		padding: 6px 0
 
@@ -9,7 +8,7 @@
 
 	.show-new
 		text-decoration: none;
-		color: #28bbf0
+		color: $maincolor
 		font: 16px/18px "Proximanova_semibold"
 		margin: 16px 0 0
 		display: inline-block
@@ -25,10 +24,18 @@
 	width: 31.33%
 	margin: 0 1% 0
 	float: left
+	+media(s)
+		width: 100%
+		text-align: center
 
 .seach-page-title
-	font: 42px/44px "Proximanova_semibold"
+	font-family: "Proximanova_semibold"
+	font-size: rem(42)
+	line-height: 1
 	text-align: center
+	+media(xs)
+		text-align: left
+		font-size: rem(34)
 
 .search-results-title
 	font: 21px/23px "Panton_bold"
