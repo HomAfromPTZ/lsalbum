@@ -33,14 +33,24 @@
 		});
 	}
 
+
+	// ==============================
+	// Footer scroll button
+	// ==============================
+	$("#go-up").click(function(){
+		$("html, body").stop().animate({
+			scrollTop: 0
+		}, 700, "swing");
+	});
+
+
 	// ==============================
 	// Animations example
 	// ==============================
 	animations.fadePageOn("a.preload-link", "#preloader", 300);
 
 	$.fn.animated = animations.animateCss;
-	// Example
-	$(".animated-test-container").animated("slideInRight");
+	$(".album-item").animated("fadeIn");
 
 
 
@@ -103,11 +113,11 @@
 		$(".photo-editing").slideDown(300);
 	}
 
-	if ($(".js-show-photo-removing").length > 0) {
+	if ($(".js-show-photo-removing").length) {
 		$(".js-show-photo-removing").on("click", showPhotoRemovingBlock);
 	}
 
-	if ($(".js-hide-photo-removing").length > 0) {
+	if ($(".js-hide-photo-removing").length) {
 		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
 	}
 
@@ -131,15 +141,16 @@
 		socialItem.siblings().find(".social__form").hide();
 		socialItem.find(".social__form").show();
 	}
+
 	function hideSocialForm(e) {
 		e.preventDefault();
 		$(this).closest(".social__form").hide();
 	}
 
-	if ($(".js-open-social-form").length > 0) {
+	if ($(".js-open-social-form").length) {
 		$(".js-open-social-form").on("click", showSocialForm);
 	}
-	if ($(".js-close-form").length > 0) {
+	if ($(".js-close-form").length) {
 		$(".js-close-form").on("click", hideSocialForm);
 	}
 
@@ -169,6 +180,20 @@
 		e.preventDefault();
 		$("body").removeClass("show_recovery");
 	});
+
+	// ==============================
+	// Dropzone (Add photos)
+	// ==============================
+
+	if ($("div#dropzone").length) {
+
+		var maxFileSizeMb = 2;
+
+		$("div#dropzone").dropzone({
+			url: "/" ,
+			maxFilesize: maxFileSizeMb
+		});
+	}
 
 
 	preloader();

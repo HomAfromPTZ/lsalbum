@@ -1,32 +1,59 @@
 footer
-	background: url(../img/bg/footer-bg.jpg) 50% 0 no-repeat
+	background-image: url(../img/bg/footer-bg.jpg)
+	background-size: cover
+	background-position: center center
+	background-repeat: no-repeat
 	width: 100%
 	overflow: hidden
 	display: table-row
 	vertical-align: bottom
 
+#go-up
+	cursor: pointer
+
 .footer-content
 	width: 100%
 	overflow: hidden
 	padding: 14px 0
+	position: relative
 
 .footer-column
 	width: 40%
-	float: left
 	text-align: left
 	font: 16px/24px 'Proximanova_light'
 	color: $white
-	
+	+media(xs)
+		float: none
+		width: 100%
+		text-align: center
+		margin-top: 20px
+
+	&.left
+		float: left
+		+media(xs)
+			margin-top: 60px
+
 	&.center
 		width: 20%
+		float: left
 		text-align: center
+		+media(xs)
+			position: absolute
+			top: 14px
+			margin: 0
+			width: 100%
 
 		img
 			padding: 8px 0 0 0
+			display: block
+			margin: 0 auto
 
 	&.right
+		float: right
 		text-align: right
 		opacity: 0.4
+		+media(xs)
+			text-align: center
 
 		.year
 			border-right: 1px solid rgba(#fff, .4)

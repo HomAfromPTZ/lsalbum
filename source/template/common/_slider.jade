@@ -1,12 +1,12 @@
 #slider.slider
 	.slider__overlay
-		.slider__btn.slider__btn_close.js-close-slider
-			span.fa.fa-close
-		.slider__btn.slider__btn_left.js-slider-prev
-			span.fa.fa-chevron-left
-		.slider__btn.slider__btn_right.js-slider-next
-			span.fa.fa-chevron-right
 		.slider__holder
+			.slider__btn.slider__btn_close.js-close-slider
+				span.fa.fa-close
+			.slider__btn.slider__btn_left.js-slider-prev
+				span.fa.fa-chevron-left
+			.slider__btn.slider__btn_right.js-slider-next
+				span.fa.fa-chevron-right
 
 			.slider__photo
 
@@ -43,7 +43,8 @@
 						.user__name
 							| Антон Черепов
 						form.comments__form
-							textarea.input_rounded.comments__textarea(name="", placeholder="Добавить комментарий")
+							div.input_rounded.comments__textarea(name="", contentEditable="true", data-placeholder="Добавить комментарий")
+							//- textarea.input_rounded.comments__textarea(name="", placeholder="Добавить комментарий")
 							button.btn.btn_transparent.comments__btn
 								| Добавить
 				.comments__holder

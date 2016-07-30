@@ -9,6 +9,11 @@ header
 
 .header-holder
 	padding: 53px 0 60px
+	+media(xs)
+		padding: 20px 0 40px
+
+
+
 /*USER AVATAR*/
 .user-avatar
 	@extend %tableAlign
@@ -21,6 +26,9 @@ header
 		height: 120px
 		overflow: hidden
 		margin: 0 auto
+		+media(xs)
+			width: 100px
+			height: 100px
 
 /*USER INFO*/
 .user-info-holder
@@ -32,6 +40,8 @@ header
 	color: $white
 	width: 400px
 	padding: 0 0 0 20px
+	+media(xs)
+		margin-top: 15px
 
 .user-info__name
 	font: 21px/23px "Panton_bold"
@@ -42,6 +52,15 @@ header
 	font-family: "Proximanova_light"
 	line-height: 24px
 	padding: 0 0 26px
+
+.user-avatar,
+.user-info,
+.user-info-holder
+	+media(xs)
+		display: block
+		text-align: center
+		width: 100%
+		padding: 0
 
 /*SOCIAL*/
 .social-links
@@ -68,16 +87,24 @@ header
 	height: 20px
 	fill: $white
 	opacity: .8
-/*HRADER BUTTONS*/
+
+/*HEADER BUTTONS*/
 .header-buttons
 	position: absolute
 	right: 40px
 	top: 20px
+	+media(xs)
+		right: 10px
+		left: 10px
 
 	&__item
 		float: right
 		clear: both
 		padding: 0 0 6px
+		+media(xs)
+			&:nth-child(2)
+				position: absolute
+				left: 0
 
 
 
