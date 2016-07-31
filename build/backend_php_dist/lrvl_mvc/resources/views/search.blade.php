@@ -47,7 +47,7 @@
 
         <form class="search-form" action="/search">
           <button type="submit" class="search-form__btn fa fa-search"></button>
-          <input name="q" type="text" placeholder="Исследовать мир" class="search-form__input"/>
+          <input name="searchtext" type="text" placeholder="Исследовать мир" class="search-form__input"/>
         </form>
 
         <a href="#" class="show-new">Показать новые</a>
@@ -57,7 +57,10 @@
     <div class="content">
       <div class="fix-width">
         <div class="new-photos-album">
-          <h3 class="search-results-title">По запросу &laquo;{{ $_GET['q'] }}&raquo; найдено * результатов:</h3>
+          <h3 class="search-results-title">
+            <? (isset($_GET['searchtext'])) ? $searchtext = "По запросу &laquo;".$_GET['searchtext'] ."&raquo; найдено * результатов:" : $searchtext = 'Пожалуйста, введите поисковый запрос' ?>
+            {{ $searchtext }}
+          </h3>
 
           <div class="album-container">
 

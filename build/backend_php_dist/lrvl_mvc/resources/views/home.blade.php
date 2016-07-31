@@ -60,10 +60,10 @@
 
 		<div class="search-holder">
 			<div class="fix-width">
-				<form class="search-form" action="/search">
+				<form class="search-form" action="/search/">
 					<div class="search-form-holder">
 						<button type="submit" class="search-form__btn fa fa-search"></button>
-						<input name="q" type="text" placeholder="Исследовать мир" class="search-form__input">
+						<input name="searchtext" type="text" placeholder="Исследовать мир" class="search-form__input">
 					</div>
 				</form>
 			</div>
@@ -83,8 +83,7 @@
 					  data-user_id="{{ $photo->user->id }}"
 						data-user_avatar="{{$photo->user->avatar}}"
 						data-user_name="{{$photo->user->name}}"
-						data-desc="{{$photo->description}}"
-						>
+						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $photo->description)!!}">
 						<div class="album-item-holder">
 							<div class="album-photo">
 								<a href="#" class="open-img-popup js-open-slider">
@@ -118,7 +117,7 @@
 								</div>
 							</div>
 							<div class="album-category">
-								<a href="album.html" class="category-name">
+								<a href="/album/{{ $photo->album->id }}" class="category-name">
 									<svg class="svg-category">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
 									</svg>
@@ -131,8 +130,8 @@
 								<div class="comments__item">
 									<div class="comments__item-photo">
 										<div class="photo-user-img">
-											<img src="{{$comment->user->avatar}}" alt="{{$comment->user->name}}"/>
-											<a href="user.html" class="photo-user-img__mask">
+											<img src="{{ $comment->user->avatar }}" alt="{{ $comment->user->name }}"/>
+											<a href="/user/{{ $comment->user->id }}" class="photo-user-img__mask">
 												<svg class="svg-more">
 													<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
 												</svg>
@@ -145,7 +144,7 @@
 									</div>
 								</div>
 								@empty
-								Нет комментариев
+									Нет комментариев
 								@endforelse
 
 							</div>
@@ -191,8 +190,8 @@
 
 								<div class="album-mask">
 									<div class="mask-content">
-										<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-										<div class="mask-content__count"><span>18</span>Фотографий</div>
+										<div class="mask-content__desc">{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $album->description)!!}</div>
+										<div class="mask-content__count"><span>{{$album->photos->count()}} </span>Фотографий</div>
 									</div>
 								</div></a>
 								<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>

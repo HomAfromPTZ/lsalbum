@@ -33,7 +33,7 @@
 					<div class="comments__item-info">
 						<div class="user__name">{{ $user->name }}</div>
 						<form class="comments__form">
-							<div name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"></div>
+							<input name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"/>
 							<button class="btn btn_transparent comments__btn">Добавить</button>
 						</form>
 					</div>

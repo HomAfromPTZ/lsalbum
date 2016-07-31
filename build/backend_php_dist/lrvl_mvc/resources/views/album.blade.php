@@ -35,10 +35,14 @@
 					</div>
 					<div class="header-content">
 						<h1 class="my-album-title">{{ $album->title }}</h1>
-						<div class="my-album-desc">{{ $album->description }}</div>
+						<div class="my-album-desc">{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $album->description)!!}</div>
 					</div>
 					<div class="header-buttons">
-						<div class="header-buttons__item"><a href="main.html" class="btn btn_animated"><i class="fa fa-home"></i><span>На главную</span></a></div>
+						<div class="header-buttons__item">
+              <a href="/" class="btn btn_animated"><i class="fa fa-home"></i>
+                <span>На главную</span>
+              </a>
+            </div>
 						<div class="header-buttons__item">
 							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
 						</div>
@@ -97,16 +101,13 @@
                 </div>
 
                 <div class="is-hidden comments_hidden">
-
-
-<!--                  TODO: $photo['comments'] -->
-
-                  @forelse ($photos as $comment)
+                  
+                  @forelse ($photo->comment as $comment)
                     <div class="comments__item">
                       <div class="comments__item-photo">
                         <div class="photo-user-img">
-                          <img src="/assets/img/default_avatar.jpg" alt="Виталий Виноградов"/>
-                          <a href="user.html" class="photo-user-img__mask">
+                          <img src="/assets/img/default_avatar.jpg" alt="{{ $comment->user->name }}"/>
+                          <a href="/user/{{ $comment->user->id }}" class="photo-user-img__mask">
                             <svg class="svg-more">
                               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
                             </svg>
@@ -114,8 +115,8 @@
                         </div>
                       </div>
                       <div class="comments__item-info">
-                        <div class="user__name">Виталий Виноградов</div>
-                        <div class="comments__item-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением. Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца.</div>
+                        <div class="user__name">{{ $comment->user->name }}</div>
+                        <div class="comments__item-text">{{ $comment->content }}</div>
                       </div>
                     </div>
                   @empty
