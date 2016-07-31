@@ -3,13 +3,14 @@
 	background-color: rgba($black, 0.9)
 	width: 100%
 	height: 100%
+	min-width: 320px
 	left: 0
 	top: 0
 	z-index: 10
+	overflow-x: hidden
 	overflow-y: scroll
 	padding-top: 10%
 	padding-bottom: 10%
-	
 	visibility: hidden
 	opacity: 0
 
@@ -20,36 +21,23 @@
 			animation: none
 			visibility: visible
 			opacity: 1
-		.hm-modal__content
-			animation: slider-content-show $transition-time_medium
-			animation-fill-mode: forwards
-			+media(xs)
-				animation: none
-				visibility: visible
 	&.hide
 		animation: slider-hide $transition-time_medium
+		overflow: hidden
 		+media(xs)
 			animation: none
 			visibility: hidden
 			opacity: 0
-		.hm-modal__content
-			animation: slider-content-hide $transition-time_medium
-			animation-fill-mode: forwards
-			+media(xs)
-				animation: none
 
 .slider__overlay
-	width: 80%
-	margin: 0 auto
-	max-width: 680px
+	width: 100%
 	position: relative
 
 // buttons
 .slider__btn
 	position: absolute
-	
 	.fa
-		transition: color 0.3s
+		transition: color $transition-time
 		color: $white
 		font-size: rem(30)
 		cursor: pointer
@@ -58,27 +46,30 @@
 			color: rgba($white, 0.8)
 
 .slider__btn_close
-	top: -28px
-	right: -68px
+	top: rem(-31)
+	right: -10%
 
 .slider__btn_left
 	top: 220px
-	left: -60px
+	left: -10%
 
 .slider__btn_right
 	top: 220px
-	right: -60px
+	right: -10%
 
 // holder
 .slider__holder
+	margin: 0 auto
 	background-color: $white
+	width: 600px
+	max-width: 80%
 	border-radius: 3px
-	overflow: hidden
+	position: relative
 
 .slider__photo
 	position: relative
 	overflow: hidden
-	background-color: #f6f6f6
+	background-color: $gray
 
 
 .slider__img
@@ -87,6 +78,7 @@
 
 .slider__meta
 	padding: 18px 22px
+	position: relative
 	@extend %clearfix
 
 .slider__author-photo
@@ -99,6 +91,10 @@
 	vertical-align: middle
 	font-family: 'Panton_bold'
 	font-size: 16px
+	+media(xs)
+		display: block
+		clear: both
+		margin-top: 10px
 
 
 
@@ -106,16 +102,18 @@
 	float: right
 	vertical-align: middle
 	margin-top: 4px
+	+media(xs)
+		position: absolute
+		top: 18px
+		right: 22px
 
 .likes
 	display: block
 	background-color: #ee4634
-	color: #fff
+	color: $white
 	padding: 0 18px
 	border-radius: 20px
 	cursor: pointer
-
-	&:hover
 
 
 
@@ -142,7 +140,7 @@
 	font-size: 15.4px
 
 .slider__comments
-	background-color: #f6f6f6
+	background-color: $gray
 	padding-bottom: 20px
 	padding-top: 32px
 	position: relative
@@ -165,13 +163,21 @@
 	float: left
 	width: 16%
 	@extend %clearfix
+	+media(xs)
+		float: none
+		margin-bottom: 10px
 
 	.photo-user-img
 		float: right
+		+media(xs)
+			float: none
 
 .comments__item-info
 	float: right
 	width: 81%
+	+media(xs)
+		float: none
+		width: 100%
 
 	.user__name
 		display: inline-block
@@ -185,19 +191,21 @@
 	line-height: 1.5
 
 .comments__textarea
+	font-family: 'Proximanova_light'
 	width: 100%
 	max-width: 100%
-	height: 38px
-	min-height: 38px
-	max-height: 64px
 	margin-bottom: 10px
+	background-color: $white
+	&[contenteditable=true]:empty:not(:focus)::before
+		content: attr(data-placeholder)
+
 
 .comments__btn
 
 
 .hashtag
 	cursor: pointer
-	color: #28bbf0
+	color: $maincolor
 	font-family: 'Proximanova_semibold'
 
 

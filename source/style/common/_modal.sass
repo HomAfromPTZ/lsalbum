@@ -16,13 +16,14 @@
 		position: relative
 	&__content
 		position: relative
-		width: 680px
+		width: 80%
+		min-width: 300px
+		max-width: 800px
 		padding: 0
-		max-width: 80%
 		margin: 0 auto
 		text-align: left
 		max-height: 100%
-		overflow-y: scroll
+		// overflow-y: scroll
 	&__text
 		font-family: "Pantonbold", sans-serif
 		margin: 0
@@ -76,7 +77,7 @@
 		@extend %clearfix
 		border-radius: 4px 4px 0 0
 	&__title
-		color: #323232
+		color: $black_light
 		font-family: 'Panton_bold'
 		font-size: rem(21)
 		float: left
@@ -90,7 +91,7 @@
 			color: #a0a09f
 
 	&__text
-		padding: rem(38) rem(20) rem(16)
+		padding: 38px 35px 20px
 
 	&__footer
 		background-color: #f1f1f1
@@ -107,29 +108,42 @@
 	.label_left
 		width: 18%
 		float: left
-		padding: 0.7rem rem(20)
+		margin-right: 2%
+		padding: 10px 20px
 		vertical-align: top
 		font-family: 'Proximanova_semibold'
-		margin-left: 2%
 		text-align: right
+		+media(s)
+			width: 100%
+			text-align: left
 
 	textarea.input_rounded
 		height: 7.5rem
-		max-width: 80%
-		min-width: 80%
+		width: 80%
+		+media(s)
+			width: 100%
 
 	.input_rounded
 		width: 80%
 		float: left
-		
+		+media(s)
+			width: 100%
+
 	.input-group_upload
 		font-size: 0
+		width: 100%
 		.image-preview-holder
 			display: inline-block
 			width: 18%
 			margin-right: 2%
+			padding: 10px 20px
 			vertical-align: middle
 			text-align: right
+			float: left
+			+media(s)
+				width: 70px
+				text-align: left
+				padding: 10px 10px
 		.image-preview
 			border-radius: 50%
 			overflow: hidden
@@ -138,6 +152,8 @@
 			height: 50px
 			float: right
 			position: relative
+			+media(s)
+				float: none
 
 			.image-preview__pic
 				position: absolute
@@ -153,18 +169,30 @@
 		.file-label
 			display: inline-block
 			font-family: 'Panton_bold'
-			margin-right: 1.2rem
+			margin-top: 15px
+			margin-right: 2%
 			font-size: rem(14)
 			vertical-align: middle
-
+			width: 30%
+			text-align: center
+			float: left
+			+media(s)
+				width: auto
+				margin-right: 0
+				padding: 0 10px
 			.form__input_file
 				display: none
+
 		.form__notice
-			font-family: 'Proximanova_light-italic'
 			display: inline-block
-			max-width: 12rem
+			font-family: 'Proximanova_light-italic'
 			font-size: rem(14)
+			margin-top: 20px
 			vertical-align: middle
+			width: 48%
+			float: left
+			+media(s)
+				width: 100%
 
 .form_add-photo
 	&__row
@@ -175,37 +203,7 @@
 	&__subtitle2
 		font-family: 'Proximanova_light'
 
-.dropzone 
-	border-radius: rem(16)
-	border: 2px dashed #f1f1f1
-	background-color: #f9f9f9
-	width: 100%
-	height: rem(330)
-	padding: rem(20)
-	text-align: center
-	color: #555
-	position: relative
-	&__inner-text
-		position: absolute
-		left: 0
-		right: 0
-		margin: 0 auto
-		top: 50%
-		transform: translateY(-50%)
-		width: 50%
-		max-width: rem(200)
-		font-size: rem(15)
-		line-height: 1.5rem
-	&__fa
-		display: block
-		font-size: 36px
-		margin-bottom: rem(14)
-	&__text
-		
-	.link
-		
-		.form__input_file
-			display: none
+
 
 .photo-removing
 	display: none

@@ -44,10 +44,10 @@
 		</div>
 		<div id="slider" class="slider">
 			<div class="slider__overlay">
-				<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
-				<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
-				<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 				<div class="slider__holder">
+					<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
+					<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
+					<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 					<div class="slider__photo"><img src="assets/img/slide-1.jpg" alt="" class="slider__img"></div>
 					<div class="slider__meta">
 						<div class="slider__author-photo">
@@ -75,7 +75,7 @@
 							<div class="comments__item-info">
 								<div class="user__name">Антон Черепов</div>
 								<form class="comments__form">
-									<textarea name="" placeholder="Добавить комментарий" class="input_rounded comments__textarea"></textarea>
+									<div name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"></div>
 									<button class="btn btn_transparent comments__btn">Добавить</button>
 								</form>
 							</div>
@@ -86,7 +86,7 @@
 			</div>
 		</div>
 		<div class="page">
-			<header class="main-page">
+			<header class="header header_user">
 				<div class="header-holder">
 					<div class="fix-width">
 						<div class="user-info-holder">
@@ -94,27 +94,27 @@
 								<div class="user-avatar__img"><img src="assets/img/default_avatar.jpg"/></div>
 							</div>
 							<div class="user-info">
-								<h2 class="user-info__name">Антон Черепов</h2>
+								<h3 class="user-info__name">Антон Черепов</h3>
 								<div class="user-info__desc">Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.</div>
 								<ul class="social-links">
-									<li class="social__item"><a href="https://vk.com/" id="" class="social__link">
-											<svg class="svg-social">
+									<li class="social-links__item"><a href="https://vk.com/" class="social-links__link">
+											<svg class="social-links__svg">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
 											</svg></a></li>
-									<li class="social__item"><a href="https://www.facebook.com/" id="" class="social__link">
-											<svg class="svg-social">
+									<li class="social-links__item"><a href="https://www.facebook.com/" class="social-links__link">
+											<svg class="social-links__svg">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
 											</svg></a></li>
-									<li class="social__item"><a href="https://twitter.com/?lang=en" id="" class="social__link">
-											<svg class="svg-social">
+									<li class="social-links__item"><a href="https://twitter.com/?lang=en" class="social-links__link">
+											<svg class="social-links__svg">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
 											</svg></a></li>
-									<li class="social__item"><a href="https://plus.google.com/up/follow" id="" class="social__link">
-											<svg class="svg-social">
+									<li class="social-links__item"><a href="https://plus.google.com/up/follow" class="social-links__link">
+											<svg class="social-links__svg">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
 											</svg></a></li>
-									<li class="social__item"><a href="mailto:mail@gmail.com" id="" class="social__link">
-											<svg class="svg-social">
+									<li class="social-links__item"><a href="mailto:mail@gmail.com" class="social-links__link">
+											<svg class="social-links__svg">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
 											</svg></a></li>
 								</ul>
@@ -129,10 +129,8 @@
 			<div class="search-holder">
 				<div class="fix-width">
 					<form class="search-form">
-						<div class="search-form-holder">
-							<button type="submit" class="search-form__btn fa fa-search"></button>
-							<input type="text" placeholder="Исследовать мир" class="search-form__input">
-						</div>
+						<button type="submit" class="search-form__btn fa fa-search"></button>
+						<input type="text" placeholder="Исследовать мир" class="search-form__input"/>
 					</form>
 				</div>
 			</div>
@@ -148,7 +146,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -159,7 +157,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -170,7 +168,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -181,7 +179,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -192,7 +190,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -203,7 +201,7 @@
 										<div class="album-mask">
 											<div class="mask-content">
 												<div class="mask-content__desc">Фотографии природы леса, енотов и оленей...</div>
-												<div class="mask-content__count"><span>18</span>Фотографий</div>
+												<div class="mask-content__count"><span>18</span> Фотографий</div>
 											</div>
 										</div></a>
 									<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
@@ -216,10 +214,10 @@
 			<footer>
 				<div class="fix-width">
 					<div class="footer-content">
-						<div class="footer-column">
+						<div class="footer-column left">
 							<p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
 						</div>
-						<div class="footer-column center"><img src="assets/img/footer-logo.png"></div>
+						<div class="footer-column center"><img src="assets/img/footer-logo.png" id="go-up"></div>
 						<div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
 					</div>
 				</div>

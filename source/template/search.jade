@@ -10,10 +10,9 @@ html(lang="ru")
 		include common/_add-photos-modal
 		include common/_edit-photo-modal
 		include common/_edit-user-modal
-		include common/_edit-user-header
 		include common/_slider
 		.page
-			header.main-page
+			header.header.header_search
 				.header-holder
 					.fix-width
 						h1.seach-page-title Исследуй мир
@@ -24,24 +23,17 @@ html(lang="ru")
 									span На главную
 			.search-holder
 				.fix-width
-					.search-column-holder
-						.search-column
-							.user-info-holder
-								.user-avatar
-									+avatar
-								.user-info
-									h2.user-info__name Антон Черепов
-						.search-column
-							form.search-form
-								.search-form-holder
-									button(type="submit" class="search-form__btn fa fa-search")
-									input(type="text" class="search-form__input" placeholder="Исследовать мир")
-						.search-column
-							a.show-new(href="#") Показать новые
+					.user-info-holder
+						.user-avatar
+							+avatar
+						.user-info
+							h3.user-info__name Антон Черепов
+					+search-form
+					a.show-new(href="#") Показать новые
 			.content
 				.fix-width
 					.new-photos-album
-						h2.search-results-title По запросу «Природа» найдено 6 результатов
+						h3.search-results-title По запросу «Природа» найдено 6 результатов
 						.album-container
 							+albumItem("Путешествие на лодке по озеру", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg", "Анна Богданова", "Мы отправились в #путешествие")
 							+albumItem("Путешествие", "Прогулки по воде", "10", "10", "no_photo.jpg", "default_avatar.jpg", "Виталий Винорадов", "Мы отправились в #поездку")

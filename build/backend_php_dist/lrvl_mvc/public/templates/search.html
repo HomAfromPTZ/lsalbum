@@ -202,101 +202,12 @@
 				</div>
 			</div>
 		</div>
-		<div id="edit-user-header" class="hform hide">
-			<div class="header-holder header-holder_edit-user">
-				<div class="fix-width">
-					<div class="change-photo change-photo_cover">
-						<div class="change-photo__text">
-							<label class="link"> <span class="fa fa-camera"> </span>Изменить фон
-								<input type="file" name="" class="form__input form__input_file">
-							</label>
-						</div>
-					</div>
-					<div class="user-info-holder">
-						<div class="user-avatar">
-							<div class="change-photo change-photo_user">
-								<div class="change-photo_user__img"><img src="/assets/img/default_avatar.jpg" alt="" class="change-photo_user__pic"></div>
-								<div class="change-photo__text">
-									<label class="link"><span class="fa fa-camera"></span>Изменить фото
-										<input type="file" name="" class="form__input form__input_file">
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="user-info">
-							<div class="input-group">
-								<input id="" name="" type="text" class="input_rounded">
-							</div>
-							<div class="input-group">
-								<textarea name="" cols="30" rows="5" class="input_rounded input_rounded_user-textarea"></textarea>
-							</div>
-							<ul class="social-links">
-								<li class="social__item"><a href="https://vk.com/" id="" class="social__link js-open-social-form">
-										<svg class="svg-social">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
-										</svg></a>
-									<div class="social__form">
-										<input id="" name="" type="text" class="input_rounded">
-										<button class="btn btn_transparent">Сохранить</button>
-										<button class="btn btn_link js-close-form">Отменить</button>
-									</div>
-								</li>
-								<li class="social__item"><a href="https://www.facebook.com/" id="" class="social__link js-open-social-form">
-										<svg class="svg-social">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
-										</svg></a>
-									<div class="social__form">
-										<input id="" name="" type="text" class="input_rounded">
-										<button class="btn btn_transparent">Сохранить</button>
-										<button class="btn btn_link js-close-form">Отменить</button>
-									</div>
-								</li>
-								<li class="social__item"><a href="https://twitter.com/?lang=en" id="" class="social__link js-open-social-form">
-										<svg class="svg-social">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
-										</svg></a>
-									<div class="social__form">
-										<input id="" name="" type="text" class="input_rounded">
-										<button class="btn btn_transparent">Сохранить</button>
-										<button class="btn btn_link js-close-form">Отменить</button>
-									</div>
-								</li>
-								<li class="social__item"><a href="https://plus.google.com/up/follow" id="" class="social__link js-open-social-form">
-										<svg class="svg-social">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
-										</svg></a>
-									<div class="social__form">
-										<input id="" name="" type="text" class="input_rounded">
-										<button class="btn btn_transparent">Сохранить</button>
-										<button class="btn btn_link js-close-form">Отменить</button>
-									</div>
-								</li>
-								<li class="social__item"><a href="mailto:mail@gmail.com" id="" class="social__link js-open-social-form">
-										<svg class="svg-social">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
-										</svg></a>
-									<div class="social__form">
-										<input id="" name="" type="text" class="input_rounded">
-										<button class="btn btn_transparent">Сохранить</button>
-										<button class="btn btn_link js-close-form">Отменить</button>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="hform__footer">
-				<button class="btn btn_ok">Сохранить</button>
-				<button class="btn btn_link js-close-header">Отменить</button>
-			</div>
-		</div>
 		<div id="slider" class="slider">
 			<div class="slider__overlay">
-				<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
-				<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
-				<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 				<div class="slider__holder">
+					<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
+					<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
+					<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
 					<div class="slider__photo"><img src="assets/img/slide-1.jpg" alt="" class="slider__img"></div>
 					<div class="slider__meta">
 						<div class="slider__author-photo">
@@ -324,7 +235,7 @@
 							<div class="comments__item-info">
 								<div class="user__name">Антон Черепов</div>
 								<form class="comments__form">
-									<textarea name="" placeholder="Добавить комментарий" class="input_rounded comments__textarea"></textarea>
+									<div name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"></div>
 									<button class="btn btn_transparent comments__btn">Добавить</button>
 								</form>
 							</div>
@@ -335,7 +246,7 @@
 			</div>
 		</div>
 		<div class="page">
-			<header class="main-page">
+			<header class="header header_search">
 				<div class="header-holder">
 					<div class="fix-width">
 						<h1 class="seach-page-title">Исследуй мир</h1>
@@ -347,33 +258,24 @@
 			</header>
 			<div class="search-holder">
 				<div class="fix-width">
-					<div class="search-column-holder">
-						<div class="search-column">
-							<div class="user-info-holder">
-								<div class="user-avatar">
-									<div class="user-avatar__img"><img src="assets/img/default_avatar.jpg"/></div>
-								</div>
-								<div class="user-info">
-									<h2 class="user-info__name">Антон Черепов</h2>
-								</div>
-							</div>
+					<div class="user-info-holder">
+						<div class="user-avatar">
+							<div class="user-avatar__img"><img src="assets/img/default_avatar.jpg"/></div>
 						</div>
-						<div class="search-column">
-							<form class="search-form">
-								<div class="search-form-holder">
-									<button type="submit" class="search-form__btn fa fa-search"></button>
-									<input type="text" placeholder="Исследовать мир" class="search-form__input">
-								</div>
-							</form>
+						<div class="user-info">
+							<h3 class="user-info__name">Антон Черепов</h3>
 						</div>
-						<div class="search-column"><a href="#" class="show-new">Показать новые</a></div>
 					</div>
+					<form class="search-form">
+						<button type="submit" class="search-form__btn fa fa-search"></button>
+						<input type="text" placeholder="Исследовать мир" class="search-form__input"/>
+					</form><a href="#" class="show-new">Показать новые</a>
 				</div>
 			</div>
 			<div class="content">
 				<div class="fix-width">
 					<div class="new-photos-album">
-						<h2 class="search-results-title">По запросу «Природа» найдено 6 результатов</h2>
+						<h3 class="search-results-title">По запросу «Природа» найдено 6 результатов</h3>
 						<div class="album-container">
 							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
 								<div class="album-item-holder">
@@ -694,10 +596,10 @@
 			<footer>
 				<div class="fix-width">
 					<div class="footer-content">
-						<div class="footer-column">
+						<div class="footer-column left">
 							<p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
 						</div>
-						<div class="footer-column center"><img src="assets/img/footer-logo.png"></div>
+						<div class="footer-column center"><img src="assets/img/footer-logo.png" id="go-up"></div>
 						<div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
 					</div>
 				</div>

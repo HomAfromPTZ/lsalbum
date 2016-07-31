@@ -4,13 +4,6 @@
 	.header-holder.header-holder_edit-user
 		.fix-width
 
-			.change-photo.change-photo_cover
-				.change-photo__text
-					label.link 
-						span.fa.fa-camera 
-						| Изменить фон
-						input.form__input.form__input_file(type="file", name="")
-
 			.user-info-holder
 
 				.user-avatar
@@ -25,68 +18,21 @@
 								| Изменить фото
 								input.form__input.form__input_file(type="file", name="")
 
-
 				.user-info
 					.input-group
 						input.input_rounded(id="", name="" type="text")
 
-
 					.input-group
 						textarea.input_rounded.input_rounded_user-textarea(name="", cols="30", rows="5")
 
-					ul.social-links
-						li.social__item
+					+socialsBlock_edit
 
-							a.social__link.js-open-social-form(href='https://vk.com/', id='')
-								svg.svg-social
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-soc_vk')
-
-							.social__form
-								input.input_rounded(id="", name="" type="text")
-								button.btn.btn_transparent Сохранить
-								button.btn.btn_link.js-close-form Отменить
-
-
-						li.social__item
-							a.social__link.js-open-social-form(href='https://www.facebook.com/', id='')
-								svg.svg-social
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-soc_fb')
-
-							.social__form
-								input.input_rounded(id="", name="" type="text")
-								button.btn.btn_transparent Сохранить
-								button.btn.btn_link.js-close-form Отменить
-
-						li.social__item
-							a.social__link.js-open-social-form(href='https://twitter.com/?lang=en', id='')
-								svg.svg-social
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-soc_twitter')
-										
-							.social__form
-								input.input_rounded(id="", name="" type="text")
-								button.btn.btn_transparent Сохранить
-								button.btn.btn_link.js-close-form Отменить
-
-						li.social__item
-							a.social__link.js-open-social-form(href='https://plus.google.com/up/follow', id='')
-								svg.svg-social
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-soc_google')
-										
-							.social__form
-								input.input_rounded(id="", name="" type="text")
-								button.btn.btn_transparent Сохранить
-								button.btn.btn_link.js-close-form Отменить
-
-						li.social__item
-							a.social__link.js-open-social-form(href='mailto:mail@gmail.com', id='')
-								svg.svg-social
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#icon-soc_email')
-										
-							.social__form
-								input.input_rounded(id="", name="" type="text")
-								button.btn.btn_transparent Сохранить
-								button.btn.btn_link.js-close-form Отменить
-
+			.change-photo.change-photo_cover
+				.change-photo__text
+					label.link 
+						span.fa.fa-camera 
+						| Изменить фон
+						input.form__input.form__input_file(type="file", name="")
 
 	.hform__footer
 		button.btn.btn_ok Сохранить
