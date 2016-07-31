@@ -12,6 +12,7 @@
 	@include('_common.preloader')
 	@include('_common.popup')
 	@include('_common.add-albums-modal')
+	@include('_common.edit-album-header')
 	@include('_common.add-photos-modal')
 	@include('_common.edit-photo-modal')
 	@include('_common.edit-user-modal')
@@ -132,17 +133,8 @@
 				</div>
 			</div>
 		</div>
-		<footer>
-			<div class="fix-width">
-				<div class="footer-content">
-					<div class="footer-column left">
-						<p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
-					</div>
-					<div class="footer-column center"><img src="/assets/img/footer-logo.png" id="go-up"></div>
-					<div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
-				</div>
-			</div>
-		</footer>
+    
+    @include('_common.footer')
 	</div>
 
 

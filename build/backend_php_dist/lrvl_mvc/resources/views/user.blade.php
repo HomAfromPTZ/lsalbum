@@ -51,9 +51,9 @@
     </header>
     <div class="search-holder">
         <div class="fix-width">
-            <form class="search-form">
+            <form class="search-form" action="/search">
                 <button type="submit" class="search-form__btn fa fa-search"></button>
-                <input type="text" placeholder="Исследовать мир" class="search-form__input"/>
+                <input name="q" type="text" placeholder="Исследовать мир" class="search-form__input"/>
             </form>
         </div>
     </div>
@@ -93,17 +93,8 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="fix-width">
-            <div class="footer-content">
-                <div class="footer-column left">
-                    <p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
-                </div>
-                <div class="footer-column center"><img src="/assets/img/footer-logo.png" id="go-up"></div>
-                <div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
-            </div>
-        </div>
-    </footer>
+  
+    @include('_common.footer')
 </div>
 
 

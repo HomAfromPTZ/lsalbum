@@ -37,7 +37,7 @@
 							<div class="user-info__desc">{{$user['description']}}</div>
 
 							@include('_common.show-socials')
-							
+
 						</div>
 					</div>
 					<div class="header-buttons">
@@ -60,10 +60,10 @@
 
 		<div class="search-holder">
 			<div class="fix-width">
-				<form class="search-form">
+				<form class="search-form" action="/search">
 					<div class="search-form-holder">
 						<button type="submit" class="search-form__btn fa fa-search"></button>
-						<input type="text" placeholder="Исследовать мир" class="search-form__input">
+						<input name="q" type="text" placeholder="Исследовать мир" class="search-form__input">
 					</div>
 				</form>
 			</div>
@@ -207,6 +207,7 @@
 				</div>
 			</div>
 		</div>
+
 		@include('_common.footer')
 	</div>
 
