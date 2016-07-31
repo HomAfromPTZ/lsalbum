@@ -2,7 +2,7 @@ include common/_mixins
 doctype html
 html(lang="ru")
 	include common/_head
-	body
+	body.main-page
 		include common/_sprites
 		include common/_preloader
 		include common/_popup
@@ -13,14 +13,14 @@ html(lang="ru")
 		include common/_edit-user-header
 		include common/_slider
 		.page
-			header.main-page
+			header.header.header_main
 				.header-holder
 					.fix-width
 						.user-info-holder
 							.user-avatar
 								+avatar
 							.user-info
-								h2.user-info__name Антон Черепов
+								h3.user-info__name Антон Черепов
 								.user-info__desc Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.
 								+socialsBlock
 						.header-buttons
@@ -35,10 +35,8 @@ html(lang="ru")
 									span Выйти
 			.search-holder
 				.fix-width
-					form.search-form
-						.search-form-holder
-							button(type="submit" class="search-form__btn fa fa-search")
-							input(type="text" class="search-form__input" placeholder="Исследовать мир")
+					+search-form
+
 			.content
 				.fix-width
 					.new-photos-album

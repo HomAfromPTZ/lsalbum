@@ -35,12 +35,10 @@
 
 		&_edit-user
 			background-image: url(../img/bg/main-header.jpg)
-			padding: 53px 0 60px
-			+media(s)
-				padding: 20px 0 40px
+
 		&_edit-album
 			background-image: url(../img/bg/main-header.jpg)
-			padding: 20px 0 36px
+			padding-top: 20px
 
 		&::before
 			position: absolute
@@ -129,49 +127,20 @@
 	.input_rounded
 		width: 100%
 		padding: 5px
+		margin-bottom: 10px
 		font-size: rem(21)
 		line-height: 1
+		&:last-child
+			margin-bottom: 0
 		&_user-textarea
 			display: block
 			height: 40px
 
-	.social__item
-		position: relative
-		.social__form
-			position: absolute
-			display: none
-			background: #fff
-			padding: 11px
-			left: 0
-			transform: translateX(-47.5%)
-			width: 280px
-			top: 30px
-			border-radius: 3px
-			box-shadow: 0 1px 4px rgba(0,0,0,.15)
-			&:before
-				position: absolute
-				display: block
-				bottom: 100%
-				left: 50%
-				margin-left: -2px
-				width: 0
-				height: 0
-				content: ''
-				border: 4px solid $white
-				border-left-color: transparent
-				border-top-color: transparent
-				border-right-color: transparent
 
-
-			.input_rounded
-				min-width: 0
-				width: 100%
-				margin-bottom: 11px
 
 	.user-info-holder_edit-album
 		position: absolute
 	.header-content_edit-album
-		padding: rem(42) 0 0
 		position: relative
 	.input_header-album
 		width: 100%
