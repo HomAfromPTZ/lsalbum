@@ -129,7 +129,7 @@
 								<div class="album-desc__user">
 									<div class="photo-user-img">
 										<img src="{{$photo->user->avatar}}"/>
-										<a href="user.html" class="photo-user-img__mask">
+										<a href="/user/{{$photo->user->id}}" class="photo-user-img__mask">
 											<svg class="svg-more">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
 											</svg>
