@@ -77,7 +77,7 @@
       <div class="change-photo change-photo_cover">
         <div class="change-photo__text">
           <label class="link"> <span class="fa fa-camera"> </span>Изменить фон
-            <input type="file" name="" class="form__input form__input_file">
+            <input type="file" name="background" id="input_background" class="form__input form__input_file">
           </label>
         </div>
       </div>
