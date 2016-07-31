@@ -114,6 +114,7 @@
 						data-likes="{{$photo->likes}}"
 						data-comments="{{$photo->comments}}"
 						data-thumb="{{$photo->thumb_url}}"
+					  data-user_id="{{ $photo->user->id }}"
 						data-user_avatar="{{$photo->user->avatar}}"
 						data-user_name="{{$photo->user->name}}"
 						data-desc="{{$photo->description}}"
