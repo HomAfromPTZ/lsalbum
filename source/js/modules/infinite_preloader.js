@@ -25,10 +25,10 @@ module.exports = function preloader() {
 
 	function done_loading(){
 		preloader_percentage.css({"animation":"none"});
-		// preloader_container.delay(700).fadeOut(700, function(){
-		// 	// Callbacks, e.g.:
-		// 	preloader_percentage.remove();
-		// });
+		preloader_container.delay(700).fadeOut(700, function(){
+			// Callbacks, e.g.:
+			preloader_percentage.remove();
+		});
 	}
 
 	function images_loop (total) {
