@@ -63,6 +63,13 @@
 	}
 
 	// ==============================
+	// Init Edit Album Modal
+	// ==============================
+	if ($(".js-edit-album").length) {
+		modal.init("#edit-album-modal", ".js-edit-album", ".js-close-modal");
+	}
+
+	// ==============================
 	// Init Add Photos Modal
 	// ==============================
 	if ($(".js-add-photos").length) {
@@ -102,24 +109,24 @@
 	// ==============================
 	// Edit User Modal - Delete Photo
 	// ==============================
-	function showPhotoRemovingBlock(e) {
+	function showRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-editing").slideUp(300);
-		$(".photo-removing").slideDown(300);
+		$(this).closest('.hm-modal__content').find(".editing-block").slideUp(300);
+		$(this).closest('.hm-modal__content').find(".removing-block").slideDown(300);
 	}
 
-	function hidePhotoRemovingBlock(e) {
+	function hideRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-removing").slideUp(300);
-		$(".photo-editing").slideDown(300);
+		$(this).closest('.hm-modal__content').find(".removing-block").slideUp(300);
+		$(this).closest('.hm-modal__content').find(".editing-block").slideDown(300);
 	}
 
-	if ($(".js-show-photo-removing").length) {
-		$(".js-show-photo-removing").on("click", showPhotoRemovingBlock);
+	if ($(".js-show-removing-block").length) {
+		$(".js-show-removing-block").on("click", showRemovingBlock);
 	}
 
-	if ($(".js-hide-photo-removing").length) {
-		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
+	if ($(".js-hide-removing-block").length) {
+		$(".js-hide-removing-block").on("click", hideRemovingBlock);
 	}
 
 
