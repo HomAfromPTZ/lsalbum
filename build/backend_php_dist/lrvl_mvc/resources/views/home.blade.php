@@ -35,43 +35,9 @@
 						<div class="user-info">
 							<h3 class="user-info__name">{{$user['name']}}</h3>
 							<div class="user-info__desc">{{$user['description']}}</div>
-							<ul class="social-links">
-								<li class="social-links__item">
-									<a href="{{$user['vk']}}" id="social__link_vk" class="social-links__link">
-										<svg class="social-links__svg">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
-										</svg>
-									</a>
-								</li>
-								<li class="social-links__item">
-									<a href="{{$user['facebook']}}" id="social__link_fb" class="social-links__link">
-										<svg class="social-links__svg">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
-										</svg>
-									</a>
-								</li>
-								<li class="social-links__item">
-									<a href="{{$user['twitter']}}" id="social__link_tw" class="social-links__link">
-										<svg class="social-links__svg">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
-										</svg>
-									</a>
-								</li>
-								<li class="social-links__item">
-									<a href="{{$user['google']}}" id="social__link_gg" class="social-links__link">
-										<svg class="social-links__svg">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
-										</svg>
-									</a>
-								</li>
-								<li class="social-links__item">
-									<a href="mailto:{{$user['email']}}" id="social__link_email" class="social-links__link">
-										<svg class="social-links__svg">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
-										</svg>
-									</a>
-								</li>
-							</ul>
+
+							@include('_common.show-socials')
+							
 						</div>
 					</div>
 					<div class="header-buttons">

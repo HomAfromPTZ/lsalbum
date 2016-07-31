@@ -30,7 +30,7 @@
         <div class="hm-modal__footer">
           <button class="btn btn_ok">Сохранить</button>
           <button class="btn btn_link js-close-modal">Отменить</button>
-          <button class="btn btn_red"><span class="fa fa-trash"></span><span>Удалить</span></button>
+<!--          <button class="btn btn_red"><span class="fa fa-trash"></span><span>Удалить</span></button>-->
         </div>
       </form>
     </div>

@@ -34,21 +34,23 @@
           <!--  Массив для генерации соц иконок-->
           <?php
             $arr_socials = array(
-                array('blade'=>'vk', 'svg'=>'vk', 'href'=>'https://vk.com/'),
-                array('blade'=>'facebook', 'svg'=>'fb', 'href'=>'https://www.facebook.com/'),
-                array('blade'=>'twitter', 'svg'=>'twitter', 'href'=>'https://www.twitter.com/'),
-                array('blade'=>'google', 'svg'=>'google', 'href'=>'https://plus.google.com/up/follow'),
-                array('blade'=>'email', 'svg'=>'email', 'href'=>'mailto:mail@gmail.com')
+                array('blade'=>'vk', 'svg'=>'vk'),
+                array('blade'=>'facebook', 'svg'=>'fb'),
+                array('blade'=>'twitter', 'svg'=>'twitter'),
+                array('blade'=>'google', 'svg'=>'google'),
+                array('blade'=>'email', 'svg'=>'email')
             );
           ?>
 
           <ul class="social-links">
 
             @foreach($arr_socials as $social)
-              <li class="social-links__item"><a href="https://vk.com/" id="" class="social-links__link js-open-social-form">
+              <li class="social-links__item">
+                <a href="#" id="" class="social-links__link js-open-social-form">
                   <svg class="social-links__svg">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_{{ $social['svg'] }}"></use>
-                  </svg></a>
+                  </svg>
+                </a>
                 <div class="social-links__form">
                   <input name="{{ $social['blade'] }}" type="text" class="input_rounded"
                          value="{{ $user[ $social['blade'] ] }}"

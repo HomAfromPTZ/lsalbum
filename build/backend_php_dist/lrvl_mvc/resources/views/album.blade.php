@@ -33,8 +33,8 @@
 						</div>
 					</div>
 					<div class="header-content">
-						<h1 class="my-album-title">{{ $user->title }}</h1>
-						<div class="my-album-desc">{{ $user->description }}</div>
+						<h1 class="my-album-title">{{ $album->title }}</h1>
+						<div class="my-album-desc">{{ $album->description }}</div>
 					</div>
 					<div class="header-buttons">
 						<div class="header-buttons__item"><a href="main.html" class="btn btn_animated"><i class="fa fa-home"></i><span>На главную</span></a></div>

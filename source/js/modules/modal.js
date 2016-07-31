@@ -12,6 +12,8 @@ function init(container, openBtn, closeBtn){
 
 	close.on("click", function (e){
 		e.preventDefault();
+		
+		// TODO: Закрыть все открытые окошки для смены url соц сетей
 
 		// Откат значений inputs
 		modal.find("input, textarea").each(function () {

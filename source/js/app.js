@@ -152,7 +152,7 @@
 	function undoInput() {
 		var $input = $(this).siblings("input");
 		$input.val($input.data("backup"));
-		$input.closest(".social__form").hide();
+		$input.closest(".social-links__form").hide();
 	}
 
 	// Реакция на нажатие клавиш на полях формы
