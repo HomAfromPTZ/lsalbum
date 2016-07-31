@@ -112,7 +112,7 @@
 						<div class="album-item"
 						data-title="{{$photo->title}}"
 						data-likes="{{$photo->likes}}"
-						data-comments="{{$photo->comments}}"
+						{{-- data-comments="{{$photo->comments}}" --}}
 						data-thumb="{{$photo->thumb_url}}"
 						data-user_avatar="{{$photo->user->avatar}}"
 						data-user_name="{{$photo->user->name}}"
@@ -141,6 +141,7 @@
 									<div class="photo-info">
 										<button class="photo-info__item">
 											<i class="fa fa-commenting"> </i>
+											{{-- {{dd($photo)}} --}}
 											<span class="comment-count">{{$photo->comments}}</span>
 										</button>
 										<button class="photo-info__item">
@@ -164,7 +165,7 @@
 								<div class="comments__item">
 									<div class="comments__item-photo">
 										<div class="photo-user-img">
-											<img src="{{$comment->$user->avatar}}" alt="{{$comment->user->name}}"/>
+											<img src="{{$comment->user->avatar}}" alt="{{$comment->user->name}}"/>
 											<a href="user.html" class="photo-user-img__mask">
 												<svg class="svg-more">
 													<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
