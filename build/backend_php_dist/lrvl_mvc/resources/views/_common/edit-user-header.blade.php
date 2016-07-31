@@ -2,13 +2,6 @@
   {{csrf_field()}}
   <div class="header-holder header-holder_edit-user" id="bg-edit-user" style="background-image: url({{$user->background}});">
     <div class="fix-width">
-      <div class="change-photo change-photo_cover">
-        <div class="change-photo__text">
-          <label class="link"> <span class="fa fa-camera"> </span>Изменить фон
-            <input type="file" name="background" id="input_background" class="form__input form__input_file">
-          </label>
-        </div>
-      </div>
       <div class="user-info-holder">
         <div class="user-avatar">
           <div class="change-photo change-photo_user">
@@ -79,6 +72,13 @@
               </div>
             </li>
           </ul>
+        </div>
+      </div>
+      <div class="change-photo change-photo_cover">
+        <div class="change-photo__text">
+          <label class="link"> <span class="fa fa-camera"> </span>Изменить фон
+            <input type="file" name="" class="form__input form__input_file">
+          </label>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body class="album-page">
 <ul>
 	<li>Url: {{$url}}</li>
 	<li>Username: {{$user['name']}}</li>
@@ -26,4 +27,5 @@
 	@empty
 		{{-- empty expr --}}
 	@endforelse
+</body>
 @endsection

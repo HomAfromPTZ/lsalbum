@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body class="user-page">
     <ul>
         <li>Имя: {{$user['name']}}</li>
         <li>Описание: {{$user['description']}}</li>
@@ -32,5 +33,5 @@
     @empty
         {{-- empty expr --}}
     @endforelse
-
+</body>
 @endsection
