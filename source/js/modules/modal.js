@@ -12,10 +12,38 @@ function init(container, openBtn, closeBtn){
 
 	close.on("click", function (e){
 		e.preventDefault();
+
+		// Откат значений inputs
+		modal.find("input, textarea").each(function () {
+			var $this = $(this);
+
+			// Если input:file - удаляем выбранные файлы
+			if($this.prop("type") == "file") {
+				$this.val("");
+
+			// Если input:text or :textarea - восстанавливаем значение из backup
+			} else if($this.prop("type") == "text" || $this.prop("type") == "textarea") {
+				if( $this.data("backup") !== undefined) {
+					$this.val($this.data("backup"));
+				}
+			}
+		});
+
+		var $preview = $("#preview_avatar"),
+				$bg = $("#bg-edit-user");
+
+		if( $preview ) {
+			$preview.attr("src", $preview.data("backup"));
+		}
+
+		if( $bg ) {
+			$bg.css("background-image", "url("+ $bg.data("backup") +")");
+		}
+
 		modal.addClass("hide").removeClass("show");
-		body.removeClass('has-overflow-hidden');
+		body.removeClass("has-overflow-hidden");
 	});
-};
+}
 
 module.exports = {
 	init : init

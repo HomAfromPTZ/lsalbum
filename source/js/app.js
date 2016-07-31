@@ -139,12 +139,40 @@
 		e.preventDefault();
 		var socialItem =  $(this).closest(".social-links__item");
 		socialItem.siblings().find(".social-links__form").hide();
-		socialItem.find(".social-links__form").show();
+		socialItem.find(".social-links__form").show()
+							.find("input").focus();
 	}
 
 	function hideSocialForm(e) {
 		e.preventDefault();
 		$(this).closest(".social-links__form").hide();
+	}
+
+	// Отмена изменений поля
+	function undoInput() {
+		var $input = $(this).siblings("input");
+		$input.val($input.data("backup"));
+		$input.closest(".social__form").hide();
+	}
+
+	// Реакция на нажатие клавиш на полях формы
+	if($("#edit-user-header .social-links").length) {
+    
+    $("#edit-user-header .social-links").find("input").on("keydown", function (e) {
+      
+			// Если на поле нажата Enter - сохраняем
+			if (e.which == "13") {
+				e.preventDefault();
+				$(this).closest(".social-links__form").hide();
+
+				// Если на поле нажата Esc - отменяем изменение
+			} else if(e.which == "27") {
+				e.preventDefault();
+				var $input = $(this);
+				$input.val($input.data("backup"));
+				$input.closest(".social-links__form").hide();
+			}
+		});
 	}
 
 	if ($(".js-open-social-form").length) {
@@ -153,7 +181,9 @@
 	if ($(".js-close-form").length) {
 		$(".js-close-form").on("click", hideSocialForm);
 	}
-
+	if ($(".js-undo-input").length) {
+		$(".js-undo-input").on("click", undoInput);
+	}
 
 	// ==============================
 	// Login card flip
@@ -185,11 +215,11 @@
 	// Dropzone (Add photos)
 	// ==============================
 
-	if ($("div#dropzone").length) {
+	if ($("#dropzone").length) {
 
 		var maxFileSizeMb = 2;
 
-		$("div#dropzone").dropzone({
+		$("#dropzone").dropzone({
 			url: "/" ,
 			maxFilesize: maxFileSizeMb
 		});

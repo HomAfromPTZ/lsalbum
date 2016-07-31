@@ -38,6 +38,10 @@ build/backend_node_dist/templates
 build/backend_php_dist/assets
 build/backend_php_dist/templates
 
+#My assets path (c) Andrey
+build/backend_php_dist/lrvl_mvc/public/assets
+build/backend_php_dist/lrvl_mvc/public/templates
+
 # Node.JS
 node_modules
 npm-debug.log
