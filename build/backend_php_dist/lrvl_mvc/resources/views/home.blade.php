@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+<body class="main-page">
   @include('_common.sprites')
   @include('_common.preloader')
   @include('_common.popup')
@@ -20,7 +21,7 @@
 
 <div class="page">
 
-    <header class="main-page" style="background-image: url({{ ($user->background !== '') ? $user->background : 'assets/img/bg/main-header.jpg' }});">
+    <header class="header header_main" style="background-image: url({{ ($user->background !== '') ? $user->background : 'assets/img/bg/main-header.jpg' }});">
         <div class="header-holder">
             <div class="fix-width">
                 <div class="user-info-holder">
@@ -34,24 +35,24 @@
                         <h2 class="user-info__name">{{$user['name']}}</h2>
                         <div class="user-info__desc">{{$user['description']}}</div>
                         <ul class="social-links">
-                            <li class="social__item"><a href="{{$user['vk']}}" id="social__link_vk" class="social__link">
-                                    <svg class="svg-social">
+                            <li class="social-links__item"><a href="{{$user['vk']}}" id="social__link_vk" class="social-links__link">
+                                    <svg class="social-links__svg">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['facebook']}}" id="social__link_fb" class="social__link">
-                                    <svg class="svg-social">
+                            <li class="social-links__item"><a href="{{$user['facebook']}}" id="social__link_fb" class="social-links__link">
+                                    <svg class="social-links__svg">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['twitter']}}" id="social__link_tw" class="social__link">
-                                    <svg class="svg-social">
+                            <li class="social-links__item"><a href="{{$user['twitter']}}" id="social__link_tw" class="social-links__link">
+                                    <svg class="social-links__svg">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="{{$user['google']}}" id="social__link_gg" class="social__link">
-                                    <svg class="svg-social">
+                            <li class="social-links__item"><a href="{{$user['google']}}" id="social__link_gg" class="social-links__link">
+                                    <svg class="social-links__svg">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
                                     </svg></a></li>
-                            <li class="social__item"><a href="mailto:{{$user['email']}}" id="social__link_email" class="social__link">
-                                    <svg class="svg-social">
+                            <li class="social-links__item"><a href="mailto:{{$user['email']}}" id="social__link_email" class="social-links__link">
+                                    <svg class="social-links__svg">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
                                     </svg></a></li>
                         </ul>
@@ -193,5 +194,5 @@
   {{-- Javascripts --}}
 
   @include('_common._js')
-
+</body>
 @endsection

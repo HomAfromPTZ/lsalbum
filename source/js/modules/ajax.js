@@ -23,7 +23,7 @@ var setAjaxResponces = (function() {
 
             if(msg.status == 'success') {
               if(msg.background !== undefined) {
-                $('.main-page').css({
+                $('.header').css({
                   backgroundImage: "url("+msg.background+")"
                 });
               }
