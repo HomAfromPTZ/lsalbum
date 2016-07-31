@@ -1,7 +1,7 @@
 (function($) {
 	"use strict";
 
-	var preloader = require("./modules/preloader.js"),
+	var preloader = require("./modules/infinite_preloader.js"),
 		// helpers = require("./modules/helpers.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
