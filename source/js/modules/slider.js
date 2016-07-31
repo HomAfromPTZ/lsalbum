@@ -18,7 +18,7 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 	open.on("click", function (e){
 		e.preventDefault();
 
-		current = $(this).closest('.album-item');
+		current = $(this).closest('.photo-item');
 		showSlide(current);
 
 		slider.removeClass("hide").addClass("show");
@@ -56,7 +56,7 @@ function ajustImgHeight(){
 }
 
 function showNext(){
-	var nextSlide = current.next('.album-item');
+	var nextSlide = current.next('.photo-item');
 	if (nextSlide.length) {
 		showSlide(nextSlide);
 		current = nextSlide;
@@ -64,7 +64,7 @@ function showNext(){
 };
 
 function showPrev(){
-	var prevSlide = current.prev('.album-item');
+	var prevSlide = current.prev('.photo-item');
 	if (prevSlide.length) {
 		showSlide(prevSlide);
 		current = prevSlide;

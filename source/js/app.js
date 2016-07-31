@@ -51,6 +51,7 @@
 
 	$.fn.animated = animations.animateCss;
 	$(".album-item").animated("fadeIn");
+	$(".photo-item").animated("fadeIn");
 
 
 

@@ -40,8 +40,8 @@ mixin socialsBlock_edit()
 					button.btn.btn_link.js-close-form Отменить
 
 mixin albumItem(title, category, comments, likes, thumb, user_avatar, user_name, description)
-	.album-item(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
-		.album-item-holder
+	.photo-item(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
+		.photo-item-holder
 			.album-photo
 				a.open-img-popup.js-open-slider(href="#")
 					.album-mask
@@ -103,8 +103,8 @@ mixin albumSingle(category, album_photo)
 				span.category-name= category
 
 mixin singlePhoto(title, category, comments, likes, thumb, user_avatar, user_name, description)
-	.album-item.single-photo(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
-		.album-item-holder
+	.photo-item.single-photo(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
+		.photo-item-holder
 			.album-photo
 				a.open-img-popup.js-open-slider(href="#")
 					.album-mask
