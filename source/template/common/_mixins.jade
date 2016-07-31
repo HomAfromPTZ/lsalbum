@@ -160,3 +160,8 @@ mixin parallax(type)
 			- for (var n = 0; n < 6; n++)
 				li.layer(data-depth=(0.2*n))
 					div(class = "layer-bg layer-bg_" + n)
+
+mixin search-form
+	form.search-form
+		button.search-form__btn.fa.fa-search(type="submit")
+		input.search-form__input(type="text" placeholder="Исследовать мир")

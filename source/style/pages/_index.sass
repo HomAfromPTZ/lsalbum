@@ -65,7 +65,7 @@
 	&:hover
 		background-color: #24b0e3
 
-.btn_red
+.btn_red:not(.likes)
 	background-color: #ee4634
 	font-family: 'Proximanova_semibold'
 	border: none
@@ -109,20 +109,8 @@
 /*show more link*/			
 .show-more
 	text-align: center
-	padding: 3px 0 0 
+	padding: 3px 0 0
 
-.show-more-btn
-	cursor: pointer
-	border: 1px solid $blue
-	padding: 11px 18px
-	color: $blue
-	font: 14px/16px 'Panton_bold'
-	display: inline-block
-	margin: 0 auto
-	border-radius: 17px
-	&:hover
-		background: $blue
-		color: $white
 /*search form*/
 .search-holder
 	background: #dbdcdc
@@ -131,20 +119,18 @@
 	padding: 11px 0
 	margin: 0 0 52px
 
-.search-form-holder 
+.search-form
 	position: relative
 	background: $white
 	border-radius: 20px
 	padding: 10px 14px
-
-.search-form
 	float: right
 	width: 32%
 	+media(xs)
 		float: none
 		width: 100%
 	&__btn
-		color: rgba(#323232, .6)
+		color: rgba($black_light, .6)
 		position: absolute
 		top: 10px
 		left: 20px
@@ -156,22 +142,13 @@
 		border: 0
 		background: none
 		font: 16px/18px 'Proximanova_light'
-		color: $light_black
+		color: $black_light
 		outline: none
 		
 /*my albums*/
 .new-photos-album
 	padding: 0 0 62px
 	position: relative
-
-.album-title
-	font-family: 'Panton_bold'
-	font-size: rem(42)
-	margin: 0
-	padding: 0 0 33px
-	float: left
-	+media(xs)
-		font-size: rem(34)
 
 .album-container
 	margin: 0 -1%
@@ -308,14 +285,14 @@
 
 .album-category
 	text-align: right
-	background: #f6f6f6
+	background: $gray
 	padding: 6px 20px 10px
 	overflow: hidden
 
 .category-name
 	font: 16px/18px "Proximanova_semibold"
 	text-decoration: none
-	color: $light_black
+	color: $black_light
 
 	.svg-category
 		width: 20px
@@ -336,7 +313,7 @@
 	font-size: 20px
 /*my album*/
 .my-photos
-	background: #f6f6f6
+	background: $gray
 	padding: 51px 0 41px
 	
 	.title-holder
@@ -358,7 +335,7 @@
 
 .my-album
 	display: block
-	color: $light_black
+	color: $black_light
 	text-decoration: none
 	position: relative
 	overflow: hidden
@@ -394,7 +371,7 @@
 textarea
 	display: block
 input, textarea
-	color: rgba($light_black, 0.8)
+	color: rgba($black_light, 0.8)
 
 .input_rounded
 	border: 1px solid #d8d6d6

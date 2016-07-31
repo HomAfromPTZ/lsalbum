@@ -1,21 +1,54 @@
 //===============================================
 //	HEADER
 //===============================================
+.album-page
+	.change-photo_cover
+		float: none
+		width: 30%
+		margin: 0 auto
+
 .header
 	display: table-row
 	width: 100%
-	&_main
+	&_main,
+	&_user,
+	&_album
 		background-image: url(../img/bg/main-header.jpg)
 		background-repeat: no-repeat
 		background-size: cover
 		background-position: center center
 
-.header-holder
-	padding: 53px 0 60px
-	@extend %clearfix
-	+media(s)
-		padding: 20px 0 40px
+	&_album
+		.user-info-holder
+			position: absolute
+			display: flex
+			align-items: center
+			top: 20px
+			left: 40px
+			width: 30%
+			+media(s)
+				position: absolute
+				left: 50%
+				transform: translateX(-50%)
+				justify-content: center
+				width: 60%
+			.user-avatar
+				width: auto
+				margin-right: 10px
+			.user-info
+				width: auto
+				margin-top: 0
 
+
+.header-holder
+	@extend %clearfix
+	padding: 70px 0 40px
+	.search-page &
+		padding: 20px 0
+
+.search-holder
+	.user-page &
+		margin-bottom: 0
 
 
 //===============================================
@@ -49,16 +82,10 @@
 	color: $white
 	float: left
 	width: 75%
-	padding-left: 20px
+	padding-left: 10px
 	+media(s)
 		float: none
 		margin-top: 15px
-
-	&__name
-		font-family: "Panton_bold"
-		font-size: rem(21)
-		line-height: 1
-		margin: 0 0 10px
 
 	&__desc
 		color: rgba(255,255,255, .8)
@@ -164,10 +191,16 @@
 .search-page
 	.header
 		background: none
-		&-holder
-			padding: 20px 0
+
+	.search-holder
+		.fix-width
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+			justify-content: space-between
 
 	.user-info-holder
+		width: auto
 		display: flex
 		align-items: center
 		+media(s)
@@ -186,7 +219,7 @@
 			&__name
 				margin: 0
 				font-size: 16px
-				color: $light_black
+				color: $black_light
 				text-align: left
 
 
@@ -194,10 +227,7 @@
 //===============================================
 //	ALBUM PAGE
 //===============================================
-.my-album-page
-	.header-holder
-		padding: 20px 0 66px
-
+.album-page
 	.user-avatar
 		width: 80px
 
@@ -213,4 +243,7 @@
 		text-align: center
 		color: $white
 		width: 65%
-		margin: 0 auto
+		margin: 10px auto
+		+media(s)
+			width: 90%
+			margin-top: 50px

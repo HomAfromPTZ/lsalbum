@@ -195,17 +195,6 @@
 		});
 	}
 
-
-	// ==============================
-	// Scroll Up Button
-	// ==============================
-
-	if ($("#go-up").length) {
-
-		$("#go-up").on("click", window.scrollTo(0, 0));
-	}
-
-
 	preloader();
 
 	setAjaxResponce.init();
