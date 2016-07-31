@@ -90,7 +90,7 @@ mixin albumSingle(category, album_photo)
 	.album-item
 		.album-item-holder
 			a(href="album.html" class="my-album")
-				img(src="assets/img/#{album_photo}", alt="")
+				.album-photo__thumb(style="background-image: url('assets/img/#{album_photo}')", alt="")
 				.album-mask
 					.mask-content
 						div.mask-content__desc Фотографии природы леса, енотов и оленей...
