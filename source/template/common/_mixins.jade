@@ -90,14 +90,14 @@ mixin albumSingle(category, album_photo)
 	.album-item
 		.album-item-holder
 			a(href="album.html" class="my-album")
-				.album-photo__thumb(style="background-image: url('assets/img/#{album_photo}')", alt="")
+				.album__thumb(style="background-image: url('assets/img/#{album_photo}')", alt="")
 				.album-mask
 					.mask-content
 						div.mask-content__desc Фотографии природы леса, енотов и оленей...
 						div.mask-content__count
 							span 18
 							|  Фотографий
-			.album-category
+			.album-item__footer
 				a.edit-post.js-add-album(href="#")
 					i(class="fa fa-pencil")
 				span.category-name= category
