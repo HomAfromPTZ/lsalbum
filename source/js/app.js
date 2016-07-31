@@ -1,7 +1,7 @@
 (function($) {
 	"use strict";
 
-	var preloader = require("./modules/preloader.js"),
+	var preloader = require("./modules/infinite_preloader.js"),
 		// helpers = require("./modules/helpers.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
@@ -111,14 +111,14 @@
 	// ==============================
 	function showRemovingBlock(e) {
 		e.preventDefault();
-		$(this).closest('.hm-modal__content').find(".editing-block").slideUp(300);
-		$(this).closest('.hm-modal__content').find(".removing-block").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".editing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".removing-block").slideDown(300);
 	}
 
 	function hideRemovingBlock(e) {
 		e.preventDefault();
-		$(this).closest('.hm-modal__content').find(".removing-block").slideUp(300);
-		$(this).closest('.hm-modal__content').find(".editing-block").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".removing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".editing-block").slideDown(300);
 	}
 
 	if ($(".js-show-removing-block").length) {
