@@ -19,8 +19,6 @@ var setAjaxResponces = (function() {
             contentType: false
           })
           .done(function (msg) {
-// console.log(msg);
-
             if(msg.status == 'success') {
               if(msg.background !== undefined) {
                 $('.header').css({
@@ -57,6 +55,40 @@ console.log('add-album');
       })
       .done(function (msg) {
         console.log(msg);
+      })
+    })
+
+    // Изменение альбома в header
+    $('#edit-album-header').on('submit', function (e) {
+      e.preventDefault();
+      var formData = new FormData($(e.target)[0]),
+          album_id = $(e.target).data('id');
+
+console.log('edit-album with id ='+ album_id);
+
+      $.ajax({
+        method: "POST",
+        url: "/album/update/"+ album_id,
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .done(function (msg) {
+        console.log(msg);
+
+        if(msg.status == 'success') {
+          
+          $('.header-holder_edit-album').css({
+            backgroundImage: "url("+msg.background+")"
+          });
+          
+          $('.my-album-title').text(formData.get('title'));
+          $('.my-album-desc').text(formData.get('description'));
+
+          $(e.target).removeClass('show').addClass('hide');
+          $('body').removeClass('has-overflow-hidden');
+        }
+
       })
     })
 

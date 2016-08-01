@@ -4,42 +4,60 @@
 
 var imagePreview = (function() {
 
+  /** Массив всех элементов для превью изменения изображений
+   *
+   * Описание:
+   * input - input:type=file - поле формы, в которое загружается фото
+   * target - элемент, в котором показано предпросмотр фото
+   * method - функция, которая изменяет свойства target-элемента
+   */
+
+  var collection = [
+
+    // Фото юзера на главной странице
+    {
+      "input": "#input_avatar",
+      "target": "#preview_avatar",
+      "method": function(e, target) { $(target).attr("src", e.target.result)  }
+    },
+
+    // Фон юзера на главной странице
+    {
+      "input": "#input_background",
+      "target": "#bg-edit-user",
+      "method": function(e, target) { $(target).css("background-image", "url("+ e.target.result +")") }
+    },
+  
+   // Фон юзера на главной странице
+    {
+      "input": "#album_new_cover",
+      "target": "#bg_edit-album",
+      "method": function(e, target) { $(target).css("background-image", "url("+ e.target.result +")") }
+    }
+  ];
+
+
   function init() {
 
-    // Avatar preview
-    $('#input_avatar').on('change', function(){
-      var input = this,
-          avatar = $('#preview_avatar');
+    collection.forEach(function (item) {
 
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+      var input = item.input,
+          target = item.target,
+          method = item.method;
 
-        reader.onload = function(e){
-          avatar.attr("src", e.target.result);
-        };
+      $(input).on('change', function(){
 
-        reader.readAsDataURL(input.files[0]);
+        if (this.files && this.files[0]) {
+          var reader = new FileReader();
 
-      }
-    });
+          reader.onload = function (e) {
+            method(e, target)
+          };
 
-    // Background preview
-    $('#input_background').on('change', function(){
-      var input = this,
-          bg = $('#bg-edit-user');
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
 
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e){
-          bg.css({
-            backgroundImage: "url("+ e.target.result +")"
-          });
-        };
-
-        reader.readAsDataURL(input.files[0]);
-
-      }
     });
   }
 

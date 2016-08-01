@@ -11,12 +11,9 @@
 	@include('_common.sprites')
 	@include('_common.preloader')
 	@include('_common.popup')
-	@include('_common.add-albums-modal')
 	@include('_common.edit-album-header')
 	@include('_common.add-photos-modal')
 	@include('_common.edit-photo-modal')
-	@include('_common.edit-user-modal')
-	@include('_common.edit-user-header')
 	@include('_common.slider')
 
 	<div class="page">
@@ -44,7 +41,9 @@
               </a>
             </div>
 						<div class="header-buttons__item">
-							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
+              @if ( $user->name == $album->user->name)
+  							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
+              @endif
 						</div>
 					</div>
 				</div>

@@ -31,17 +31,37 @@ function init(container, openBtn, closeBtn){
 			}
 		});
 
-		var $preview = $("#preview_avatar"),
-				$bg = $("#bg-edit-user");
+		// Откат изображений
+		// Массив элементов для отката и метод отката
+		var backup_elements = [
+				{
+					"name": "#preview_avatar",
+					"reset": function ($el) {
+						$el.attr("src", $el.data("backup")) } },
+				{
+					"name": "#bg-edit-user",
+					"reset": function ($el) {
+						$el.css("background-image", "url("+ $el.data("backup") +")") } },
+				{
+					"name": "#bg_edit-album",
+					"reset": function ($el) {
+						$el.css("background-image", "url("+ $el.data("backup") +")") } }
+		];
 
-		if( $preview ) {
-			$preview.attr("src", $preview.data("backup"));
+		backup_elements.forEach(function (item) {
+			var $el = $(item.name),
+					reset = item.reset;
+
+			if( $el ) {
+				reset( $el )
+			}
+		});
+
+		if( $(".social-links__form") ) {
+			$(".social-links__form").hide()
 		}
 
-		if( $bg ) {
-			$bg.css("background-image", "url("+ $bg.data("backup") +")");
-		}
-
+		// Скрытие формы и разблокировака body
 		modal.addClass("hide").removeClass("show");
 		body.removeClass("has-overflow-hidden");
 	});

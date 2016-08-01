@@ -83,6 +83,7 @@ class AlbumController extends Controller
         $album->save();
 
         return [
+            'status' => 'success',
             'result' => 'Альбом '.$album->name.' обновлен',
             'data' => $album
         ];

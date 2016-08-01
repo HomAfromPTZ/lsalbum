@@ -26,9 +26,7 @@
           </div>
           <div class="input-group">
             <textarea name="description" cols="30" rows="5" class="input_rounded input_rounded_user-textarea"
-                      data-backup="{{ $user['description'] }}">
-              {{$user['description']}}
-            </textarea>
+                      data-backup="{{ $user['description'] }}">{{$user['description']}}</textarea>
           </div>
 
           <!--  Массив для генерации соц иконок-->
