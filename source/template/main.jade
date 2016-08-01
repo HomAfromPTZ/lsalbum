@@ -4,9 +4,10 @@ html(lang="ru")
 	include common/_head
 	body.main-page
 		include common/_sprites
-		include common/_preloader
+		include common/_infinite-preloader
 		include common/_popup
 		include common/_add-album-modal
+		include common/_edit-album-modal
 		include common/_add-photos-modal
 		include common/_edit-photo-modal
 		include common/_edit-user-modal
@@ -59,8 +60,8 @@ html(lang="ru")
 									i(class="fa fa-plus")
 									span Добавить
 						.album-container
-							+albumSingle("Путешествие", "no_photo.jpg")
-							+albumSingle("Путешествие", "no_photo.jpg")
+							+albumSingle("Путешествие", "slide-1.jpg")
+							+albumSingle("Путешествие", "bg/welcome-bg.jpg")
 							+albumSingle("Путешествие", "no_photo.jpg")
 							+albumSingle("Путешествие", "no_photo.jpg")
 							+albumSingle("Путешествие", "no_photo.jpg")

@@ -40,8 +40,8 @@ mixin socialsBlock_edit()
 					button.btn.btn_link.js-close-form Отменить
 
 mixin albumItem(title, category, comments, likes, thumb, user_avatar, user_name, description)
-	.album-item(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
-		.album-item-holder
+	.photo-item(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
+		.photo-item-holder
 			.album-photo
 				a.open-img-popup.js-open-slider(href="#")
 					.album-mask
@@ -90,21 +90,21 @@ mixin albumSingle(category, album_photo)
 	.album-item
 		.album-item-holder
 			a(href="album.html" class="my-album")
-				img(src="assets/img/#{album_photo}", alt="")
+				.album__thumb(style="background-image: url('assets/img/#{album_photo}')", alt="")
 				.album-mask
 					.mask-content
 						div.mask-content__desc Фотографии природы леса, енотов и оленей...
 						div.mask-content__count
 							span 18
 							|  Фотографий
-			.album-category
-				a.edit-post.js-add-album(href="#")
+			.album-item__footer
+				a.edit-post.js-edit-album(href="#")
 					i(class="fa fa-pencil")
 				span.category-name= category
 
 mixin singlePhoto(title, category, comments, likes, thumb, user_avatar, user_name, description)
-	.album-item.single-photo(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
-		.album-item-holder
+	.photo-item.single-photo(data-title="#{title}" data-likes="#{likes}" data-comments="#{comments}" data-thumb="assets/img/#{thumb}" data-user_avatar="assets/img/#{user_avatar}" data-user_name="#{user_name}" data-desc="#{description}")
+		.photo-item-holder
 			.album-photo
 				a.open-img-popup.js-open-slider(href="#")
 					.album-mask

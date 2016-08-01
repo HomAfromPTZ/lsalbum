@@ -75,16 +75,16 @@
 					<div class="album-container">
 
 						@forelse ($photos as $photo)
-						<div class="album-item"
+						<div class="photo-item"
 						data-title="{{$photo->title}}"
 						data-likes="{{$photo->likes}}"
 						data-comments="{{$photo->comments}}"
 						data-thumb="{{$photo->thumb_url}}"
-					  data-user_id="{{ $photo->user->id }}"
+						data-user_id="{{ $photo->user->id }}"
 						data-user_avatar="{{$photo->user->avatar}}"
 						data-user_name="{{$photo->user->name}}"
 						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $photo->description)!!}">
-						<div class="album-item-holder">
+						<div class="photo-item-holder">
 							<div class="album-photo">
 								<a href="#" class="open-img-popup js-open-slider">
 									<div class="album-mask"><i class="fa fa-search-plus"></i></div>

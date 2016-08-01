@@ -47,6 +47,33 @@
 		left: 50%
 		animation: preloader $transition-time linear infinite
 
+	.circles
+		.circle
+			border: 4px solid transparent
+			border-top-color: $white
+			border-radius: 50%
+			display: block
+			position: absolute
+			top: 50%
+			left: 50%
+			&_1
+				width: 80px
+				height: 80px
+				margin-top: -40px
+				margin-left: -40px
+				animation: preloader .4s linear infinite
+			&_2
+				width: 100px
+				height: 100px
+				margin-top: -50px
+				margin-left: -50px
+				animation: preloader .8s linear infinite
+			&_3
+				width: 120px
+				height: 120px
+				margin-top: -60px
+				margin-left: -60px
+				animation: preloader 1.2s linear infinite
 
 
 @keyframes preloader

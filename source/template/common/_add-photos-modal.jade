@@ -25,9 +25,10 @@
 					.form_add-photo__row
 						.error-notification Выбран неверный формат изображений. Попробуйте снова
 						
-					.form_add-photo__row
+					.form_add-photo__row#fail-area.is-hidden
 						span.form_add-photo__subtitle Следующие файлы не будут загружены
-						span.form_add-photo__subtitle2 (размер более 2мб)
+						span.form_add-photo__subtitle2 (неведите на фото, чтобы узнать ошибку)
+						.dropzone#fail-dropzone
 
 				.hm-modal__footer
 					button.btn.btn_ok Сохранить
