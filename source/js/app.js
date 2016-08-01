@@ -1,7 +1,7 @@
 (function($) {
 	"use strict";
 
-	var preloader = require("./modules/preloader.js"),
+	var preloader = require("./modules/infinite_preloader.js"),
 		// helpers = require("./modules/helpers.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
@@ -51,6 +51,7 @@
 
 	$.fn.animated = animations.animateCss;
 	$(".album-item").animated("fadeIn");
+	$(".photo-item").animated("fadeIn");
 
 
 
@@ -59,6 +60,13 @@
 	// ==============================
 	if ($(".js-add-album").length) {
 		modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
+	}
+
+	// ==============================
+	// Init Edit Album Modal
+	// ==============================
+	if ($(".js-edit-album").length) {
+		modal.init("#edit-album-modal", ".js-edit-album", ".js-close-modal");
 	}
 
 	// ==============================
@@ -101,31 +109,31 @@
 	// ==============================
 	// Edit User Modal - Delete Photo
 	// ==============================
-	function showPhotoRemovingBlock(e) {
+	function showRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-editing").slideUp(300);
-		$(".photo-removing").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".editing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".removing-block").slideDown(300);
 	}
 
-	function hidePhotoRemovingBlock(e) {
+	function hideRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-removing").slideUp(300);
-		$(".photo-editing").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".removing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".editing-block").slideDown(300);
 	}
 
-	if ($(".js-show-photo-removing").length) {
-		$(".js-show-photo-removing").on("click", showPhotoRemovingBlock);
+	if ($(".js-show-removing-block").length) {
+		$(".js-show-removing-block").on("click", showRemovingBlock);
 	}
 
-	if ($(".js-hide-photo-removing").length) {
-		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
+	if ($(".js-hide-removing-block").length) {
+		$(".js-hide-removing-block").on("click", hideRemovingBlock);
 	}
 
 
 	// ==============================
 	// Init Edit Album Modal (in Header)
 	// ==============================
-	if ($(".js-open-slider").length > 0) {
+	if ($(".js-open-slider").length) {
 		slider.init("#slider", ".js-open-slider", ".js-close-slider", ".js-slider-next", ".js-slider-prev");
 	}
 
@@ -217,11 +225,48 @@
 
 	if ($("#dropzone").length) {
 
-		var maxFileSizeMb = 2;
+		var $dropzone = $("#dropzone");
+		var $failArea = $("#fail-area");
+		var $failDropzone = $("#fail-dropzone");
 
-		$("#dropzone").dropzone({
-			url: "/" ,
-			maxFilesize: maxFileSizeMb
+		$dropzone.dropzone({
+			url: "/photo/save",
+			maxFilesize: 2,
+			addRemoveLinks: true,
+			dictDefaultMessage: "",
+			dictFallbackMessage: "Ваш браузер не поддерживает загрузку файлов через drag'n'drop.",
+			dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
+			dictFileTooBig: "Превышен размер {{maxFilesize}}мб",
+			dictInvalidFileType: "Выбран неверный формат изображений",
+			dictResponseError: "Server responded with {{statusCode}} code.",
+			dictCancelUpload: "Отменить загрузку",
+			dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
+			dictRemoveFile: "",
+			dictRemoveFileConfirmation: null,
+			dictMaxFilesExceeded: "Вы не можете загрузить больше файлов."
+		});
+
+
+
+		$dropzone.on("DOMSubtreeModified", function(){
+
+			// show fail-dropzone when some errored thumb appeared
+			if ($dropzone.find(".dz-error").length) {
+				$failArea.removeClass("is-hidden");
+			}
+
+			// move every errored thumb to fail-dropzone
+			$dropzone.find(".dz-error").each(function(key, value) {
+				$failDropzone.append(value);
+			});
+
+		});
+
+		// hide fail-dropzone when there is nothing inside
+		$failDropzone.on("DOMSubtreeModified", function(){
+			if (!$(this).html()) {
+				$failArea.addClass("is-hidden");
+			}
 		});
 	}
 

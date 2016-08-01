@@ -1,15 +1,15 @@
-#add-album-modal.hm-modal
+#edit-album-modal.hm-modal
 	.hm-modal__container
 		.hm-modal__content
 
 			.hm-modal__header
-				.hm-modal__title Добавить альбом
+				.hm-modal__title Редактировать альбом
 				button.hm-modal__close.js-close-modal
 					span.fa.fa-close
 
 
 			form.form(method="post")
-				.hm-modal__text
+				.hm-modal__text.editing-block
 
 					.input-group
 						label.label_left Название
@@ -23,13 +23,21 @@
 						.image-preview-holder
 							.image-preview
 								img.image-preview__pic(src="/assets/img/no_photo.jpg", alt="")
-						label.file-label.btn.btn_transparent Загрузить обложку
+						label.file-label.btn.btn_transparent Поменять обложку
 							input.form__input.form__input_file(type="file", name="")
 						.form__notice (файл должен быть размером не&nbsp;более 1024&nbsp;КБ)
+
+
+				.hm-modal__text.removing-block.is-hidden
+					.removing__p Вы хотите удалить это фото?
+					button.btn.btn_red Удалить
+					button.btn.btn_link.js-hide-removing-block Отменить
 
 				.hm-modal__footer
 					button.btn.btn_ok Сохранить
 					button.btn.btn_link.js-close-modal Отменить
-
+					button.btn.btn_red.js-show-removing-block
+						span.fa.fa-trash
+						span Удалить
 
 

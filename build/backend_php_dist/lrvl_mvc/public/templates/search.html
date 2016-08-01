@@ -26,12 +26,11 @@
 		<div id="preloader">
 			<div id="preloader__progress">
 				<div id="preloader__percentage">0</div>
-				<div id="looped-bar"></div>
-				<svg version="1.1" id="preloader__img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="144px" height="144px" viewBox="0 0 144 144" enable-background="new 0 0 144 144" xml:space="preserve">
-					<circle opacity="0.4" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="439.822971503" stroke-dashoffset="439.822971503" stroke-miterlimit="10" cx="72" cy="72" r="70" transform="rotate(-160 72 72)" class="bar bar__outer"></circle>
-					<circle opacity="0.7" fill="none" stroke="#FFFFFF" stroke-width="3.8938" stroke-dasharray="345.575191895" stroke-dashoffset="345.575191895" stroke-miterlimit="10" cx="72" cy="72" r="55" transform="rotate(-120 72 72)" class="bar bar__center"></circle>
-					<circle fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" stroke-dasharray="251.327412287" stroke-dashoffset="251.327412287" cx="72" cy="72" r="40" transform="rotate(-90 72 72)" class="bar bar__inner"></circle>
-				</svg>
+				<div class="circles">
+					<div class="circle circle_1"></div>
+					<div class="circle circle_2"></div>
+					<div class="circle circle_3"></div>
+				</div>
 			</div>
 		</div>
 		<div id="hm-popup" class="hm-popup">
@@ -72,7 +71,6 @@
 						<div class="hm-modal__footer">
 							<button class="btn btn_ok">Сохранить</button>
 							<button class="btn btn_link js-close-modal">Отменить</button>
-							<button class="btn btn_red"><span class="fa fa-trash"></span><span>Удалить</span></button>
 						</div>
 					</form>
 				</div>
@@ -100,7 +98,9 @@
 							<div class="form_add-photo__row">
 								<div class="error-notification">Выбран неверный формат изображений. Попробуйте снова</div>
 							</div>
-							<div class="form_add-photo__row"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(размер более 2мб)</span></div>
+							<div id="fail-area" class="form_add-photo__row is-hidden"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(неведите на фото, чтобы узнать ошибку)</span>
+								<div id="fail-dropzone" class="dropzone"></div>
+							</div>
 						</div>
 						<div class="hm-modal__footer">
 							<button class="btn btn_ok">Сохранить</button>
@@ -118,7 +118,7 @@
 						<button class="hm-modal__close js-close-modal"><span class="fa fa-close"></span></button>
 					</div>
 					<form method="post" class="form">
-						<div class="hm-modal__text photo-editing">
+						<div class="hm-modal__text editing-block">
 							<div class="input-group">
 								<label class="label_left">Название</label>
 								<input id="" name="" type="text" class="input_rounded">
@@ -128,15 +128,15 @@
 								<textarea name="" cols="30" rows="10" class="input_rounded"></textarea>
 							</div>
 						</div>
-						<div class="hm-modal__text photo-removing">
-							<div class="hm-modal__p">Вы хотите удалить это фото?</div>
+						<div class="hm-modal__text removing-block is-hidden">
+							<div class="removing__p">Вы хотите удалить это фото?</div>
 							<button class="btn btn_red">Удалить</button>
-							<button class="btn btn_link js-hide-photo-removing">Отменить</button>
+							<button class="btn btn_link js-hide-removing-block">Отменить</button>
 						</div>
 						<div class="hm-modal__footer">
 							<button class="btn btn_ok">Сохранить</button>
 							<button class="btn btn_link js-close-modal">Отменить</button>
-							<button class="btn btn_red js-show-photo-removing"><span class="fa fa-trash"></span><span>Удалить</span></button>
+							<button class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
 						</div>
 					</form>
 				</div>
@@ -208,20 +208,15 @@
 					<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
 					<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
 					<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
-					<div class="slider__photo"><img src="assets/img/slide-1.jpg" alt="" class="slider__img"></div>
+					<div class="slider__photo"><img class="slider__img"></div>
 					<div class="slider__meta">
-						<div class="slider__author-photo">
-							<div class="photo-user-img"><img src="assets/img/default_avatar.jpg" alt=""/><a href="user.html" class="photo-user-img__mask">
-									<svg class="svg-more">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-									</svg></a></div>
-						</div>
-						<h2 class="slider__author-name">Анна Богданова</h2>
-						<div class="slider__likes"><a class="likes btn btn_red"><span class="likes__icon"><span class="fa fa-heart-o"></span></span><span class="likes__count">16</span></a></div>
+						<div class="slider__author-photo"></div>
+						<h2 class="slider__author-name"></h2>
+						<div class="slider__likes"><a class="likes btn btn_red"><span class="likes__icon"><span class="fa fa-heart-o"></span></span><span class="likes__count"></span></a></div>
 					</div>
 					<div class="slider__info">
-						<div class="slider__title">Путешествие на речном трамвайчике</div>
-						<div class="slider__text">Мы отправились в <span class="hashtag js-hashtag">#путешествие</span> 2 дня назад, но уже сейчас такое ощущение, что мы посмотрели целый новый мир. Далее будет ещё одно описательное предложение. Возможно оно также будет с <span class="hashtag js-hashtag">#тегами</span>.</div>
+						<div class="slider__title"></div>
+						<div class="slider__text"></div>
 					</div>
 					<div class="slider__comments">
 						<div class="comments__title">Комментарии</div>
@@ -277,8 +272,8 @@
 					<div class="new-photos-album">
 						<h3 class="search-results-title">По запросу «Природа» найдено 6 результатов</h3>
 						<div class="album-container">
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
@@ -329,8 +324,8 @@
 									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
@@ -381,8 +376,8 @@
 									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
@@ -433,8 +428,8 @@
 									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
@@ -485,8 +480,8 @@
 									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие на лодке по озеру" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Анна Богданова" data-desc="Мы отправились в #путешествие" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
@@ -537,8 +532,8 @@
 									</div>
 								</div>
 							</div>
-							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="album-item">
-								<div class="album-item-holder">
+							<div data-title="Путешествие" data-likes="10" data-comments="10" data-thumb="assets/img/no_photo.jpg" data-user_avatar="assets/img/default_avatar.jpg" data-user_name="Виталий Винорадов" data-desc="Мы отправились в #поездку" class="photo-item">
+								<div class="photo-item-holder">
 									<div class="album-photo"><a href="#" class="open-img-popup js-open-slider">
 											<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 											<div style="background-image: url('assets/img/no_photo.jpg')" alt="" class="album-photo__thumb"></div></a></div>
