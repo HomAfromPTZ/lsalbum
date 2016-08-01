@@ -139,7 +139,9 @@
 							<div class="form_add-photo__row">
 								<div class="error-notification">Выбран неверный формат изображений. Попробуйте снова</div>
 							</div>
-							<div class="form_add-photo__row"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(размер более 2мб)</span></div>
+							<div id="fail-area" class="form_add-photo__row is-hidden"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(неведите на фото, чтобы узнать ошибку)</span>
+								<div id="fail-dropzone" class="dropzone"></div>
+							</div>
 						</div>
 						<div class="hm-modal__footer">
 							<button class="btn btn_ok">Сохранить</button>
