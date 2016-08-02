@@ -83,7 +83,7 @@
 						data-user_id="{{ $photo->user->id }}"
 						data-user_avatar="{{$photo->user->avatar}}"
 						data-user_name="{{$photo->user->name}}"
-						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$1&hashtag=true'>$1</a>", $photo->description)!!}">
+						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=%23$2'>$1</a>", $photo->description)!!}">
 						<div class="photo-item-holder">
 							<div class="album-photo">
 								<a href="#" class="open-img-popup js-open-slider">

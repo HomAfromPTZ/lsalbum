@@ -110,10 +110,7 @@ class PageController extends Controller
 
     public function search(Request $request){
         $s = $request->searchtext;
-        if ($request->hashtag){
-            $s = "#".$s;
-        }
-        
+
         if(preg_match("/^#\w{3,}$/", $s)){
             $photos = Photo::where('description', 'REGEXP', '[^'.$s.'$]')
                 ->latest()
