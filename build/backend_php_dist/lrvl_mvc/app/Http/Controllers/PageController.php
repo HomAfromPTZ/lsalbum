@@ -110,8 +110,9 @@ class PageController extends Controller
 
     public function search(Request $request){
         $s = $request->searchtext;
-        if(preg_match("/^#\w{3,}$/", $s) || $request->hashtag){
-            $photos = Photo::where('description', 'REGEXP', '[[:<:]]'.$s.'[[:>:]]')
+
+        if(preg_match("/^#\w{3,}$/", $s)){
+            $photos = Photo::where('description', 'REGEXP', '[^'.$s.'$]')
                 ->latest()
                 ->get();
         } else {
@@ -122,14 +123,14 @@ class PageController extends Controller
         }
 
         if($photos->count() < 1){
-            return [
-                'status' => 'error',
-                'message' => 'Совпадений не найдено'
-            ];
+            $message = "По запросу &laquo;".$s."&raquo; совпадений не найдено";
+        } else {
+            $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
         }
 
         $data['photos'] = $photos;
-        $data['searchtext'] = $request;
+        $data['searchtext'] = $s;
+        $data['message'] = $message;
         return view('search', $data);
     }
 }

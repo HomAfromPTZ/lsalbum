@@ -58,8 +58,8 @@
       <div class="fix-width">
         <div class="new-photos-album">
           <h3 class="search-results-title">
-            <? (isset($_GET['searchtext'])) ? $searchtext = "По запросу &laquo;".$_GET['searchtext'] ."&raquo; найдено * результатов:" : $searchtext = 'Пожалуйста, введите поисковый запрос' ?>
-            {{ $searchtext }}
+            {{-- {{ ($searchtext !== "") ? "По запросу &laquo;".$searchtext."&raquo; найдено ".$photos->count()." результатов:" : "Пожалуйста, введите поисковый запрос" }} --}}
+            {{$message}}
           </h3>
 
           <div class="album-container">
