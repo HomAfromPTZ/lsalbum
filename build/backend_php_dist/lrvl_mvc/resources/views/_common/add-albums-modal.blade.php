@@ -15,14 +15,15 @@
           </div>
           <div class="input-group">
             <label class="label_left">Описание</label>
-            <textarea name="description" cols="30" rows="10" class="input_rounded"></textarea>
+            <textarea name="description" cols="30" rows="10" placeholder="Описание альбома" class="input_rounded"></textarea>
           </div>
           <div class="input-group input-group_upload">
             <div class="image-preview-holder">
-              <div class="image-preview"><img src="/assets/img/no_photo.jpg" alt="" class="image-preview__pic"></div>
+              <div class="image-preview">
+                <img src="/assets/img/no_photo.jpg" alt="" class="image-preview__pic" id="add-album-preview"></div>
             </div>
             <label class="file-label btn btn_transparent">Загрузить обложку
-              <input type="file" name="cover" class="form__input form__input_file">
+              <input type="file" name="cover" class="form__input form__input_file" id="add-album-cover">
             </label>
             <div class="form__notice">(файл должен быть размером не&nbsp;более 1024&nbsp;КБ)</div>
           </div>

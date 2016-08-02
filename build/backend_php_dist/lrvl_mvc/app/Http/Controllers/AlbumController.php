@@ -53,7 +53,12 @@ class AlbumController extends Controller
                 $album['cover'] = $photo['photo'];
                 $album['thumbnail'] = $photo['thumbnail'];
                 return [
+                    'status' => 'success',
                     'result' => 'Альбом создан',
+                    'id' => $album['id'],
+                    'title' => $album['title'],
+                    'description' => $album['description'],
+                    'cover' => $album['cover'],
                     'data' => $album
                 ];
             });
@@ -117,7 +122,10 @@ class AlbumController extends Controller
 
             $album->delete();
 
-            return $album;
+            return [
+                'status' => 'success',
+                'data' => $album
+            ];
         } catch (Exception $e) {
             return ['result' => 'Ошибка: '. $e->getMessage()];
         }

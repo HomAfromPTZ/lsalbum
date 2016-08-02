@@ -4,15 +4,17 @@ function init(container, openBtn, closeBtn){
 	var close = modal.find(closeBtn);
 	var body = $('body');
 
-	open.on("click", function (e){
+	$('body').on("click", openBtn, function (e){
 		e.preventDefault();
 
+    var $button = $(e.target);
+console.log($button);
 		// Открытие модалки - Редактировать альбом
     if( container == "#edit-album-modal" ) {
-      var album_id = open.parents(".album-item").data("id"),
-          album_title = open.parents(".album-item").find(".category-name").text(),
-          album_desc = open.parents(".album-item").find(".mask-content__desc").text(),
-          album_cover = open.parents(".album-item").find(".my-album img").attr("src");
+      var album_id = $button.parents(".album-item").data("id"),
+          album_title = $button.parents(".album-item").find(".category-name").text(),
+          album_desc = $button.parents(".album-item").find(".mask-content__desc").text(),
+          album_cover = $button.parents(".album-item").find(".my-album img").attr("src");
 
       $('#edit-album-modal__form').data("id", album_id);
       modal.find('input[name=title]').val(album_title);
@@ -25,7 +27,7 @@ function init(container, openBtn, closeBtn){
 		body.addClass("has-overflow-hidden");
 	});
 
-	close.on("click", function (e){
+	$('body').on("click", closeBtn, function (e){
 		e.preventDefault();
 
 		// Откат значений inputs
@@ -58,7 +60,11 @@ function init(container, openBtn, closeBtn){
 				{
 					"name": "#bg_edit-album",
 					"reset": function ($el) {
-						$el.css("background-image", "url("+ $el.data("backup") +")") } }
+						$el.css("background-image", "url("+ $el.data("backup") +")") } },
+		      {
+					"name": "#add-album-preview",
+					"reset": function ($el) {
+						$el.attr("src", "/assets/img/no_photo.jpg") } }
 		];
 
 		backup_elements.forEach(function (item) {
@@ -76,6 +82,12 @@ function init(container, openBtn, closeBtn){
 
 		// Скрытие формы и разблокировака body
 		modal.addClass("hide").removeClass("show");
+
+    if( container == "#add-album-modal" ) {
+      modal.find("input, textarea").each(function () {
+        $(this).val('');
+      });
+    }
 		body.removeClass("has-overflow-hidden");
 	});
 }

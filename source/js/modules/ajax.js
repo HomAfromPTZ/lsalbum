@@ -6,7 +6,9 @@ var setAjaxResponces = (function() {
 
   function init() {
 
+    // -----------------------------------
     // Редактирование данных пользователя
+    // -----------------------------------
     $('#edit-user-header').on('submit', function (e) {
       e.preventDefault();
       var formData = new FormData($(e.target)[0]);
@@ -41,7 +43,9 @@ var setAjaxResponces = (function() {
           });
     });
 
+    // -----------------------------
     // Добавление альбома
+    // -----------------------------
     $('#form-add-album').on('submit', function (e) {
       e.preventDefault();
       var formData = new FormData($(e.target)[0]);
@@ -53,12 +57,45 @@ var setAjaxResponces = (function() {
         processData: false,
         contentType: false
       })
-      .done(function (msg) {
-// console.log(msg);
+      .done(function (album) {
+console.log(album);
+        if(album.status == 'success') {
+
+          var $album_container = $(".album-container"),
+              $album = $("<div class='album-item' data-id='"+ album.id +"'>\
+                        <div class='album-item-holder'>\
+                            <a href='/album/"+ album.id +"' class='my-album'>\
+                            <img src='"+ album.cover +"' alt=''/>\
+                            <div class='album-mask'>\
+                            <div class='mask-content'>\
+                            <div class='mask-content__desc'>"+ album.description +"</div>\
+                        <div class='mask-content__count'><span>1 </span>Фотографий</div>\
+                        </div></div></a>\
+                        <div class='album-category'>\
+                            <a href='#' class='edit-post js-edit-album'>\
+                            <i class='fa fa-pencil'></i>\
+                            </a>\
+                            <span class='category-name'>"+ album.title +"</span></div>\
+                        </div></div>");
+
+          if( $album_container.eq(1).children('h2') ) {
+            $album_container.eq(1).children('h2').remove();
+          }
+
+          $album_container.eq(1).append($album);
+
+          $("#add-album-modal").removeClass('show').addClass('hide');
+          $("#add-album-modal").find("input, textarea").each(function () {
+            $(this).val('');
+          });
+          $('body').removeClass('has-overflow-hidden');
+        }
       })
     });
 
+    // -----------------------------
     // Изменение альбома в header
+    // -----------------------------
     $('#edit-album-header').on('submit', function (e) {
       e.preventDefault();
       var formData = new FormData($(e.target)[0]),
@@ -91,7 +128,9 @@ var setAjaxResponces = (function() {
       })
     });
 
+    // -----------------------------
     // Изменение альбома в модалке
+    // -----------------------------
     $('#edit-album-modal__form').on('submit', function (e) {
       e.preventDefault();
       var formData = new FormData($(e.target)[0]),
@@ -120,9 +159,47 @@ var setAjaxResponces = (function() {
           $('body').removeClass('has-overflow-hidden');
         }
       })
-    })
+    });
 
+    // -----------------------------
+    // Удаление альбома в модалке
+    // -----------------------------
+    $('#delete-album').on('click', function (e) {
+      e.preventDefault();
+      var album_id = $("#edit-album-modal__form").data('id');
+console.log(album_id);
+      $.ajax({
+            method: "GET",
+            url: "/album/delete/"+ album_id,
+            processData: false,
+            contentType: false
+          })
+          .done(function (album) {
 
+            if(album.status == 'success') {
+
+              var $album_block = $(".album-item[data-id="+ album_id +"]"),
+                  $album_container = $album_block.parent();
+
+              $album_block.remove();
+
+              if( !$album_container.children(".album-item").length ) {
+                $album_container.append("<h2>no albums yet</h2>")
+              }
+
+              $("#edit-album-modal").find('.editing-block').show();
+              $("#edit-album-modal").find('.hm-modal__footer button').show();
+              $("#edit-album-modal").find('.removing-block').hide();
+
+              $("#edit-album-modal").removeClass('show').addClass('hide');
+              $("#edit-album-modal").find("input, textarea").each(function () {
+                $(this).val('');
+              });
+
+              $('body').removeClass('has-overflow-hidden');
+            }
+          })
+    });
 
   }
   

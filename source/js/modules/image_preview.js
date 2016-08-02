@@ -40,6 +40,13 @@ var imagePreview = (function() {
       "input": "#album_new_cover_modal",
       "target": "#edit_album_modal_preview",
       "method": function(e, target) { $(target).attr("src", e.target.result) }
+    },
+
+    // Фон альбома в модалке
+    {
+      "input": "#add-album-cover",
+      "target": "#add-album-preview",
+      "method": function(e, target) { $(target).attr("src", e.target.result) }
     }
   ];
 

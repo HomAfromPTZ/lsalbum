@@ -113,12 +113,14 @@
 	function showRemovingBlock(e) {
 		e.preventDefault();
 		$(this).closest(".hm-modal__content").find(".editing-block").slideUp(300);
+		$(this).siblings().add(this).hide();
 		$(this).closest(".hm-modal__content").find(".removing-block").slideDown(300);
 	}
 
 	function hideRemovingBlock(e) {
 		e.preventDefault();
 		$(this).closest(".hm-modal__content").find(".removing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".hm-modal__footer button").show();
 		$(this).closest(".hm-modal__content").find(".editing-block").slideDown(300);
 	}
 

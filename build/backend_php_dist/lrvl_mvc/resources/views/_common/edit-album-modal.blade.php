@@ -5,6 +5,7 @@
         <div class="hm-modal__title">Редактировать альбом</div>
         <button class="hm-modal__close js-close-modal"><span class="fa fa-close"></span></button>
       </div>
+      
       <form class="form" id="edit-album-modal__form">
         {{csrf_field()}}
         <div class="hm-modal__text editing-block">
@@ -14,7 +15,7 @@
           </div>
           <div class="input-group">
             <label class="label_left">Описание</label>
-            <textarea name="description" cols="30" rows="10" class="input_rounded"></textarea>
+            <textarea name="description" cols="30" rows="10" placeholder="Описание альбома" class="input_rounded"></textarea>
           </div>
           <div class="input-group input-group_upload">
             <div class="image-preview-holder">
@@ -29,16 +30,17 @@
           </div>
         </div>
         <div class="hm-modal__text removing-block is-hidden">
-          <div class="removing__p">Вы хотите удалить это фото?</div>
-          <button class="btn btn_red">Удалить</button>
-          <button class="btn btn_link js-hide-removing-block">Отменить</button>
+          <div class="removing__p">Вы хотите удалить этот альбом?</div>
+          <button type="button" class="btn btn_red" id="delete-album">Удалить</button>
+          <button type="button" class="btn btn_link js-hide-removing-block">Отменить</button>
         </div>
         <div class="hm-modal__footer">
-          <button class="btn btn_ok">Сохранить</button>
-          <button class="btn btn_link js-close-modal">Отменить</button>
-          <button class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
+          <button type="submit" class="btn btn_ok">Сохранить</button>
+          <button type="button" class="btn btn_link js-close-modal">Отменить</button>
+          <button type="button" class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
         </div>
       </form>
+      
     </div>
   </div>
 </div>
