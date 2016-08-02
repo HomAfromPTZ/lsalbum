@@ -1,12 +1,12 @@
 <form id="edit-album-header" class="hform hide" data-id="{{ $album->id }}">
   {{csrf_field()}}
-  <div class="header-holder header-holder_edit-album" id="bg_edit-album" style="background-image: url({{ $album->cover->img_url }});"
+  <div class="header-holder header-holder_edit-album" id="edit_album_header_preview" style="background-image: url({{ $album->cover->img_url }});"
        data-backup="{{ $album->cover->img_url }}">
     <div class="fix-width">
       <div class="change-photo change-photo_cover">
         <div class="change-photo__text">
           <label class="link"> <span class="fa fa-camera"> </span>Изменить фон
-            <input type="file" name="cover" class="form__input form__input_file" id="album_new_cover">
+            <input type="file" name="cover" class="form__input form__input_file" id="album_new_cover_modal">
           </label>
         </div>
       </div>

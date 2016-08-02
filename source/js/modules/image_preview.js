@@ -28,11 +28,18 @@ var imagePreview = (function() {
       "method": function(e, target) { $(target).css("background-image", "url("+ e.target.result +")") }
     },
   
-   // Фон юзера на главной странице
+   // Фон альбома в хедере
     {
       "input": "#album_new_cover",
-      "target": "#bg_edit-album",
+      "target": "#edit_album_header_preview",
       "method": function(e, target) { $(target).css("background-image", "url("+ e.target.result +")") }
+    },
+
+    // Фон альбома в модалке
+    {
+      "input": "#album_new_cover_modal",
+      "target": "#edit_album_modal_preview",
+      "method": function(e, target) { $(target).attr("src", e.target.result) }
     }
   ];
 

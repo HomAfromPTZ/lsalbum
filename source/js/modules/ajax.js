@@ -45,7 +45,7 @@ var setAjaxResponces = (function() {
     $('#form-add-album').on('submit', function (e) {
       e.preventDefault();
       var formData = new FormData($(e.target)[0]);
-console.log('add-album');
+// console.log('add-album');
       $.ajax({
         method: "POST",
         url: "/album/save",
@@ -54,9 +54,9 @@ console.log('add-album');
         contentType: false
       })
       .done(function (msg) {
-        console.log(msg);
+// console.log(msg);
       })
-    })
+    });
 
     // Изменение альбома в header
     $('#edit-album-header').on('submit', function (e) {
@@ -64,7 +64,7 @@ console.log('add-album');
       var formData = new FormData($(e.target)[0]),
           album_id = $(e.target).data('id');
 
-console.log('edit-album with id ='+ album_id);
+// console.log('edit-album with id ='+ album_id);
 
       $.ajax({
         method: "POST",
@@ -73,24 +73,56 @@ console.log('edit-album with id ='+ album_id);
         processData: false,
         contentType: false
       })
-      .done(function (msg) {
-        console.log(msg);
+      .done(function (album) {
+// console.log(album);
 
-        if(msg.status == 'success') {
-          
-          $('.header-holder_edit-album').css({
-            backgroundImage: "url("+msg.background+")"
+        if(album.status == 'success') {
+
+          $('.my-album-title').text(album.title);
+          $('.my-album-desc').text(album.description);
+          $('.header_album').css({
+            backgroundImage: "url("+album.cover+")"
           });
-          
-          $('.my-album-title').text(formData.get('title'));
-          $('.my-album-desc').text(formData.get('description'));
 
           $(e.target).removeClass('show').addClass('hide');
           $('body').removeClass('has-overflow-hidden');
         }
 
       })
+    });
+
+    // Изменение альбома в модалке
+    $('#edit-album-modal__form').on('submit', function (e) {
+      e.preventDefault();
+      var formData = new FormData($(e.target)[0]),
+          album_id = $(e.target).data('id');
+
+// console.log('edit-album-modal with id ='+ album_id);
+
+      $.ajax({
+        method: "POST",
+        url: "/album/update/"+ album_id,
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .done(function (album) {
+// console.log(album);
+        if(album.status == 'success') {
+
+          var $album_block = $(".album-item[data-id="+ album_id +"]");
+
+          $album_block.find(".category-name").text(album.title);
+          $album_block.find(".mask-content__desc").text(album.description);
+          $album_block.find(".my-album img").attr("src", album.cover );
+
+          $("#edit-album-modal").removeClass('show').addClass('hide');
+          $('body').removeClass('has-overflow-hidden');
+        }
+      })
     })
+
+
 
   }
   

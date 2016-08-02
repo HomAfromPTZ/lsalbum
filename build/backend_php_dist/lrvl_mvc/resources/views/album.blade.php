@@ -41,7 +41,7 @@
               </a>
             </div>
 						<div class="header-buttons__item">
-              @if ( $user->name == $album->user->name)
+              @if(Auth::user()->id == $user->id)
   							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
               @endif
 						</div>
@@ -65,7 +65,7 @@
 					<div class="album-container">
 
             @forelse ($photos as $photo)
-              <div class="album-item single-photo"
+              <div class="photo-item single-photo"
                    data-title="{{ $photo->title }}"
                    data-desc="{{ $photo->description }}"
                    data-likes="{{ $photo->likes }}"
@@ -74,7 +74,7 @@
                    data-user_id="{{ $photo->user->id }}"
                    data-user_avatar="{{ $photo->user->avatar }}"
                    data-user_name="{{ $photo->user->name }}">
-                <div class="album-item-holder">
+                <div class="photo-item-holder">
                   <div class="album-photo">
                     <a href="#" class="open-img-popup js-open-slider">
                       <div class="album-mask"><i class="fa fa-search-plus"></i></div>
@@ -95,7 +95,7 @@
                     <a href="#" class="edit-post js-edit-photo">
                       <i class="fa fa-pencil"></i>
                     </a>
-                    <span class="category-name">{{ $album->title }}</span>
+                    <span class="category-name">{{ $photo->title }}</span>
                   </div>
                 </div>
 

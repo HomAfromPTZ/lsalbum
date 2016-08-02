@@ -85,6 +85,9 @@ class AlbumController extends Controller
         return [
             'status' => 'success',
             'result' => 'Альбом '.$album->name.' обновлен',
+            'title' => $album->title,
+            'description' => $album->description,
+            'cover' => $album->cover->thumb_url,
             'data' => $album
         ];
     }

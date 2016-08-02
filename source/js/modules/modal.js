@@ -6,14 +6,27 @@ function init(container, openBtn, closeBtn){
 
 	open.on("click", function (e){
 		e.preventDefault();
+
+		// Открытие модалки - Редактировать альбом
+    if( container == "#edit-album-modal" ) {
+      var album_id = open.parents(".album-item").data("id"),
+          album_title = open.parents(".album-item").find(".category-name").text(),
+          album_desc = open.parents(".album-item").find(".mask-content__desc").text(),
+          album_cover = open.parents(".album-item").find(".my-album img").attr("src");
+
+      $('#edit-album-modal__form').data("id", album_id);
+      modal.find('input[name=title]').val(album_title);
+      modal.find('textarea[name=description]').val(album_desc);
+      modal.find('.image-preview__pic').attr("src", album_cover);
+    }
+
+
 		modal.removeClass("hide").addClass("show");
 		body.addClass("has-overflow-hidden");
 	});
 
 	close.on("click", function (e){
 		e.preventDefault();
-		
-		// TODO: Закрыть все открытые окошки для смены url соц сетей
 
 		// Откат значений inputs
 		modal.find("input, textarea").each(function () {

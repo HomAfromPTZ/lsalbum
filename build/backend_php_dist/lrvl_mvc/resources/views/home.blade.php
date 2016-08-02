@@ -14,6 +14,7 @@
 	@include('_common.add-albums-modal')
 	@include('_common.add-photos-modal')
 	@include('_common.edit-photo-modal')
+	@include('_common.edit-album-modal')
 	@include('_common.edit-user-modal')
 	@include('_common.edit-user-header')
 	@include('_common.slider')
@@ -183,7 +184,7 @@
 
 					@forelse ($albums as $album)
 
-					<div class="album-item">
+					<div class="album-item" data-id="{{ $album->id }}">
 						<div class="album-item-holder">
 							<a href="/album/{{$album['id']}}" class="my-album">
 								<img src="{{ ($album->cover->img_url !== '') ? $album->cover->img_url : 'assets/img/no_photo.jpg' }}" alt=""/>
@@ -194,7 +195,11 @@
 										<div class="mask-content__count"><span>{{$album->photos->count()}} </span>Фотографий</div>
 									</div>
 								</div></a>
-								<div class="album-category"><a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a><span class="category-name">Путешествие</span></div>
+								<div class="album-category">
+									<a href="#" class="edit-post js-edit-album">
+										<i class="fa fa-pencil"></i>
+									</a>
+									<span class="category-name">{{ $album->title }}</span></div>
 							</div>
 						</div>
 
