@@ -1,15 +1,15 @@
 #add-photos-modal.hm-modal
 	.hm-modal__container
-		.hm-modal__content
+		.hm-modal__content.hm-modal_add-photo__content
 
 			.hm-modal__header
 				.hm-modal__title Добавить фотографии
-				button.hm-modal__close.js-close-modal
+				button.hm-modal__close.js-close-modal.js-clear-dropzone
 					span.fa.fa-close
 
 
 			form.form.form_add-photo(method="post")
-				.hm-modal__text
+				.hm-modal__text.hm-modal_add-photo__text
 
 					.form_add-photo__row
 						span.form_add-photo__subtitle Название
@@ -27,9 +27,9 @@
 						
 					.form_add-photo__row#fail-area.is-hidden
 						span.form_add-photo__subtitle Следующие файлы не будут загружены
-						span.form_add-photo__subtitle2 (неведите на фото, чтобы узнать ошибку)
-						.dropzone#fail-dropzone
+						span.form_add-photo__subtitle2 (Размер более 2мб)
+						.dropzone.dropzone_fail#fail-dropzone
 
 				.hm-modal__footer
 					button.btn.btn_ok Сохранить
-					button.btn.btn_link.js-close-modal Отменить
+					button.btn.btn_link.js-close-modal.js-clear-dropzone Отменить

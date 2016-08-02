@@ -25,10 +25,15 @@
 		max-height: 100%
 		// overflow-y: scroll
 		overflow-y: auto
+	&_add-photo__content
+		max-width: 680px
 	&__text
 		font-family: "Pantonbold", sans-serif
 		margin: 0
 		background-color: $white
+		padding: 38px 35px 20px
+	&_add-photo__text
+		padding: 38px 20px 20px
 	&.show
 		animation: modal-show $transition-time_medium
 		animation-fill-mode: forwards
@@ -91,8 +96,6 @@
 			font-size: rem(28)
 			color: #a0a09f
 
-	&__text
-		padding: 38px 35px 20px
 
 	&__footer
 		background-color: #f1f1f1

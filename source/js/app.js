@@ -7,7 +7,8 @@
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
 		setAjaxResponce = require("./modules/ajax.js"),
-		imagePreview = require("./modules/image_preview.js");
+		imagePreview = require("./modules/image_preview.js"),
+		myDropzone = require("./modules/myDropzone.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -224,49 +225,11 @@
 	// ==============================
 
 	if ($("#dropzone").length) {
-
-		var $dropzone = $("#dropzone");
-		var $failArea = $("#fail-area");
-		var $failDropzone = $("#fail-dropzone");
-
-		$dropzone.dropzone({
-			url: "/photo/save",
-			maxFilesize: 2,
-			addRemoveLinks: true,
-			dictDefaultMessage: "",
-			dictFallbackMessage: "Ваш браузер не поддерживает загрузку файлов через drag'n'drop.",
-			dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
-			dictFileTooBig: "Превышен размер {{maxFilesize}}мб",
-			dictInvalidFileType: "Выбран неверный формат изображений",
-			dictResponseError: "Server responded with {{statusCode}} code.",
-			dictCancelUpload: "Отменить загрузку",
-			dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
-			dictRemoveFile: "",
-			dictRemoveFileConfirmation: null,
-			dictMaxFilesExceeded: "Вы не можете загрузить больше файлов."
-		});
-
-
-
-		$dropzone.on("DOMSubtreeModified", function(){
-
-			// show fail-dropzone when some errored thumb appeared
-			if ($dropzone.find(".dz-error").length) {
-				$failArea.removeClass("is-hidden");
-			}
-
-			// move every errored thumb to fail-dropzone
-			$dropzone.find(".dz-error").each(function(key, value) {
-				$failDropzone.append(value);
-			});
-
-		});
-
-		// hide fail-dropzone when there is nothing inside
-		$failDropzone.on("DOMSubtreeModified", function(){
-			if (!$(this).html()) {
-				$failArea.addClass("is-hidden");
-			}
+		myDropzone.init();
+	}
+	if ($(".js-clear-dropzone").length) {
+		$(".js-clear-dropzone").on("click", function(){
+			myDropzone.clear();
 		});
 	}
 
