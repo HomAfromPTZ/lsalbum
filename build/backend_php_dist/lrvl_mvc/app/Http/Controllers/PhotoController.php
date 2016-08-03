@@ -38,7 +38,7 @@ class PhotoController extends Controller
             'cover' => 'required|image'
         ]);
 
-        $result = ['success', 200];
+        $result = ['status' => 'success'];
         $photo = new Photo();
         $photo->user_id = $user->id;
         $photo->title = "Без названия";
@@ -68,15 +68,17 @@ class PhotoController extends Controller
             $photo->save();
         } catch (Exception $e) {
             $photo->delete();
-            return ['error', 400];
+            // return ['status' => 'error'];
+            return Response::json('error', 400);
         }
 
-        $result['photo_id'] = $photo->id;
-        $result['photo'] = $filename;
-        $result['thumbnail'] = $thumbnail;
-        $result['num'] = $request->num;
+        // $result['photo_id'] = $photo->id;
+        // $result['photo'] = $filename;
+        // $result['thumbnail'] = $thumbnail;
+        // $result['num'] = $request->num;
 
-        return $result;
+        // return $result;
+        return Response::json('success', 200);
     }
 
 
