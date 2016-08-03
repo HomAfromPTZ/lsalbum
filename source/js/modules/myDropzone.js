@@ -12,27 +12,31 @@
 			headers: {
 				'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()
 			},
+			method: "POST",
 			paramName: "cover",
 			maxFilesize: 2,
+			maxFiles: 8,
 			thumbnailWidth: 135,
 			thumbnailHeight: 135,
 			acceptedFiles: '.jpg, .jpeg, .png',
 			addRemoveLinks: true,
-			// dictDefaultMessage: "",
+			dictDefaultMessage: "Перетащите сюда файлы или кликните",
 			// dictFallbackMessage: "Ваш браузер не поддерживает загрузку файлов через drag'n'drop.",
-			// dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
+			// dictFallbackText: "Используйте форму ниже для загрузки по-старинке",
 			// dictFileTooBig: "Превышен размер {{maxFilesize}}мб",
 			// dictInvalidFileType: "Выбран неверный формат изображений",
-			// dictResponseError: "Server responded with {{statusCode}} code.",
-			// dictCancelUpload: "Отменить загрузку",
+			// dictResponseError: "Сервер ответил кодом: {{statusCode}}",
+			dictCancelUpload: "",
 			// dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
-			// dictRemoveFile: "",
+			dictRemoveFile: "",
 			// dictRemoveFileConfirmation: null,
 			// dictMaxFilesExceeded: "Вы не можете загрузить больше файлов.",
-			autoProcessQueue: false
+			autoProcessQueue: false,
+			// forceFallback: true
 		};
 
 		myDropzone = new Dropzone("#dropzone", options);
+
 		$clearBtn = $(clearDropzoneBtn);
 		$sendBtn = $(sendDropzoneBtn);
 
@@ -58,10 +62,21 @@
 			sendDropzone();
 		});
 
-	// $dropzone.on("complete", function (msg) {
-	// 	console.log("COMPLETE");
-	// 	console.log(msg);
-	// });
+		myDropzone.on("processing", function() {
+			myDropzone.options.autoProcessQueue = true;
+		});
+
+		myDropzone.on("complete", function (file) {
+			myDropzone.removeFile(file);
+			// console.log("COMPLETE");
+			// console.log(msg);
+		});
+
+		// All current uploads has been finished
+		myDropzone.on("queuecomplete", function () {
+			myDropzone.options.autoProcessQueue = false;
+		});
+
 
 	$dropzone.on("DOMSubtreeModified", function(){
 
