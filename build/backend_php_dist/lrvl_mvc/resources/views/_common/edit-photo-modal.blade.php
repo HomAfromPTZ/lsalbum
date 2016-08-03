@@ -5,15 +5,16 @@
         <div class="hm-modal__title">Редактировать фотографию</div>
         <button class="hm-modal__close js-close-modal"><span class="fa fa-close"></span></button>
       </div>
-      <form method="post" class="form">
+      <form class="form">
+        {{csrf_field()}}
         <div class="hm-modal__text photo-editing">
           <div class="input-group">
             <label class="label_left">Название</label>
-            <input id="" name="" type="text" class="input_rounded">
+            <input id="" name="title" type="text" class="input_rounded">
           </div>
           <div class="input-group">
             <label class="label_left">Описание</label>
-            <textarea name="" cols="30" rows="10" class="input_rounded"></textarea>
+            <textarea name="description" cols="30" rows="10" class="input_rounded"></textarea>
           </div>
         </div>
         <div class="hm-modal__text removing-block is-hidden">

@@ -6,10 +6,10 @@
 	var $clearBtn;
 	var $sendBtn;
 
-function init(clearDropzoneBtn, sendDropzoneBtn) {
+function init(clearDropzoneBtn, sendDropzoneBtn, album_id) {
 
 	var options = {
-		url: "/photo/save",
+		url: "/photo/save/" + album_id,
 		maxFilesize: 2,
     thumbnailWidth: 135,
     thumbnailHeight: 135,
@@ -27,7 +27,8 @@ function init(clearDropzoneBtn, sendDropzoneBtn) {
 		dictRemoveFileConfirmation: null,
 		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов.",
 		autoProcessQueue: false
-	}
+	};
+	
 	myDropzone = new Dropzone("#dropzone", options);
 	$clearBtn = $(clearDropzoneBtn);
 	$sendBtn = $(sendDropzoneBtn);
@@ -53,6 +54,11 @@ function attachEvents(){
 		e.preventDefault();
 		sendDropzone();
 	});
+
+	// $dropzone.on("complete", function (msg) {
+	// 	console.log("COMPLETE");
+	// 	console.log(msg);
+	// });
 
 	$dropzone.on("DOMSubtreeModified", function(){
 

@@ -233,7 +233,8 @@
 	// ==============================
 
 	if ($("#dropzone").length) {
-		myDropzone.init(".js-clear-dropzone", ".js-send-dropzone");
+		var album_id = $(".form_add-photo").data("id");
+		myDropzone.init(".js-clear-dropzone", ".js-send-dropzone", album_id);
 	}
 
 	preloader();
