@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use File;
 use Image;
+use Response;
 use App\Photo;
 use App\Album;
 use App\Http\Requests;
