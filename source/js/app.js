@@ -202,6 +202,12 @@
 			myDropzone.clear();
 		});
 	}
+	if ($(".js-send-dropzone").length) {
+		$(".js-send-dropzone").on("click", function(e){
+			e.preventDefault();
+			myDropzone.send();
+		});
+	}
 
 	preloader();
 

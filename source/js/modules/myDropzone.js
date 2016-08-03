@@ -23,7 +23,8 @@ function init() {
 		dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
 		dictRemoveFile: "",
 		dictRemoveFileConfirmation: null,
-		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов."
+		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов.",
+		autoProcessQueue: false
 	}
 	myDropzone = new Dropzone("#dropzone", options);
 }
@@ -33,6 +34,10 @@ function init() {
 
 function clear() {
 	myDropzone.removeAllFiles();
+}
+
+function send() {
+	myDropzone.processQueue();
 }
 
 $dropzone.on("DOMSubtreeModified", function(){
@@ -67,5 +72,6 @@ $failDropzone.on("DOMSubtreeModified", function() {
 
 module.exports = {
 	init: init,
-	clear: clear
+	clear: clear,
+	send: send
 };
