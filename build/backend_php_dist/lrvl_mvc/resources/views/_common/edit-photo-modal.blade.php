@@ -5,12 +5,12 @@
         <div class="hm-modal__title">Редактировать фотографию</div>
         <button class="hm-modal__close js-close-modal"><span class="fa fa-close"></span></button>
       </div>
-      <form class="form">
+      <form class="form" id="edit-photo-modal">
         {{csrf_field()}}
         <div class="hm-modal__text photo-editing">
           <div class="input-group">
             <label class="label_left">Название</label>
-            <input id="" name="title" type="text" class="input_rounded">
+            <input name="title" type="text" class="input_rounded">
           </div>
           <div class="input-group">
             <label class="label_left">Описание</label>
@@ -23,9 +23,9 @@
           <button class="btn btn_link js-hide-removing-block">Отменить</button>
         </div>
         <div class="hm-modal__footer">
-          <button class="btn btn_ok">Сохранить</button>
-          <button class="btn btn_link js-close-modal">Отменить</button>
-          <button class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
+          <button type="submit" class="btn btn_ok">Сохранить</button>
+          <button type="button" class="btn btn_link js-close-modal">Отменить</button>
+          <button type="button" class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
         </div>
       </form>
     </div>

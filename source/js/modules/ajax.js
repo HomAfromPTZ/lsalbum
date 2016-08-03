@@ -203,6 +203,45 @@ var setAjaxResponces = (function() {
           })
     });
 
+
+    // -----------------------------
+    // Изменение фото в модалке
+    // -----------------------------
+    $('#edit-photo-modal').on('submit', function (e) {
+      e.preventDefault();
+      var photo_id = $(this).data('id');
+
+console.log("photo_id = "+photo_id);
+
+      $.ajax({
+            method: "POST",
+            url: "/photo/update/"+ photo_id,
+            processData: false,
+            contentType: false
+          })
+          .done(function (photo) {
+console.log(photo);
+            // if(photo.status == 'success') {
+
+              // var $album_block = $(".album-item[data-id="+ album_id +"]"),
+              //     $album_container = $album_block.parent();
+              //
+              // $album_block.remove();
+              //
+              // if( !$album_container.children(".album-item").length ) {
+              //   $album_container.append("<h2>no albums yet</h2>")
+              // }
+              //
+              // $("#edit-album-modal").find('.editing-block').show();
+              // $("#edit-album-modal").find('.hm-modal__footer button').show();
+              // $("#edit-album-modal").find('.removing-block').hide();
+              //
+            // }
+              $("#edit-photo-modal").removeClass('show').addClass('hide');
+
+              $('body').removeClass('has-overflow-hidden');
+          })
+    });
   }
   
   return {

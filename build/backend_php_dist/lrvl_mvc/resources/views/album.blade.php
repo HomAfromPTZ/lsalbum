@@ -66,6 +66,7 @@
 
             @forelse ($photos as $photo)
               <div class="photo-item single-photo"
+                   data-id="{{ $photo->id }}"
                    data-title="{{ $photo->title }}"
                    data-desc="{{ $photo->description }}"
                    data-likes="{{ $photo->likes }}"
@@ -96,6 +97,7 @@
                       <i class="fa fa-pencil"></i>
                     </button>
                     <span class="category-name">{{ $photo->title }}</span>
+                    <span class="category-desc hide">description {{ $photo->description }}</span>
                   </div>
                 </div>
 
