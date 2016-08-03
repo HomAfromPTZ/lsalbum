@@ -82,7 +82,7 @@
 						data-comments="{{$photo->comments}}"
 						data-thumb="{{$photo->thumb_url}}"
 						data-user_id="{{ $photo->user->id }}"
-						data-user_avatar="{{$photo->user->avatar}}"
+						data-user_avatar="{{($photo->user->avatar !== "") ?  $photo->user->avatar : '/assets/img/default_avatar.jpg'}}"
 						data-user_name="{{$photo->user->name}}"
 						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=%23$2'>$1</a>", $photo->description)!!}">
 						<div class="photo-item-holder">

@@ -14,24 +14,37 @@
 							</svg>
 						</a></div>
 				</div>
-				<h2 class="slider__author-name">Анна Богданова</h2>
-				<div class="slider__likes"><a class="likes btn btn_red"><span class="likes__icon"><span class="fa fa-heart-o"></span></span><span class="likes__count">16</span></a></div>
+				<h2 class="slider__author-name"></h2>
+				<div class="slider__likes">
+					<a class="likes btn btn_red">
+						<span class="likes__icon">
+							<span class="fa fa-heart-o"></span>
+						</span>
+						<span class="likes__count"></span>
+					</a>
+				</div>
 			</div>
 			<div class="slider__info">
-				<div class="slider__title">Путешествие на речном трамвайчике</div>
-				<div class="slider__text">Мы отправились в <span class="hashtag js-hashtag">#путешествие</span> 2 дня назад, но уже сейчас такое ощущение, что мы посмотрели целый новый мир. Далее будет ещё одно описательное предложение. Возможно оно также будет с <span class="hashtag js-hashtag">#тегами</span>.</div>
+				<div class="slider__title"></div>
+				<div class="slider__text">
+					<span class="hashtag js-hashtag"></span>
+				</div>
 			</div>
 			<div class="slider__comments">
 				<div class="comments__title">Комментарии</div>
 				<div class="comments__item comments__item_add">
 					<div class="comments__item-photo">
-						<div class="photo-user-img"><img src="{{$user->avatar or '/assets/img/default_avatar.jpg'}}" alt=""/><a href="user.html" class="photo-user-img__mask">
+						<div class="photo-user-img">
+							<img src="{{(Auth::user()->avatar !== "") ?  Auth::user()->avatar : '/assets/img/default_avatar.jpg'}}" alt="Auth::user()->name"/>
+							<a href="/user/{{Auth::user()->id}}" class="photo-user-img__mask">
 								<svg class="svg-more">
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-								</svg></a></div>
+								</svg>
+							</a>
+						</div>
 					</div>
 					<div class="comments__item-info">
-						<div class="user__name">{{ $user->name }}</div>
+						<div class="user__name">{{Auth::user()->name}}</div>
 						<form class="comments__form">
 							<input name="" contentEditable="true" data-placeholder="Добавить комментарий" class="input_rounded comments__textarea"/>
 							<button class="btn btn_transparent comments__btn">Добавить</button>

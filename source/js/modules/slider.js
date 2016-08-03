@@ -94,7 +94,7 @@ function showSlide(_item){
 	slider.find('.slider__title').html(img_title);
 	slider.find('.likes__count').html(img_likes);
 	slider.find('.slider__text').html(img_desc);
-	slider.find('.photo-user-img__mask').attr('href', '/user/'+ img_user_id);
+	slider.find('.slider__author-photo .photo-user-img__mask').attr('href', '/user/'+ img_user_id);
 	slider.find('.slider__author-name').html(img_user_name);
 	slider.find('.slider__author-photo img').attr('src', img_user_avatar);
 
