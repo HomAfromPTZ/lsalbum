@@ -29,7 +29,7 @@
           <div class="form_add-photo__row">
             <div class="error-notification">Выбран неверный формат изображений. Попробуйте снова</div>
           </div>
-          <div id="fail-area" class="form_add-photo__row is-hidden"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(Размер более 2мб)</span>
+          <div id="fail-area" class="form_add-photo__row is-hidden"><span class="form_add-photo__subtitle">Следующие файлы не будут загружены</span><span class="form_add-photo__subtitle2">(см. пояснения)</span>
             <div id="fail-dropzone" class="mydropzone dropzone_fail"></div>
           </div>
         </div>

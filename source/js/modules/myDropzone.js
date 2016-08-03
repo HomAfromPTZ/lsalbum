@@ -23,14 +23,14 @@
 			dictDefaultMessage: "Перетащите сюда файлы или кликните",
 			// dictFallbackMessage: "Ваш браузер не поддерживает загрузку файлов через drag'n'drop.",
 			// dictFallbackText: "Используйте форму ниже для загрузки по-старинке",
-			// dictFileTooBig: "Превышен размер {{maxFilesize}}мб",
-			// dictInvalidFileType: "Выбран неверный формат изображений",
+			dictFileTooBig: "Превышен размер {{maxFilesize}}мб",
+			dictInvalidFileType: "Выбран неверный формат изображений",
 			// dictResponseError: "Сервер ответил кодом: {{statusCode}}",
 			dictCancelUpload: "",
 			// dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
 			dictRemoveFile: "",
 			// dictRemoveFileConfirmation: null,
-			// dictMaxFilesExceeded: "Вы не можете загрузить больше файлов.",
+			dictMaxFilesExceeded: "Вы не можете загрузить больше 8 файлов.",
 			autoProcessQueue: false,
 			// forceFallback: true
 		};
@@ -67,9 +67,10 @@
 		});
 
 		myDropzone.on("complete", function (file) {
-			myDropzone.removeFile(file);
+			$(file.previewElement).fadeOut(1000, function(){
+				myDropzone.removeFile(file);
+			});
 			// console.log("COMPLETE");
-			// console.log(msg);
 		});
 
 		// All current uploads has been finished
