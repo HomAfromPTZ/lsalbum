@@ -4,7 +4,10 @@
 			<div class="slider__btn slider__btn_close js-close-slider"><span class="fa fa-close"></span></div>
 			<div class="slider__btn slider__btn_left js-slider-prev"><span class="fa fa-chevron-left"></span></div>
 			<div class="slider__btn slider__btn_right js-slider-next"><span class="fa fa-chevron-right"></span></div>
-			<div class="slider__photo"><img src="/assets/img/slide-1.jpg" alt="" class="slider__img"></div>
+			<div class="slider__photo">
+				<img src="" alt="" class="slider__img" id="slider-full-img">
+				<div class="slider__preloader"></div>
+			</div>
 			<div class="slider__meta">
 				<div class="slider__author-photo">
 					<div class="photo-user-img"><img src="/assets/img/default_avatar.jpg" alt=""/>

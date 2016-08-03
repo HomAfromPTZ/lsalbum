@@ -35,7 +35,8 @@
 			// forceFallback: true
 		};
 
-		myDropzone = new Dropzone("#dropzone", options);
+		// myDropzone = new Dropzone("#dropzone", options);
+		myDropzone = $("#dropzone").dropzone(options);
 
 		$clearBtn = $(clearDropzoneBtn);
 		$sendBtn = $(sendDropzoneBtn);

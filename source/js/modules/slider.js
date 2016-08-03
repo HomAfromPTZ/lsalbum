@@ -2,12 +2,21 @@ helpers = require("./helpers.js");
 
 var scrollbar_width = helpers.getScrollbarWidth(),
 	slider,
+	img_container,
+	img_wrapper,
 	current,
 	resizeTimeout,
 	resizeDelta = 100;
 
 function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 	slider = $(container);
+	img_container = slider.find('#slider-full-img');
+	img_wrapper = slider.find('.slider__photo');
+
+	img_container.on("load", function(){
+		ajustImgHeight();
+		img_container.fadeIn(300);
+	});
 
 	var open = $(openBtn),
 		close = slider.find(closeBtn),
@@ -51,12 +60,8 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 };
 
 function ajustImgHeight(){
-	// Height animation
-	var sliderPhoto = slider.find('.slider__photo'),
-		slideHeight = slider.find('.slider__img').height();
-
-	sliderPhoto.animate({
-		'height': slideHeight
+	img_wrapper.animate({
+		'height': img_container.height()
 	}, 300);
 }
 
@@ -77,7 +82,7 @@ function showPrev(){
 };
 
 function showSlide(_item){
-	var img_thumb = _item.data('thumb'),
+	var img_full = _item.data('photo'),
 		img_title = _item.data('title'),
 		img_likes = _item.data('likes'),
 		img_user_id = _item.data('user_id'),
@@ -95,7 +100,10 @@ function showSlide(_item){
 		comments_holder.append(value);
 	});
 
-	slider.find('.slider__img').attr('src', img_thumb);
+	img_container.fadeOut(200,function(){
+		img_container.attr('src', img_full);
+	});
+
 	slider.find('.slider__title').html(img_title);
 	slider.find('.likes__count').html(img_likes);
 	slider.find('.slider__text').html(img_desc);
@@ -103,7 +111,6 @@ function showSlide(_item){
 	slider.find('.slider__author-name').html(img_user_name);
 	slider.find('.slider__author-photo img').attr('src', img_user_avatar);
 
-	ajustImgHeight();
 }
 
 module.exports = {
