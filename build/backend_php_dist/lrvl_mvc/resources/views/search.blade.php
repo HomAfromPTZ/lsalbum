@@ -58,7 +58,6 @@
       <div class="fix-width">
         <div class="new-photos-album">
           <h3 class="search-results-title">
-            {{-- {{ ($searchtext !== "") ? "По запросу &laquo;".$searchtext."&raquo; найдено ".$photos->count()." результатов:" : "Пожалуйста, введите поисковый запрос" }} --}}
             {{$message}}
           </h3>
 

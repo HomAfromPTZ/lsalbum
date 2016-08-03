@@ -191,7 +191,7 @@
 
 								<div class="album-mask">
 									<div class="mask-content">
-										<div class="mask-content__desc">{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $album->description)!!}</div>
+										<div class="mask-content__desc">{{$album->description}}</div>
 										<div class="mask-content__count"><span>{{$album->photos->count()}} </span>Фотографий</div>
 									</div>
 								</div></a>
@@ -204,7 +204,7 @@
 						</div>
 
 						@empty
-						<h2>no albums yet</h2>
+							<h2>Альбомов пока еще нет</h2>
 						@endforelse
 
 					</div>
