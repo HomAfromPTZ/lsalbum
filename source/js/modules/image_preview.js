@@ -30,7 +30,7 @@ var imagePreview = (function() {
   
    // Фон альбома в хедере
     {
-      "input": "#album_new_cover",
+      "input": "#album_new_cover_header",
       "target": "#edit_album_header_preview",
       "method": function(e, target) { $(target).css("background-image", "url("+ e.target.result +")") }
     },

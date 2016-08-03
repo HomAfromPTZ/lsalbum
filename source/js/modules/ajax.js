@@ -60,7 +60,7 @@ var setAjaxResponces = (function() {
         contentType: false
       })
       .done(function (album) {
-console.log(album);
+// console.log(album);
         if(album.status == 'success') {
 
           var $album_container = $(".album-container"),
@@ -84,12 +84,13 @@ console.log(album);
             $album_container.eq(1).children('h2').remove();
           }
 
-          $album_container.eq(1).append($album);
+          $album_container.eq(1).prepend($album);
 
           $("#add-album-modal").removeClass('show').addClass('hide');
-          $("#add-album-modal").find("input, textarea").each(function () {
+          $("#add-album-modal").find("input, textarea").not('input[type=hidden]').each(function () {
             $(this).val('');
           });
+          $('#add-album-preview').attr('src', '/assets/img/no_photo.jpg');
           $('body').removeClass('has-overflow-hidden');
         }
       })
@@ -116,9 +117,8 @@ console.log(album);
 // console.log(album);
 
         if(album.status == 'success') {
-
           $('.my-album-title').text(album.title);
-          $('.my-album-desc').text(album.description);
+          $('.my-album-desc').html( album.description.replace(/(#(\w{3,}))/g, "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>") );
           $('.header_album').css({
             backgroundImage: "url("+album.cover+")"
           });
@@ -169,7 +169,7 @@ console.log(album);
     $('#delete-album').on('click', function (e) {
       e.preventDefault();
       var album_id = $("#edit-album-modal__form").data('id');
-console.log(album_id);
+// console.log(album_id);
       $.ajax({
             method: "GET",
             url: "/album/delete/"+ album_id,
@@ -194,7 +194,7 @@ console.log(album_id);
               $("#edit-album-modal").find('.removing-block').hide();
 
               $("#edit-album-modal").removeClass('show').addClass('hide');
-              $("#edit-album-modal").find("input, textarea").each(function () {
+              $("#edit-album-modal").find("input, textarea").not('input[type=hidden]').each(function () {
                 $(this).val('');
               });
 
