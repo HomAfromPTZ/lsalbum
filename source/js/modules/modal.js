@@ -3,15 +3,13 @@ var scrollbar_width = helpers.getScrollbarWidth();
 
 function init(container, openBtn, closeBtn){
 	var modal = $(container);
-	var open = $(openBtn);
-	var close = modal.find(closeBtn);
 	var body = $('html');
 
 	$('body').on("click", openBtn, function (e){
 		e.preventDefault();
 		var $button = $(e.target);
 
-		console.log($button);
+		// console.log(modal);
 		// Открытие модалки - Редактировать альбом
 		if( container == "#edit-album-modal" ) {
 			var album_id = $button.parents(".album-item").data("id"),
@@ -33,7 +31,8 @@ function init(container, openBtn, closeBtn){
 
 	$('body').on("click", closeBtn, function (e){
 		e.preventDefault();
-
+		e.stopImmediatePropagation();
+		
 		// Откат значений inputs
 		modal.find("input, textarea").each(function () {
 			var $this = $(this);
