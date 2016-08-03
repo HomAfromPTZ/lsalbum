@@ -31,8 +31,7 @@ function init(container, openBtn, closeBtn){
 
 	$('body').on("click", closeBtn, function (e){
 		e.preventDefault();
-		e.stopImmediatePropagation();
-		
+
 		// Откат значений inputs
 		modal.find("input, textarea").each(function () {
 			var $this = $(this);

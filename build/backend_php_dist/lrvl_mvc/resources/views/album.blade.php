@@ -51,9 +51,9 @@
 		</header>
 		<div class="gray-bg">
 			<ul class="album-general-info">
-				<li><span class="photo-count">{{ $album->photos->count() }} </span>Фотографий</li>
-				<li><span class="like-count">{{ $likes_num }} </span>Лайков</li>
-				<li><span class="comments-count">{{ $comments_num }} </span>Комментариев</li>
+				<li>Фотографий:<span class="photo-count">{{ $album->photos->count() }}</span></li>
+				<li>Лайков:<span class="like-count">{{ $likes_num }}</span></li>
+				<li>Комментариев:<span class="comments-count">{{ $comments_num }}</span></li>
 			</ul>
 		</div>
 		<div class="content">

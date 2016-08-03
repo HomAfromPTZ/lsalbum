@@ -58,33 +58,7 @@
                 <div class="title-holder">
                     <h2 class="album-title">Альбомы</h2>
                 </div>
-                <div class="album-container">
-
-                  @forelse ($albums as $album)
-                    <div class="album-item">
-                        <div class="album-item-holder">
-                          <a href="/album/{{ $album->id }}" class="my-album">
-                            <img src="{{ $album->cover->img_url }}" alt=""/>
-                            <div class="album-mask">
-                                <div class="mask-content">
-                                    <div class="mask-content__desc">{{ $album->title }}</div>
-                                    <div class="mask-content__count"><span>{{ $album->photos->count() }}</span> Фотографий</div>
-                                </div>
-                            </div>
-                          </a>
-                            <div class="album-category">
-                              <button href="/album/edit" class="edit-post js-add-album">
-                                <i class="fa fa-pencil"></i>
-                              </button>
-                              <span class="category-name">Путешествие</span>
-                            </div>
-                        </div>
-                    </div>
-                  @empty
-                      <h3>Нет альбомов</h3>
-                  @endforelse
-
-                </div>
+                @include('_common.albums-list')
             </div>
         </div>
     </div>

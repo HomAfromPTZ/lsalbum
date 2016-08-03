@@ -38,7 +38,7 @@ class PhotoController extends Controller
             'cover' => 'required|image'
         ]);
 
-        $result = ['status' => 'success'];
+        $result = ['success', 200];
         $photo = new Photo();
         $photo->user_id = $user->id;
         $photo->title = "Без названия";
@@ -68,7 +68,7 @@ class PhotoController extends Controller
             $photo->save();
         } catch (Exception $e) {
             $photo->delete();
-            return ['status' => 'error'];
+            return ['error', 400];
         }
 
         $result['photo_id'] = $photo->id;

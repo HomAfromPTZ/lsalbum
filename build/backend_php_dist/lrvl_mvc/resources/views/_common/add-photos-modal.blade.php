@@ -1,4 +1,4 @@
-<div id="add-photos-modal" class="hm-modal">
+<div id="add-photos-modal" class="hm-modal hide">
   <div class="hm-modal__container">
     <div class="hm-modal__content">
       <div class="hm-modal__header">

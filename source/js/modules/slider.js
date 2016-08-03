@@ -43,6 +43,11 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 		showPrev();
 	});
 
+
+	$(window).resize(function(){
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(ajustImgHeight, resizeDelta);
+	});
 };
 
 function ajustImgHeight(){
@@ -100,11 +105,6 @@ function showSlide(_item){
 
 	ajustImgHeight();
 }
-
-$(window).resize(function(){
-	clearTimeout(resizeTimeout);
-	resizeTimeout = setTimeout(ajustImgHeight, resizeDelta);
-});
 
 module.exports = {
 	init : init,

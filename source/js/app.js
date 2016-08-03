@@ -2,7 +2,7 @@
 	"use strict";
 
 	var preloader = require("./modules/infinite_preloader.js"),
-		// helpers = require("./modules/helpers.js"),
+		helpers = require("./modules/helpers.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
@@ -53,6 +53,13 @@
 	$.fn.animated = animations.animateCss;
 	$(".album-item").animated("fadeIn");
 	$(".photo-item").animated("fadeIn");
+
+
+	// ==============================
+	// Ajust heights
+	// ==============================
+	$.fn.equalHeight = helpers.equalHeights;
+	$(".photo-item").equalHeight();
 
 
 
@@ -134,7 +141,7 @@
 
 
 	// ==============================
-	// Init Edit Album Modal (in Header)
+	// Init Slider
 	// ==============================
 	if ($(".js-open-slider").length) {
 		slider.init("#slider", ".js-open-slider", ".js-close-slider", ".js-slider-next", ".js-slider-prev");

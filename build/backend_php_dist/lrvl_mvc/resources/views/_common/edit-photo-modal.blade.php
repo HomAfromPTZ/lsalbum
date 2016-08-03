@@ -1,4 +1,4 @@
-<div id="edit-photo-modal" class="hm-modal">
+<div id="edit-photo-modal" class="hm-modal hide">
   <div class="hm-modal__container">
     <div class="hm-modal__content">
       <div class="hm-modal__header">
@@ -16,15 +16,15 @@
             <textarea name="" cols="30" rows="10" class="input_rounded"></textarea>
           </div>
         </div>
-        <div class="hm-modal__text photo-removing">
-          <div class="hm-modal__p">Вы хотите удалить это фото?</div>
-          <button class="btn btn_red">Удалить</button>
-          <button class="btn btn_link js-hide-photo-removing">Отменить</button>
+        <div class="hm-modal__text removing-block is-hidden">
+          <div class="removing__p">Вы хотите удалить это фото?</div>
+          <button class="btn btn_red ">Удалить</button>
+          <button class="btn btn_link js-hide-removing-block">Отменить</button>
         </div>
         <div class="hm-modal__footer">
           <button class="btn btn_ok">Сохранить</button>
           <button class="btn btn_link js-close-modal">Отменить</button>
-          <button class="btn btn_red js-show-photo-removing"><span class="fa fa-trash"></span><span>Удалить</span></button>
+          <button class="btn btn_red js-show-removing-block"><span class="fa fa-trash"></span><span>Удалить</span></button>
         </div>
       </form>
     </div>
