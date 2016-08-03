@@ -35,7 +35,7 @@
 				<div class="comments__item comments__item_add">
 					<div class="comments__item-photo">
 						<div class="photo-user-img">
-							<img src="{{(Auth::user()->avatar !== "") ?  Auth::user()->avatar : '/assets/img/default_avatar.jpg'}}" alt="Auth::user()->name"/>
+							<img id="slider__authuser-avatar" src="{{(Auth::user()->avatar !== "") ?  Auth::user()->avatar : '/assets/img/default_avatar.jpg'}}" alt="Auth::user()->name"/>
 							<a href="/user/{{Auth::user()->id}}" class="photo-user-img__mask">
 								<svg class="svg-more">
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
