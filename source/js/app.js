@@ -195,18 +195,7 @@
 	// ==============================
 
 	if ($("#dropzone").length) {
-		myDropzone.init();
-	}
-	if ($(".js-clear-dropzone").length) {
-		$(".js-clear-dropzone").on("click", function(){
-			myDropzone.clear();
-		});
-	}
-	if ($(".js-send-dropzone").length) {
-		$(".js-send-dropzone").on("click", function(e){
-			e.preventDefault();
-			myDropzone.send();
-		});
+		myDropzone.init(".js-clear-dropzone", ".js-send-dropzone");
 	}
 
 	preloader();
