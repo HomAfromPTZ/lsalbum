@@ -69,17 +69,17 @@ class PhotoController extends Controller
             $photo->save();
         } catch (Exception $e) {
             $photo->delete();
-            // return ['status' => 'error'];
-            return Response::json('error', 400);
+            return ['status' => 'error'];
+            // return Response::json('error', 400);
         }
 
-        // $result['photo_id'] = $photo->id;
-        // $result['photo'] = $filename;
-        // $result['thumbnail'] = $thumbnail;
-        // $result['num'] = $request->num;
+        $result['photo_id'] = $photo->id;
+        $result['photo'] = $filename;
+        $result['thumbnail'] = $thumbnail;
+        $result['num'] = $request->num;
 
-        // return $result;
-        return Response::json('success', 200);
+        return $result;
+        // return Response::json('success', 200);
     }
 
 
