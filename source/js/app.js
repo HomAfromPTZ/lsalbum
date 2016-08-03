@@ -46,7 +46,7 @@
 
 
 	// ==============================
-	// Animations example
+	// Animations
 	// ==============================
 	animations.fadePageOn("a.preload-link", "#preloader", 300);
 
@@ -113,12 +113,14 @@
 	function showRemovingBlock(e) {
 		e.preventDefault();
 		$(this).closest(".hm-modal__content").find(".editing-block").slideUp(300);
+		$(this).siblings().add(this).hide();
 		$(this).closest(".hm-modal__content").find(".removing-block").slideDown(300);
 	}
 
 	function hideRemovingBlock(e) {
 		e.preventDefault();
 		$(this).closest(".hm-modal__content").find(".removing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".hm-modal__footer button").show();
 		$(this).closest(".hm-modal__content").find(".editing-block").slideDown(300);
 	}
 
@@ -148,12 +150,39 @@
 		e.preventDefault();
 		var socialItem =  $(this).closest(".social-links__item");
 		socialItem.siblings().find(".social-links__form").hide();
-		socialItem.find(".social-links__form").show();
+		socialItem.find(".social-links__form").show()
+							.find("input").focus();
 	}
 
 	function hideSocialForm(e) {
 		e.preventDefault();
 		$(this).closest(".social-links__form").hide();
+	}
+
+	// Отмена изменений поля
+	function undoInput() {
+		var $input = $(this).siblings("input");
+		$input.val($input.data("backup"));
+		$input.closest(".social-links__form").hide();
+	}
+
+	// Реакция на нажатие клавиш на полях формы
+	if($("#edit-user-header .social-links").length) {
+
+		$("#edit-user-header .social-links").find("input").on("keydown", function (e) {
+			// Если на поле нажата Enter - сохраняем
+			if (e.which == "13") {
+				e.preventDefault();
+				$(this).closest(".social-links__form").hide();
+
+				// Если на поле нажата Esc - отменяем изменение
+			} else if(e.which == "27") {
+				e.preventDefault();
+				var $input = $(this);
+				$input.val($input.data("backup"));
+				$input.closest(".social-links__form").hide();
+			}
+		});
 	}
 
 	if ($(".js-open-social-form").length) {
@@ -162,7 +191,9 @@
 	if ($(".js-close-form").length) {
 		$(".js-close-form").on("click", hideSocialForm);
 	}
-
+	if ($(".js-undo-input").length) {
+		$(".js-undo-input").on("click", undoInput);
+	}
 
 	// ==============================
 	// Login card flip
