@@ -46,7 +46,7 @@
 
 
 	// ==============================
-	// Animations example
+	// Animations
 	// ==============================
 	animations.fadePageOn("a.preload-link", "#preloader", 300);
 
@@ -168,9 +168,8 @@
 
 	// Реакция на нажатие клавиш на полях формы
 	if($("#edit-user-header .social-links").length) {
-    
-    $("#edit-user-header .social-links").find("input").on("keydown", function (e) {
-      
+
+		$("#edit-user-header .social-links").find("input").on("keydown", function (e) {
 			// Если на поле нажата Enter - сохраняем
 			if (e.which == "13") {
 				e.preventDefault();

@@ -55,7 +55,7 @@
                     </div>
                     <div class="welcome__card welcome__card_registration">
                         <form class="form form_welcome" method="POST" action="{{ url('/register') }}">
-                          {{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
                                 <input id="" name="name" type="text" placeholder="Имя" class="group_welcome__input" value="{{ old('name') }}">
                             </div>

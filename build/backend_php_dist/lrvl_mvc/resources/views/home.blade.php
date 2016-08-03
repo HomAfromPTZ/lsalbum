@@ -12,10 +12,7 @@
 	@include('_common.preloader')
 	@include('_common.popup')
 	@include('_common.add-albums-modal')
-	@include('_common.add-photos-modal')
-	@include('_common.edit-photo-modal')
 	@include('_common.edit-album-modal')
-	@include('_common.edit-user-modal')
 	@include('_common.edit-user-header')
 	@include('_common.slider')
 
@@ -87,10 +84,10 @@
 						data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=%23$2'>$1</a>", $photo->description)!!}">
 						<div class="photo-item-holder">
 							<div class="album-photo">
-								<a href="#" class="open-img-popup js-open-slider">
+								<div class="open-img-popup js-open-slider">
 									<div class="album-mask"><i class="fa fa-search-plus"></i></div>
 									<div class="album-photo__thumb" style="background-image: url('{{$photo->thumb_url}}')"></div>
-								</a>
+								</div>
 							</div>
 							<div class="album-desc">
 								<div class="album-desc__user">
@@ -154,14 +151,14 @@
 
 					@empty
 
-					<h2>Нет фотографий</h2>
+					<h3>Нет фотографий</h3>
 
 					@endforelse
 
 
 				</div>
 
-				@if(count($photos) > 6)
+				@if($photos_count > 6)
 				<div class="show-more">
 					<button class="btn btn_transparent">Показать еще</button>
 				</div>
@@ -180,35 +177,37 @@
 					</div>
 				</div>
 
-				<div class="album-container">
+				@if($albums->count()>0)
+					<div class="album-container">
+					@foreach ($albums as $album)
+						<div class="album-item" data-id="{{ $album->id }}">
+							<div class="album-item-holder">
+								<a href="/album/{{$album['id']}}" class="my-album">
+									<img src="{{ ($album->cover->img_url !== '') ? $album->cover->img_url : 'assets/img/no_photo.jpg' }}" alt="{{$album->title}}"/>
 
-					@forelse ($albums as $album)
-
-					<div class="album-item" data-id="{{ $album->id }}">
-						<div class="album-item-holder">
-							<a href="/album/{{$album['id']}}" class="my-album">
-								<img src="{{ ($album->cover->img_url !== '') ? $album->cover->img_url : 'assets/img/no_photo.jpg' }}" alt=""/>
-
-								<div class="album-mask">
-									<div class="mask-content">
-										<div class="mask-content__desc">{{$album->description}}</div>
-										<div class="mask-content__count"><span>{{$album->photos->count()}} </span>Фотографий</div>
+									<div class="album-mask">
+										<div class="mask-content">
+											<div class="mask-content__desc">{{$album->description}}</div>
+											<div class="mask-content__count">
+												<span>{{$album->photos->count()}} </span>Фотографий
+											</div>
+										</div>
 									</div>
-								</div></a>
+								</a>
 								<div class="album-category">
-									<a href="#" class="edit-post js-edit-album">
+									<button class="edit-post js-edit-album">
 										<i class="fa fa-pencil"></i>
-									</a>
-									<span class="category-name">{{ $album->title }}</span></div>
+									</button>
+									<span class="category-name">{{ $album->title }}</span>
+								</div>
 							</div>
 						</div>
-
-						@empty
-							<h2>Альбомов пока еще нет</h2>
-						@endforelse
-
+					@endforeach
 					</div>
-				</div>
+				@else
+					<h3>Альбомов пока еще нет</h3>
+				@endif
+
 			</div>
 		</div>
 

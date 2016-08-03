@@ -12,11 +12,6 @@
 @include('_common.preloader')
 @include('_common.popup')
 @include('_common.add-albums-modal')
-@include('_common.add-photos-modal')
-@include('_common.edit-photo-modal')
-@include('_common.edit-user-modal')
-@include('_common.edit-user-header')
-@include('_common.slider')
 
 <div class="page">
     <header class="header header_user">
@@ -78,15 +73,15 @@
                             </div>
                           </a>
                             <div class="album-category">
-                              <a href="/album/edit" class="edit-post js-add-album">
+                              <button href="/album/edit" class="edit-post js-add-album">
                                 <i class="fa fa-pencil"></i>
-                              </a>
+                              </button>
                               <span class="category-name">Путешествие</span>
                             </div>
                         </div>
                     </div>
                   @empty
-                      {{ 'нет фльбомов' }}
+                      <h3>Нет альбомов</h3>
                   @endforelse
 
                 </div>

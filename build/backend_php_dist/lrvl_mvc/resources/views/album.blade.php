@@ -92,9 +92,9 @@
                     </div>
                   </div>
                   <div class="album-category">
-                    <a href="#" class="edit-post js-edit-photo">
+                    <button class="edit-post js-edit-photo">
                       <i class="fa fa-pencil"></i>
-                    </a>
+                    </button>
                     <span class="category-name">{{ $photo->title }}</span>
                   </div>
                 </div>
@@ -119,13 +119,13 @@
                       </div>
                     </div>
                   @empty
-                    {{ 'нет комментариев' }}
+                    Нет комментариев
                   @endforelse
 
                 </div>
               </div>
             @empty
-              {{ 'нет фотографий' }}
+              <h3>Нет фотографий</h3>
             @endforelse
 
 

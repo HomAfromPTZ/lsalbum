@@ -46,12 +46,15 @@ class PageController extends Controller
         $user = Auth::user();
         $data['user'] = $user;
         $data['auth_id'] = $user->id;
-        $data['photos'] = Photo::latest()
-            ->take(6)
+
+        $photos = Photo::latest()
             ->with('user')
             ->with('comment')
             ->with('like')
-            ->with('album')
+            ->with('album');
+        $data['photos_count'] = $photos->count();
+        $data['photos'] = $photos
+            ->take(6)
             ->get();
         $data['albums'] = Album::latest()
             ->where('user_id', $user->id)
