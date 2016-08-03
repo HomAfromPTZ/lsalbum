@@ -8,7 +8,7 @@ function init(container, openBtn, closeBtn){
 		e.preventDefault();
 
     var $button = $(e.target);
-console.log($button);
+// console.log($button);
 		// Открытие модалки - Редактировать альбом
     if( container == "#edit-album-modal" ) {
       var album_id = $button.parents(".album-item").data("id"),
@@ -84,7 +84,8 @@ console.log($button);
 		modal.addClass("hide").removeClass("show");
 
     if( container == "#add-album-modal" ) {
-      modal.find("input, textarea").each(function () {
+      modal.find("input, textarea").not('input[type=hidden]').each(function () {
+				console.log($(this));
         $(this).val('');
       });
     }
