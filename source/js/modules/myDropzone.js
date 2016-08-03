@@ -26,8 +26,6 @@ function init() {
 		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов."
 	}
 	myDropzone = new Dropzone("#dropzone", options);
-
-	// $dropzone.dropzone(options);
 }
 
 
