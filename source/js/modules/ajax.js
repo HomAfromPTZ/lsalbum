@@ -28,7 +28,9 @@ var setAjaxResponces = (function() {
                 });
               }
               if(msg.avatar !== undefined) {
-                $('#user-avatar').attr('src', msg.avatar);
+                $('#user-avatar')
+                  .add('#slider__authuser-avatar')
+                  .attr('src', msg.avatar);
               }
               $('.user-info__name').text(formData.get('name'));
               $('.user-info__desc').text(formData.get('description'));

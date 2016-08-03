@@ -80,7 +80,7 @@ function showSlide(_item){
 		img_user_avatar = _item.data('user_avatar'),
 		img_desc = _item.data('desc'),
 		comments_holder = slider.find('.comments__holder'),
-		img_comments = _item.find('.comments__item');
+		img_comments = _item.find('.comments__item').clone();
 
 	// Очищение блока для комментариев
 	comments_holder.html('');
