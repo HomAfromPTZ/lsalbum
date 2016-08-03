@@ -3,8 +3,10 @@
 	var $failArea = $("#fail-area");
 	var $failDropzone = $("#fail-dropzone");
 	var myDropzone;
+	var $clearBtn;
+	var $sendBtn;
 
-function init() {
+function init(clearDropzoneBtn, sendDropzoneBtn) {
 
 	var options = {
 		url: "/photo/save",
@@ -23,51 +25,71 @@ function init() {
 		dictCancelUploadConfirmation: "Вы уверены что хотите отменить загрузку?",
 		dictRemoveFile: "",
 		dictRemoveFileConfirmation: null,
-		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов."
+		dictMaxFilesExceeded: "Вы не можете загрузить больше файлов.",
+		autoProcessQueue: false
 	}
 	myDropzone = new Dropzone("#dropzone", options);
+	$clearBtn = $(clearDropzoneBtn);
+	$sendBtn = $(sendDropzoneBtn);
 
-	// $dropzone.dropzone(options);
+	attachEvents();
 }
 
-
-
-
-function clear() {
+function clearDropzone() {
 	myDropzone.removeAllFiles();
 }
 
-$dropzone.on("DOMSubtreeModified", function(){
+function sendDropzone() {
+	myDropzone.processQueue();
+}
 
-	// move every errored thumb to fail-dropzone
-	$dropzone.find(".dz-error").not(".dz-processing").each(function(key, value) {
-		$failDropzone.append(value);
+function attachEvents(){
+
+	$clearBtn.on("click", function(){
+		clearDropzone();
 	});
 
-	if ($(this).find(".dz-preview").length) {
+	$sendBtn.on("click", function(e){
+		e.preventDefault();
+		sendDropzone();
+	});
 
-		// hide dropzone inner text
-		$dropzoneInnerText.addClass("is-hidden");
-	} else {
+	$dropzone.on("DOMSubtreeModified", function(){
 
-		// show dropzone inner text
-		$dropzoneInnerText.removeClass("is-hidden");
-	}
+		// move every errored thumb to fail-dropzone
+		$dropzone.find(".dz-error").not(".dz-processing").each(function(key, value) {
+			$failDropzone.append(value);
+		});
+
+		if ($(this).find(".dz-preview").length) {
+
+			// hide dropzone inner text
+			$dropzoneInnerText.addClass("is-hidden");
+		} else {
+
+			// show dropzone inner text
+			$dropzoneInnerText.removeClass("is-hidden");
+		}
 
 
-});
+	});
 
-$failDropzone.on("DOMSubtreeModified", function() {
-	if (!$(this).html()) {
-		// hide fail-dropzone area
-		$failArea.addClass("is-hidden");
-	} else {
-		// show fail-dropzone area
-		$failArea.removeClass("is-hidden");
-	}
-});
+	$failDropzone.on("DOMSubtreeModified", function() {
+		if (!$(this).html()) {
+			// hide fail-dropzone area
+			$failArea.addClass("is-hidden");
+		} else {
+			// show fail-dropzone area
+			$failArea.removeClass("is-hidden");
+		}
+	});
+
+}
+
+
+
+
 
 module.exports = {
-	init: init,
-	clear: clear
+	init: init
 };

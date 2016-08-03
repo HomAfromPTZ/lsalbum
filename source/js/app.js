@@ -226,12 +226,7 @@
 	// ==============================
 
 	if ($("#dropzone").length) {
-		myDropzone.init();
-	}
-	if ($(".js-clear-dropzone").length) {
-		$(".js-clear-dropzone").on("click", function(){
-			myDropzone.clear();
-		});
+		myDropzone.init(".js-clear-dropzone", ".js-send-dropzone");
 	}
 
 	preloader();

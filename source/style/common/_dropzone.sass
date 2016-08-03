@@ -1,50 +1,50 @@
 /*
  * Dropzone Basic Styles
  */
-.dropzone, .dropzone * 
+.mydropzone, .mydropzone * 
 	box-sizing: border-box 
 
-.dropzone 
+.mydropzone 
 	position: relative 
 	
-.dropzone .dz-preview 
+.mydropzone .dz-preview 
 	position: relative
 	display: inline-block
 	width: 135px
 	margin: rem(10) 
 	
-.dropzone .dz-preview .dz-image
+.mydropzone .dz-preview .dz-image
 	border-radius: 4px
 	overflow: hidden
 
-.dropzone .dz-preview .dz-image img
+.mydropzone .dz-preview .dz-image img
 	display: block
 
-.dropzone .dz-preview .dz-progress 
+.mydropzone .dz-preview .dz-progress 
 	display: block
 	height: 15px
 	border: 1px solid #aaa 
 	
-.dropzone .dz-preview .dz-progress .dz-upload 
+.mydropzone .dz-preview .dz-progress .dz-upload 
 	display: block
 	height: 100%
 	width: 0
 	background: green 
 	
-.dropzone .dz-message
+.mydropzone .dz-message
 	display: none
 
-.dropzone .dz-preview .dz-error-message 
+.mydropzone .dz-preview .dz-error-message 
 	color: red
 	display: none 
 	
-.dropzone .dz-preview.dz-error .dz-error-message, .dropzone .dz-preview.dz-error .dz-error-mark 
+.mydropzone .dz-preview.dz-error .dz-error-message, .mydropzone .dz-preview.dz-error .dz-error-mark 
 	display: block 
 	
-.dropzone .dz-preview.dz-success .dz-success-mark 
+.mydropzone .dz-preview.dz-success .dz-success-mark 
 	display: block 
 	
-.dropzone .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark 
+.mydropzone .dz-preview .dz-error-mark, .mydropzone .dz-preview .dz-success-mark 
 	position: absolute
 	display: none
 	left: 30px
@@ -54,11 +54,11 @@
 	left: 50%
 	margin-left: -27px 
 
-.dropzone .dz-preview.dz-error .dz-error-mark,
-.dropzone .dz-preview.dz-success .dz-success-mark,
-.dropzone .dz-preview .dz-progress,
-.dropzone .dz-preview .dz-details,
-.dropzone .dz-preview .dz-error-mark
+.mydropzone .dz-preview.dz-error .dz-error-mark,
+.mydropzone .dz-preview.dz-success .dz-success-mark,
+.mydropzone .dz-preview .dz-progress,
+.mydropzone .dz-preview .dz-details,
+.mydropzone .dz-preview .dz-error-mark
 	display: none
 
 
@@ -141,32 +141,32 @@
 		transform: scale(1)
 		
 
-// .dropzone, .dropzone * 
+// .mydropzone, .mydropzone * 
 // 	box-sizing: border-box 
 
 
 
-.dropzone.dz-clickable 
+.mydropzone.dz-clickable 
 	cursor: pointer 
 
-.dropzone.dz-clickable * 
+.mydropzone.dz-clickable * 
 	cursor: default 
 
 
-.dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * 
+.mydropzone.dz-clickable .dz-message, .mydropzone.dz-clickable .dz-message * 
 	cursor: pointer 
 
 
-.dropzone.dz-started .dz-message 
+.mydropzone.dz-started .dz-message 
 	display: none 
 
 
-.dropzone.dz-drag-hover 
+.mydropzone.dz-drag-hover 
 	border-style: solid 
 
 
 
-.dropzone .dz-preview 
+.mydropzone .dz-preview 
 	position: relative
 	display: inline-block
 	vertical-align: top
@@ -175,7 +175,7 @@
 	border-radius: 4px
 
 
-.dropzone .dz-preview .dz-remove
+.mydropzone .dz-preview .dz-remove
 	position: absolute
 	top: -7px
 	right: -7px
@@ -202,26 +202,26 @@
 	&:after
 		transform: rotate(45deg)
 
-.dropzone .dz-preview .dz-remove:hover
+.mydropzone .dz-preview .dz-remove:hover
 	background-color: $btn-red-hover
 	transform: rotate(90deg)
 
 
-.dropzone .dz-preview.dz-processing .dz-progress 
+.mydropzone .dz-preview.dz-processing .dz-progress 
 	opacity: 1
 	transition: all 0.2s linear 
 
 
-.dropzone .dz-preview.dz-complete .dz-progress 
+.mydropzone .dz-preview.dz-complete .dz-progress 
 	opacity: 0
 	transition: opacity 0.4s ease-in 
 
 
-.dropzone .dz-preview:not(.dz-processing) .dz-progress
+.mydropzone .dz-preview:not(.dz-processing) .dz-progress
 	animation: pulse 6s ease infinite 
 
 
-.dropzone .dz-preview .dz-progress 
+.mydropzone .dz-preview .dz-progress 
 	opacity: 1
 	z-index: 1000
 	pointer-events: none
@@ -238,7 +238,7 @@
 	overflow: hidden 
 
 
-.dropzone .dz-preview .dz-progress .dz-upload 
+.mydropzone .dz-preview .dz-progress .dz-upload 
 	background: #333
 	background: linear-gradient(to bottom, #666, #444)
 	position: absolute
@@ -248,14 +248,14 @@
 	width: 0
 	transition: width 300ms ease-in-out 
 
-.dropzone .dz-preview.dz-error .dz-error-message 
+.mydropzone .dz-preview.dz-error .dz-error-message 
 	display: block 
 
-.dropzone .dz-preview.dz-error:hover .dz-error-message 
+.mydropzone .dz-preview.dz-error:hover .dz-error-message 
 	opacity: 1
 	pointer-events: auto 
 
-.dropzone .dz-preview .dz-error-message 
+.mydropzone .dz-preview .dz-error-message 
 	pointer-events: none
 	z-index: 1000
 	position: absolute
@@ -277,7 +277,7 @@
  * Dropzone Custom Styles
  */
 
-.dropzone 
+.mydropzone
 	border-radius: rem(16)
 	border: 2px dashed #f1f1f1
 	background-color: #f9f9f9
@@ -302,7 +302,7 @@
 		line-height: 1.5rem
 		text-align: center
 
-	&.dropzone.dz-drag-hover .dropzone__inner-text 
+	&.mydropzone.dz-drag-hover .dropzone__inner-text 
 		opacity: 0.5 
 
 	.dropzone__fa
