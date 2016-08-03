@@ -7,7 +7,7 @@
 				<div class="change-photo__text">
 					<label class="link">
 						<span class="fa fa-camera"></span>Изменить фон
-						<input type="file" name="cover" class="form__input form__input_file" id="album_new_cover_modal">
+						<input type="file" name="cover" class="form__input form__input_file" id="album_new_cover_header">
 					</label>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 				</div>
 				<div class="input-group">
 					<textarea name="description" cols="30" rows="5" class="input_rounded input_header-album"
-					data-backup="{{$album->description}}">{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $album->description)!!}</textarea>
+					data-backup="{{$album->description}}">{{ $album->description }}</textarea>
 				</div>
 			</div>
 		</div>

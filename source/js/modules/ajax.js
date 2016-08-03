@@ -84,7 +84,7 @@ var setAjaxResponces = (function() {
             $album_container.eq(1).children('h2').remove();
           }
 
-          $album_container.eq(1).append($album);
+          $album_container.eq(1).prepend($album);
 
           $("#add-album-modal").removeClass('show').addClass('hide');
           $("#add-album-modal").find("input, textarea").not('input[type=hidden]').each(function () {
@@ -117,9 +117,8 @@ var setAjaxResponces = (function() {
 // console.log(album);
 
         if(album.status == 'success') {
-
           $('.my-album-title').text(album.title);
-          $('.my-album-desc').text(album.description);
+          $('.my-album-desc').html( album.description.replace(/(#(\w{3,}))/g, "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>") );
           $('.header_album').css({
             backgroundImage: "url("+album.cover+")"
           });

@@ -85,7 +85,6 @@ function init(container, openBtn, closeBtn){
 
     if( container == "#add-album-modal" ) {
       modal.find("input, textarea").not('input[type=hidden]').each(function () {
-				console.log($(this));
         $(this).val('');
       });
     }
