@@ -97,7 +97,6 @@
                       <i class="fa fa-pencil"></i>
                     </button>
                     <span class="category-name">{{ $photo->title }}</span>
-                    <span class="category-desc hide">description {{ $photo->description }}</span>
                   </div>
                 </div>
 

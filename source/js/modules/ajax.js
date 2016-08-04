@@ -198,7 +198,7 @@ var setAjaxResponces = (function() {
                 $(this).val('');
               });
 
-              $('body').removeClass('has-overflow-hidden');
+              $('html').removeClass('has-overflow-hidden');
             }
           })
     });
@@ -207,41 +207,64 @@ var setAjaxResponces = (function() {
     // -----------------------------
     // Изменение фото в модалке
     // -----------------------------
-    $('#edit-photo-modal').on('submit', function (e) {
+    $('#edit-photo-modal__form').on('submit', function (e) {
       e.preventDefault();
-      var photo_id = $(this).data('id');
-
-console.log("photo_id = "+photo_id);
+      var formData = new FormData($(e.target)[0]),
+          photo_id = $("#edit-photo-modal").data('id');
 
       $.ajax({
             method: "POST",
             url: "/photo/update/"+ photo_id,
+            data: formData,
             processData: false,
             contentType: false
           })
           .done(function (photo) {
 console.log(photo);
-            // if(photo.status == 'success') {
+            if(photo.status == 'success') {
 
-              // var $album_block = $(".album-item[data-id="+ album_id +"]"),
-              //     $album_container = $album_block.parent();
-              //
-              // $album_block.remove();
-              //
-              // if( !$album_container.children(".album-item").length ) {
-              //   $album_container.append("<h2>no albums yet</h2>")
-              // }
-              //
-              // $("#edit-album-modal").find('.editing-block').show();
-              // $("#edit-album-modal").find('.hm-modal__footer button').show();
-              // $("#edit-album-modal").find('.removing-block').hide();
-              //
-            // }
+              var $photo_block = $(".photo-item[data-id="+ photo_id +"]");
+
+              $photo_block.data("title", photo.title)
+                          .data("desc", photo.description)
+                          .find(".category-name").text(photo.title);
+
               $("#edit-photo-modal").removeClass('show').addClass('hide');
 
-              $('body').removeClass('has-overflow-hidden');
+              $('html').removeClass('has-overflow-hidden');
+            }
           })
     });
+
+    // -----------------------------
+    // Удаление фото в модалке
+    // -----------------------------
+    $('#remove-photo-modal').on('click', function (e) {
+      e.preventDefault();
+      var $form = $("#edit-photo-modal__form"),
+          photo_id = $form.data('id');
+
+      $.ajax({
+            method: "GET",
+            url: "/photo/delete/"+ photo_id,
+            processData: false,
+            contentType: false
+          })
+          .done(function (photo) {
+            if(photo.status == 'success') {
+              $(".photo-item[data-id="+ photo_id +"]").remove();
+              $("#edit-photo-modal").removeClass('show').addClass('hide');
+
+              $(".album-general-info .photo-count").text( $(".photo-item").length );
+
+              $('html').removeClass('has-overflow-hidden');
+            } else {
+              console.log(photo.result);
+            }
+          })
+    });
+
+
   }
   
   return {
