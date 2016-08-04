@@ -69,39 +69,34 @@
 		// Вставляем фото в DOM
 		myDropzone.on("success", function (file, res) {
 
-			var $photo = $('<div class="photo-item single-photo"\
-												data-id="'+res.photo.id+'"\
-												data-title="'+res.photo.title+'"\
-												data-desc="'+res.photo.description+'"\
-												data-likes="0"\
-												data-comments=""\
-												data-thumb="'+res.photo.thumb_url+'"\
-												data-user_id="'+res.photo.user_id+'"\
-												data-user_avatar="'+res.photo.user_avatar+'"\
-												data-user_name="'+res.photo.user_name+'">\
-											<div class="photo-item-holder">\
-											<div class="album-photo">\
-											<a href="#" class="open-img-popup js-open-slider">\
-											<div class="album-mask"><i class="fa fa-search-plus"></i></div>\
-											<div style="background-image: url(\''+res.photo.thumb_url+'\')" class="album-photo__thumb"></div>\
-											</a>\
-											<div class="photo-info">\
-											<button class="photo-info__item">\
-											<i class="fa fa-commenting"> </i>\
-											<span class="comment-count">0</span>\
-									</button>\
-									<button class="photo-info__item">\
-											<i class="fa fa-heart"> </i>\
-											<span class="like-count">0</span>\
-									</button></div></div>\
-									<div class="album-category">\
-											<button class="edit-post js-edit-photo"><i class="fa fa-pencil"></i></button>\
-											<span class="category-name">'+res.photo.title+'</span>\
-									</div></div>\
-									<div class="is-hidden comments_hidden">Нет комментариев</div></div>');
+			console.log(res);
+			var photo_template_src = $("#photo-item-template"),
+				photo_tmp = photo_template_src.clone(),
+				photo_item = photo_tmp.find(".photo-item"),
+				comments_container = photo_tmp.find(".comments_hidden");
 
+			comments_container.attr('id', "photo-item__hidden-comments-"+res.photo.id);
 
-			$(".album-container").append($photo);
+			photo_item.attr("data-id", res.photo_id);
+			photo_item.attr("data-title", res.photo_title);
+			photo_item.attr("data-desc", "");
+			photo_item.attr("data-likes", 0);
+			photo_item.attr("data-comments", 0);
+			photo_item.attr("data-photo", res.photo);
+			photo_item.attr("data-user_id", res.user.id);
+			photo_item.attr("data-user_avatar", res.user.avatar);
+			photo_item.attr("data-user_name", res.user.name);
+
+			photo_item.find(".album-photo__thumb").css({
+				"background-image" : "url('" + res.thumbnail + "')"
+			});
+
+			photo_item.find(".comment-count").html(0);
+			photo_item.find(".like-count").html(0);
+			photo_item.find(".category-desc").html("");
+			photo_item.find(".category-name").html(res.photo_title);
+
+			$(".album-container").prepend(photo_tmp.html());
 
 			$(".album-general-info .photo-count").text( $(".photo-item").length );
 		});
