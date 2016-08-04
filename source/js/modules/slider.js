@@ -23,20 +23,22 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 	next = slider.find(nextBtn);
 	prev = slider.find(prevBtn);
 
-	var open = $(openBtn),
-		close = slider.find(closeBtn),
+	var close = slider.find(closeBtn),
 		body = $('html');
 
-	open.on("click", function (e){
+	body.on("click", openBtn, function (e){
 		e.preventDefault();
 
-		current = $(this).closest('.photo-item');
+		var photo_el = $(e.target).closest(openBtn);
+
+		current = photo_el.closest('.photo-item');
 		showSlide(current);
 
 		slider.removeClass("hide").addClass("show");
 		body.addClass('has-overflow-hidden')
 			.css({"padding-right" : scrollbar_width});
 	});
+
 
 	close.on("click", function (e){
 		e.preventDefault();

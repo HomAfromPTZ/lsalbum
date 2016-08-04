@@ -15,6 +15,8 @@
 	@include('_common.add-photos-modal')
 	@include('_common.edit-photo-modal')
 	@include('_common.slider')
+	@include('_templates.comment-item-template')
+	@include('_templates.photo-item-template')
 
 	<div class="page">
 		<header class="header header_album" style="background-image: url('{{ $album->cover->img_url }}')">

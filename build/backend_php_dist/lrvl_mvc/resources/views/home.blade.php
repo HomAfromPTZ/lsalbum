@@ -16,6 +16,8 @@
 	@include('_common.edit-user-header')
 	@include('_common.edit-photo-modal')
 	@include('_common.slider')
+	@include('_templates.comment-item-template')
+	@include('_templates.photo-item-template')
 
 
 	<div class="page">
@@ -71,16 +73,17 @@
 			<div class="fix-width">
 				<div class="new-photos-album">
 					<h2 class="album-title">Новое в мире</h2>
-					<div class="album-container">
+					<div class="album-container" id="show-more-container">
 						@include('_common.photos-list')
-				</div>
+					</div>
 
-				@if($photos_count > 6)
-				<div class="show-more">
-					<button class="btn btn_transparent" id="js-show-more-button" data-page="2">Показать еще</button>
-				</div>
-				@endif
+					@if($photos_count > 6)
+						<div class="show-more">
+							<button class="btn btn_transparent" id="js-show-more-button" data-page="2">Показать еще</button>
+						</div>
+					@endif
 
+				</div>
 			</div>
 		</div>
 

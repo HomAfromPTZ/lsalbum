@@ -308,10 +308,10 @@ function init() {
 			contentType: false
 		})
 		.done(function (response) {
-			var comments_section = form.closest(".slider__comments"),
+			var template_src = $("#comment-item-template").clone(),
+				comments_section = form.closest(".slider__comments"),
 				comments_container = comments_section.find(".comments__holder"),
 				comments_hidden_container = $("#photo-item__hidden-comments-"+photo_id),
-				template_src = comments_section.find("#comment-template").clone(),
 				template;
 
 			template_src.find(".photo-user-img img").attr("src", response.avatar).attr("alt", response.name);
@@ -340,12 +340,59 @@ function init() {
 			type: "GET",
 			dataType: "json"
 		}).done(function(resp){
-			more_button.data("page", ++page);
-			console.log("Total images: "+resp.total);
-			console.log("Total pages: "+resp.totalpages);
+			var comment_template_src = $("#comment-item-template"),
+				photo_template_src = $("#photo-item-template"),
+				more_container = $("#show-more-container");
+
 			$.each(resp.photos, function(index, photo){
-				console.log(photo);
+				var photo_tmp = photo_template_src.clone(),
+					photo_item = photo_tmp.find(".photo-item"),
+					comments_container = photo_tmp.find(".comments__hidden");
+
+				comments_container.attr('id', "photo-item__hidden-comments-"+photo.id);
+
+				$.each(photo.comments, function(index, comment){
+					var comment_tmp = comment_template_src.clone();
+
+					comment_tmp.find(".photo-user-img img").attr("src",comment.user.avatar).attr("alt",comment.user.name);
+					comment_tmp.find(".photo-user-img__mask").attr("href","/user/"+comment.user_id);
+					comment_tmp.find(".user__name").html(comment.user.name);
+					comment_tmp.find(".comments__item-text").html(comment.content);
+
+					comments_container.prepend(comment_tmp.html());
+				});
+
+				photo_item.attr("data-id", photo.id);
+				photo_item.attr("data-title", photo.title);
+				photo_item.attr("data-desc", photo.description);
+				photo_item.attr("data-likes", photo.likes);
+				photo_item.attr("data-comments", photo.comments);
+				photo_item.attr("data-photo", photo.img_url);
+				photo_item.attr("data-user_id", photo.user.id);
+				photo_item.attr("data-user_avatar", photo.user.avatar);
+				photo_item.attr("data-user_name", photo.user.name);
+
+				photo_item.find(".album-photo__thumb").css({
+					"background-image" : "url('" + photo.thumb_url + "')"
+				});
+
+				photo_item.find(".comment-count").html(photo.comments);
+				photo_item.find(".like-count").html(photo.likes);
+				photo_item.find(".category-desc").html(photo.description);
+				photo_item.find(".category-name").html(photo.title);
+
+				more_container.append(photo_tmp.html());
 			});
+
+			if(page >= resp.totalpages){
+				more_button.prop("disabled", true)
+					.fadeOut(400, function(){
+						more_button.remove();
+					});
+			} else {
+				more_button.data("page", ++page);
+			}
+
 		}).fail(function(resp){
 			alert("Ошибка сервера");
 		});
