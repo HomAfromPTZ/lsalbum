@@ -132,6 +132,7 @@ class PageController extends Controller
             $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
         }
 
+        $data['auth_id'] = Auth::user()->id;
         $data['photos'] = $photos;
         $data['searchtext'] = $s;
         $data['message'] = $message;

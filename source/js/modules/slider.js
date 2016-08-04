@@ -97,7 +97,7 @@ function showSlide(_item){
 		hash_regex = /(#([\wа-я]{3,}))/g,
 		comments_holder = slider.find('.comments__holder'),
 		img_comments = _item.find('.comments__item').clone();
-		console.log(img_desc);
+
 
 	// Очищение блока для комментариев
 	comments_holder.html('');
@@ -116,6 +116,7 @@ function showSlide(_item){
 	slider.find('.slider__title').html(img_title);
 	slider.find('#js-like-button').data('liked', img_liked);
 	slider.find('#js-like-button').data('photoid', img_id);
+	slider.find('.comments__form').data('photoid', img_id);
 	slider.find('.likes__count').html(img_likes);
 	slider.find('.slider__text').html(img_desc);
 	slider.find('.slider__author-photo .photo-user-img__mask').attr('href', '/user/'+ img_user_id);

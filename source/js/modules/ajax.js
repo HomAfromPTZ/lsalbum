@@ -293,6 +293,48 @@ function init() {
 		}
 	});
 
+
+	// -----------------------------
+	// Оставить комментарий
+	// -----------------------------
+	$('#post-comment-form').on('submit', function (e) {
+		e.preventDefault();
+		var form = $(e.target),
+			comment = form.find("#comment__edit-box"),
+			photo_id = $(form).data('photoid');
+
+		form.find("#comment__save-box").val(comment.html());
+		comment.html("");
+
+		var formData = new FormData(form[0]);
+
+		$.ajax({
+			method: "POST",
+			url: "/comment/"+ photo_id,
+			data: formData,
+			processData: false,
+			contentType: false
+		})
+		.done(function (response) {
+			var comments_section = form.closest(".slider__comments"),
+				comments_container = comments_section.find(".comments__holder"),
+				comments_hidden_container = $("#photo-item__hidden-comments-"+photo_id),
+				template_src = comments_section.find("#comment-template").clone(),
+				template;
+
+			template_src.find(".photo-user-img img").attr("src", response.avatar).attr("alt", response.name);
+			template_src.find(".photo-user-img__mask").attr("href", "/user/"+response.user_id);
+			template_src.find(".user__name").html(response.name);
+			template_src.find(".comments__item-text").html(response.content);
+
+			template = template_src.html();
+			comments_container.prepend(template);
+			comments_hidden_container.prepend(template);
+		});
+	});
+
+
+
 	// -----------------------------
 	// Следующий обработчик
 	// -----------------------------

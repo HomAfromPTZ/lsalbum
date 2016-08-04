@@ -47,7 +47,7 @@
 							</button>
 						</div>
 						<div class="header-buttons__item">
-							<a href="{{ url('/logout') }}" class="btn btn_animated btn__logut">
+							<a href="{{ url('/logout') }}" class="btn btn_animated btn__logut preload-link">
 								<i class="fa fa-power-off"></i>
 								<span>Выйти</span>
 							</a>

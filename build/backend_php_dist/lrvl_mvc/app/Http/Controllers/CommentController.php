@@ -22,6 +22,7 @@ class CommentController extends Controller
         Photo::find($photo_id)->increment('comments');
 
         return [
+            'user_id' => $user->id,
             'avatar' => $user->avatar,
             'name' => $user->name,
             'content' => $request->content

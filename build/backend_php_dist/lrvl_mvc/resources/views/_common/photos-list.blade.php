@@ -40,13 +40,13 @@
 			</div>
 		</div>
 
-		<div class="is-hidden comments_hidden">
+		<div class="is-hidden comments_hidden" id="photo-item__hidden-comments-{{$photo->id}}">
 
 			@forelse ($photo->comment as $comment)
 			<div class="comments__item">
 				<div class="comments__item-photo">
 					<div class="photo-user-img">
-						<img src="/assets/img/default_avatar.jpg" alt="{{ $comment->user->name }}"/>
+						<img src="{{($comment->user->avatar!="")?$comment->user->avatar:"/assets/img/default_avatar.jpg"}}" alt="{{ $comment->user->name }}"/>
 						<a href="/user/{{ $comment->user->id }}" class="photo-user-img__mask preload-link">
 							<svg class="svg-more">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
