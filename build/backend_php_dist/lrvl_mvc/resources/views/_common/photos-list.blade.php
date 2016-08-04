@@ -64,5 +64,5 @@
 		</div>
 	</div>
 @empty
-	<h3>Нет фотографий</h3>
+	<h3 class="photo-item">Нет фотографий</h3>
 @endforelse

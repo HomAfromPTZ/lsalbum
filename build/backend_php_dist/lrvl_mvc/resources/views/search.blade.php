@@ -39,10 +39,10 @@
 
 				<div class="user-info-holder">
 					<div class="user-avatar">
-						<div class="user-avatar__img"><img src="assets/img/default_avatar.jpg"/></div>
+						<div class="user-avatar__img"><img src="{{($user->avatar!="")?$user->avatar:"assets/img/default_avatar.jpg"}}"/></div>
 					</div>
 					<div class="user-info">
-						<h3 class="user-info__name">Антон Черепов</h3>
+						<h3 class="user-info__name">{{$user->name}}</h3>
 					</div>
 				</div>
 

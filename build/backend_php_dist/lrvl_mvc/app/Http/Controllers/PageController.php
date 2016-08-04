@@ -75,7 +75,6 @@ class PageController extends Controller
             ->where('user_id', $user->id)
             ->take(6)
             ->get();
-        // $data['auth_id'] = $data['user']->id;
 
         return view('user', $data);
     }
@@ -132,7 +131,8 @@ class PageController extends Controller
             $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
         }
 
-        $data['auth_id'] = Auth::user()->id;
+        $data['user'] = Auth::user();
+        $data['auth_id'] = $data['user']->id;
         $data['photos'] = $photos;
         $data['searchtext'] = $s;
         $data['message'] = $message;
