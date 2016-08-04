@@ -5,6 +5,9 @@ function init(container, openBtn, closeBtn){
 	var modal = $(container);
 	var body = $('html');
 
+	/** ----------------
+	 * Открытие формы
+	 * ----------------- */
 	$('body').on("click", openBtn, function (e){
 		e.preventDefault();
 		var $button = $(e.target);
@@ -27,10 +30,8 @@ function init(container, openBtn, closeBtn){
 			var photo_id = $button.parents(".photo-item").data("id"),
 				photo_title = $button.parents(".photo-item").data("title"),
 				photo_desc = $button.parents(".photo-item").data("desc");
-				// photo_title = $button.parents(".photo-item").find(".category-name").text(),
-				// photo_desc = $button.parents(".photo-item").find(".category-desc").text();
 
-			$('#edit-photo-modal__form').attr("data-id", photo_id);
+			$('#edit-photo-modal__form').data("id", photo_id);
 			modal.find('input[name=title]').val(photo_title);
 			modal.find('textarea[name=description]').val(photo_desc);
 		}
@@ -41,6 +42,10 @@ function init(container, openBtn, closeBtn){
 			.css({"padding-right" : scrollbar_width});
 	});
 
+
+	/** ----------------
+	 * Закрытие формы
+	 * ----------------- */
 	$('body').on("click", closeBtn, function (e){
 		e.preventDefault();
 
@@ -109,7 +114,12 @@ function init(container, openBtn, closeBtn){
 			modal.find("input, textarea").each(function () {
 				$(this).val('');
 			});
+		} else if( container == "#edit-photo-modal" ) {
+			$("#edit-photo-modal").find(".removing-block").slideUp(300);
+			$("#edit-photo-modal").find(".hm-modal__footer button").show();
+			$("#edit-photo-modal").find(".editing-block, .photo-editing").slideDown(300);
 		}
+
 		body.removeClass("has-overflow-hidden")
 			.css({"padding-right" : 0});
 	});

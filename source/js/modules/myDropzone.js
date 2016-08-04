@@ -96,8 +96,8 @@
 			photo_item.find(".category-name").html(res.photo_title);
 
 			$(".album-container").prepend(photo_tmp.html());
-
-			$(".album-general-info .photo-count").text( $(".photo-item").length );
+			
+			$(".album-general-info .photo-count").text( $(".content .photo-item").length );
 		});
 
 		// Для каждой загруженной фото

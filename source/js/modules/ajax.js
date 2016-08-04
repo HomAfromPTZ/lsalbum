@@ -275,7 +275,11 @@ function init() {
 				$(".photo-item[data-id="+ photo_id +"]").remove();
 				$("#edit-photo-modal").removeClass('show').addClass('hide');
 
-				$(".album-general-info .photo-count").text( $(".photo-item").length );
+				$("#edit-photo-modal").find(".removing-block").slideUp(300);
+				$("#edit-photo-modal").find(".hm-modal__footer button").show();
+				$("#edit-photo-modal").find(".editing-block, .photo-editing").slideDown(300);
+
+				$(".album-general-info .photo-count").text( $(".content .photo-item").length );
 
 				$('html').removeClass('has-overflow-hidden')
 					.css({"padding-right" : 0});

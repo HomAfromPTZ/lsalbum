@@ -99,9 +99,9 @@ class PhotoController extends Controller
             $photo->description = $request->description;
             $photo->save();
             return [
-                'id' => $id,
+                'status' => 'success',
                 'title' => $photo->title,
-                'status' => 'success'
+                'description' => $photo->description
             ];
         } catch (Exception $e) {
             return [
