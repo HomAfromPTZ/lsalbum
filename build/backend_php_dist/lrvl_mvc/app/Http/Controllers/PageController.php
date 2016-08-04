@@ -118,8 +118,8 @@ class PageController extends Controller
             $message = "Пожалуйста, введите поисковый запрос.";
             $photos = array();
         } else {
-            if(preg_match("/^#\w{3,}$/", $s)){
-                $photos = Photo::where('description', 'REGEXP', '[^'.$s.'$]')
+            if(preg_match("/#\w{3,}/", $s)){
+                $photos = Photo::where('description', 'REGEXP', '('.$s.')')
                     ->latest()
                     ->get();
             } else {
