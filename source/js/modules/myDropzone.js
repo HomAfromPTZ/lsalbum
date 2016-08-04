@@ -15,7 +15,7 @@
 			method: "POST",
 			paramName: "cover",
 			maxFilesize: 2,
-			maxFiles: 8,
+			maxFiles: 16,
 			thumbnailWidth: 135,
 			thumbnailHeight: 135,
 			acceptedFiles: '.jpg, .jpeg, .png',

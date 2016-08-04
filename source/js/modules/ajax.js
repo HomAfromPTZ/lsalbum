@@ -123,7 +123,7 @@ function init() {
 		.done(function (album) {
 			if(album.status == 'success') {
 				$('.my-album-title').text(album.title);
-				$('.my-album-desc').html( album.description.replace(/(#(\w{3,}))/g, "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>"));
+				$('.my-album-desc').html(album.description);
 				$('.header_album').css({
 					backgroundImage: "url("+album.cover+")"
 				});
@@ -313,7 +313,7 @@ function init() {
 
 			var likes = 0;
 			$(".content .photo-item .like-count").each(function () {
-				likes += parseInt($(this).text())
+				likes += parseInt($(this).text());
 			});
 			$(".album-general-info .like-count").text( likes );
 
@@ -369,7 +369,7 @@ function init() {
 
 			var comments = 0;
 			$(".content .photo-item .comment-count").each(function () {
-				comments += parseInt($(this).text())
+				comments += parseInt($(this).text());
 			});
 			$(".album-general-info .comments-count").text( comments );
 		});

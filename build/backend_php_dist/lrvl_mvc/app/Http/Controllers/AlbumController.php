@@ -92,7 +92,8 @@ class AlbumController extends Controller
             'result' => 'Альбом '.$album->name.' обновлен',
             'title' => $album->title,
             'description' => $album->description,
-            'cover' => $album->cover->thumb_url,
+            'cover' => $album->cover->img_url,
+            'cover_thumb' => $album->cover->thumb_url,
             'data' => $album
         ];
     }
