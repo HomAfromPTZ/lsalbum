@@ -22,13 +22,14 @@ body
 	font-size: 100%
 	font-family: "Pantonbold", sans-serif
 	transition: all $transition-time
-	color: $light_black
+	color: $black_light
 
 
 // Show scrollbar on every page
 html
 	overflow-x: hidden
 	overflow-y: scroll
+	transition: none
 
 #sprites-container
 	display: none
@@ -38,35 +39,6 @@ html
 
 .is-hidden
 	display: none
-
-// =================================
-// Typography
-// =================================
-h1, h2, h3, h4, h5, h6
-	margin: 0
-	font-weight: normal
-
-h1, h2
-	/**/
-	+media(m)
-		/**/
-	+media(xs)
-		/**/
-
-h3
-	/**/
-	+media(m)
-		/**/
-	+media(xs)
-		/**/
-
-h4, h5, h6
-	/**/
-	+media(m)
-		/**/
-	+media(xs)
-		/**/
-
 
 
 // =================================
@@ -85,4 +57,4 @@ button
 // =================================
 // Forms
 // =================================
-@include placeholder(rgba(#323232, 0.6))
+@include placeholder(rgba($black_light, 0.6))

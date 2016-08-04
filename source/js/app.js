@@ -1,13 +1,14 @@
 (function($) {
 	"use strict";
 
-	var preloader = require("./modules/preloader.js"),
-		// helpers = require("./modules/helpers.js"),
+	var preloader = require("./modules/infinite_preloader.js"),
+		helpers = require("./modules/helpers.js"),
 		modal = require("./modules/modal.js"),
 		slider = require("./modules/slider.js"),
 		animations = require("./modules/animations.js"),
 		setAjaxResponce = require("./modules/ajax.js"),
-		imagePreview = require("./modules/image_preview.js");
+		imagePreview = require("./modules/image_preview.js"),
+		myDropzone = require("./modules/myDropzone.js");
 
 	// ==============================
 	// Adaptive breakpoints
@@ -33,14 +34,39 @@
 		});
 	}
 
+
 	// ==============================
-	// Animations example
+	// Footer scroll button
+	// ==============================
+	$("#go-up").click(function(){
+		$("html, body").stop().animate({
+			scrollTop: 0
+		}, 700, "swing");
+	});
+
+
+	// ==============================
+	// Animations
 	// ==============================
 	animations.fadePageOn("a.preload-link", "#preloader", 300);
 
 	$.fn.animated = animations.animateCss;
-	// Example
-	$(".animated-test-container").animated("slideInRight");
+	$(".album-item").animated("fadeIn");
+	$(".photo-item").animated("fadeIn");
+
+
+	// ==============================
+	// Ajust heights
+	// ==============================
+	$.fn.equalHeight = helpers.equalHeights;
+
+	function ajustHeights(){
+		$(".album-category").css({height:"auto"}).equalHeight();
+		$(".album-item__footer").css({height:"auto"}).equalHeight();
+	}
+
+	$(window).on("load", ajustHeights);
+	$(window).resize(ajustHeights);
 
 
 
@@ -49,6 +75,13 @@
 	// ==============================
 	if ($(".js-add-album").length) {
 		modal.init("#add-album-modal", ".js-add-album", ".js-close-modal");
+	}
+
+	// ==============================
+	// Init Edit Album Modal
+	// ==============================
+	if ($(".js-edit-album").length) {
+		modal.init("#edit-album-modal", ".js-edit-album", ".js-close-modal");
 	}
 
 	// ==============================
@@ -91,31 +124,33 @@
 	// ==============================
 	// Edit User Modal - Delete Photo
 	// ==============================
-	function showPhotoRemovingBlock(e) {
+	function showRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-editing").slideUp(300);
-		$(".photo-removing").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".editing-block, .photo-editing").slideUp(300);
+		$(this).siblings().add(this).hide();
+		$(this).closest(".hm-modal__content").find(".removing-block").slideDown(300);
 	}
 
-	function hidePhotoRemovingBlock(e) {
+	function hideRemovingBlock(e) {
 		e.preventDefault();
-		$(".photo-removing").slideUp(300);
-		$(".photo-editing").slideDown(300);
+		$(this).closest(".hm-modal__content").find(".removing-block").slideUp(300);
+		$(this).closest(".hm-modal__content").find(".hm-modal__footer button").show();
+		$(this).closest(".hm-modal__content").find(".editing-block, .photo-editing").slideDown(300);
 	}
 
-	if ($(".js-show-photo-removing").length > 0) {
-		$(".js-show-photo-removing").on("click", showPhotoRemovingBlock);
+	if ($(".js-show-removing-block").length) {
+		$(".js-show-removing-block").on("click", showRemovingBlock);
 	}
 
-	if ($(".js-hide-photo-removing").length > 0) {
-		$(".js-hide-photo-removing").on("click", hidePhotoRemovingBlock);
+	if ($(".js-hide-removing-block").length) {
+		$(".js-hide-removing-block").on("click", hideRemovingBlock);
 	}
 
 
 	// ==============================
-	// Init Edit Album Modal (in Header)
+	// Init Slider
 	// ==============================
-	if ($(".js-open-slider").length > 0) {
+	if ($(".js-open-slider").length) {
 		slider.init("#slider", ".js-open-slider", ".js-close-slider", ".js-slider-next", ".js-slider-prev");
 	}
 
@@ -125,58 +160,54 @@
 	// ==============================
 	// Show Social Items Forms
 	// ==============================
-
-	// Отображение формы
 	function showSocialForm(e) {
 		e.preventDefault();
-		var socialItem =  $(this).closest(".social__item");
-		socialItem.siblings().find(".social__form").hide();
-		socialItem.find(".social__form").show()
-				.find('input').focus();
+		var socialItem =  $(this).closest(".social-links__item");
+		socialItem.siblings().find(".social-links__form").hide();
+		socialItem.find(".social-links__form").show()
+							.find("input").focus();
 	}
 
-	// Сокрытие формы
 	function hideSocialForm(e) {
 		e.preventDefault();
-		$(this).closest(".social__form").hide();
+		$(this).closest(".social-links__form").hide();
 	}
 
 	// Отмена изменений поля
 	function undoInput() {
 		var $input = $(this).siblings("input");
 		$input.val($input.data("backup"));
-		$input.closest(".social__form").hide();
+		$input.closest(".social-links__form").hide();
 	}
 
 	// Реакция на нажатие клавиш на полях формы
-	if($(".social__form").length > 0) {
-		$(".social__form").find('input').on('keydown', function (e) {
+	if($("#edit-user-header .social-links").length) {
 
+		$("#edit-user-header .social-links").find("input").on("keydown", function (e) {
 			// Если на поле нажата Enter - сохраняем
-			if (e.which == '13') {
+			if (e.which == "13") {
 				e.preventDefault();
-				$(this).closest(".social__form").hide();
+				$(this).closest(".social-links__form").hide();
 
 				// Если на поле нажата Esc - отменяем изменение
-			} else if(e.which == '27') {
+			} else if(e.which == "27") {
 				e.preventDefault();
 				var $input = $(this);
 				$input.val($input.data("backup"));
-				$input.closest(".social__form").hide();
+				$input.closest(".social-links__form").hide();
 			}
-		})
+		});
 	}
 
-	if ($(".js-open-social-form").length > 0) {
+	if ($(".js-open-social-form").length) {
 		$(".js-open-social-form").on("click", showSocialForm);
 	}
-	if ($(".js-close-form").length > 0) {
+	if ($(".js-close-form").length) {
 		$(".js-close-form").on("click", hideSocialForm);
 	}
-	if ($(".js-undo-input").length > 0) {
+	if ($(".js-undo-input").length) {
 		$(".js-undo-input").on("click", undoInput);
 	}
-
 
 	// ==============================
 	// Login card flip
@@ -204,6 +235,14 @@
 		$("body").removeClass("show_recovery");
 	});
 
+	// ==============================
+	// Dropzone (Add photos)
+	// ==============================
+
+	if ($("#dropzone").length) {
+		var album_id = $(".form_add-photo").data("id");
+		myDropzone.init(".js-clear-dropzone", ".js-send-dropzone", album_id);
+	}
 
 	preloader();
 

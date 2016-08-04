@@ -46,12 +46,15 @@ class PageController extends Controller
         $user = Auth::user();
         $data['user'] = $user;
         $data['auth_id'] = $user->id;
-        $data['photos'] = Photo::latest()
-            ->take(6)
+
+        $photos = Photo::latest()
             ->with('user')
             ->with('comment')
             ->with('like')
-            ->with('album')
+            ->with('album');
+        $data['photos_count'] = $photos->count();
+        $data['photos'] = $photos
+            ->take(6)
             ->get();
         $data['albums'] = Album::latest()
             ->where('user_id', $user->id)
@@ -72,7 +75,6 @@ class PageController extends Controller
             ->where('user_id', $user->id)
             ->take(6)
             ->get();
-        $data['auth_id'] = $data['user']->id;
 
         return view('user', $data);
     }
@@ -103,6 +105,7 @@ class PageController extends Controller
         $data['photos_num'] = $photos->count();
         $data['likes_num'] = $likes;
         $data['comments_num'] = $comments;
+        $data['auth_id'] = Auth::user()->id;
 
         return view('album', $data);
     }
@@ -110,26 +113,35 @@ class PageController extends Controller
 
     public function search(Request $request){
         $s = $request->searchtext;
-        if(preg_match("/^#\w{3,}$/", $s) || $request->hashtag){
-            $photos = Photo::where('description', 'REGEXP', '[[:<:]]'.$s.'[[:>:]]')
-                ->latest()
-                ->get();
+
+        if($s===""){
+            $message = "Пожалуйста, введите поисковый запрос.";
+            $photos = array();
         } else {
-            $photos = Photo::where('description', 'LIKE', '%'.$s.'%')
-                ->orWhere('title', 'LIKE', '%'.$s.'%')
-                ->latest()
-                ->get();
+            if(preg_match("/#\w{3,}/", $s)){
+                $photos = Photo::where('description', 'REGEXP', '('.$s.')')
+                    ->latest()
+                    ->get();
+            } else {
+                $photos = Photo::where('description', 'LIKE', '%'.$s.'%')
+                    ->orWhere('title', 'LIKE', '%'.$s.'%')
+                    ->latest()
+                    ->get();
+            }
+
+            if($photos->count() < 1){
+                $message = "По запросу &laquo;".$s."&raquo; совпадений не найдено";
+            } else {
+                $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
+            }
         }
 
-        if($photos->count() < 1){
-            return [
-                'status' => 'error',
-                'message' => 'Совпадений не найдено'
-            ];
-        }
 
+        $data['user'] = Auth::user();
+        $data['auth_id'] = $data['user']->id;
         $data['photos'] = $photos;
-        $data['searchtext'] = $request;
+        $data['searchtext'] = $s;
+        $data['message'] = $message;
         return view('search', $data);
     }
 }

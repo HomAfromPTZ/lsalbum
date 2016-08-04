@@ -1,18 +1,71 @@
-/*HEADER*/
-header
+//===============================================
+//	HEADER
+//===============================================
+.album-page
+	.change-photo_cover
+		float: none
+		width: 30%
+		margin: 0 auto
+
+.header
 	display: table-row
 	width: 100%
-	&.main-page
-		background: url(../img/bg/main-header.jpg) 50% 0 no-repeat
+	&_main,
+	&_user,
+	&_album
+		background-image: url(../img/bg/main-header.jpg)
+		background-repeat: no-repeat
 		background-size: cover
 		background-position: center center
 
+	&_album
+		.user-info-holder
+			position: absolute
+			display: flex
+			align-items: center
+			top: 20px
+			left: 40px
+			width: 30%
+			+media(s)
+				position: absolute
+				left: 50%
+				transform: translateX(-50%)
+				justify-content: center
+				width: 60%
+			.user-avatar
+				width: auto
+				margin-right: 10px
+			.user-info
+				width: auto
+				margin-top: 0
+
+
 .header-holder
-	padding: 53px 0 60px
-/*USER AVATAR*/
+	@extend %clearfix
+	padding: 70px 0 40px
+	.search-page &
+		padding: 20px 0
+
+.search-holder
+	.user-page &
+		margin-bottom: 0
+
+
+//===============================================
+//	USER HEADER
+//===============================================
+.user-info-holder
+	position: relative
+	width: 80%
+	float: left
+	+media(s)
+		float: none
+
 .user-avatar
-	@extend %tableAlign
-	width: 180px
+	width: 25%
+	float: left
+	+media(s)
+		float: none
 
 	&__img
 		display: flex
@@ -23,92 +76,162 @@ header
 		height: 120px
 		overflow: hidden
 		margin: 0 auto
-
-/*USER INFO*/
-.user-info-holder
-	display: table
-	position: relative
+		+media(s)
+			width: 100px
+			height: 100px
 
 .user-info
-	@extend %tableAlign
 	color: $white
-	width: 400px
-	padding: 0 0 0 20px
+	float: left
+	width: 75%
+	padding-left: 10px
+	+media(s)
+		float: none
+		margin-top: 15px
 
-.user-info__name
-	font: 21px/23px "Panton_bold"
-	margin: 0 0 10px
+	&__desc
+		color: rgba(255,255,255, .8)
+		font-family: "Proximanova_light"
+		line-height: 1
+		padding: 0 0 26px
 
-.user-info__desc
-	color: rgba(255,255,255, .8)
-	font-family: "Proximanova_light"
-	line-height: 24px
-	padding: 0 0 26px
+.user-info-holder,
+.user-avatar,
+.user-info
+	+media(s)
+		display: block
+		text-align: center
+		width: 100%
+		padding: 0
 
-/*SOCIAL*/
+
+
+//===============================================
+//	SOCIAL LINKS
+//===============================================
 .social-links
 	margin: 0
 	padding: 0
 	list-style: none
 
-.social__item
-	display: inline-block
-	vertical-align: top
-	margin-right: 0.35rem
+	&__item
+		display: inline-block
+		vertical-align: top
+		margin-right: 6px
+		position: relative
+		&:last-child
+			margin-right: 0
+		+media(s)
+			margin-top: 10px
+			margin-right: 10px
 
-.social__link
-	text-decoration: none
-	width: 20px
-	height: 20px
-	display: block
-	opacity: .8
+	&__link
+		text-decoration: none
+		display: block
+		opacity: .8
+		transition: opacity $transition-time
 
-	&:hover .svg-social
-		opacity: 1
-.svg-social
-	width: 20px
-	height: 20px
-	fill: $white
-	opacity: .8
-/*HRADER BUTTONS*/
+		&:hover
+			opacity: 1
+
+	&__svg
+		width: 20px
+		height: 20px
+		fill: $white
+		opacity: .8
+		+media(s)
+			width: 30px
+			height: 30px
+
+	&__form
+		position: absolute
+		z-index: 10
+		display: none
+		background: $white
+		padding: 11px
+		top: 30px
+		left: 0
+		transform: translateX(-47.5%)
+		width: 280px
+		border-radius: 3px
+		box-shadow: 0 1px 4px rgba($black, .15)
+		&:before
+			content: ''
+			position: absolute
+			display: block
+			bottom: 100%
+			left: 50%
+			margin-left: -2px
+			border: 4px solid transparent
+			border-bottom-color: $white
+
+
+
+//===============================================
+//	HEADER BUTTONS
+//===============================================
 .header-buttons
 	position: absolute
 	right: 40px
 	top: 20px
+	+media(s)
+		right: 10px
+		left: 10px
 
 	&__item
 		float: right
 		clear: both
 		padding: 0 0 6px
+		+media(s)
+			&:nth-child(2)
+				position: absolute
+				left: 0
 
 
 
-/*SEARCH PAGE*/
+//===============================================
+//	SEARCH PAGE
+//===============================================
 .search-page
-	.header-holder
-		padding: 20px 0
-
-	header
+	.header
 		background: none
-	
-	.user-avatar
-		width: 100px
 
-	.user-avatar__img
-		width: 50px
-		height: 50px
+	.search-holder
+		.fix-width
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+			justify-content: space-between
 
-	.user-info__name
-		margin: 0
-		font-size: 16px
-		color: $light_black
+	.user-info-holder
+		width: auto
+		display: flex
+		align-items: center
+		+media(s)
+			display: none
+		.user-avatar
+			width: 50px
+			margin: 0 10px
+			&__img
+				width: 50px
+				height: 50px
 
-/*ALBUM PAGE*/
-.my-album-page
+		.user-info
+			width: auto
+			padding-left: 0
+			margin-top: 0
+			&__name
+				margin: 0
+				font-size: 16px
+				color: $black_light
+				text-align: left
 
-	.header-holder
-		padding: 20px 0 66px
 
+
+//===============================================
+//	ALBUM PAGE
+//===============================================
+.album-page
 	.user-avatar
 		width: 80px
 
@@ -124,4 +247,7 @@ header
 		text-align: center
 		color: $white
 		width: 65%
-		margin: 0 auto
+		margin: 10px auto
+		+media(s)
+			width: 90%
+			margin-top: 50px

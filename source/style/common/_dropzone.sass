@@ -1,0 +1,324 @@
+/*
+ * Dropzone Basic Styles
+ */
+.mydropzone, .mydropzone * 
+	box-sizing: border-box 
+
+.mydropzone 
+	position: relative 
+	
+.mydropzone .dz-preview 
+	position: relative
+	display: inline-block
+	width: 135px
+	margin: rem(10) 
+	
+.mydropzone .dz-preview .dz-image
+	border-radius: 4px
+	overflow: hidden
+
+.mydropzone .dz-preview .dz-image img
+	display: block
+
+.mydropzone .dz-preview .dz-progress 
+	display: block
+	height: 15px
+	border: 1px solid #aaa 
+	
+.mydropzone .dz-preview .dz-progress .dz-upload 
+	display: block
+	height: 100%
+	width: 0
+	background: green 
+	
+.mydropzone .dz-message
+	display: none
+
+.mydropzone .dz-preview .dz-error-message 
+	color: red
+	display: none 
+	
+.mydropzone .dz-preview.dz-error .dz-error-message, .mydropzone .dz-preview.dz-error .dz-error-mark 
+	display: block 
+	
+.mydropzone .dz-preview.dz-success .dz-success-mark 
+	display: block 
+	
+.mydropzone .dz-preview .dz-error-mark, .mydropzone .dz-preview .dz-success-mark 
+	position: absolute
+	display: none
+	left: 30px
+	top: 30px
+	width: 54px
+	height: 58px
+	left: 50%
+	margin-left: -27px 
+
+.mydropzone .dz-preview.dz-error .dz-error-mark,
+.mydropzone .dz-preview.dz-success .dz-success-mark,
+.mydropzone .dz-preview .dz-progress,
+.mydropzone .dz-preview .dz-error-mark
+
+.mydropzone .dz-preview .dz-details .dz-filename
+	display: none
+
+
+
+
+/*
+ * Dropzone Aditional Styles
+ */
+@-webkit-keyframes passing-through 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30%, 70% 
+		opacity: 1
+		transform: translateY(0px) 
+	100% 
+		opacity: 0
+		transform: translateY(-40px)
+
+@-moz-keyframes passing-through 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30%, 70% 
+		opacity: 1
+		transform: translateY(0px) 
+	100% 
+		opacity: 0
+		transform: translateY(-40px)	
+@keyframes passing-through 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30%, 70% 
+		opacity: 1
+		transform: translateY(0px) 
+	100% 
+		opacity: 0
+		transform: translateY(-40px)	
+@-webkit-keyframes slide-in 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30% 
+		opacity: 1
+		transform: translateY(0px)	
+@-moz-keyframes slide-in 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30% 
+		opacity: 1
+		transform: translateY(0px)	
+@keyframes slide-in 
+	0% 
+		opacity: 0
+		transform: translateY(40px) 
+	30% 
+		opacity: 1
+		transform: translateY(0px)	
+@-webkit-keyframes pulse 
+	0% 
+		transform: scale(1) 
+	10% 
+		transform: scale(1.1) 
+	20% 
+		transform: scale(1)	
+@-moz-keyframes pulse 
+	0% 
+		transform: scale(1) 
+	10% 
+		transform: scale(1.1) 
+	20% 
+		transform: scale(1)	
+@keyframes pulse 
+	0% 
+		transform: scale(1) 
+	10% 
+		transform: scale(1.1) 
+	20% 
+		transform: scale(1)
+		
+
+// .mydropzone, .mydropzone * 
+// 	box-sizing: border-box 
+
+
+
+.mydropzone.dz-clickable 
+	cursor: pointer 
+
+.mydropzone.dz-clickable * 
+	cursor: default 
+
+
+.mydropzone.dz-clickable .dz-message, .mydropzone.dz-clickable .dz-message * 
+	cursor: pointer 
+
+
+.mydropzone.dz-started .dz-message 
+	display: none 
+
+
+.mydropzone.dz-drag-hover 
+	border-style: solid 
+
+
+
+.mydropzone .dz-preview 
+	position: relative
+	display: inline-block
+	vertical-align: top
+	min-height: 135px
+	background-color: #c9c9c9
+	border-radius: 4px
+
+
+.mydropzone .dz-preview .dz-remove
+	position: absolute
+	top: -7px
+	right: -7px
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	border: 2px solid #f9f9f9
+	background-color: $btn-red-color
+	transition: transform $transition-time ease
+	cursor: pointer
+
+	&:before,
+	&:after
+		position: absolute
+		background-color: white
+		top: 2px
+		right: 7px
+		width: 2px
+		height: 12px
+		content: ''
+		border-radius: 1px
+	&:before
+		transform: rotate(-45deg)
+	&:after
+		transform: rotate(45deg)
+
+.mydropzone .dz-preview .dz-remove:hover
+	background-color: $btn-red-hover
+	transform: rotate(90deg)
+
+
+.mydropzone .dz-preview.dz-processing .dz-progress 
+	opacity: 1
+	transition: all 0.2s linear 
+
+
+.mydropzone .dz-preview.dz-complete .dz-progress 
+	opacity: 0
+	transition: opacity 0.4s ease-in 
+
+
+.mydropzone .dz-preview:not(.dz-processing) .dz-progress
+	animation: pulse 6s ease infinite 
+
+
+.mydropzone .dz-preview .dz-progress 
+	opacity: 1
+	z-index: 1000
+	pointer-events: none
+	position: absolute
+	height: 16px
+	left: 50%
+	top: 50%
+	margin-top: -8px
+	width: 80px
+	margin-left: -40px
+	background: rgba(255, 255, 255, 0.9)
+	-webkit-transform: scale(1)
+	border-radius: 8px
+	overflow: hidden 
+
+
+.mydropzone .dz-preview .dz-progress .dz-upload 
+	background: #333
+	background: linear-gradient(to bottom, #666, #444)
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+	width: 0
+	transition: width 300ms ease-in-out 
+
+.mydropzone .dz-preview.dz-error .dz-error-message 
+	display: block 
+
+.mydropzone .dz-preview.dz-error:hover .dz-error-message 
+	opacity: 1
+	pointer-events: auto 
+
+.mydropzone .dz-preview .dz-error-message 
+	pointer-events: none
+	z-index: 1000
+	position: absolute
+	display: block
+	display: none
+	opacity: 0
+	transition: opacity 0.3s ease
+	border-radius: 4px
+	font-size: 13px
+	bottom: 0
+	left: 0
+	width: 100%
+	background: $btn-red-color
+	padding: 0.5em 1.2em
+	color: white
+
+
+/*
+ * Dropzone Custom Styles
+ */
+
+.mydropzone
+	border-radius: rem(16)
+	border: 2px dashed #f1f1f1
+	background-color: #f9f9f9
+	width: 100%
+	min-height: rem(330)
+	padding: 0.5rem
+	text-align: left
+	color: #555
+	position: relative
+	margin-top: 2.1rem
+
+	.dropzone__inner-text
+		position: absolute
+		left: 0
+		right: 0
+		margin: 0 auto
+		top: 50%
+		transform: translateY(-50%)
+		width: 50%
+		max-width: rem(200)
+		font-size: rem(15)
+		line-height: 1.5rem
+		text-align: center
+
+	&.mydropzone.dz-drag-hover .dropzone__inner-text 
+		opacity: 0.5 
+
+	.dropzone__fa
+		display: block
+		font-size: 36px
+		margin-bottom: rem(14)
+
+	.dropzone__text
+		
+	.link
+		
+		.form__input_file
+			display: none
+
+
+.dropzone_fail
+	min-height: rem(151)

@@ -3,199 +3,110 @@
 @section('title', 'Главная - '.$user['name'] )
 
 @section('head')
-  @include('_common.head')
+@include('_common.head')
 @endsection
 
 @section('content')
-<body>
-  @include('_common.sprites')
-  @include('_common.preloader')
-  @include('_common.popup')
-  @include('_common.add-albums-modal')
-  @include('_common.add-photos-modal')
-  @include('_common.edit-photo-modal')
-  @include('_common.edit-user-modal')
-  @include('_common.edit-user-header')
-  @include('_common.slider')
+<body class="main-page">
+	@include('_common.sprites')
+	@include('_common.preloader')
+	@include('_common.popup')
+	@include('_common.add-albums-modal')
+	@include('_common.edit-album-modal')
+	@include('_common.edit-user-header')
+	@include('_common.edit-photo-modal')
+	@include('_common.slider')
+	@include('_templates.comment-item-template')
+	@include('_templates.photo-item-template')
+	@include('_templates.album-item-template')
 
 
-<div class="page">
+	<div class="page">
 
-    <header class="main-page" style="background-image: url({{ ($user->background !== '') ? $user->background : 'assets/img/bg/main-header.jpg' }});">
-        <div class="header-holder">
-            <div class="fix-width">
-                <div class="user-info-holder">
-                    <div class="user-avatar">
-                        <div class="user-avatar__img">
-                          <img id="user-avatar" src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}"/>
-                        </div>
+		<header class="header header_main" style="background-image: url({{ ($user->background !== '') ? $user->background : 'assets/img/bg/main-header.jpg' }});">
+			<div class="header-holder">
+				<div class="fix-width">
+					<div class="user-info-holder">
 
-                    </div>
-                    <div class="user-info">
-                        <h2 class="user-info__name">{{$user['name']}}</h2>
-                        <div class="user-info__desc">{{$user['description']}}</div>
-                        <ul class="social-links">
-                            <li class="social__item"><a href="{{ $user->vk }}" id="social__link_vk" class="social__link">
-                                    <svg class="svg-social">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_vk"></use>
-                                    </svg></a></li>
-                            <li class="social__item"><a href="{{ $user->facebook }}" id="social__link_fb" class="social__link">
-                                    <svg class="svg-social">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_fb"></use>
-                                    </svg></a></li>
-                            <li class="social__item"><a href="{{ $user->twitter }}" id="social__link_tw" class="social__link">
-                                    <svg class="svg-social">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_twitter"></use>
-                                    </svg></a></li>
-                            <li class="social__item"><a href="{{ $user->google }}" id="social__link_gg" class="social__link">
-                                    <svg class="svg-social">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_google"></use>
-                                    </svg></a></li>
-                            <li class="social__item"><a href="mailto:{{ $user->email }}" id="social__link_email" class="social__link">
-                                    <svg class="svg-social">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-soc_email"></use>
-                                    </svg></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="header-buttons">
-                    <div class="header-buttons__item">
-                        <button class="btn btn_animated js-edit-user-header"><i class="fa fa-pencil"></i><span>Редактировать</span>
-                        </button>
-                    </div>
-                    <div class="header-buttons__item"><a href="{{ url('/logout') }}" class="btn btn_animated btn__logut"> <i class="fa fa-power-off"></i><span>Выйти</span></a></div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="search-holder">
-        <div class="fix-width">
-            <form class="search-form">
-                <div class="search-form-holder">
-                    <button type="submit" class="search-form__btn fa fa-search"></button>
-                    <input type="text" placeholder="Исследовать мир" class="search-form__input">
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="content">
-        <div class="fix-width">
-            <div class="new-photos-album">
-                <h2 class="album-title">Новое в мире</h2>
-                <div class="album-container">
+						<div class="user-avatar">
+							<div class="user-avatar__img">
+								<img id="user-avatar" src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}"/>
+							</div>
+						</div>
 
-                    @forelse ($photos as $photo)
+						<div class="user-info">
+							<h3 class="user-info__name">{{$user['name']}}</h3>
+							<div class="user-info__desc">{{$user['description']}}</div>
 
-                      <div class="album-item" data-title="{{ $photo->title }}" data-desc="{{ $photo->description }}" data-likes="{{ $photo->likes }}" data-comments="{{ $photo->comments }}" data-thumb="{{ $photo->thumb_url }}" data-user_avatar="{{ $photo->user->avatar }}" data-user_name="{{ $photo->user->name }}" >
-                        <div class="album-item-holder">
-                          <div class="album-photo">
-                            <a href="{{$photo->img_url}}" class="open-img-popup js-open-slider">
-                              <div class="album-mask"><i class="fa fa-search-plus"></i></div>
-                              <div class="album-photo__thumb" style="background-image: url('{{$photo->thumb_url}}')"></div>
-                            </a>
-                          </div>
-                          <div class="album-desc">
-                            <div class="album-desc__user">
-                              <div class="photo-user-img"><img src="{{ ($photo->user->avatar !== '') ? $photo->user->avatar : 'assets/img/default_avatar.jpg' }}" alt=""/>
-                                <a href="/user/{{$photo->user_id}}" class="photo-user-img__mask">
-                                  <svg class="svg-more">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
-                                  </svg></a></div>
-                            </div>
-                            <div class="album-desc__info">
-                              <div class="photo-desc-title">{{$photo['title']}}</div>
-                              <div class="photo-info">
-                                <button class="photo-info__item">
-                                  <i class="fa fa-commenting"> </i>
-                                  <span class="comment-count">{{$photo['comments']}}</span>
-                                </button>
-                                <button class="photo-info__item">
-                                  <i class="fa fa-heart"> </i>
-                                  <span class="like-count">{{$photo['likes']}}</span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="album-category"><a href="album.html" class="category-name">
-                              <svg class="svg-category">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-album"></use>
-                              </svg><span>{{ $photo->album->title }}</span></a></div>
-                        </div>
-                      </div>
+							@include('_common.show-socials')
 
-                    @empty
+						</div>
+					</div>
+					<div class="header-buttons">
+						<div class="header-buttons__item">
+							<button class="btn btn_animated js-edit-user-header">
+								<i class="fa fa-pencil"></i>
+								<span>Редактировать</span>
+							</button>
+						</div>
+						<div class="header-buttons__item">
+							<a href="{{ url('/logout') }}" class="btn btn_animated btn__logut preload-link">
+								<i class="fa fa-power-off"></i>
+								<span>Выйти</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-                      <h2>no photos yet</h2>
+		<div class="search-holder">
+			<div class="fix-width">
+				<form class="search-form" action="/search/">
+					<div class="search-form-holder">
+						<button type="submit" class="search-form__btn fa fa-search"></button>
+						<input name="searchtext" type="text" placeholder="Исследовать мир" class="search-form__input">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="content">
+			<div class="fix-width">
+				<div class="new-photos-album">
+					<h2 class="album-title">Новое в мире</h2>
+					<div class="album-container" id="show-more-container">
+						@include('_common.photos-list')
+					</div>
 
-                    @endforelse
+					@if($photos_count > 6)
+						<div class="show-more">
+							<button class="btn btn_transparent" id="js-show-more-button" data-page="2">Показать еще</button>
+						</div>
+					@endif
 
+				</div>
+			</div>
+		</div>
 
-                </div>
+		<div class="my-photos">
+			<div class="fix-width">
 
-              @if(count($photos) > 6)
-                <div class="show-more">
-                    <button class="btn btn_transparent">Показать еще</button>
-                </div>
-              @endif
+				<div class="title-holder">
+					<h2 class="album-title">Мои альбомы</h2>
+					<div class="add-album-btn">
+						<button class="btn btn_animated js-add-album"><i class="fa fa-plus"></i><span>Добавить</span></button>
+					</div>
+				</div>
 
-            </div>
-        </div>
+				@include('_common.albums-list')
+			</div>
+		</div>
 
-        <div class="my-photos">
-            <div class="fix-width">
+		@include('_common.footer')
+	</div>
 
-                <div class="title-holder">
-                    <h2 class="album-title">Мои альбомы</h2>
-                    <div class="add-album-btn">
-                        <button class="btn btn_animated js-add-album"><i class="fa fa-plus"></i><span>Добавить</span></button>
-                    </div>
-                </div>
+	{{-- Javascripts --}}
 
-                <div class="album-container">
-
-                  @forelse ($albums as $album)
-
-                    <div class="album-item">
-                      <div class="album-item-holder">
-                        <a href="/album/{{$album['id']}}" class="my-album">
-                          <img src="{{ ($album->cover->img_url !== '') ? $album->cover->img_url : 'assets/img/no_photo.jpg' }}" alt=""/>
-
-                          <div class="album-mask">
-                            <div class="mask-content">
-                              <div class="mask-content__desc">{{$album['description']}}</div>
-                              <div class="mask-content__count"><span>{{ $album->photos->count() }}</span> Фотографий</div>
-                            </div>
-                          </div></a>
-                        <div class="album-category">
-                          <a href="#" class="edit-post js-add-album"><i class="fa fa-pencil"></i></a>
-                          <span class="category-name">{{$album['title']}}</span></div>
-                      </div>
-                    </div>
-
-                  @empty
-                    <h2>no albums yet</h2>
-                  @endforelse
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="fix-width">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <p>Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
-                </div>
-                <div class="footer-column center"><img src="assets/img/footer-logo.png"></div>
-                <div class="footer-column right"><span class="year">2016</span>Создано командой профессионалов на продвинутом курсе по&nbsp;веб-разработке от LoftSchool</div>
-            </div>
-        </div>
-    </footer>
-</div>
-
-  {{-- Javascripts --}}
-
-  @include('_common._js')
-
+	@include('_common._js')
 </body>
 @endsection

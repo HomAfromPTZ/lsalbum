@@ -19,9 +19,10 @@ class CommentController extends Controller
         $comment->photo_id = $photo_id;
         $comment->save();
 
-        Photo::find($photo_id)->increment('likes');
+        Photo::find($photo_id)->increment('comments');
 
         return [
+            'user_id' => $user->id,
             'avatar' => $user->avatar,
             'name' => $user->name,
             'content' => $request->content
@@ -37,7 +38,7 @@ class CommentController extends Controller
             return ['error' => 'Ошибка авторизации'];
         }
 
-        Photo::find($photo_id)->decrement('likes');
+        Photo::find($photo_id)->decrement('comments');
 
         return $comment->delete();
     }

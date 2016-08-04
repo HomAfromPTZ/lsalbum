@@ -1,35 +1,20 @@
 .search-page
-	
 	.search-holder
 		padding: 6px 0
 
 	.search-form
-		width: 100%
-		margin: 5px 0 0 0
+		float: none
+		+media(s)
+			width: 100%
+			text-align: center
 
 	.show-new
-		text-decoration: none
-		color: #28bbf0
+		float: right
+		text-decoration: none;
+		color: $maincolor
 		font: 16px/18px "Proximanova_semibold"
-		margin: 16px 0 0
 		display: inline-block
-
-	.new-photos-album
-		padding: 0 0 38px
-
-
-.search-column-holder
-	margin: 0 -1%
-
-.search-column
-	width: 31.33%
-	margin: 0 1% 0
-	float: left
-
-.seach-page-title
-	font: 42px/44px "Proximanova_semibold"
-	text-align: center
-
-.search-results-title
-	font: 21px/23px "Panton_bold"
-	padding: 0 0 37px
+		+media(s)
+			width: 100%
+			text-align: center
+			margin: 15px auto

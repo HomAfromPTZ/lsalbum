@@ -48,7 +48,23 @@ var ieVersion = function () {
 	return false;
 };
 
+
+var equalHeights = function() {
+	var maxHeight = 0,
+	$this = $(this);
+
+	$this.each( function() {
+		var height = $(this).innerHeight();
+
+		if ( height > maxHeight ) { maxHeight = height; }
+	});
+
+	return $this.css('height', maxHeight);
+};
+
+
 module.exports = {
 	getScrollbarWidth : getScrollbarWidth,
-	ieVersion : ieVersion
+	ieVersion : ieVersion,
+	equalHeights : equalHeights
 }
