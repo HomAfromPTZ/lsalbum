@@ -101,7 +101,7 @@ class PhotoController extends Controller
             return [
                 'id' => $id,
                 'title' => $photo->title,
-                'status' => 'Изменения сохранены'
+                'status' => 'success'
             ];
         } catch (Exception $e) {
             return [
@@ -122,7 +122,7 @@ class PhotoController extends Controller
             if($user->id != $photo->user_id){
                 return [
                     'errors' => true,
-                    'result' => 'Auth error'
+                    'result' => 'Ошибка авторизации'
                 ];
             }
 

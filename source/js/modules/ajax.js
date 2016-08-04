@@ -223,8 +223,9 @@ function init() {
 	// -----------------------------
 	$('#edit-photo-modal__form').on('submit', function (e) {
 		e.preventDefault();
-		var formData = new FormData($(e.target)[0]),
-		photo_id = $("#edit-photo-modal").data('id');
+		var form = $(e.target),
+			formData = new FormData(form[0]),
+			photo_id = form.data('id');
 
 		$.ajax({
 			method: "POST",
@@ -234,14 +235,14 @@ function init() {
 			contentType: false
 		})
 		.done(function (photo) {
-			console.log(photo);
+			// console.log(photo);
 			if(photo.status == 'success') {
 
 				var $photo_block = $(".photo-item[data-id="+ photo_id +"]");
 
 				$photo_block.data("title", photo.title)
-				.data("desc", photo.description)
-				.find(".category-name").text(photo.title);
+					.data("desc", photo.description)
+					.find(".category-name").text(photo.title);
 
 				$("#edit-photo-modal").removeClass('show').addClass('hide');
 
@@ -259,7 +260,7 @@ function init() {
 	$('#remove-photo-modal').on('click', function (e) {
 		e.preventDefault();
 		var $form = $("#edit-photo-modal__form"),
-		photo_id = $form.data('id');
+			photo_id = $form.data('id');
 
 		$.ajax({
 			method: "GET",
@@ -268,7 +269,9 @@ function init() {
 			contentType: false
 		})
 		.done(function (photo) {
-			if(photo.status == 'success') {
+			if(photo.errors === true){
+				console.log(photo.result);
+			} else {
 				$(".photo-item[data-id="+ photo_id +"]").remove();
 				$("#edit-photo-modal").removeClass('show').addClass('hide');
 
@@ -276,8 +279,6 @@ function init() {
 
 				$('html').removeClass('has-overflow-hidden')
 					.css({"padding-right" : 0});
-			} else {
-				console.log(photo.result);
 			}
 		});
 	});
