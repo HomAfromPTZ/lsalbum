@@ -11,8 +11,6 @@
   @include('_common.sprites')
   @include('_common.preloader')
   @include('_common.popup')
-  @include('_common.add-albums-modal')
-  @include('_common.add-photos-modal')
   @include('_common.edit-photo-modal')
 
   <div class="page">
@@ -23,7 +21,7 @@
 
           <div class="header-buttons">
             <div class="header-buttons__item">
-              <a href="/" class="btn btn_animated btn__logut">
+              <a href="/" class="btn btn_animated btn__logut preload-link">
                 <i class="fa fa-home"></i>
                 <span>На главную</span>
               </a>

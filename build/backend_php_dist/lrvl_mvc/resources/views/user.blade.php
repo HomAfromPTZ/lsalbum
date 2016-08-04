@@ -35,7 +35,7 @@
                 </div>
                 <div class="header-buttons">
                     <div class="header-buttons__item">
-                      <a href="/" class="btn btn_animated">
+                      <a href="/" class="btn btn_animated preload-link">
                         <i class="fa fa-home"></i>
                         <span>На главную</span>
                       </a>

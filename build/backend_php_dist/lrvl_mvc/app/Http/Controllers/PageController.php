@@ -75,7 +75,7 @@ class PageController extends Controller
             ->where('user_id', $user->id)
             ->take(6)
             ->get();
-        $data['auth_id'] = $data['user']->id;
+        // $data['auth_id'] = $data['user']->id;
 
         return view('user', $data);
     }
@@ -106,6 +106,7 @@ class PageController extends Controller
         $data['photos_num'] = $photos->count();
         $data['likes_num'] = $likes;
         $data['comments_num'] = $comments;
+        $data['auth_id'] = Auth::user()->id;
 
         return view('album', $data);
     }

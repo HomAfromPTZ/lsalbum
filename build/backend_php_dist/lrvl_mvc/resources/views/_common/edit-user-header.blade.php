@@ -1,4 +1,4 @@
-<form id="edit-user-header" class="hform hide">
+<form id="edit-user-header" class="hform hide" method="POST">
   {{csrf_field()}}
   <div class="header-holder header-holder_edit-user" id="bg-edit-user"
        style="background-image: url({{$user->background}});"
@@ -72,7 +72,7 @@
     </div>
   </div>
   <div class="hform__footer">
-    <button type="submit" class="btn btn_ok js-close-header">Сохранить</button>
+    <button type="submit" class="btn btn_ok">Сохранить</button>
     <button type="button" class="btn btn_link js-close-header">Отменить</button>
   </div>
 </form>

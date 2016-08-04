@@ -18,14 +18,14 @@
 		animation: slider-show $transition-time_medium
 		animation-fill-mode: forwards
 		+media(xs)
-			animation: none
+			// animation: none
 			visibility: visible
 			opacity: 1
 	&.hide
 		animation: slider-hide $transition-time_medium
 		overflow: hidden
 		+media(xs)
-			animation: none
+			// animation: none
 			visibility: hidden
 			opacity: 0
 
@@ -98,6 +98,7 @@
 .slider__photo
 	position: relative
 	overflow: hidden
+	height: 200px
 	background-color: $gray
 
 
@@ -146,6 +147,11 @@
 	padding: 0 18px
 	border-radius: 20px
 	cursor: pointer
+	transition: background-color $transition-time
+	&:hover
+		background-color: darken($btn-red-color, 10%)
+	&:active
+		transform: scale3d(.95, .95,1)
 
 
 

@@ -5,6 +5,8 @@ var scrollbar_width = helpers.getScrollbarWidth(),
 	img_container,
 	img_wrapper,
 	current,
+	next,
+	prev,
 	resizeTimeout,
 	resizeDelta = 100;
 
@@ -18,10 +20,11 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 		img_container.fadeIn(300);
 	});
 
+	next = slider.find(nextBtn);
+	prev = slider.find(prevBtn);
+
 	var open = $(openBtn),
 		close = slider.find(closeBtn),
-		next = slider.find(nextBtn),
-		prev = slider.find(prevBtn),
 		body = $('html');
 
 	open.on("click", function (e){
@@ -82,15 +85,19 @@ function showPrev(){
 };
 
 function showSlide(_item){
-	var img_full = _item.data('photo'),
+	var img_id = _item.data('id'),
+		img_full = _item.data('photo'),
 		img_title = _item.data('title'),
 		img_likes = _item.data('likes'),
+		img_liked = _item.data('is_liked'),
 		img_user_id = _item.data('user_id'),
 		img_user_name = _item.data('user_name'),
 		img_user_avatar = _item.data('user_avatar'),
 		img_desc = _item.data('desc'),
+		hash_regex = /(#([\wа-я]{3,}))/g,
 		comments_holder = slider.find('.comments__holder'),
 		img_comments = _item.find('.comments__item').clone();
+		console.log(img_desc);
 
 	// Очищение блока для комментариев
 	comments_holder.html('');
@@ -104,13 +111,29 @@ function showSlide(_item){
 		img_container.attr('src', img_full);
 	});
 
+	img_desc = img_desc.replace(hash_regex, "<a class='hashtag' href='/search/?searchtext=%23$2'>$1</a>");
+
 	slider.find('.slider__title').html(img_title);
+	slider.find('#js-like-button').data('liked', img_liked);
+	slider.find('#js-like-button').data('photoid', img_id);
 	slider.find('.likes__count').html(img_likes);
 	slider.find('.slider__text').html(img_desc);
 	slider.find('.slider__author-photo .photo-user-img__mask').attr('href', '/user/'+ img_user_id);
 	slider.find('.slider__author-name').html(img_user_name);
 	slider.find('.slider__author-photo img').attr('src', img_user_avatar);
 
+
+	if (_item.next('.photo-item').length<1) {
+		next.fadeOut();
+	} else {
+		next.fadeIn();
+	}
+
+	if (_item.prev('.photo-item').length<1) {
+		prev.fadeOut();
+	} else {
+		prev.fadeIn();
+	}
 }
 
 module.exports = {

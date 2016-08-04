@@ -2,7 +2,6 @@
 // Preloader with percentage by image count
 // ==========================================
 var	preloader_container = $("#preloader"),
-	preloader_percentage = $("#preloader__percentage"),
 	hasImageProperties = ["background", "backgroundImage", "listStyleImage", "borderImage", "borderCornerImage", "cursor"],
 	hasImageAttributes = ["srcset"],
 	match_url = /url\(\s*(['"]?)(.*?)\1\s*\)/g,
@@ -13,22 +12,14 @@ var	preloader_container = $("#preloader"),
 module.exports = function preloader() {
 
 	function img_loaded(){
-		var percentage = Math.ceil( (count+1) / total * 100 );
-		count += 1;
-		percentage = percentage > 100 ? 100 : percentage;
-		preloader_percentage.html(percentage);
-
+		count ++;
 		if(count === total){
 			return done_loading();
 		}
 	}
 
 	function done_loading(){
-		preloader_percentage.css({"animation":"none"});
-		preloader_container.delay(700).fadeOut(700, function(){
-			// Callbacks, e.g.:
-			preloader_percentage.remove();
-		});
+		preloader_container.delay(700).fadeOut(700);
 	}
 
 	function images_loop (total) {

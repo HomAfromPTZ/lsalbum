@@ -14,6 +14,7 @@
 	@include('_common.add-albums-modal')
 	@include('_common.edit-album-modal')
 	@include('_common.edit-user-header')
+	@include('_common.edit-photo-modal')
 	@include('_common.slider')
 
 

@@ -3,12 +3,15 @@
 		data-id="{{ $photo->id }}"
 		data-title="{{ $photo->title }}"
 		data-desc="{{ $photo->description }}"
+		{{-- data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=%23$2'>$1</a>", $photo->description)!!}" --}}
 		data-likes="{{ $photo->likes }}"
 		data-comments="{{ $photo->comments }}"
 		data-photo="{{ $photo->img_url }}"
 		data-user_id="{{ $photo->user->id }}"
 		data-user_avatar="{{ $photo->user->avatar }}"
-		data-user_name="{{ $photo->user->name }}">
+		data-user_name="{{ $photo->user->name }}"
+		data-is_liked="{{$photo->like->where('user_id', $auth_id)->count()}}"
+		>
 		<div class="photo-item-holder">
 			<div class="album-photo">
 				<div class="open-img-popup js-open-slider">
@@ -27,9 +30,12 @@
 				</div>
 			</div>
 			<div class="album-category">
-				<button class="edit-post js-edit-photo">
-					<i class="fa fa-pencil"></i>
-				</button>
+				@if(Auth::user()->id == $photo->user->id)
+					<button class="edit-post js-edit-photo">
+						<i class="fa fa-pencil"></i>
+					</button>
+				@endif
+				<span class="category-desc is-hidden">{{ $photo->description }}</span>
 				<span class="category-name">{{ $photo->title }}</span>
 			</div>
 		</div>
