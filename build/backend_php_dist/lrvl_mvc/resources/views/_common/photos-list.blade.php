@@ -66,3 +66,4 @@
 @empty
 	<h3>Нет фотографий</h3>
 @endforelse
+@include('_common.photo-item-template')
