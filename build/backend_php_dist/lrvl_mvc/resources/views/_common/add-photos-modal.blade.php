@@ -5,7 +5,7 @@
         <div class="hm-modal__title">Добавить фотографии</div>
         <button class="hm-modal__close js-close-modal js-clear-dropzone"><span class="fa fa-close"></span></button>
       </div>
-      <form class="form form_add-photo" data-id="{{ $album->id }}" action="{{ url('/photo/save/'.$album->id) }}">
+      <form class="form form_add-photo" data-id="{{ $album->id }}"">
         {{csrf_field()}}
         <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
         <div class="hm-modal__text hm-modal_add-photo__text">
@@ -18,8 +18,7 @@
               <div class="fallback">
                 <div class="dropzone__inner-text">
                   <span class="dropzone__fa fa fa-camera"></span>
-                  <span class="dropzone__text">Перетащите фото сюда или выберите файл</span>
-                  <label class="link">выберите файл
+                  <label class="link">Выберите файл
                     <input type="file" name="cover" class="form__input form__input_file">
                   </label>
                 </div>

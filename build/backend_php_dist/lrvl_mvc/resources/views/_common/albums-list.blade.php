@@ -3,7 +3,7 @@
 	@foreach ($albums as $album)
 		<div class="album-item" data-id="{{ $album->id }}">
 			<div class="album-item-holder">
-				<a href="/album/{{$album->id}}" class="my-album">
+				<a href="/album/{{$album->id}}" class="my-album preload-link">
 					<div style="background-image: url('{{ ($album->cover->img_url !== '') ? $album->cover->img_url : 'assets/img/no_photo.jpg' }}')" alt="{{$album->title}}" class="album__thumb"></div>
 
 					<div class="album-mask">

@@ -17,11 +17,12 @@
 
 					.form_add-photo__row
 						.mydropzone#dropzone 
-							.dropzone__inner-text
-								span.dropzone__fa.fa.fa-camera
-								span.dropzone__text Перетащите фото сюда или
-								label.link выберите файл
-									input.form__input.form__input_file(type="file", name="")
+							.fallback
+								.dropzone__inner-text
+									span.dropzone__fa.fa.fa-camera
+									span.dropzone__text Перетащите фото сюда или
+									label.link выберите файл
+										input.form__input.form__input_file(type="file", name="")
 					.form_add-photo__row
 						.error-notification Выбран неверный формат изображений. Попробуйте снова
 						

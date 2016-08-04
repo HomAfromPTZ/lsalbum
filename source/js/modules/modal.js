@@ -25,8 +25,13 @@ function init(container, openBtn, closeBtn){
 		// Открытие модалки - Редактировать фото
 		} else if( container == "#edit-photo-modal" ) {
 			var photo_id = $button.parents(".photo-item").data("id"),
+<<<<<<< HEAD
 					photo_title = $button.parents(".photo-item").data("title"),
 					photo_desc = $button.parents(".photo-item").data("desc");
+=======
+				photo_title = $button.parents(".photo-item").find(".category-name").text(),
+				photo_desc = $button.parents(".photo-item").find(".category-desc").text();
+>>>>>>> 4cb1948e43f386317e6305d2ccfc8f69b4ba4dc4
 
 			$('#edit-photo-modal__form').data("id", photo_id);
 			modal.find('input[name=title]').val(photo_title);

@@ -59,7 +59,14 @@
 	// Ajust heights
 	// ==============================
 	$.fn.equalHeight = helpers.equalHeights;
-	$(".photo-item").equalHeight();
+
+	function ajustHeights(){
+		$(".album-category").css({height:"auto"}).equalHeight();
+		$(".album-item__footer").css({height:"auto"}).equalHeight();
+	}
+
+	$(window).on("load", ajustHeights);
+	$(window).resize(ajustHeights);
 
 
 

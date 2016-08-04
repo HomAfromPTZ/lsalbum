@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-	<body class="album-page">
+<body class="album-page">
 	@include('_common.sprites')
 	@include('_common.preloader')
 	@include('_common.popup')
@@ -36,14 +36,14 @@
 					</div>
 					<div class="header-buttons">
 						<div class="header-buttons__item">
-              <a href="/" class="btn btn_animated"><i class="fa fa-home"></i>
-                <span>На главную</span>
-              </a>
-            </div>
+							<a href="/" class="btn btn_animated preload-link"><i class="fa fa-home"></i>
+								<span>На главную</span>
+							</a>
+						</div>
 						<div class="header-buttons__item">
-              @if(Auth::user()->id == $user->id)
-  							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
-              @endif
+							@if(Auth::user()->id == $user->id)
+							<button class="btn btn_animated js-edit-album-header"><i class="fa fa-pencil"></i><span>Редактировать</span></button>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -63,6 +63,7 @@
 						<button class="btn btn_animated"><i class="fa fa-plus"></i><span>Добавить</span></button>
 					</div>
 					<div class="album-container">
+<<<<<<< HEAD
 
             @forelse ($photos as $photo)
               <div class="photo-item single-photo"
@@ -130,40 +131,16 @@
             @endforelse
 
 
+=======
+						@include('_common.photos-list')
+>>>>>>> 4cb1948e43f386317e6305d2ccfc8f69b4ba4dc4
 					</div>
 				</div>
 			</div>
 		</div>
-    
-    @include('_common.footer')
+
+		@include('_common.footer')
 	</div>
-
-
-<!--<ul>-->
-<!--	<li>Url: {{$url}}</li>-->
-<!--	<li>Username: {{$user['name']}}</li>-->
-<!--	<li>User avatar: {{$user['avatar']}}</li>-->
-<!--	<li>Album title: {{$album['title']}}</li>-->
-<!--	<li>Описание: {{$album['description']}}</li>-->
-<!--	<li>Обложка: {{$album->cover->img_url}}</li>-->
-<!--	<li>All Photos: {{$photos_num}}</li>-->
-<!--	<li>All Likes: {{$likes_num}}</li>-->
-<!--	<li>All Comments: {{$comments_num}}</li>-->
-<!--</ul>-->
-<!--	<h2>Фотографии:</h2>-->
-<!--	@forelse ($photos as $photo)-->
-<!--		<hr>-->
-<!--		<ul>-->
-<!--			<li>Photo thumb: <br/><img width="200" src="{{$photo['thumb_url']}}"/></li>-->
-<!--			<li>Photo img: {{$photo['img_url']}}</li>-->
-<!--			<li>Title: {{$photo['title']}}</li>-->
-<!--			<li>Description: {!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>", $photo->description)!!}</li>-->
-<!--			<li>Likes: {{$photo['likes']}}</li>-->
-<!--			<li>Comments: {{$photo['comments']}}</li>-->
-<!--		</ul>-->
-<!--	@empty-->
-<!--		{{-- empty expr --}}-->
-<!--	@endforelse-->
 
 {{-- Javascripts --}}
 
