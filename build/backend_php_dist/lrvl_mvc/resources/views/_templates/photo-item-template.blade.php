@@ -1,4 +1,5 @@
-<div id="photo-item-template" class="is-hidden">
+<div id="photo-item-template" class="is-hidden"
+		 data-auth_id="{{ Auth::user()->id }}">
 	<div class="photo-item single-photo">
 		<div class="photo-item-holder">
 			<div class="album-photo">

@@ -427,6 +427,10 @@ function init() {
 				photo_item.find(".category-desc").html(photo.description);
 				photo_item.find(".category-name").html(photo.title);
 
+				if(photo_tmp.data("auth_id") !== photo.user.id) {
+					photo_tmp.find('.js-edit-photo').remove();
+				}
+				
 				more_container.append(photo_tmp.html());
 			});
 
