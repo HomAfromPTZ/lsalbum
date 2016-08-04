@@ -310,6 +310,15 @@ function init() {
 			} else {
 				like_counter.html(--likes_num);
 			}
+			$(".photo-item[data-id="+ photo_id +"] .like-count").text(likes_num);
+			$(".photo-item[data-id="+ photo_id +"]").data("likes", likes_num);
+
+			var likes = 0;
+			$(".content .photo-item .like-count").each(function () {
+				likes += parseInt($(this).text())
+			});
+			$(".album-general-info .like-count").text( likes );
+
 			like_button.prop("disabled",false);
 		}).fail(function(resp){
 			alert("Ошибка сервера");
@@ -354,6 +363,17 @@ function init() {
 			template = template_src.html();
 			comments_container.prepend(template);
 			comments_hidden_container.prepend(template);
+
+			var comments_count = parseInt($(".photo-item[data-id="+ photo_id +"] .comment-count").text());
+				comments_count++;
+			$(".photo-item[data-id="+ photo_id +"] .comment-count").text( comments_count );
+			$(".photo-item[data-id="+ photo_id +"]").data("comments", comments_count);
+
+			var comments = 0;
+			$(".content .photo-item .comment-count").each(function () {
+				comments += parseInt($(this).text())
+			});
+			$(".album-general-info .comments-count").text( comments );
 		});
 	});
 
