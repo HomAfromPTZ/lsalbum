@@ -264,33 +264,25 @@ function init() {
 	$("#js-like-button").click(function(e){
 		var like_button = $(this),
 			photo_id = like_button.data("photoid"),
-			is_liked = like_button.data("liked"),
 			like_counter = like_button.find('.likes__count'),
 			likes_num = parseInt(like_counter.html());
 
-		if(!is_liked){
-			$.ajax({
-				url: "/like/" + photo_id,
-				type: "GET",
-				dataType: "json"
-			}).done(function(resp){
+			like_button.prop("disabled",true);
+
+		$.ajax({
+			url: "/like/" + photo_id,
+			type: "GET",
+			dataType: "json"
+		}).done(function(resp){
+			if(resp.result=="like"){
 				like_counter.html(++likes_num);
-				like_button.data('liked', 1);
-			}).fail(function(resp){
-				alert("Ошибка сервера");
-			});
-		} else {
-			$.ajax({
-				url: "/unlike/" + photo_id,
-				type: "GET",
-				dataType: "json"
-			}).done(function(resp){
+			} else {
 				like_counter.html(--likes_num);
-				like_button.data('liked', 0);
-			}).fail(function(resp){
-				alert("Ошибка сервера");
-			});
-		}
+			}
+			like_button.prop("disabled",false);
+		}).fail(function(resp){
+			alert("Ошибка сервера");
+		});
 	});
 
 
@@ -330,6 +322,32 @@ function init() {
 			template = template_src.html();
 			comments_container.prepend(template);
 			comments_hidden_container.prepend(template);
+		});
+	});
+
+
+
+	// -----------------------------
+	// Показать еще
+	// -----------------------------
+	$("#js-show-more-button").click(function(e){
+		e.preventDefault();
+		var more_button = $(this),
+			page = more_button.data("page");
+
+		$.ajax({
+			url: "/storage/getPhotos/" + page,
+			type: "GET",
+			dataType: "json"
+		}).done(function(resp){
+			more_button.data("page", ++page);
+			console.log("Total images: "+resp.total);
+			console.log("Total pages: "+resp.totalpages);
+			$.each(resp.photos, function(index, photo){
+				console.log(photo);
+			});
+		}).fail(function(resp){
+			alert("Ошибка сервера");
 		});
 	});
 

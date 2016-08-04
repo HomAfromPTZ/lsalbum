@@ -77,7 +77,7 @@
 
 				@if($photos_count > 6)
 				<div class="show-more">
-					<button class="btn btn_transparent">Показать еще</button>
+					<button class="btn btn_transparent" id="js-show-more-button" data-page="2">Показать еще</button>
 				</div>
 				@endif
 

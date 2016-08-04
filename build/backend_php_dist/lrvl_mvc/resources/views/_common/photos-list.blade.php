@@ -3,14 +3,12 @@
 		data-id="{{ $photo->id }}"
 		data-title="{{ $photo->title }}"
 		data-desc="{{ $photo->description }}"
-		{{-- data-desc="{!!preg_replace("/(#(\w{3,}))/", "<a href='/search/?searchtext=%23$2'>$1</a>", $photo->description)!!}" --}}
 		data-likes="{{ $photo->likes }}"
 		data-comments="{{ $photo->comments }}"
 		data-photo="{{ $photo->img_url }}"
 		data-user_id="{{ $photo->user->id }}"
 		data-user_avatar="{{ $photo->user->avatar }}"
 		data-user_name="{{ $photo->user->name }}"
-		data-is_liked="{{$photo->like->where('user_id', $auth_id)->count()}}"
 		>
 		<div class="photo-item-holder">
 			<div class="album-photo">

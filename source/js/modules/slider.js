@@ -89,7 +89,6 @@ function showSlide(_item){
 		img_full = _item.data('photo'),
 		img_title = _item.data('title'),
 		img_likes = _item.data('likes'),
-		img_liked = _item.data('is_liked'),
 		img_user_id = _item.data('user_id'),
 		img_user_name = _item.data('user_name'),
 		img_user_avatar = _item.data('user_avatar'),
@@ -114,7 +113,6 @@ function showSlide(_item){
 	img_desc = img_desc.replace(hash_regex, "<a class='hashtag' href='/search/?searchtext=%23$2'>$1</a>");
 
 	slider.find('.slider__title').html(img_title);
-	slider.find('#js-like-button').data('liked', img_liked);
 	slider.find('#js-like-button').data('photoid', img_id);
 	slider.find('.comments__form').data('photoid', img_id);
 	slider.find('.likes__count').html(img_likes);
