@@ -73,10 +73,10 @@ class PhotoController extends Controller
             // return Response::json('error', 400);
         }
 
-        $result['photo_id'] = $photo->id;
-        $result['photo'] = $filename;
-        $result['thumbnail'] = $thumbnail;
+        $result['photo'] = $photo;
         $result['num'] = $request->num;
+        $result['user_avatar'] = $user->avatar;
+        $result['user_name'] = $user->name;
 
         return $result;
         // return Response::json('success', 200);
@@ -97,9 +97,10 @@ class PhotoController extends Controller
             $photo->description = $request->description;
             $photo->save();
             return [
+                'status' => 'success',
                 'id' => $id,
                 'title' => $photo->title,
-                'status' => 'Изменения сохранены'
+                'description' => $photo->description
             ];
         } catch (Exception $e) {
             return [
@@ -119,7 +120,7 @@ class PhotoController extends Controller
 
             if($user->id != $photo->user_id){
                 return [
-                    'errors' => true,
+                    'status' => 'error',
                     'result' => 'Auth error'
                 ];
             }
@@ -133,13 +134,13 @@ class PhotoController extends Controller
             $photo->delete();
 
             return [
-                'errors' => false,
+                'status' => 'success',
                 'data' => $photo
             ];
         } else {
             return [
+                'status' => 'error',
                 'result' => 'Эта фотография является обложкой. Сначала измените или удалите её.',
-                'errors' => true
             ];
         }
     }

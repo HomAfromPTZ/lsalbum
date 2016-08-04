@@ -65,7 +65,9 @@
 						<button class="btn btn_animated"><i class="fa fa-plus"></i><span>Добавить</span></button>
 					</div>
 					<div class="album-container">
+						
 						@include('_common.photos-list')
+					
 					</div>
 				</div>
 			</div>
