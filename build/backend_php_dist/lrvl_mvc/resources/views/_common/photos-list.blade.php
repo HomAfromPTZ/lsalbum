@@ -9,6 +9,7 @@
 		data-user_id="{{ $photo->user->id }}"
 		data-user_avatar="{{ $photo->user->avatar }}"
 		data-user_name="{{ $photo->user->name }}"
+	  data-album_id="{{ $photo->album_id }}"
 		>
 		<div class="photo-item-holder">
 			<div class="album-photo">

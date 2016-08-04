@@ -53,9 +53,7 @@ function init() {
 	$('#form-add-album').on('submit', function (e) {
 		e.preventDefault();
 		var formData = new FormData($(e.target)[0]);
-
-		// console.log('add-album');
-
+		
 		$.ajax({
 			method: "POST",
 			url: "/album/save",
@@ -64,7 +62,7 @@ function init() {
 			contentType: false
 		})
 		.done(function (album) {
-			// console.log(album);
+
 			if(album.status == 'success') {
 				var album_template_src = $("#album-item-template"),
 					album_tmp = album_template_src.clone(),
@@ -111,8 +109,6 @@ function init() {
 		var formData = new FormData($(e.target)[0]),
 		album_id = $(e.target).data('id');
 
-		// console.log('edit-album with id ='+ album_id);
-
 		$.ajax({
 			method: "POST",
 			url: "/album/update/"+ album_id,
@@ -145,8 +141,6 @@ function init() {
 		var formData = new FormData($(e.target)[0]),
 		album_id = $(e.target).data('id');
 
-		// console.log('edit-album-modal with id ='+ album_id);
-
 		$.ajax({
 			method: "POST",
 			url: "/album/update/"+ album_id,
@@ -155,7 +149,7 @@ function init() {
 			contentType: false
 		})
 		.done(function (album) {
-			// console.log(album);
+
 			if(album.status == 'success') {
 
 				var $album_block = $(".album-item[data-id="+ album_id +"]");
@@ -179,7 +173,7 @@ function init() {
 	$('#delete-album').on('click', function (e) {
 		e.preventDefault();
 		var album_id = $("#edit-album-modal__form").data('id');
-		// console.log(album_id);
+
 		$.ajax({
 			method: "GET",
 			url: "/album/delete/"+ album_id,
@@ -198,6 +192,8 @@ function init() {
 				if( !$album_container.children(".album-item").length ) {
 					$album_container.append("<h3 class='album-item'>Альбомов пока еще нет</h3>");
 				}
+
+				$(".content .photo-item[data-album_id="+ album_id +"]").remove();
 
 				$("#edit-album-modal").find('.editing-block').show();
 				$("#edit-album-modal").find('.hm-modal__footer button').show();
@@ -233,7 +229,7 @@ function init() {
 			contentType: false
 		})
 		.done(function (photo) {
-			// console.log(photo);
+
 			if(photo.status == 'success') {
 
 				var $photo_block = $(".photo-item[data-id="+ photo_id +"]");
