@@ -12,18 +12,17 @@ function init(container, openBtn, closeBtn){
 		e.preventDefault();
 		var $button = $(e.target);
 
-		// console.log(modal);
 		// Открытие модалки - Редактировать альбом
 		if( container == "#edit-album-modal" ) {
 			var album_id = $button.parents(".album-item").data("id"),
 				album_title = $button.parents(".album-item").find(".category-name").text(),
 				album_desc = $button.parents(".album-item").find(".mask-content__desc").text(),
-				album_cover = $button.parents(".album-item").find(".my-album img").attr("src");
+				album_cover = $button.parents(".album-item").find(".album__thumb").css("background-image");
 
 			$('#edit-album-modal__form').data("id", album_id);
 			modal.find('input[name=title]').val(album_title);
 			modal.find('textarea[name=description]').val(album_desc);
-			modal.find('.image-preview__pic').attr("src", album_cover);
+			$('#edit_album_modal_preview').attr("src", album_cover.replace(/^url\("(.*)"\)$/, "$1"));
 
 		// Открытие модалки - Редактировать фото
 		} else if( container == "#edit-photo-modal" ) {

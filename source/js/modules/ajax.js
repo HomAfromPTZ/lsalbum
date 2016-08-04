@@ -121,11 +121,9 @@ function init() {
 			contentType: false
 		})
 		.done(function (album) {
-			// console.log(album);
-
 			if(album.status == 'success') {
 				$('.my-album-title').text(album.title);
-				$('.my-album-desc').html( album.description);
+				$('.my-album-desc').html( album.description.replace(/(#(\w{3,}))/g, "<a href='/search/?searchtext=$2&hashtag=true'>$1</a>"));
 				$('.header_album').css({
 					backgroundImage: "url("+album.cover+")"
 				});
