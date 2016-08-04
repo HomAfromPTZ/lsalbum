@@ -77,8 +77,8 @@ class PhotoController extends Controller
         $result['album'] = $albumdata;
         $result['photo_title'] = $photo->title;
         $result['photo_id'] = $photo->id;
-        $result['photo'] = $filename;
-        $result['thumbnail'] = $thumbnail;
+        $result['photo'] = $photo->img_url;
+        $result['thumbnail'] = $photo->thumb_url;
         // $result['num'] = $request->num;
 
         return $result;

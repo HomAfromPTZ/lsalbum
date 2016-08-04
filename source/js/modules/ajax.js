@@ -66,29 +66,29 @@ function init() {
 		.done(function (album) {
 			// console.log(album);
 			if(album.status == 'success') {
+				var album_template_src = $("#album-item-template"),
+					album_tmp = album_template_src.clone(),
+					album_item = album_tmp.find(".album-item"),
+					album_container = $(".album-container");
 
-				var $album_container = $(".album-container"),
-					$album = $("<div class='album-item' data-id='"+ album.id +"'>\
-						<div class='album-item-holder'>\
-						<a href='/album/"+ album.id +"' class='my-album'>\
-						<img src='"+ album.cover +"' alt=''/>\
-						<div class='album-mask'>\
-						<div class='mask-content'>\
-						<div class='mask-content__desc'>"+ album.description +"</div>\
-						<div class='mask-content__count'><span>1 </span>Фотографий</div>\
-						</div></div></a>\
-						<div class='album-category'>\
-						<a href='#' class='edit-post js-edit-album'>\
-						<i class='fa fa-pencil'></i>\
-						</a>\
-						<span class='category-name'>"+ album.title +"</span></div>\
-						</div></div>");
+				album_item.attr("data-id", album.id);
 
-				if( $album_container.eq(1).children('h2') ) {
-					$album_container.eq(1).children('h2').remove();
+				album_item.find(".album__thumb").css({
+					"background-image" : "url('" + album.cover + "')"
+				});
+
+				album_item.find(".my-album").attr("href", "/album/"+album.id);
+				album_item.find(".mask-content__desc").html(album.description);
+				album_item.find(".mask-content__count span").html(1);
+				album_item.find(".category-name").html(album.title);
+
+				$album = album_tmp.html();
+
+				if( album_container.eq(1).children('h3') ) {
+					album_container.eq(1).children('h3').remove();
 				}
 
-				$album_container.eq(1).prepend($album);
+				album_container.eq(1).prepend(album_tmp.html());
 
 				$("#add-album-modal").removeClass('show').addClass('hide');
 				$("#add-album-modal").find("input, textarea").not('input[type=hidden]').each(function () {
@@ -198,7 +198,7 @@ function init() {
 				$album_block.remove();
 
 				if( !$album_container.children(".album-item").length ) {
-					$album_container.append("<h2>no albums yet</h2>")
+					$album_container.append("<h3 class='album-item'>Альбомов пока еще нет</h3>");
 				}
 
 				$("#edit-album-modal").find('.editing-block').show();

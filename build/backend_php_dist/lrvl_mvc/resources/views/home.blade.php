@@ -18,6 +18,7 @@
 	@include('_common.slider')
 	@include('_templates.comment-item-template')
 	@include('_templates.photo-item-template')
+	@include('_templates.album-item-template')
 
 
 	<div class="page">

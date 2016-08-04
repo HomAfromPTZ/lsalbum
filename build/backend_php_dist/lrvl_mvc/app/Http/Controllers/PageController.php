@@ -114,22 +114,28 @@ class PageController extends Controller
     public function search(Request $request){
         $s = $request->searchtext;
 
-        if(preg_match("/^#\w{3,}$/", $s)){
-            $photos = Photo::where('description', 'REGEXP', '[^'.$s.'$]')
-                ->latest()
-                ->get();
+        if($s===""){
+            $message = "Пожалуйста, введите поисковый запрос.";
+            $photos = array();
         } else {
-            $photos = Photo::where('description', 'LIKE', '%'.$s.'%')
-                ->orWhere('title', 'LIKE', '%'.$s.'%')
-                ->latest()
-                ->get();
+            if(preg_match("/^#\w{3,}$/", $s)){
+                $photos = Photo::where('description', 'REGEXP', '[^'.$s.'$]')
+                    ->latest()
+                    ->get();
+            } else {
+                $photos = Photo::where('description', 'LIKE', '%'.$s.'%')
+                    ->orWhere('title', 'LIKE', '%'.$s.'%')
+                    ->latest()
+                    ->get();
+            }
+
+            if($photos->count() < 1){
+                $message = "По запросу &laquo;".$s."&raquo; совпадений не найдено";
+            } else {
+                $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
+            }
         }
 
-        if($photos->count() < 1){
-            $message = "По запросу &laquo;".$s."&raquo; совпадений не найдено";
-        } else {
-            $message = "По запросу &laquo;".$s."&raquo; найдено ".$photos->count()." результатов:";
-        }
 
         $data['user'] = Auth::user();
         $data['auth_id'] = $data['user']->id;

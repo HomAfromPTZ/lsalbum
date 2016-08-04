@@ -69,7 +69,6 @@
 		// Вставляем фото в DOM
 		myDropzone.on("success", function (file, res) {
 
-			console.log(res);
 			var photo_template_src = $("#photo-item-template"),
 				photo_tmp = photo_template_src.clone(),
 				photo_item = photo_tmp.find(".photo-item"),

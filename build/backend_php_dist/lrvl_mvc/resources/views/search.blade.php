@@ -51,7 +51,7 @@
 					<input name="searchtext" type="text" placeholder="Исследовать мир" class="search-form__input"/>
 				</form>
 
-				<a href="#" class="show-new">Показать новые</a>
+{{-- 				<a href="#" class="show-new">Показать новые</a> --}}
 
 			</div>
 		</div>
