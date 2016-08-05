@@ -384,6 +384,8 @@ function init() {
 		var more_button = $(this),
 			page = more_button.data("page");
 
+		more_button.prop("disabled",true);
+
 		$.ajax({
 			url: "/storage/getPhotos/" + page,
 			type: "GET",
@@ -444,6 +446,7 @@ function init() {
 					});
 			} else {
 				more_button.data("page", ++page);
+				more_button.prop("disabled",false);
 			}
 
 		}).fail(function(resp){
