@@ -4,6 +4,7 @@
 			<div class="circle circle_1"></div>
 			<div class="circle circle_2"></div>
 			<div class="circle circle_3"></div>
+			<div class="circle circle_4"></div>
 		</div>
 	</div>
 </div>

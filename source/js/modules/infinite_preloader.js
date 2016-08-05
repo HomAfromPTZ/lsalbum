@@ -19,7 +19,9 @@ module.exports = function preloader() {
 	}
 
 	function done_loading(){
-		preloader_container.delay(700).fadeOut(700);
+		preloader_container.delay(400).fadeOut(400, function(){
+			preloader_container.find(".circles").remove();
+		});
 	}
 
 	function images_loop (total) {

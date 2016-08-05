@@ -62,9 +62,16 @@ var equalHeights = function() {
 	return $this.css('height', maxHeight);
 };
 
+var ajustHeights = function(selector){
+	var elements = $(selector);
+
+	$.fn.ajustHeight = equalHeights;
+	elements.css({height:"auto"}).ajustHeight();
+};
 
 module.exports = {
 	getScrollbarWidth : getScrollbarWidth,
 	ieVersion : ieVersion,
-	equalHeights : equalHeights
-}
+	equalHeights : equalHeights,
+	ajustHeights : ajustHeights
+};

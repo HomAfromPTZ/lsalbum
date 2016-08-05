@@ -1,6 +1,7 @@
 /** ====================================
 * ----- Установка ajax-запросов --------
 * =================================== */
+helpers = require("./helpers.js");
 
 function init() {
 
@@ -95,6 +96,8 @@ function init() {
 				$('#add-album-preview').attr('src', '/assets/img/no_photo.jpg');
 				$('html').removeClass('has-overflow-hidden')
 					.css({"padding-right" : 0});
+
+				helpers.ajustHeights(".album-item__footer");
 			}
 		});
 	});
@@ -397,7 +400,7 @@ function init() {
 
 				comments_container.attr('id', "photo-item__hidden-comments-"+photo.id);
 
-				$.each(photo.comments, function(index, comment){
+				$.each(photo.comment, function(index, comment){
 					var comment_tmp = comment_template_src.clone();
 
 					comment_tmp.find(".photo-user-img img").attr("src",comment.user.avatar).attr("alt",comment.user.name);

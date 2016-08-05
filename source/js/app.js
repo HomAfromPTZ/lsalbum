@@ -10,15 +10,7 @@
 		imagePreview = require("./modules/image_preview.js"),
 		myDropzone = require("./modules/myDropzone.js");
 
-	// ==============================
-	// Adaptive breakpoints
-	// ==============================
-	// var scrollbar_width = helpers.getScrollbarWidth(),
-	// 	screen_sizes = {
-	// 		mobile : 480 - scrollbar_width,
-	// 		tablet : 768 - scrollbar_width,
-	// 		limit : 2000 - scrollbar_width
-	// 	};
+
 
 	// ==============================
 	// Parallax
@@ -48,7 +40,7 @@
 	// ==============================
 	// Animations
 	// ==============================
-	animations.fadePageOn("a.preload-link", "#preloader", 300);
+	animations.fadePageOn("a.preload-link", "#preloader", 200);
 
 	$.fn.animated = animations.animateCss;
 	$(".album-item").animated("fadeIn");
@@ -58,11 +50,9 @@
 	// ==============================
 	// Ajust heights
 	// ==============================
-	$.fn.equalHeight = helpers.equalHeights;
-
 	function ajustHeights(){
-		$(".album-category").css({height:"auto"}).equalHeight();
-		$(".album-item__footer").css({height:"auto"}).equalHeight();
+		helpers.ajustHeights(".album-category");
+		helpers.ajustHeights(".album-item__footer");
 	}
 
 	$(window).on("load", ajustHeights);

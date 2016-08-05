@@ -61,30 +61,46 @@
 				height: 80px
 				margin-top: -40px
 				margin-left: -40px
-				animation: preloader .4s linear infinite
+				animation: preloader .6s linear infinite
 			&_2
-				width: 100px
-				height: 100px
-				margin-top: -50px
-				margin-left: -50px
-				animation: preloader .8s linear infinite
-			&_3
 				width: 120px
 				height: 120px
 				margin-top: -60px
 				margin-left: -60px
-				animation: preloader 1.2s linear infinite
+				animation: preloader_invert .8s linear infinite
+			&_3
+				width: 160px
+				height: 160px
+				margin-top: -80px
+				margin-left: -80px
+				animation: preloader 1.6s linear infinite
+			&_4
+				width: 200px
+				height: 200px
+				margin-top: -100px
+				margin-left: -100px
+				animation: preloader_invert 1.2s linear infinite
 
 
 @keyframes preloader
 	0%
 		transform: rotate(0)
-		opacity: .5
+		opacity: .3
 	50%
 		opacity: 1
 	100%
 		transform: rotate(360deg)
-		opacity: .5
+		opacity: .3
+
+@keyframes preloader_invert
+	0%
+		transform: rotate(0)
+		opacity: .3
+	50%
+		opacity: 1
+	100%
+		transform: rotate(-360deg)
+		opacity: .3
 
 @keyframes blink
 	0%
