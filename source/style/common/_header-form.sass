@@ -1,6 +1,5 @@
 .hform
-	display: table
-	position: absolute
+	position: fixed
 	visibility: hidden
 	opacity: 0
 	top: 0
@@ -10,28 +9,36 @@
 	z-index: 10
 	background-color: rgba($white, .6)
 	transform-origin: center top
+	overflow-x: hidden
+	transition: opacity $transition-time_medium, visibility $transition-time_medium
 	&.show
-		animation: hform-show $transition-time_medium
-		animation-fill-mode: forwards
-		+media(xs)
-			animation: none
-			visibility: visible
-			opacity: 1
+		visibility: visible
+		opacity: 1
+		overflow-y: scroll
+		.header-holder
+			animation: hform-show $transition-time_medium
+			animation-fill-mode: forwards
+			+media(xs)
+				animation: none
 	&.hide
-		animation: hform-hide $transition-time_medium
-		+media(xs)
-			animation: none
-			visibility: hidden
-			opacity: 0
+		visibility: hidden
+		opacity: 0
+		overflow: hidden
+		.header-holder
+			animation: hform-hide $transition-time_medium
+			+media(xs)
+				animation: none
 
 
 
 
 	.header-holder
 		background-size: cover
-		background-position: 50% 0
+		background-position: center center
 		background-repeat: no-repeat
 		position: relative
+		z-index: 2
+		transform-origin: center top
 
 		&_edit-user
 			background-image: url(../img/bg/main-header.jpg)
@@ -51,6 +58,8 @@
 			background-color: rgba($black, 0.4)
 
 	.hform__footer
+		position: relative
+		z-index: 1
 		text-align: right
 		padding: rem(9)
 		background: $white
@@ -126,15 +135,16 @@
 		margin-bottom: .6em
 	.input_rounded
 		width: 100%
-		padding: 5px
+		padding: 5px 15px
 		margin-bottom: 10px
-		font-size: rem(21)
+		font-size: rem(18)
 		line-height: 1
 		&:last-child
 			margin-bottom: 0
 		&_user-textarea
 			display: block
-			height: 40px
+			height: 50px
+			resize: vertical
 
 
 
@@ -153,33 +163,11 @@
 @keyframes hform-show
 	0%
 		transform: perspective(1000px) rotateX(45deg) translate3d(0,0,500px)
-		visibility: hidden
-		opacity: 0
 	100%
 		transform: perspective(1000px) rotateX(0deg) translate3d(0,0,0)
-		visibility: visible
-		opacity: 1
 
 @keyframes hform-hide
 	0%
 		transform: perspective(1000px) rotateX(0deg) translate3d(0,0,0)
-		visibility: visible
-		opacity: 1
 	100%
 		transform: perspective(1000px) rotateX(45deg) translate3d(0,0,500px)
-		visibility: hidden
-		opacity: 0
-
-
-// @keyframes hform-content-show
-// 	0%
-// 		transform: perspective(600px) translate3d(0,0,150px) rotateX(-70deg)
-// 	100%
-// 		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
-
-
-// @keyframes hform-content-hide
-// 	0%
-// 		transform: perspective(600px) translate3d(0,0,0) rotateX(0)
-// 	100%
-// 		transform: perspective(600px) translate3d(0,50px,50px) rotateX(20deg)

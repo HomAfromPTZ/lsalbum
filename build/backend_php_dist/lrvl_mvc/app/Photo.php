@@ -20,7 +20,7 @@ class Photo extends Model
         return $this
             ->hasMany('App\Comment', 'photo_id', 'id')
             ->with('user')
-            ->select('photo_id', 'content');
+            ->select('photo_id', 'user_id', 'content');
     }
 
     public function like(){

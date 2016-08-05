@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use File;
 use Image;
+use Response;
 use App\Photo;
 use App\Album;
 use App\Http\Requests;
@@ -71,10 +72,14 @@ class PhotoController extends Controller
             return ['status' => 'error'];
         }
 
+
+        $result['user'] = $user;
+        $result['album'] = $albumdata;
+        $result['photo_title'] = $photo->title;
         $result['photo_id'] = $photo->id;
-        $result['photo'] = $filename;
-        $result['thumbnail'] = $thumbnail;
-        $result['num'] = $request->num;
+        $result['photo'] = $photo->img_url;
+        $result['thumbnail'] = $photo->thumb_url;
+        // $result['num'] = $request->num;
 
         return $result;
     }
@@ -94,9 +99,9 @@ class PhotoController extends Controller
             $photo->description = $request->description;
             $photo->save();
             return [
-                'id' => $id,
+                'status' => 'success',
                 'title' => $photo->title,
-                'status' => 'Изменения сохранены'
+                'description' => $photo->description
             ];
         } catch (Exception $e) {
             return [
@@ -117,7 +122,7 @@ class PhotoController extends Controller
             if($user->id != $photo->user_id){
                 return [
                     'errors' => true,
-                    'result' => 'Auth error'
+                    'result' => 'Ошибка авторизации'
                 ];
             }
 

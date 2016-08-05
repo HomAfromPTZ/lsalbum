@@ -68,6 +68,8 @@
 		float: none
 
 	&__img
+		display: flex
+		align-items: center
 		border-radius: 50%
 		border: 3px solid $white
 		width: 120px
@@ -127,8 +129,9 @@
 		text-decoration: none
 		display: block
 		opacity: .8
+		transition: opacity $transition-time
 
-		&:hover .svg-social
+		&:hover
 			opacity: 1
 
 	&__svg

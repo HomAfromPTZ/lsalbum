@@ -37,6 +37,9 @@ build/backend_node_dist/assets
 build/backend_node_dist/templates
 build/backend_php_dist/assets
 build/backend_php_dist/templates
+build/backend_php_dist/lrvl_mvc/public/templates/
+build/backend_php_dist/lrvl_mvc/public/assets/
+build/backend_php_dist/lrvl_mvc/storage/framework/sessions/
 
 # Node.JS
 node_modules

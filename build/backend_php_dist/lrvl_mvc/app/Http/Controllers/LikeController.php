@@ -20,9 +20,11 @@ class LikeController extends Controller
             $like->save();
 
             Photo::find($photo_id)->increment('likes');
-            return ['result' => 'Лайк засчитан'];
+            return ['result' => 'like'];
         } else {
-            return ['result' => 'Лайк уже поставлен'];
+            Photo::find($photo_id)->decrement('likes');
+            Like::where('photo_id', $photo_id)->where('user_id', $user_id)->delete();
+            return ['result' => 'unlike'];
         }
     }
 

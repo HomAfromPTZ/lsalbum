@@ -55,7 +55,7 @@
                     </div>
                     <div class="welcome__card welcome__card_registration">
                         <form class="form form_welcome" method="POST" action="{{ url('/register') }}">
-                          {{ csrf_field() }}
+                            {{ csrf_field() }}
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
                                 <input id="" name="name" type="text" placeholder="Имя" class="group_welcome__input" value="{{ old('name') }}">
                             </div>
@@ -94,7 +94,8 @@
                         <h1 class="welcome__h1">Восстановление пароля</h1>
                     </div>
                     <div class="welcome__card">
-                        <form method="post" class="form form_welcome form_recovery">
+                        <form method="post" class="form form_welcome form_recovery" action="{{ url('/password/email') }}">
+                            {{ csrf_field() }}
                             <div class="form_welcome__text">
                                 <div class="form_welcome__span form_welcome__span_bold">Забыли пароль?</div>
                             </div>
@@ -102,7 +103,7 @@
                                 <div class="form_welcome__span">Ничего страшного, введите свой e-mail, и мы вышлем вам инструкции по востановлению пароля</div>
                             </div>
                             <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                <input id="" name="" type="email" placeholder="Электронная почта" class="group_welcome__input">
+                                <input id="email" name="email" type="email" placeholder="Электронная почта" class="group_welcome__input" value="{{ old('email') }}">
                             </div>
                             <div class="form_welcome__text">
                               @if ($errors->has('email'))
