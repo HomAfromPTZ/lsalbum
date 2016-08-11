@@ -9,7 +9,7 @@
 		data-user_id="{{ $photo->user->id }}"
 		data-user_avatar="{{ $photo->user->avatar }}"
 		data-user_name="{{ $photo->user->name }}"
-	  data-album_id="{{ $photo->album_id }}"
+		data-album_id="{{ $photo->album_id }}"
 		>
 		<div class="photo-item-holder">
 			<div class="album-photo">
@@ -44,8 +44,7 @@
 			@forelse ($photo->comment as $comment)
 			<div class="comments__item">
 				<div class="comments__item-photo">
-					<div class="photo-user-img">
-						<img src="{{($comment->user->avatar!="")?$comment->user->avatar:"/assets/img/default_avatar.jpg"}}" alt="{{ $comment->user->name }}"/>
+					<div class="photo-user-img" style="background-image: url('{{($comment->user->avatar!="")?$comment->user->avatar:"/assets/img/default_avatar.jpg"}}')">
 						<a href="/user/{{ $comment->user->id }}" class="photo-user-img__mask preload-link">
 							<svg class="svg-more">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>

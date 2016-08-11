@@ -18,7 +18,9 @@ var imagePreview = (function() {
     {
       "input": "#input_avatar",
       "target": "#preview_avatar",
-      "method": function(e, target) { $(target).attr("src", e.target.result)  }
+      "method": function(e, target) {
+        $(target).css({"background-image" : "url('" + e.target.result + "')"});
+      }
     },
 
     // Фон юзера на главной странице

@@ -10,12 +10,13 @@
 			</div>
 			<div class="slider__meta">
 				<div class="slider__author-photo">
-					<div class="photo-user-img"><img src="/assets/img/default_avatar.jpg" alt=""/>
+					<div class="photo-user-img" style="background-image: url('/assets/img/default_avatar.jpg')">
 						<a href="" class="photo-user-img__mask preload-link">
 							<svg class="svg-more">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>
 							</svg>
-						</a></div>
+						</a>
+					</div>
 				</div>
 				<h2 class="slider__author-name"></h2>
 				<div class="slider__likes">
@@ -37,8 +38,7 @@
 				<div class="comments__title">Комментарии</div>
 				<div class="comments__item comments__item_add">
 					<div class="comments__item-photo">
-						<div class="photo-user-img">
-							<img id="slider__authuser-avatar" src="{{(Auth::user()->avatar !== "") ?  Auth::user()->avatar : '/assets/img/default_avatar.jpg'}}" alt="Auth::user()->name"/>
+						<div class="photo-user-img" id="slider__authuser-avatar" style="background-image: url('{{(Auth::user()->avatar !== "") ?  Auth::user()->avatar : '/assets/img/default_avatar.jpg'}}')">
 							<a href="/user/{{Auth::user()->id}}" class="photo-user-img__mask">
 								<svg class="svg-more">
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-more"></use>

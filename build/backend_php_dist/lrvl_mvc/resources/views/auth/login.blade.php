@@ -27,6 +27,7 @@
                     <div class="welcome__card welcome__card_login">
                         <form id="form_welcome" class="form form_welcome" role="form" method="POST" action="{{ url('/login') }}">
                           {{ csrf_field() }}
+                            <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
                                 <input type="text" name="email" class="group_welcome__input" placeholder="Электронная почта" value="{{ old('email') }}">
                             </div>

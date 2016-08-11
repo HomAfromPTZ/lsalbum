@@ -39,7 +39,7 @@
 
 				<div class="user-info-holder">
 					<div class="user-avatar">
-						<div class="user-avatar__img"><img src="{{($user->avatar!="")?$user->avatar:"assets/img/default_avatar.jpg"}}"/></div>
+						<div class="user-avatar__img" style="background-image: url('{{($user->avatar!="")?$user->avatar:"assets/img/default_avatar.jpg"}}')"></div>
 					</div>
 					<div class="user-info">
 						<h3 class="user-info__name">{{$user->name}}</h3>

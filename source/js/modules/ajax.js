@@ -6,6 +6,32 @@ helpers = require("./helpers.js");
 function init() {
 
 	// -----------------------------------
+	// Авторизация
+	// -----------------------------------
+	// $('#form_welcome').on('submit', function (e) {
+	// 	e.preventDefault();
+	// 	var form = $(e.target),
+	// 		formData = new FormData(form);
+
+	// 	$.ajax({
+	// 		method: "POST",
+	// 		url: "/login",
+	// 		data: form.serialize(),
+	// 		// processData: false,
+	// 		// contentType: false,
+	// 		dataType: "json",
+	// 		headers: {
+	// 			'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()
+	// 		},
+	// 	})
+	// 	.done(function (msg) {
+	// 		console.log(msg);
+	// 	});
+	// });
+
+
+
+	// -----------------------------------
 	// Редактирование данных пользователя
 	// -----------------------------------
 	$('#edit-user-header').on('submit', function (e) {
@@ -29,9 +55,12 @@ function init() {
 
 				if(msg.avatar !== undefined) {
 					$('#user-avatar')
-					.add('#slider__authuser-avatar')
-					.attr('src', msg.avatar);
+						.add('#slider__authuser-avatar')
+						.css({
+							"background-image" : "url('" + msg.avatar + "')"
+						});
 				}
+
 				$('.user-info__name').text(formData.get('name'));
 				$('.user-info__desc').text(formData.get('description'));
 				$('#social__link_vk').attr('href', formData.get('vk'));

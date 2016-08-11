@@ -20,9 +20,7 @@
                 <div class="user-info-holder">
 
                     <div class="user-avatar">
-                        <div class="user-avatar__img">
-                          <img src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}"/>
-                        </div>
+                        <div class="user-avatar__img" id="user-avatar" style="background-image: url('{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}')"></div>
                     </div>
 
                     <div class="user-info">
@@ -48,7 +46,7 @@
         <div class="fix-width">
             <form class="search-form" action="/search">
                 <button type="submit" class="search-form__btn fa fa-search"></button>
-                <input name="q" type="text" placeholder="Исследовать мир" class="search-form__input"/>
+                <input name="searchtext" type="text" placeholder="Исследовать мир" class="search-form__input"/>
             </form>
         </div>
     </div>

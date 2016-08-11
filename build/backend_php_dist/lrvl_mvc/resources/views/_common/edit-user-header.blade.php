@@ -7,10 +7,7 @@
       <div class="user-info-holder">
         <div class="user-avatar">
           <div class="change-photo change-photo_user">
-            <div class="change-photo_user__img">
-              <img src="{{$user['avatar']}}" alt="" id="preview_avatar" class="change-photo_user__pic"
-                   data-backup="{{$user['avatar']}}">
-            </div>
+            <div class="change-photo_user__img" id="preview_avatar" style="background-image: url('{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}')"></div>
             <div class="change-photo__text">
               <label class="link"><span class="fa fa-camera"></span>Изменить фото
                 <input type="file" name="avatar" id="input_avatar" class="form__input form__input_file">

@@ -29,9 +29,7 @@
 					<div class="user-info-holder">
 
 						<div class="user-avatar">
-							<div class="user-avatar__img">
-								<img id="user-avatar" src="{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}"/>
-							</div>
+							<div class="user-avatar__img" id="user-avatar" style="background-image: url('{{ ($user->avatar !== '') ? $user->avatar : 'assets/img/default_avatar.jpg' }}')"></div>
 						</div>
 
 						<div class="user-info">

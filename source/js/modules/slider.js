@@ -62,7 +62,7 @@ function init(container, openBtn, closeBtn, nextBtn, prevBtn){
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(ajustImgHeight, resizeDelta);
 	});
-};
+}
 
 function ajustImgHeight(){
 	img_wrapper.animate({
@@ -76,7 +76,7 @@ function showNext(){
 		showSlide(nextSlide);
 		current = nextSlide;
 	}
-};
+}
 
 function showPrev(){
 	var prevSlide = current.prev('.photo-item');
@@ -84,7 +84,7 @@ function showPrev(){
 		showSlide(prevSlide);
 		current = prevSlide;
 	}
-};
+}
 
 function showSlide(_item){
 	var img_id = _item.data('id'),
@@ -121,7 +121,9 @@ function showSlide(_item){
 	slider.find('.slider__text').html(img_desc);
 	slider.find('.slider__author-photo .photo-user-img__mask').attr('href', '/user/'+ img_user_id);
 	slider.find('.slider__author-name').html(img_user_name);
-	slider.find('.slider__author-photo img').attr('src', img_user_avatar);
+	slider.find('.slider__author-photo .photo-user-img').css({
+		"background-image" : "url('" + img_user_avatar + "')"
+	});
 
 
 	if (_item.next('.photo-item').length<1) {
