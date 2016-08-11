@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Auth;
+use URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -68,5 +71,60 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+
+
+    public function postLogin(Request $request)
+    {
+        $auth = false;
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            $auth = true;
+        }
+
+        return [
+            'auth' => $auth,
+        ];
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return [
+                "status" => "error",
+                "errors" => $validator->errors(),
+            ];
+        };
+        $user = $this->create($request->all());
+
+        // $code = CodeController::generateCode(8);
+        // Code::create([
+        //     'user_id' => $user->id,
+        //     'code' => $code,
+        // ]);
+
+        // $url = url('/').'/activate?id='.$user->id.'&code='.$code;
+        // Mail::send('emails.registration', array('url' => $url), function($message) use ($request)
+        // {          
+        //     $message->to($request->email)->subject('Registration');
+        // });
+        
+        // return 'Регистрация прошла успешно, на Ваш email отправлено письмо со ссылкой для активации аккаунта';
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return [
+                "status" => "ok",
+                "message" => "Регистрация прошла успешно!",
+            ];
+        } else {
+            return [
+                "status" => "auth error",
+                "message" => "Регистрация прошла успешно. Но при авторизации произошла ошибка!",
+            ];
+        }
+
     }
 }

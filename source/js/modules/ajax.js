@@ -8,26 +8,92 @@ function init() {
 	// -----------------------------------
 	// Авторизация
 	// -----------------------------------
-	// $('#form_welcome').on('submit', function (e) {
-	// 	e.preventDefault();
-	// 	var form = $(e.target),
-	// 		formData = new FormData(form);
+	$('#form_welcome').on('submit', function (e) {
+		e.preventDefault();
+		var form = $(e.target),
+			formData = form.serialize(),
+			email = form.find('.login__email').val(),
+			pass = form.find('.login__password').val(),
+			error_msg = form.find('.error-notification');
 
-	// 	$.ajax({
-	// 		method: "POST",
-	// 		url: "/login",
-	// 		data: form.serialize(),
-	// 		// processData: false,
-	// 		// contentType: false,
-	// 		dataType: "json",
-	// 		headers: {
-	// 			'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()
-	// 		},
-	// 	})
-	// 	.done(function (msg) {
-	// 		console.log(msg);
-	// 	});
-	// });
+		if(email !== "" && pass !== ""){
+			$.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()
+				},
+				method: "POST",
+				url: "/login",
+				data: form.serialize(),
+				dataType: "json",
+				success: function(data){
+					if (data.auth) {
+						document.location = "/home";
+					} else {
+						error_msg.html("Логин или пароль указаны неверно!")
+							.slideDown(200);
+					}
+				},
+				error: function(data){
+					error_msg.html("К сожалению на сервере произошла ошибка. Попробуйте позже.")
+						.slideDown(200);
+				}
+			});
+		} else {
+			error_msg.html("Пожалуйста, заполните все необходимые поля!")
+				.slideDown(200);
+		}
+	});
+
+
+
+	// -----------------------------------
+	// Регистрация
+	// -----------------------------------
+	$('#form_register').on('submit', function (e) {
+		e.preventDefault();
+		var form = $(e.target),
+			formData = form.serialize(),
+			name = form.find('.register__name').val(),
+			email = form.find('.register__email').val(),
+			pass = form.find('.register__password').val(),
+			error_msg = form.find('.error-notification');
+
+		if (name !== "" && email !== "" && pass !== "") {
+			$.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('input[name="csrf_token"]').val()
+				},
+				method: "POST",
+				url: "/register",
+				data: formData,
+				dataType: "json",
+				success: function(data){
+					if(data.status == "error"){
+						var errors = [];
+
+						$.each(data.errors, function(index, msg){
+							errors.push("<div>" + msg + "</div>");
+						});
+
+						error_msg.html(errors.join(""))
+							.slideDown(200);
+					} else if (data.status == "auth error") {
+						error_msg.html(data.message)
+							.slideDown(200);
+					} else {
+						document.location = "/home";
+					}
+				},
+				error: function(data){
+					error_msg.html("К сожалению на сервере произошла ошибка. Попробуйте позже.")
+						.slideDown(200);
+				}
+			});
+		} else {
+			error_msg.html("Пожалуйста, заполните все поля!")
+				.slideDown(200);
+		}
+	});
 
 
 

@@ -54,7 +54,7 @@ return [
     'min'                  => [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
+        'string'  => 'Поле :attribute - должно содержать минимум :min символов.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
@@ -77,8 +77,8 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
-    'url'                  => 'The :attribute format is invalid.',
+    'unique'               => 'Поле :attribute - такое значение уже занято.',
+    'url'                  => 'Поле :attribute - неверный формат.',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,6 +108,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password' => 'пароль',
+        'name' => 'имя',
+    ],
 
 ];

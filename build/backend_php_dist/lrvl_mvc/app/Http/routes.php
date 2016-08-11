@@ -15,6 +15,9 @@ Route::get('/', 'PageController@index');
 
 // Auth routes
 Route::auth();
+Route::post('/login', 'Auth\AuthController@postLogin');
+Route::post('/register', 'Auth\AuthController@postRegister');
+
 // Password reset link request routes...
 Route::get('/password/email', 'Auth\PasswordController@getEmail');
 Route::post('/password/email', 'Auth\PasswordController@postEmail');

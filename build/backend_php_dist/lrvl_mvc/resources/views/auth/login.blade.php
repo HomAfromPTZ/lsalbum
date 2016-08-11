@@ -29,16 +29,14 @@
                           {{ csrf_field() }}
                             <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input type="text" name="email" class="group_welcome__input" placeholder="Электронная почта" value="{{ old('email') }}">
+                                <input type="text" name="email" class="group_welcome__input login__email" placeholder="Электронная почта" value="{{ old('email') }}">
                             </div>
                             <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                <input name="password" type="password" placeholder="Пароль" class="group_welcome__input">
+                                <input name="password" type="password" placeholder="Пароль" class="group_welcome__input login__password">
                             </div>
                             <div class="form_welcome__text"><a id="show-recovery" href="{{ url('/password/reset') }}" class="form_welcome__link">Забыли пароль?</a></div>
                             <div class="form_welcome__text">
-                              @if ($errors->has('email'))
-                                <div class="error-notification">E-mail или пароль не верен</div>
-                              @endif
+                                <div class="error-notification"></div>
                             </div>
                             <div class="form_welcome__text form_welcome__text_button">
                                 <input type="submit" value="Войти" class="form_welcome__button btn btn_ok">
@@ -55,30 +53,23 @@
                         <h1 class="welcome__h1">Регистрация</h1>
                     </div>
                     <div class="welcome__card welcome__card_registration">
-                        <form class="form form_welcome" method="POST" action="{{ url('/register') }}">
+                        <form class="form form_welcome" id="form_register" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
+                            <input type="hidden" id="csrf_token" name="csrf_token" value="{{csrf_token()}}">
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input id="" name="name" type="text" placeholder="Имя" class="group_welcome__input" value="{{ old('name') }}">
+                                <input name="name" type="text" placeholder="Имя" class="group_welcome__input register__name" value="{{ old('name') }}">
                             </div>
                             <div class="input-group_welcome"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                <input id="" name="email" type="email" placeholder="Электронная почта" class="group_welcome__input" value="{{ old('email') }}">
+                                <input name="email" type="email" placeholder="Электронная почта" class="group_welcome__input register__email" value="{{ old('email') }}">
                             </div>
                             <div class="input-group_welcome input-group_last"><span class="group_welcome__icon"><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                <input id="" name="password" type="password" placeholder="Пароль" class="group_welcome__input">
+                                <input name="password" type="password" placeholder="Пароль" class="group_welcome__input register__password">
                             </div>
                             <div class="form_welcome__text">
                                 <div class="form_welcome__span">Ваши данные остаются строго конфиденциальны</div>
                             </div>
                             <div class="form_welcome__text">
-                              @if ($errors->has('name'))
-                                <div class="error-notification">Введите имя</div>
-                              @elseif ($errors->has('email'))
-                                <div class="error-notification">Введите e-mail</div>
-                              @elseif ($errors->has('password'))
-                                <div class="error-notification">Введите пароль</div>
-                              @elseif ($errors->has('password_confirmation'))
-                                <div class="error-notification">Неверный повторно введеный пароль</div>
-                              @endif
+                                <div class="error-notification"></div>
                             </div>
                             <div class="form_welcome__text form_welcome__text_button">
                                 <input type="submit" id="" value="Создать аккаунт" class="form_welcome__button btn btn_ok">
